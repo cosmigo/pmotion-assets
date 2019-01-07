@@ -1,0 +1,260 @@
+= Pro Motion DDE Interface in C
+Thiadmer Riemersma, http://www.compuphase.com/
+v1.0.0, 2019-01-07: PM NG v7.1.8
+// Metadata:
+:description: C implementation of Cosmigo Pro Motion DDE plugin interface.
+:copyright: Copyright (c) Thiadmer Riemersma, Apache License v2.0.
+:keywords: cosmigo, pro motion ng, plugins, pixel art, pixelart, software
+// Doc Settings:
+:lang: en
+:version-label: revision
+// TOC Settings:
+:toc!:
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible: true
+:sectanchors:
+// GitHub Settings for Admonitions Icons:
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+
+[discrete]
+==== An implementation in C of a DDE interface to Pro Motion
+
+By Thiadmer Riemersma, link:http://www.compuphase.com/[www.compuphase.com^].
+
+After seeing the demo source for the Pro Motion plugin interface, I regret
+that I do not develop in Delphi.
+It looks like I should reconsider my tools.
+
+Anyway, for the mere mortals amongst us, I tried to get the essentials of the DDE conversation into a C snippet.
+The low level interface to DDE has always been fairly complex from Windows 2.0 to Windows95 when using C.
+In my code, I assume that you can use `DDEML.DLL`.
+This interface was introduced with Windows 3.1.
+It is still fairly low level, but it handles some of the more complex allocation/freeing issues.
+
+This is not (by a far cry) a DDE tutorial!
+
+I once developed a set of general purpose DDE functions.
+In these functions, I assumed that the server name and the topic name were constant for a comversation.
+In the applications that I have previously used, this was the case.
+
+I also assumed that the item name changed from item to item.
+In the case of Pro Motion, the item is always `"ImageServerItem"`.
+I have not adapted my source to this special case.
+
+The general idea is that you execute a macro in Pro Motion, and then query the result.
+
+Here is an example of use:
+
+[source,c]
+--------------------------------------------------------------------------------
+/* do this only once, for example when starting your program */
+if (!DDEopen("PMOTION","ImageServer")) {
+  MessageBox(hwnd, "Pro Motion server is inactive", NULL, MB_OK);
+
+
+char str[128];
+
+if (DDEexec("ImageServerItem", "GetCurrentDelay"))
+  DDErequest("ImageServerItem", str, sizeof str, FALSE);
+
+int framecount;
+if (DDEexec("ImageServerItem", "GetFrameCount")) {
+  DDErequest("ImageServerItem", str, sizeof str, FALSE);
+  framecount = atoi(str);
+} /* if */
+
+/* many more calls to DDEexec() and DDErequest() */
+
+
+/* do this before terminating your program (or when you no longer
+ * need to talk to Pro Motion)
+ */
+DDEclose();
+--------------------------------------------------------------------------------
+
+
+My implementation of a DDE "`execute`" is asynchronous.
+I do not know whether Pro Motion requires this.
+A few other applications for which I implemented DDE conversations required asynchronous execution, so I left it that way.
+Note that the Delphi implementation also does an asynchronous execution.
+
+An asynchronous DDE transaction requires a callback and, for convenience, a loop to wait for the result.
+I have built in a timeout (this is a constant of 10 seconds, which is far longer than Pro Motion ever needs).
+
+This code has some 16-bit roots, which is visible in the call to `MakeProcInstance()`.
+In 32-bit, this call in unnecessary.
+In the code below, I have handled this special case with a `pass:[#if defined __WIN32__]`, but you may need to change the `pass:[__WIN32__]` constant to `pass:[_Win32]` or something else to please you compiler.
+When compiling in 16-bit, I am assuming that you have a global variable called `hInst` that holds the current instance handle (the `hInstace` value passed to `WinMain()`).
+
+Below is the (general purpose) DDE code.
+You should be able to copy-and-paste it in your C/C++ program.
+
+
+[source,c]
+--------------------------------------------------------------------------------
+/* add the DDEML.H file to your #include files list */
+#include <ddeml.h>
+
+static FARPROC DDEcallback = NULL;
+static DWORD   DDEinst = 0L;          /* DDE instance id */
+static HCONV   DDEconv = 0;           /* DDE conversation id */
+static HSZ     hszServer, hszTopic;   /* usually constant for a conversation */
+static BOOL    DDEready;
+#define DDE_RETRIES     5
+#define DDE_TIMEOUT     10000
+
+#pragma argsused
+HDDEDATA CALLBACK _export DDECallBack(WORD wType, WORD wFmt, HCONV hConv,
+                                      HSZ hsz1, HSZ hsz2, HDDEDATA hData,
+                                      DWORD dwData1, DWORD dwData2)
+{
+  switch (wType) {
+  case XTYP_DISCONNECT: /* Disconnect, handle no longer valid */
+    DDEconv = 0;
+    if (hszServer != 0 && hszTopic != 0) {
+      DdeFreeStringHandle(DDEinst, hszServer);
+      DdeFreeStringHandle(DDEinst, hszTopic);
+      hszServer = NULL;
+      hszTopic = NULL;
+    } /* if */
+    break;
+  case XTYP_XACT_COMPLETE:
+    DDEready = TRUE;
+    break;
+  } /* switch */
+  return NULL;
+}
+
+BOOL DDEopen(LPSTR lpServer, LPSTR lpTopic)
+{
+  #if defined __WIN32__
+    DDEcallback = (FARPROC)DDECallBack;
+  #else
+    DDEcallback = MakeProcInstance((FARPROC)DDECallBack, hInst);
+  #endif
+  if (DdeInitialize(&DDEinst, (PFNCALLBACK)DDEcallback, APPCMD_CLIENTONLY, 0) != DMLERR_NO_ERROR)
+    return FALSE;
+
+  hszServer = DdeCreateStringHandle(DDEinst, lpServer, CP_WINANSI);
+  hszTopic  = DdeCreateStringHandle(DDEinst, lpTopic, CP_WINANSI);
+
+  DDEconv = DdeConnect(DDEinst, hszServer, hszTopic, NULL);
+  if (DDEconv != 0)
+   return TRUE;
+
+  /* failure, clean up */
+  DdeFreeStringHandle(DDEinst, hszServer);
+  DdeFreeStringHandle(DDEinst, hszTopic);
+  hszServer = NULL;
+  hszTopic = NULL;
+  return FALSE;
+}
+
+void DDEclose(void)
+{
+  if (DDEconv != 0) {
+    DdeDisconnect(DDEconv);
+    DDEconv = 0;
+  } /* if */
+  if (hszServer != 0 && hszTopic != 0) {
+    DdeFreeStringHandle(DDEinst, hszServer);
+    DdeFreeStringHandle(DDEinst, hszTopic);
+    hszServer = 0;
+    hszTopic = 0;
+  } /* if */
+  DdeUninitialize(DDEinst);
+  #if !defined __WIN32__
+    FreeProcInstance(DDEcallback);
+  #endif
+}
+
+BOOL DDErequest(LPSTR lpItem, LPSTR lpValue, DWORD dwMax, BOOL CRLF)
+{
+  HSZ hszItem;
+  HDDEDATA hData;
+  DWORD dwSize;
+  UINT Err;
+  short retry=0;
+
+  *lpValue = '\0';
+  hszItem = DdeCreateStringHandle(DDEinst, lpItem, CP_WINANSI);
+
+  do {
+    Err=DMLERR_NO_ERROR;
+    hData = DdeClientTransaction(NULL, 0, DDEconv, hszItem, CF_TEXT, XTYP_REQUEST, 1000, NULL);
+    if (!hData)
+      Err = DdeGetLastError(DDEinst);
+    retry++;
+  } while (Err!=DMLERR_NO_ERROR && retry < DDE_RETRIES);
+  DdeFreeStringHandle(DDEinst, hszItem);
+
+  if (Err)
+    return FALSE;
+
+  dwSize = DdeGetData(hData,NULL,0,0);
+  if (dwSize > dwMax)
+    dwSize = dwMax;
+  DdeGetData(hData, (LPBYTE)lpValue, dwSize, 0L);
+  lpValue[(int)dwSize] = '\0';        /* make sure it is zero terminated */
+  if (!CRLF) {
+    int length = lstrlen(lpValue);
+    if (lpValue[length - 2] == '\r')
+      lpValue[length - 2] = '\0';
+  } /* if */
+  DdeFreeDataHandle(hData);
+
+  return TRUE;
+}
+
+DDEexec(LPSTR lpItem, LPSTR lpCommand)
+{
+  HSZ hszItem;
+  DWORD time;
+  MSG msg;
+
+  hszItem = DdeCreateStringHandle(DDEinst, lpItem, CP_WINANSI);
+  DdeClientTransaction((LPBYTE)lpCommand,strlen(lpCommand)+1 , DDEconv, hszItem, CF_TEXT,
+                       XTYP_EXECUTE, TIMEOUT_ASYNC, NULL);
+
+  DDEready = FALSE;
+  time = GetTickCount();
+  while (!DDEready) {
+    if (GetTickCount() > time + DDE_TIMEOUT)
+      break;    /* wait 10 seconds, fail otherwise */
+    if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
+      TranslateMessage(&msg);
+      DispatchMessage(&msg);
+    } /* if */
+  } /* while */
+
+  DdeFreeStringHandle(DDEinst, hszItem);
+  DdeFreeDataHandle(hData);
+
+  return DDEready;
+}
+--------------------------------------------------------------------------------
+
+Enjoy!
+
+Thiadmer Riemersma
+
+================================================================================
+This document was ported to AsciiDoc by
+link:https://github.com/tajmone[Tristano Ajmone^]
+and republished with Jan Zimmermann's permission under the
+link:https://www.apache.org/licenses/LICENSE-2.0[Apache License v2.0^] terms.
+Beside formatting, aesthetic tweaks and some marginal text changes, this document is a faithful reproduction of the `dde_c.txt` document found inside the `dde_plugin_sample.zip`  archive
+link:https://www.cosmigo.com/wp-content/uploads/dde_plugin_sample.zip[downloadable from Cosmigo website^].
+================================================================================
+
+// EOF //

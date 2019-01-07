@@ -1,0 +1,565 @@
+= Pro Motion DDE Plugin Interface
+Jan Zimmermann <jan@cosmigo.com>
+v1.0.0, 2019-01-07: PM NG v7.1.8
+// Metadata:
+:description: Documentation of Cosmigo Pro Motion DDE plugin interface for \
+              plugin developers.
+:copyright: Copyright (c) Jan Zimmermann, Apache License v2.0.
+:keywords: cosmigo, pro motion ng, plugins, pixel art, pixelart, software
+// Doc Settings:
+:lang: en
+:version-label: revision
+// TOC Settings:
+:toclevels: 5
+// GitLab setting to show TOC after Preamble
+:toc: macro
+// TOC ... HTML Backend Hack to show TOC on the Left
+ifdef::backend-html5[]
+:toc: left
+endif::[]
+// TOC ... GitHub Hack to show TOC after Preamble (required)
+ifdef::env-github[]
+:toc: macro
+endif::[]
+// Sections Numbering:
+:sectnums!:
+:sectnumlevels: 2
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible: true
+:sectanchors:
+// GitHub Settings for Admonitions Icons:
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+Description of the Pro Motion (v3.0+) Plugin Interface
+
+The basic idea of this interface is to exchange image/animation data between the host application (Pro Motion) and external programs (plugins).
+Data is exchanged using the Windows DDE (Dynamic Data Exchange).
+Pro Motion contains a DDE-server and a plugin works as a DDE client sending command strings.
+
+For further information on how to program a DDE conversation please have a look at link:https://docs.microsoft.com/en-us/windows/desktop/dataxchg/dynamic-data-exchange[Microsoft's development documentations^].
+
+Also you may have a look at the file `dde_c.txt`.
+It was created by a plugin developer and should help you to get your plugins programmed under C language (Thanks to Thiadmer Riemersma).
+
+
+// >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
+ifndef::backend-html5[]
+'''
+toc::[]
+'''
+endif::[]
+ifdef::env-github[]
+'''
+toc::[]
+'''
+endif::[]
+// <<< GitHub/GitLab hacks <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+== Starting a DDE-Conversation:
+
+When creating a link to the DDE-server of Pro Motion the DDE-client must use `"pmotion"` as DDE-SERVICE (it's simply the name of the server-application), `"ImageServer"` as DDE-TOPIC and `"ImageServerItem"` as DDE-ITEM.
+The host application must be running BEFORE a conversation is started!
+
+== Executing DDE-Macros
+
+Pro Motion has a couple of commands (see <<Commands,end of this file>>) which can be executed by the DDE-client.
+
+Each command must be sent to the DDE-server as a **zero terminated string**.
+After the command is executed by the server a result string is sent from server to client containing informations about success or failure.
+
+If the client requests image data, the image is copied to the Windows Clipboard as a DIB (Device Independent Bitmap) BEFORE the result string is sent to the client.
+A DIB in a clipboard is simply a handle to a global memory object containing the DIB data.
+AFTER the result string is received by the client the image can be taken out of the clipboard (only if the result contains success info).
+
+If the client wants to send image data to the host application it must copy the image to the clipboard (as a DIB) BEFORE sending the corresponding command to the server.
+Only 8bit images (256 colors) are accepted!
+
+
+== Installing Plugins
+
+Installing plugins for Pro Motion is quite simple.
+Just ask the user for the directory where he installed Pro Motion or scan for it.
+This directory must contain a file called `plugins.ini`.
+In this file all plugins must be registered like this:
+
+[source,ini]
+--------------------------------------------------------------------------------
+[plugins]
+plugin1_exe=C:\Program Files\Pro Motion\plugins\gif89ae.exe
+plugin1_shortcut=G
+plugin1_name=GIF89a Saver
+plugin1_type=export
+--------------------------------------------------------------------------------
+
+[horizontal]
+pluginX_exe      :: is a string pointing to the plugin's executable file.
+pluginX_shortcut :: is a character that is used as keyboard shortcut where the
+                    plugin shortcut is defined as f.e. kbd:[CTRL+ALT+G] where
+                    _G_ is the key.
+pluginX_name     :: defines the text that is displayed in the plugins menu of
+                    Pro Motion.
+pluginX_type     :: is the section the plugin is added to: "`export`",
+                    "`import`", "`manipulation`". +
+                    Each section has a submenu in the menu '`Plugins`'. +
+                    _X_ is the number of the plugin. If you install a plugin
+                    just scan for the next free entry. +
+                    Only entries with _X_ smaller than 1000 are accepted! +
+                    When you uninstall a plugin just remove its entries.
+
+
+
+== Plugin Test Application
+
+As an example on how to use the plugin interface have a look at the `DDETEST.EXE` application.
+This program was written using Borland Delphi 5.
+You may run it separately after Pro Motion is started.
+You don't need to register it as a plugin in the `plugin.ini` file.
+
+== Commands
+
+The following list shows all commands currently supported: A <__frame-index__> is used by the DDE-server to select a frame within the current project. <__frame-index__> is set to `"1"` by default.
+This <__frame-index__> is virtual.
+That means that Pro Motion does not switch to that frame!
+If an unknown command is sent to the server or it has wrong syntax then the server replies with `"unhandled: C"` where `"C"` is the invalid command data.
+When the string `"exit"` is sent from server to client the client must close the DDE-connection and must terminate.
+
+
+=== GETFRAMECOUNT
+
+[horizontal]
+Command:   :: `"GETFRAMECOUNT"`
+Task:      :: Requests the number of frames of the current project
+Result:    :: The number of frames of the current project
+Version:   :: 3.0
+
+=== GETFRAMEWIDTH
+
+[horizontal]
+Command:   :: `"GETFRAMEWIDTH"`
+Task:      :: Requests the width of the current project (pixels)
+Result:    :: The width of the current project (pixels)
+Version:   :: 3.0
+
+=== GETFRAMEHEIGHT
+
+[horizontal]
+Command:   :: `"GETFRAMEHEIGHT"`
+Task:      :: Requests the height of the current project (pixels)
+Result:    :: The height of the current project (pixels)
+Version:   :: 3.0
+
+=== GOTOFIRSTFRAME
+
+[horizontal]
+Command:   :: `"GOTOFIRSTFRAME"`
+Task:      :: Sets the <__frame-index__> to `"1"`
+Result:    :: `"OK"`
+Version:   :: 3.0
+
+=== GETFIRSTSELECTEDFRAME
+
+[horizontal]
+Command:   :: `"GETFIRSTSELECTEDFRAME"`
+Task:      :: Requests the number of the first frame that is selected for
+              animation-playing within the current project
+Result:    :: The number of this frame
+Version:   :: 3.0
+
+=== GETLASTSELECTEDFRAME
+
+[horizontal]
+Command:   :: `"GETLASTSELECTEDFRAME"`
+Task:      :: Requests the number of the last frame that is selected for
+              animation-playing within the current project
+Result:    :: The number of this frame
+Version:   :: 3.0
+
+=== GETCURRENTFRAMENUMBER
+
+[horizontal]
+Command:   :: `"GETCURRENTFRAMENUMBER"`
+Task:      :: Requests the current <__frame-index__>
+Result:    :: The <__frame-index__>
+Version:   :: 3.0
+
+=== GETCURRENTDELAY
+
+[horizontal]
+Command:   :: `"GETCURRENTDELAY"`
+Task:      :: Requests the delay-value of the frame selected by <__frame-index__>
+              (milliseconds)
+Result:    :: The delay-value
+Version:   :: 3.0
+
+=== SETCURRENTDELAY(milliseconds)
+
+[horizontal]
+Command:   :: `"SETCURRENTDELAY(milliseconds)"`
+Task:      :: Sets the delay-value of the frame selected by <__frame-index__>
+              (milliseconds)
+Result:    :: If the value is valid (0 <= _x_ <= 65535) this value is returned. +
+              If the value exceeds, `"-1"` is returned.
+Version:   :: 3.0
+
+=== GOTONEXTFRAME
+
+[horizontal]
+Command:   :: `"GOTONEXTFRAME"`
+Task:      :: Increases the <__frame-index__> by one. If <__frame-index__> is larger
+              than the number of frames of the current project it is set to `"1"`.
+Result:    :: The <__frame-index__>
+Version:   :: 3.0
+
+=== GOTOPREVIOUSFRAME
+
+[horizontal]
+Command:   :: `"GOTOPREVIOUSFRAME"`
+Task:      :: Decreases the <__frame-index__> by one. If <__frame-index__> goes below
+              `"1"` it is set to the last frame of the current project.
+Result:    :: The <__frame-index__>
+Version:   :: 3.0
+
+=== PALETTESEQUAL
+
+[horizontal]
+Command:   :: `"PALETTESEQUAL"`
+Task:      :: Checks if all frames of the current project have the same color-palette.
+Result:    :: `"true"` if all palettes are equal +
+              `"false"` otherwise
+Version:   :: 3.0
+
+=== SENDFRAME
+
+[horizontal]
+Command:   :: `"SENDFRAME"`
+Task:      :: Requests the server to send the frame selected by <__frame-index__>. +
+              The frame is copied to the clipboard as a DIB.
+Result:    :: If the command was executed and the clipboard contains image-data
+              the result is <__frame-index__>. +
+              Otherwise the result is `"-1"`.
+Version:   :: 3.0
+
+=== RECEIVEFRAME
+
+[horizontal]
+Command:   :: `"RECEIVEFRAME"`
+Task:      :: Requests the server to take an image from the clipboard (8bit-DIB)
+              and to copy it to the frame selected by <__frame-index__>.
+Result:    :: If the command was executed and the frame could be taken from
+              the clipboard the result is `"OK"`. +
+              Otherwise the result is a message containing error-information.
+Version:   :: 3.0
+
+=== NEW(n,w,h)
+
+[horizontal]
+Command:   :: `"NEW(n,w,h)"`
+Task:      :: Requests the server to create a new animation: +
+              * _n_ = number of frames (1 <= _n_ <= 9999) +
+              * _w_ = width of animation (pixels) (_w_ <= 32768) +
+              * _h_ = height of animation (pixels) (_h_ <=32768)
+Result:    :: Up to version 4.7: +
+              If the command was executed and the animation was
+              created the result is the number of frames of the animation. +
+              Otherwise the result is `"-1"` and a default animation is created
+              where n=1, w=64, h=64. +
+              In any case <__frame-index__> is set to `"1"` +
+              {blank} +
+              Since version 5.0: +
+              If the command was executed and the animation was created the
+              result is the number of of the project. +
+              Otherwise the result is `"-1"` and nothing else is done.
+Version:   :: 3.0
+
+=== GOTOFRAME(n)
+
+[horizontal]
+Command:   :: `"GOTOFRAME(n)"`
+Task:      :: Sets _n_ as new <__frame-index__>.
+Result:    :: If the command was executed and _n_ does not exceed the number of
+              frames of the current project the result is <__frame-index__>. +
+              Otherwise the result is `"-1"`.
+Version:   :: 3.0
+
+=== SETFRAMECOUNT(n)
+
+[horizontal]
+Command:   :: `"SETFRAMECOUNT(n)"`
+Task:      :: Sets the current project to _n_ frames. +
+              If _n_ is larger than the frame-count of the current project the
+              corresponding number of frames are appended. +
+              If _n_ is smaller than the frame-count of the current project the
+              corresponding number of frames are cutted off the end of the current
+              project. +
+              (1 <= _n_ <= 9999)
+Result:    :: If the command was executed successfully and _n_ does not exceed
+              the given range the result is the number of frames of the
+              animation. +
+              Otherwise the result is `"-1"`.
+Version:   :: 3.0
+
+=== GETCURRENTFILENAME
+
+[horizontal]
+Command:   :: `"GETCURRENTFILENAME"`
+Task:      :: Requests the filename (including full path information) of the
+              currently active image/animation
+Result:    :: If the image/animation has a filename it is returned, otherwise
+              `"none"` is used.
+Version:   :: 3.02
+
+=== SETCURRENTFILENAME(name)
+
+[horizontal]
+Command:   :: `"SETCURRENTFILENAME(name)"`
+Task:      :: Sets the filename of the current project to current project to _name_. +
+              _Name_ must include the full path without a file extension. +
+              The filetype can not be set.
+Result:    :: Always `"OK"`.
+Version:   :: 3.1
+
+=== GETCURRENTBGCOLOR
+
+[horizontal]
+Command:   :: `"GETCURRENTBGCOLOR"`
+Task:      :: Requests the palette color index that is used as current background
+              color.
+Result:    :: The number of this color.
+Version:   :: 3.1
+
+=== GETCURRENTFGCOLOR
+
+[horizontal]
+Command:   :: `"GETCURRENTFGCOLOR"`
+Task:      :: Requests the palette color index that is used as current foreground
+              color.
+Result:    :: The number of this color.
+Version:   :: 4.2
+
+=== GETCURRENTPROJECT
+
+[horizontal]
+Command:   :: `"GETCURRENTPROJECT"`
+Task:      :: Requests the number of the active project (1-6).
+Result:    :: The number of this project.
+Version:   :: 3.1
+
+=== SETCURRENTPROJECT(n)
+
+[horizontal]
+Command:   :: `"SETCURRENTPROJECT(n)"`
+Task:      :: Jumps to project number _n_ and .
+Result:    :: The number of the project that is active. +
+              If this number is different from _n_ then the project could not be
+              activated. Empty projects are initialized with a default animation
+              of size 16x16 with 1 frame. +
+              <__frame-index__> is set to `"1"`.
+Version:   :: 3.1
+
+=== GETFREEPROJECT
+
+[horizontal]
+Command:   :: `"GETFREEPROJECT"`
+Task:      :: Searches for an empty project.
+Result:    :: If there is an empty project then its number is returned. +
+              Otherwise the result is `"none"`.
+Version:   :: 3.1
+
+=== SELECTALPHALAYER
+
+[horizontal]
+Command:   :: `"SELECTALPHALAYER"`
+Task:      :: Switches to the alpha layer of the project. +
+              Subsequent commands to transfer image or color palette data will
+              transfer alpha data!
+Result:    :: If the project has an alpha layer then it is selected for further
+              access and `"OK"` is returned. +
+              `"false"`.
+Version:   :: 6.0
+
+=== SELECTCOLORLAYER
+
+[horizontal]
+Command:   :: `"SELECTCOLORLAYER"`
+Task:      :: Switches to the color layer of the project. Subsequent commands to
+              transfer image or color palette data will transfer alpha data!
+Result:    :: `"OK"` is always returned.
+Version:   :: 6.0
+
+=== ENABLEALPHA(n)
+
+[horizontal]
+Command:   :: `"ENABLEALPHA(n)"`
+Task:      :: Creates an alpha layer with bit depth _n_ (2 <= _n_ <=8).
+Result:    :: `"OK"` if the alpha layer was added or it already exists. +
+              `"false"` if the alpha layer could not be added (out of memory) or
+              there is an alpha layer with a different bit depth.
+Version:   :: 6.0
+
+=== ALPHABITS
+
+[horizontal]
+Command:   :: `"ALPHABITS"`
+Task:      :: Returns the bit depth of the alpha layer.
+Result:    :: The bit depths of the alpha layer (2..8) or 0 if there is no alpha layer.
+Version:   :: 6.0
+
+=== SENDPALETTE
+
+[horizontal]
+Command:   :: `"SENDPALETTE"`
+Task:      :: Copies the color palette of the current image to the clipboard. This
+              is done by copying a 1x1 size DIB to the clipboard actually.
+Result:    :: `"OK"` is always returned.
+Version:   :: 6.0
+
+=== RECEIVEPALETTE
+
+[horizontal]
+Command:   :: `"RECEIVEPALETTE"`
+Task:      :: Like RECEIVEFRAME there must be a DIB in the clipboard.
+              The palette data is taken from there and copied to the current frame.
+Result:    :: If the command was executed and the frame could be taken from
+              the clipboard the result is `"OK"`. +
+              Otherwise the result is a message containing error-information.
+Version:   :: 6.0
+
+=== GETIMAGEFILEPATH
+
+[horizontal]
+Command:   :: `"GETIMAGEFILEPATH"`
+Task:      :: Returns the file path of the current image if any.
+Result:    :: If the command was executed and the image has a file path then it
+              is returned, `"none"` otherwise.
+Version:   :: 6.0
+
+=== GETANIMATIONFILEPATH
+
+[horizontal]
+Command:   :: `"GETANIMATIONFILEPATH"`
+Task:      :: Returns the file path of the current animation if any.
+Result:    :: If the command was executed and the animation has a file path then
+              it is returned, `"none"` otherwise.
+Version:   :: 6.0
+
+=== GETPROJECTFILEPATH
+
+[horizontal]
+Command:   :: `"GETPROJECTFILEPATH"`
+Task:      :: Returns the file path of the current project if any.
+Result:    :: If the command was executed and the project has a file path then
+              it is returned, `"none"` otherwise.
+Version:   :: 6.0
+
+=== GETDISPLAYFRAMENUMBER
+
+[horizontal]
+Command:   :: `"GETDISPLAYFRAMENUMBER"`
+Task:      :: Returns the displayed frame of the project.
+Result:    :: The frame number ranging from 1 to frame count.
+Version:   :: NG
+
+=== SETDISPLAYFRAMENUMBER(frameNumber)
+
+[horizontal]
+Command:   :: `"SETDISPLAYFRAMENUMBER(frameNumber)"`
+Task:      :: Sets the displayed frame of the project.
+Result:    :: If successful then the selected frame number is returned or `"-1"` otherwise.
+Version:   :: NG
+
+=== GETACTIVELAYERNUMBER
+
+[horizontal]
+Command:   :: `"GETACTIVELAYERNUMBER"`
+Task:      :: Returns the index of the active layer.
+Result:    :: The layer number ranging from 0 to (layer count - 1).
+Version:   :: NG
+
+=== ADDANIMATIONLAYER(caption)
+
+[horizontal]
+Command:   :: `"ADDANIMATIONLAYER(caption)"`
+Task:      :: Creates a new animation layer with the given caption.
+Result:    :: The layer number being (layer count - 1).
+Version:   :: NG
+
+=== ADDIMAGELAYER(caption)
+
+[horizontal]
+Command:   :: `"ADDIMAGELAYER(caption)"`
+Task:      :: Creates a new single image layer with the given caption.
+Result:    :: The layer number being (layer count - 1).
+Version:   :: NG
+
+=== GETNUMBEROFLAYERS
+
+[horizontal]
+Command:   :: `"GETNUMBEROFLAYERS"`
+Task:      :: Returns the number of layers of the project.
+Result:    :: The layer count.
+Version:   :: NG
+
+=== SELECTLAYER(layerIndex)
+
+[horizontal]
+Command:   :: `"SELECTLAYER(layerIndex)"`
+Task:      :: Selects the given layer rangring from 0 to (layer count - 1).
+Result:    :: If successful then the selected layer index is returned or `"-1"` otherwise.
+Version:   :: NG
+
+=== GETLAYERTYPE(layerIndex)
+
+[horizontal]
+Command:   :: `"GETLAYERTYPE(layerIndex)"`
+Task:      :: Returns the type of the given layer.
+Result:    :: `"image"` for single image layer, `"animation"` for animation layer or
+              `"-1"` if not succesful.
+Version:   :: NG
+
+=== GETTRANSPARENTCOLOR(layerIndex)
+
+[horizontal]
+Command:   :: `"GETTRANSPARENTCOLOR(layerIndex)"`
+Task:      :: Returns the color index of the transparent color use in the layer
+              (if it is no alpha transparent project).
+Result:    :: The index or `"-1"` if there is none.
+Version:   :: NG
+
+=== GETLAYERVISIBILITY(layerIndex)
+
+[horizontal]
+Command:   :: `"GETLAYERVISIBILITY(layerIndex)"`
+Task:      :: Returns if the given layer is visible or not.
+Result:    :: `"true"` if visible or `"false"` otherwise.
+Version:   :: NG
+
+================================================================================
+This document was ported to AsciiDoc by
+link:https://github.com/tajmone[Tristano Ajmone^]
+and republished with the author's permission under the
+link:https://www.apache.org/licenses/LICENSE-2.0[Apache License v2.0^] terms.
+Beside formatting, aesthetic tweaks and some marginal text changes, this document is a faithful reproduction of the `plugint.txt` document found inside the `dde_plugin_sample.zip`  archive
+link:https://www.cosmigo.com/wp-content/uploads/dde_plugin_sample.zip[downloadable from Cosmigo website^].
+================================================================================
+
+
+// EOF //

@@ -1,0 +1,127 @@
+//  v1.0.0 (2018/12/24) by Tristano Ajmone
+// *****************************************************************************
+// *                                                                           *
+// *                           Delphi Syntax Theme                             *
+// *                                                                           *
+// *****************************************************************************
+
+// -----------------------------------------------------------------------------
+// Color Scheme: Base16 Tomorrow (dark)
+// -----------------------------------------------------------------------------
+$HL-CanvasBG:           $Tomorrow-00; // black
+$HL-Default:            $Tomorrow-05; // gray 3
+
+$HL-Border:             $Tomorrow-04; // gray2
+
+$HL-LineNum:            $Tomorrow-03; // gray 1
+
+$HL-Number:             $Tomorrow-09; // orange
+$HL-Escape:             $Tomorrow-09; // orange
+$HL-Interpolation:      $Tomorrow-0F; // brown
+$HL-String:             $Tomorrow-0B; // green
+$HL-StringPreProc:      $HL-String;
+$HL-PreProcessor:       $Tomorrow-0E; // purple
+$HL-Comment:            $Tomorrow-03; // gray1
+$HL-Operator:           $Tomorrow-07; // white
+$HL-Keywords1:          $Tomorrow-08; // red
+$HL-Keywords2:          $Tomorrow-0A; // yellow
+$HL-Keywords4:          $Tomorrow-0D; // blue
+
+// -----------------------------------------------------------------------------
+/* Highlight Theme for Delphi */
+// -----------------------------------------------------------------------------
+.listingblock pre[class=highlight][lang=delphi] {
+    background-color: $HL-CanvasBG;
+    &>code {
+        color: $HL-Default;
+        font-family: $FiraCode;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    // Border and padding
+    border-radius: 4px;
+    border: 1px solid $HL-Border;
+    padding: 1em;
+    
+    // Some basic styling, just in case you need it...
+    overflow: auto;
+
+    .hl {
+        color: $HL-Default;
+
+        &.num {
+            // Numbers
+            // -------
+            color: $HL-Number;
+        }
+        &.esc {
+            // Escape sequences
+            // ----------------
+            // In Delphi these are: $p, $n, $i, $t, $a, $l, $v and $$.
+            color: $HL-Escape;
+        }
+        &.ipl {
+            // Interpolation sequences
+            // -----------------------
+            // In Delphi these are: $<n>, $+<n>, $0<n>, $-<n>, $!<n> and $o.
+            color: $HL-Interpolation;
+        }
+        &.str {
+            // Strings
+            // -------
+            color: $HL-String;
+        }
+        &.ppc {
+            // Preprocessor directives
+            // -----------------------
+            color: $HL-PreProcessor;
+        }
+        &.pps {
+            // Strings within preprocessor directives
+            color: $HL-StringPreProc;
+        }
+        &.slc, &.com {
+            // Comments (single-line & block)
+            // ------------------------------
+            color: $HL-Comment;
+            font-style: italic;
+        }
+        &.lin {
+            // Line numbers
+            // ------------
+            color: $HL-LineNum;
+        }
+        &.opt {
+            // Operators
+            // ---------
+            color: $HL-Operator;
+        }
+        // ---------------------
+        //    Keywords Groups
+        // ---------------------
+        // &.kwa, &.kwb, &.kwc, &.kwd, &.kwe, &.kwf {
+        //     font-weight: normal;
+        // }
+        &.kwa {
+            // Keywords group 1
+            // ----------------
+            // Delphi keywords.
+            color: $HL-Keywords1;
+        }
+        &.kwb {
+            // Keywords group 2
+            // ----------------
+            // Delphi data types.
+            color: $HL-Keywords2;
+        }
+        &.kwd {
+            // Keywords group 4 
+            // ----------------
+            // Functions names.
+            color: $HL-Keywords4;
+        }
+    }
+
+}
+
+// EOF //
