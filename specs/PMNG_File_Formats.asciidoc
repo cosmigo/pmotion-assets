@@ -1,0 +1,123 @@
+= Pro Motion NG File Formats
+Tristano Ajmone <tajmone@gmail.com>
+2019-01-26
+// Doc Revision Info
+:PMNG_V: 7.1.8.0
+:revremark: PMNG v{PMNG_V}
+// Metadata:
+:description: Pro Motion NG natively supported file formats.
+:keywords: 	cosmigo, pro motion ng, file formats, file extensions, pixel art, \
+		  	pixelart, images, animations
+// Doc Settings:
+:lang: en
+:version-label: revision
+// TOC Settings:
+:toclevels: 5
+// GitLab setting to show TOC after Preamble
+:toc: macro
+// TOC ... HTML Backend Hack to show TOC on the Left
+ifdef::backend-html5[]
+:toc: left
+endif::[]
+// TOC ... GitHub Hack to show TOC after Preamble (required)
+ifdef::env-github[]
+:toc: macro
+endif::[]
+// Sections Numbering:
+:sectnums!:
+:sectnumlevels: 2
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible: true
+:sectanchors:
+// GitHub Settings for Admonitions Icons:
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+Information about the file formats natively supported by Pro Motion NG.
+
+Based on the
+https://www.cosmigo.com/promotion/docs/onlinehelp/TechnicalInfos.htm[_Technical Information_^,title="View the original page at Pro Motion online Documentation"] page from the official Pro Motion Documentation.
+
+// >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
+ifndef::backend-html5[]
+'''
+toc::[]
+'''
+endif::[]
+ifdef::env-github[]
+'''
+toc::[]
+'''
+endif::[]
+// <<< GitHub/GitLab hacks <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+== Supported File Formats
+
+The following tables summarize the file formats natively supported by Pro Motion NG.
+
+=== Images and Animations
+
+:Y: pass:q[[green]##&#x2714;##]
+:N: pass:q[[red]##&#x2718;##]
+
+// TODO: Add links to file formats specs.
+
+[cols="2*<,>m,2*^,<",options="autowidth"]
+|===============================================================================
+| Format                     | Type            | Ext. | Load | Save | Color Depths for loading
+
+| Amiga animated IFF         | Animation       | .iff | {Y}  | {N}  | all up to 256 colors
+| Amiga IFF                  | Image           | .iff | {Y}  | {Y}  | all up to 256 colors
+| Autodesk FLIC              | Animation       | .flc | {Y}  | {Y}  | 256 colors
+| Autodesk FLIC              | Animation       | .fli | {Y}  | {N}  | 256 colors
+| Bitmap Font Format         | Image/Font      | .bmf | {Y}  | {Y}  | 63 colors
+| Compuserve GIF             | Image/Animation | .gif | {Y}  | {Y}  | all up to 256 colors
+| Deluxe Paint Image         | Image           | .lbm | {Y}  | {Y}  | all up to 256 colors
+| Dr.Halo                    | Image           | .cut | {Y}  | {Y}  | all up to 256 colors
+| JPEG Image                 | Image           | .jpg | {Y}  | {Y}  | 16.8 million colors
+| Paintbrush Image           | Image           | .pcx | {Y}  | {Y}  | 256 colors
+| Portable Network Graphics  | Image           | .png | {Y}  | {Y}  | all up to 16.8 million colors
+| Pro Motion Sprite          | Animation       | .spr | {Y}  | {Y}  | 256 colors
+| Truevision Image           | Image           | .tga | {Y}  | {Y}  | all up to 16.8 million colors
+| Windows animated Cursor    | Animation       | .ani | {Y}  | {Y}  | all up to 256 colors
+| Windows AVI                | Animation       | .avi | {Y}  | {Y}  | all up to 16.8 million colors
+| Windows Bitmap             | Image           | .bmp | {Y}  | {Y}  | all up to 16.8 million colors
+| Windows Bitmap (AnimStrip) | Animation       | .bmp | {Y}  | {Y}  | 256 colors
+| Windows Icon               | Image           | .ico | {Y}  | {Y}  | all up to 256 colors
+| Gameboy Cel                | Image           | .cel | {Y}  | {Y}  | 256 colors
+|===============================================================================
+
+
+=== Non-Graphical Data
+
+These are the file formats natively supported for non-graphical data, like color palettes and stencils.
+
+[cols="2*<,>m,2*^",options="autowidth"]
+|===============================================================================
+| Format                     | Type            | Ext. | Load | Save
+
+| Microsoft Palette          | Color Palette   | .pal | {Y}  | {Y}
+| Pro Motion Palette         | Color Palette   | .pal | {Y}  | {Y}
+| Gameboy RGB555 Palette     | Color Palette   | .pal | {Y}  | {Y}
+| Pro Motion Stencil         | Stencil         | .stn | {Y}  | {Y}
+
+|===============================================================================
+
+// EOF //

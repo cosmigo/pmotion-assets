@@ -49,6 +49,7 @@ This project is _not_ intended as a replacement for the official [Pro Motion doc
 - [`/docs/`][docs] — HTML documents.
 - [`/docs_src/`][docs_src] — AsciiDoc sources and assets to build the HTML docs.
 - [`/plugins/`][plugins] — resources for plugin developers.
+- [`/specs/`][specs] — technical stuff about standards and specs.
 - [`CONTRIBUTING.md`][CONTRIBUTING] — guidelines for submitting contents and collaborating.
 - [`LICENSE`][LICENSE] — Apache 2.0 license.
 
@@ -110,6 +111,7 @@ This project uses third party resources, either readapted or in their original f
 [docs]:     ./docs/     "Navigate to folder"
 [docs_src]: ./docs_src/ "Navigate to folder"
 [plugins]:  ./plugins/  "Navigate to folder"
+[specs]:    ./specs/    "Navigate to folder"
 
 [C DDE]: ./docs/DDE_C.html "View document"
 [CONTRIBUTING]:  ./CONTRIBUTING.md   "Read the contributors' guidelines"
