@@ -1,6 +1,9 @@
 = Pro Motion DDE Interface in C
 Thiadmer Riemersma, http://www.compuphase.com/
-v1.0.0, 2019-01-07: PM NG v7.1.8
+v1.0.0, 2019-01-26
+// Doc Revision Info
+:PMNG_V: 7.1.8.0
+:revremark: PMNG v{PMNG_V}
 // Metadata:
 :description: C implementation of Cosmigo Pro Motion DDE plugin interface.
 :copyright: Copyright (c) Thiadmer Riemersma, Apache License v2.0.
@@ -247,6 +250,12 @@ DDEexec(LPSTR lpItem, LPSTR lpCommand)
 Enjoy!
 
 Thiadmer Riemersma
+
+// GITHUB HACK: HORIZONTAL RULE -- Insert horizontal rule for visual separation
+// because GitHub doesn't style example blocks in ADoc previews.
+ifdef::env-github[]
+'''
+endif::[]
 
 ================================================================================
 This document was ported to AsciiDoc by

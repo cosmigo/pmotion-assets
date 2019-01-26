@@ -1,6 +1,9 @@
 = Developer Interface
 Jan Zimmermann <jan@cosmigo.com>
-v1.0.0, 2019-01-07: PM NG v7.1.8
+v1.0.0, 2019-01-26
+// Doc Revision Info
+:PMNG_V: 7.1.8.0
+:revremark: PMNG v{PMNG_V}
 // Metadata:
 :title: Pro Motion Developer Interface
 :description: Description of Cosmigo Pro Motion file I/O and DDE interfaces \
@@ -914,6 +917,12 @@ link:https://edn.embarcadero.com/article/41593[Embarcadero Delphi XE2^]
 but might also be used for other versions of
 link:https://www.embarcadero.com/products/delphi[Delphi^].
 There is also a small documentation for how to create DDE data transfer using Microsoft C/C++ APIs.
+
+// GITHUB HACK: HORIZONTAL RULE -- Insert horizontal rule for visual separation
+// because GitHub doesn't style example blocks in ADoc previews.
+ifdef::env-github[]
+'''
+endif::[]
 
 ================================================================================
 This document was ported to AsciiDoc by

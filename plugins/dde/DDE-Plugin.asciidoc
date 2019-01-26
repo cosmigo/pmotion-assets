@@ -1,6 +1,9 @@
 = Pro Motion DDE Plugin Interface
 Jan Zimmermann <jan@cosmigo.com>
-v1.0.0, 2019-01-07: PM NG v7.1.8
+v1.0.0, 2019-01-26
+// Doc Revision Info
+:PMNG_V: 7.1.8.0
+:revremark: PMNG v{PMNG_V}
 // Metadata:
 :description: Documentation of Cosmigo Pro Motion DDE plugin interface for \
               plugin developers.
@@ -551,6 +554,13 @@ Command:   :: `"GETLAYERVISIBILITY(layerIndex)"`
 Task:      :: Returns if the given layer is visible or not.
 Result:    :: `"true"` if visible or `"false"` otherwise.
 Version:   :: NG
+
+
+// GITHUB HACK: HORIZONTAL RULE -- Insert horizontal rule for visual separation
+// because GitHub doesn't style example blocks in ADoc previews.
+ifdef::env-github[]
+'''
+endif::[]
 
 ================================================================================
 This document was ported to AsciiDoc by
