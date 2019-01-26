@@ -5,11 +5,10 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<meta name="description" content="C implementation of Cosmigo Pro Motion DDE plugin interface.">
-<meta name="keywords" content="cosmigo, pro motion ng, plugins, pixel art, pixelart, software">
-<meta name="author" content="Thiadmer Riemersma, http://www.compuphase.com/">
-<meta name="copyright" content="Copyright (c) Thiadmer Riemersma, Apache License v2.0.">
-<title>Pro Motion DDE Interface in C</title>
+<meta name="description" content="Pro Motion NG natively supported file formats.">
+<meta name="keywords" content="cosmigo, pro motion ng, file formats, file extensions, pixel art, pixelart, images, animations">
+<meta name="author" content="Tristano Ajmone">
+<title>Pro Motion NG File Formats</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -436,267 +435,281 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./css/styles.css">
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
-<h1>Pro Motion DDE Interface in C</h1>
+<h1>Pro Motion NG File Formats</h1>
 <div class="details">
-<span id="author" class="author">Thiadmer Riemersma, http://www.compuphase.com/</span><br>
-<span id="revnumber">revision 1.0.0,</span>
+<span id="author" class="author">Tristano Ajmone</span><br>
+<span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
 <span id="revdate">2019-01-26</span>
 <br><span id="revremark">PMNG v7.1.8.0</span>
 </div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_supported_file_formats">Supported File Formats</a>
+<ul class="sectlevel2">
+<li><a href="#_images_and_animations">Images and Animations</a></li>
+<li><a href="#_non_graphical_data">Non-Graphical Data</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
-<h4 id="_an_implementation_in_c_of_a_dde_interface_to_pro_motion" class="discrete">An implementation in C of a DDE interface to Pro Motion</h4>
+<div id="preamble">
+<div class="sectionbody">
 <div class="paragraph">
-<p>By Thiadmer Riemersma, <a href="http://www.compuphase.com/" target="_blank" rel="noopener">www.compuphase.com</a>.</p>
-</div>
-<div class="paragraph">
-<p>After seeing the demo source for the Pro Motion plugin interface, I regret
-that I do not develop in Delphi.
-It looks like I should reconsider my tools.</p>
+<p>Information about the file formats natively supported by Pro Motion NG.</p>
 </div>
 <div class="paragraph">
-<p>Anyway, for the mere mortals amongst us, I tried to get the essentials of the DDE conversation into a C snippet.
-The low level interface to DDE has always been fairly complex from Windows 2.0 to Windows95 when using C.
-In my code, I assume that you can use <code>DDEML.DLL</code>.
-This interface was introduced with Windows 3.1.
-It is still fairly low level, but it handles some of the more complex allocation/freeing issues.</p>
+<p>Based on the
+<a href="https://www.cosmigo.com/promotion/docs/onlinehelp/TechnicalInfos.htm" title="View the original page at Pro Motion online Documentation" target="_blank" rel="noopener"><em>Technical Information</em></a> page from the official Pro Motion Documentation.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_supported_file_formats"><a class="anchor" href="#_supported_file_formats"></a>Supported File Formats</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>This is not (by a far cry) a DDE tutorial!</p>
+<p>The following tables summarize the file formats natively supported by Pro Motion NG.</p>
 </div>
+<div class="sect2">
+<h3 id="_images_and_animations"><a class="anchor" href="#_images_and_animations"></a>Images and Animations</h3>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-right valign-top">Ext.</th>
+<th class="tableblock halign-center valign-top">Load</th>
+<th class="tableblock halign-center valign-top">Save</th>
+<th class="tableblock halign-left valign-top">Color Depths for loading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amiga animated IFF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Animation</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.iff</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amiga IFF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.iff</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Autodesk FLIC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Animation</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.flc</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Autodesk FLIC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Animation</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.fli</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bitmap Font Format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image/Font</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.bmf</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">63 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compuserve GIF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image/Animation</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.gif</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deluxe Paint Image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.lbm</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dr.Halo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.cut</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JPEG Image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.jpg</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16.8 million colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Paintbrush Image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.pcx</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Portable Network Graphics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.png</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 16.8 million colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro Motion Sprite</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Animation</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.spr</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Truevision Image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.tga</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 16.8 million colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Windows animated Cursor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Animation</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.ani</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Windows AVI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Animation</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.avi</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 16.8 million colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Windows Bitmap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.bmp</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 16.8 million colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Windows Bitmap (AnimStrip)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Animation</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.bmp</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Windows Icon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.ico</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all up to 256 colors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gameboy Cel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.cel</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">256 colors</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_non_graphical_data"><a class="anchor" href="#_non_graphical_data"></a>Non-Graphical Data</h3>
 <div class="paragraph">
-<p>I once developed a set of general purpose DDE functions.
-In these functions, I assumed that the server name and the topic name were constant for a comversation.
-In the applications that I have previously used, this was the case.</p>
+<p>These are the file formats natively supported for non-graphical data, like color palettes and stencils.</p>
 </div>
-<div class="paragraph">
-<p>I also assumed that the item name changed from item to item.
-In the case of Pro Motion, the item is always <code>"ImageServerItem"</code>.
-I have not adapted my source to this special case.</p>
-</div>
-<div class="paragraph">
-<p>The general idea is that you execute a macro in Pro Motion, and then query the result.</p>
-</div>
-<div class="paragraph">
-<p>Here is an example of use:</p>
-</div>
-
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="c"><code data-lang="c"><span class="hl com">/* do this only once, for example when starting your program */</span>
-<span class="hl kwa">if</span> <span class="hl opt">(!</span><span class="hl kwd">DDEopen</span><span class="hl opt">(</span><span class="hl str">&quot;PMOTION&quot;</span><span class="hl opt">,</span><span class="hl str">&quot;ImageServer&quot;</span><span class="hl opt">)) {</span>
-  <span class="hl kwd">MessageBox</span><span class="hl opt">(</span>hwnd<span class="hl opt">,</span> <span class="hl str">&quot;Pro Motion server is inactive&quot;</span><span class="hl opt">,</span> NULL<span class="hl opt">,</span> MB_OK<span class="hl opt">);</span>
-
-
-<span class="hl kwb">char</span> str<span class="hl opt">[</span><span class="hl num">128</span><span class="hl opt">];</span>
-
-<span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">DDEexec</span><span class="hl opt">(</span><span class="hl str">&quot;ImageServerItem&quot;</span><span class="hl opt">,</span> <span class="hl str">&quot;GetCurrentDelay&quot;</span><span class="hl opt">))</span>
-  <span class="hl kwd">DDErequest</span><span class="hl opt">(</span><span class="hl str">&quot;ImageServerItem&quot;</span><span class="hl opt">,</span> str<span class="hl opt">,</span> <span class="hl kwa">sizeof</span> str<span class="hl opt">,</span> FALSE<span class="hl opt">);</span>
-
-<span class="hl kwb">int</span> framecount<span class="hl opt">;</span>
-<span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">DDEexec</span><span class="hl opt">(</span><span class="hl str">&quot;ImageServerItem&quot;</span><span class="hl opt">,</span> <span class="hl str">&quot;GetFrameCount&quot;</span><span class="hl opt">)) {</span>
-  <span class="hl kwd">DDErequest</span><span class="hl opt">(</span><span class="hl str">&quot;ImageServerItem&quot;</span><span class="hl opt">,</span> str<span class="hl opt">,</span> <span class="hl kwa">sizeof</span> str<span class="hl opt">,</span> FALSE<span class="hl opt">);</span>
-  framecount <span class="hl opt">=</span> <span class="hl kwd">atoi</span><span class="hl opt">(</span>str<span class="hl opt">);</span>
-<span class="hl opt">}</span> <span class="hl com">/* if */</span>
-
-<span class="hl com">/* many more calls to DDEexec() and DDErequest() */</span>
-
-
-<span class="hl com">/* do this before terminating your program (or when you no longer</span>
-<span class="hl com"> * need to talk to Pro Motion)</span>
-<span class="hl com"> */</span>
-<span class="hl kwd">DDEclose</span><span class="hl opt">();</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>My implementation of a DDE &#8220;execute&#8221; is asynchronous.
-I do not know whether Pro Motion requires this.
-A few other applications for which I implemented DDE conversations required asynchronous execution, so I left it that way.
-Note that the Delphi implementation also does an asynchronous execution.</p>
-</div>
-<div class="paragraph">
-<p>An asynchronous DDE transaction requires a callback and, for convenience, a loop to wait for the result.
-I have built in a timeout (this is a constant of 10 seconds, which is far longer than Pro Motion ever needs).</p>
-</div>
-<div class="paragraph">
-<p>This code has some 16-bit roots, which is visible in the call to <code>MakeProcInstance()</code>.
-In 32-bit, this call in unnecessary.
-In the code below, I have handled this special case with a <code>#if defined __WIN32__</code>, but you may need to change the <code>__WIN32__</code> constant to <code>_Win32</code> or something else to please you compiler.
-When compiling in 16-bit, I am assuming that you have a global variable called <code>hInst</code> that holds the current instance handle (the <code>hInstace</code> value passed to <code>WinMain()</code>).</p>
-</div>
-<div class="paragraph">
-<p>Below is the (general purpose) DDE code.
-You should be able to copy-and-paste it in your C/C++ program.</p>
-</div>
-
-<div class="listingblock">
-<div class="content">
-<pre class="highlight" lang="c"><code data-lang="c"><span class="hl com">/* add the DDEML.H file to your #include files list */</span>
-<span class="hl ppc">#include &lt;ddeml.h&gt;</span>
-
-<span class="hl kwb">static</span> FARPROC DDEcallback <span class="hl opt">=</span> NULL<span class="hl opt">;</span>
-<span class="hl kwb">static</span> DWORD   DDEinst <span class="hl opt">=</span> <span class="hl num">0L</span><span class="hl opt">;</span>          <span class="hl com">/* DDE instance id */</span>
-<span class="hl kwb">static</span> HCONV   DDEconv <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>           <span class="hl com">/* DDE conversation id */</span>
-<span class="hl kwb">static</span> HSZ     hszServer<span class="hl opt">,</span> hszTopic<span class="hl opt">;</span>   <span class="hl com">/* usually constant for a conversation */</span>
-<span class="hl kwb">static</span> BOOL    DDEready<span class="hl opt">;</span>
-<span class="hl ppc">#define DDE_RETRIES     5</span>
-<span class="hl ppc">#define DDE_TIMEOUT     10000</span>
-
-<span class="hl ppc">#pragma argsused</span>
-HDDEDATA CALLBACK _export <span class="hl kwd">DDECallBack</span><span class="hl opt">(</span>WORD wType<span class="hl opt">,</span> WORD wFmt<span class="hl opt">,</span> HCONV hConv<span class="hl opt">,</span>
-                                      HSZ hsz1<span class="hl opt">,</span> HSZ hsz2<span class="hl opt">,</span> HDDEDATA hData<span class="hl opt">,</span>
-                                      DWORD dwData1<span class="hl opt">,</span> DWORD dwData2<span class="hl opt">)</span>
-<span class="hl opt">{</span>
-  <span class="hl kwa">switch</span> <span class="hl opt">(</span>wType<span class="hl opt">) {</span>
-  <span class="hl kwa">case</span> XTYP_DISCONNECT<span class="hl opt">:</span> <span class="hl com">/* Disconnect, handle no longer valid */</span>
-    DDEconv <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
-    <span class="hl kwa">if</span> <span class="hl opt">(</span>hszServer <span class="hl opt">!=</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> hszTopic <span class="hl opt">!=</span> <span class="hl num">0</span><span class="hl opt">) {</span>
-      <span class="hl kwd">DdeFreeStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> hszServer<span class="hl opt">);</span>
-      <span class="hl kwd">DdeFreeStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> hszTopic<span class="hl opt">);</span>
-      hszServer <span class="hl opt">=</span> NULL<span class="hl opt">;</span>
-      hszTopic <span class="hl opt">=</span> NULL<span class="hl opt">;</span>
-    <span class="hl opt">}</span> <span class="hl com">/* if */</span>
-    <span class="hl kwa">break</span><span class="hl opt">;</span>
-  <span class="hl kwa">case</span> XTYP_XACT_COMPLETE<span class="hl opt">:</span>
-    DDEready <span class="hl opt">=</span> TRUE<span class="hl opt">;</span>
-    <span class="hl kwa">break</span><span class="hl opt">;</span>
-  <span class="hl opt">}</span> <span class="hl com">/* switch */</span>
-  <span class="hl kwa">return</span> NULL<span class="hl opt">;</span>
-<span class="hl opt">}</span>
-
-BOOL <span class="hl kwd">DDEopen</span><span class="hl opt">(</span>LPSTR lpServer<span class="hl opt">,</span> LPSTR lpTopic<span class="hl opt">)</span>
-<span class="hl opt">{</span>
-  <span class="hl ppc">#if defined __WIN32__</span>
-    DDEcallback <span class="hl opt">= (</span>FARPROC<span class="hl opt">)</span>DDECallBack<span class="hl opt">;</span>
-  <span class="hl ppc">#else</span>
-    DDEcallback <span class="hl opt">=</span> <span class="hl kwd">MakeProcInstance</span><span class="hl opt">((</span>FARPROC<span class="hl opt">)</span>DDECallBack<span class="hl opt">,</span> hInst<span class="hl opt">);</span>
-  <span class="hl ppc">#endif</span>
-  <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">DdeInitialize</span><span class="hl opt">(&amp;</span>DDEinst<span class="hl opt">, (</span>PFNCALLBACK<span class="hl opt">)</span>DDEcallback<span class="hl opt">,</span> APPCMD_CLIENTONLY<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">) !=</span> DMLERR_NO_ERROR<span class="hl opt">)</span>
-    <span class="hl kwa">return</span> FALSE<span class="hl opt">;</span>
-
-  hszServer <span class="hl opt">=</span> <span class="hl kwd">DdeCreateStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> lpServer<span class="hl opt">,</span> CP_WINANSI<span class="hl opt">);</span>
-  hszTopic  <span class="hl opt">=</span> <span class="hl kwd">DdeCreateStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> lpTopic<span class="hl opt">,</span> CP_WINANSI<span class="hl opt">);</span>
-
-  DDEconv <span class="hl opt">=</span> <span class="hl kwd">DdeConnect</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> hszServer<span class="hl opt">,</span> hszTopic<span class="hl opt">,</span> NULL<span class="hl opt">);</span>
-  <span class="hl kwa">if</span> <span class="hl opt">(</span>DDEconv <span class="hl opt">!=</span> <span class="hl num">0</span><span class="hl opt">)</span>
-   <span class="hl kwa">return</span> TRUE<span class="hl opt">;</span>
-
-  <span class="hl com">/* failure, clean up */</span>
-  <span class="hl kwd">DdeFreeStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> hszServer<span class="hl opt">);</span>
-  <span class="hl kwd">DdeFreeStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> hszTopic<span class="hl opt">);</span>
-  hszServer <span class="hl opt">=</span> NULL<span class="hl opt">;</span>
-  hszTopic <span class="hl opt">=</span> NULL<span class="hl opt">;</span>
-  <span class="hl kwa">return</span> FALSE<span class="hl opt">;</span>
-<span class="hl opt">}</span>
-
-<span class="hl kwb">void</span> <span class="hl kwd">DDEclose</span><span class="hl opt">(</span><span class="hl kwb">void</span><span class="hl opt">)</span>
-<span class="hl opt">{</span>
-  <span class="hl kwa">if</span> <span class="hl opt">(</span>DDEconv <span class="hl opt">!=</span> <span class="hl num">0</span><span class="hl opt">) {</span>
-    <span class="hl kwd">DdeDisconnect</span><span class="hl opt">(</span>DDEconv<span class="hl opt">);</span>
-    DDEconv <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
-  <span class="hl opt">}</span> <span class="hl com">/* if */</span>
-  <span class="hl kwa">if</span> <span class="hl opt">(</span>hszServer <span class="hl opt">!=</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> hszTopic <span class="hl opt">!=</span> <span class="hl num">0</span><span class="hl opt">) {</span>
-    <span class="hl kwd">DdeFreeStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> hszServer<span class="hl opt">);</span>
-    <span class="hl kwd">DdeFreeStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> hszTopic<span class="hl opt">);</span>
-    hszServer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
-    hszTopic <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
-  <span class="hl opt">}</span> <span class="hl com">/* if */</span>
-  <span class="hl kwd">DdeUninitialize</span><span class="hl opt">(</span>DDEinst<span class="hl opt">);</span>
-  <span class="hl ppc">#if !defined __WIN32__</span>
-    <span class="hl kwd">FreeProcInstance</span><span class="hl opt">(</span>DDEcallback<span class="hl opt">);</span>
-  <span class="hl ppc">#endif</span>
-<span class="hl opt">}</span>
-
-BOOL <span class="hl kwd">DDErequest</span><span class="hl opt">(</span>LPSTR lpItem<span class="hl opt">,</span> LPSTR lpValue<span class="hl opt">,</span> DWORD dwMax<span class="hl opt">,</span> BOOL CRLF<span class="hl opt">)</span>
-<span class="hl opt">{</span>
-  HSZ hszItem<span class="hl opt">;</span>
-  HDDEDATA hData<span class="hl opt">;</span>
-  DWORD dwSize<span class="hl opt">;</span>
-  UINT Err<span class="hl opt">;</span>
-  <span class="hl kwb">short</span> retry<span class="hl opt">=</span><span class="hl num">0</span><span class="hl opt">;</span>
-
-  <span class="hl opt">*</span>lpValue <span class="hl opt">=</span> <span class="hl str">&apos;\0&apos;</span><span class="hl opt">;</span>
-  hszItem <span class="hl opt">=</span> <span class="hl kwd">DdeCreateStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> lpItem<span class="hl opt">,</span> CP_WINANSI<span class="hl opt">);</span>
-
-  <span class="hl kwa">do</span> <span class="hl opt">{</span>
-    Err<span class="hl opt">=</span>DMLERR_NO_ERROR<span class="hl opt">;</span>
-    hData <span class="hl opt">=</span> <span class="hl kwd">DdeClientTransaction</span><span class="hl opt">(</span>NULL<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> DDEconv<span class="hl opt">,</span> hszItem<span class="hl opt">,</span> CF_TEXT<span class="hl opt">,</span> XTYP_REQUEST<span class="hl opt">,</span> <span class="hl num">1000</span><span class="hl opt">,</span> NULL<span class="hl opt">);</span>
-    <span class="hl kwa">if</span> <span class="hl opt">(!</span>hData<span class="hl opt">)</span>
-      Err <span class="hl opt">=</span> <span class="hl kwd">DdeGetLastError</span><span class="hl opt">(</span>DDEinst<span class="hl opt">);</span>
-    retry<span class="hl opt">++;</span>
-  <span class="hl opt">}</span> <span class="hl kwa">while</span> <span class="hl opt">(</span>Err<span class="hl opt">!=</span>DMLERR_NO_ERROR <span class="hl opt">&amp;&amp;</span> retry <span class="hl opt">&lt;</span> DDE_RETRIES<span class="hl opt">);</span>
-  <span class="hl kwd">DdeFreeStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> hszItem<span class="hl opt">);</span>
-
-  <span class="hl kwa">if</span> <span class="hl opt">(</span>Err<span class="hl opt">)</span>
-    <span class="hl kwa">return</span> FALSE<span class="hl opt">;</span>
-
-  dwSize <span class="hl opt">=</span> <span class="hl kwd">DdeGetData</span><span class="hl opt">(</span>hData<span class="hl opt">,</span>NULL<span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">,</span><span class="hl num">0</span><span class="hl opt">);</span>
-  <span class="hl kwa">if</span> <span class="hl opt">(</span>dwSize <span class="hl opt">&gt;</span> dwMax<span class="hl opt">)</span>
-    dwSize <span class="hl opt">=</span> dwMax<span class="hl opt">;</span>
-  <span class="hl kwd">DdeGetData</span><span class="hl opt">(</span>hData<span class="hl opt">, (</span>LPBYTE<span class="hl opt">)</span>lpValue<span class="hl opt">,</span> dwSize<span class="hl opt">,</span> <span class="hl num">0L</span><span class="hl opt">);</span>
-  lpValue<span class="hl opt">[(</span><span class="hl kwb">int</span><span class="hl opt">)</span>dwSize<span class="hl opt">] =</span> <span class="hl str">&apos;\0&apos;</span><span class="hl opt">;</span>        <span class="hl com">/* make sure it is zero terminated */</span>
-  <span class="hl kwa">if</span> <span class="hl opt">(!</span>CRLF<span class="hl opt">) {</span>
-    <span class="hl kwb">int</span> length <span class="hl opt">=</span> <span class="hl kwd">lstrlen</span><span class="hl opt">(</span>lpValue<span class="hl opt">);</span>
-    <span class="hl kwa">if</span> <span class="hl opt">(</span>lpValue<span class="hl opt">[</span>length <span class="hl opt">-</span> <span class="hl num">2</span><span class="hl opt">] ==</span> <span class="hl str">&apos;</span><span class="hl esc">\r</span><span class="hl str">&apos;</span><span class="hl opt">)</span>
-      lpValue<span class="hl opt">[</span>length <span class="hl opt">-</span> <span class="hl num">2</span><span class="hl opt">] =</span> <span class="hl str">&apos;\0&apos;</span><span class="hl opt">;</span>
-  <span class="hl opt">}</span> <span class="hl com">/* if */</span>
-  <span class="hl kwd">DdeFreeDataHandle</span><span class="hl opt">(</span>hData<span class="hl opt">);</span>
-
-  <span class="hl kwa">return</span> TRUE<span class="hl opt">;</span>
-<span class="hl opt">}</span>
-
-<span class="hl kwd">DDEexec</span><span class="hl opt">(</span>LPSTR lpItem<span class="hl opt">,</span> LPSTR lpCommand<span class="hl opt">)</span>
-<span class="hl opt">{</span>
-  HSZ hszItem<span class="hl opt">;</span>
-  DWORD time<span class="hl opt">;</span>
-  MSG msg<span class="hl opt">;</span>
-
-  hszItem <span class="hl opt">=</span> <span class="hl kwd">DdeCreateStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> lpItem<span class="hl opt">,</span> CP_WINANSI<span class="hl opt">);</span>
-  <span class="hl kwd">DdeClientTransaction</span><span class="hl opt">((</span>LPBYTE<span class="hl opt">)</span>lpCommand<span class="hl opt">,</span><span class="hl kwd">strlen</span><span class="hl opt">(</span>lpCommand<span class="hl opt">)+</span><span class="hl num">1</span> <span class="hl opt">,</span> DDEconv<span class="hl opt">,</span> hszItem<span class="hl opt">,</span> CF_TEXT<span class="hl opt">,</span>
-                       XTYP_EXECUTE<span class="hl opt">,</span> TIMEOUT_ASYNC<span class="hl opt">,</span> NULL<span class="hl opt">);</span>
-
-  DDEready <span class="hl opt">=</span> FALSE<span class="hl opt">;</span>
-  time <span class="hl opt">=</span> <span class="hl kwd">GetTickCount</span><span class="hl opt">();</span>
-  <span class="hl kwa">while</span> <span class="hl opt">(!</span>DDEready<span class="hl opt">) {</span>
-    <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">GetTickCount</span><span class="hl opt">() &gt;</span> time <span class="hl opt">+</span> DDE_TIMEOUT<span class="hl opt">)</span>
-      <span class="hl kwa">break</span><span class="hl opt">;</span>    <span class="hl com">/* wait 10 seconds, fail otherwise */</span>
-    <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">PeekMessage</span><span class="hl opt">(&amp;</span>msg<span class="hl opt">,</span> NULL<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> PM_REMOVE<span class="hl opt">)) {</span>
-      <span class="hl kwd">TranslateMessage</span><span class="hl opt">(&amp;</span>msg<span class="hl opt">);</span>
-      <span class="hl kwd">DispatchMessage</span><span class="hl opt">(&amp;</span>msg<span class="hl opt">);</span>
-    <span class="hl opt">}</span> <span class="hl com">/* if */</span>
-  <span class="hl opt">}</span> <span class="hl com">/* while */</span>
-
-  <span class="hl kwd">DdeFreeStringHandle</span><span class="hl opt">(</span>DDEinst<span class="hl opt">,</span> hszItem<span class="hl opt">);</span>
-  <span class="hl kwd">DdeFreeDataHandle</span><span class="hl opt">(</span>hData<span class="hl opt">);</span>
-
-  <span class="hl kwa">return</span> DDEready<span class="hl opt">;</span>
-<span class="hl opt">}</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Enjoy!</p>
-</div>
-<div class="paragraph">
-<p>Thiadmer Riemersma</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>This document was ported to AsciiDoc by
-<a href="https://github.com/tajmone" target="_blank" rel="noopener">Tristano Ajmone</a>
-and republished with Jan Zimmermann&#8217;s permission under the
-<a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License v2.0</a> terms.
-Beside formatting, aesthetic tweaks and some marginal text changes, this document is a faithful reproduction of the <code>dde_c.txt</code> document found inside the <code>dde_plugin_sample.zip</code>  archive
-<a href="https://www.cosmigo.com/wp-content/uploads/dde_plugin_sample.zip" target="_blank" rel="noopener">downloadable from Cosmigo website</a>.</p>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-right valign-top">Ext.</th>
+<th class="tableblock halign-center valign-top">Load</th>
+<th class="tableblock halign-center valign-top">Save</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microsoft Palette</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Color Palette</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.pal</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro Motion Palette</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Color Palette</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.pal</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gameboy RGB555 Palette</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Color Palette</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.pal</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro Motion Stencil</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stencil</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>.stn</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-revision 1.0.0<br>
 </div>
 </div>
 </body>
