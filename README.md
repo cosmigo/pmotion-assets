@@ -31,12 +31,12 @@ The goal of this repository is to provide a collection of useful assets for Cosm
 
 Hopefully, these resources will be useful to both Pro Motion NG users as well as to other PM NG related projects, and version control via Git should provide an efficient way of keeping the assets always up to date, both locally as well as inside other repositories.
 
-I would like to thank Jan Zimmerman for all the personal support and time dedication, and for having kindly allowed me to utilize the original Pro Motion assets found in this project.
+I would like to thank [Jan Zimmerman] for all the personal support and time dedication, and for having kindly allowed me to utilize the original Pro Motion assets found in this project.
 
 
 # Disclaimer
 
-The creator of this repository ([Tristano Ajmone]) is not affiliated to [Cosmigo GmbH]. Although permission was asked to reproduce the material by Cosmigo herein contained, the granted permissions don't imply any official endorsment of this project by Cosmigo GmbH. Furthermore, Jan Zimmerman and Cosmigo GmbH can't be held accountable for any inacurracies or mistakes found in this project.
+The creator of this repository ([Tristano Ajmone]) is not affiliated to [Cosmigo GmbH]. Although permission was asked to reproduce the material by Cosmigo herein contained, the granted permissions don't imply any official endorsment of this project by Cosmigo GmbH. Furthermore, [Jan Zimmerman] and Cosmigo GmbH can't be held accountable for any inacurracies or mistakes found in this project.
 
 This project is _not_ intended as a replacement for the official [Pro Motion documentation][PM Docs] and no guarantees are made that its contents will always be up to date with the latest Pro Motion NG developements. End users of this project should always refer to the official Pro Motion NG channels, provided by Cosmigo, to obtain up to date information and official assets:
 
@@ -135,7 +135,7 @@ This project uses third party resources, either readapted or in their original f
 [Bram de Haan]: https://atelierbramdehaan.nl "Visit Bram de Haan's website"
 [Chris Kempson]: http://chriskempson.com "Visit Chris Kempson's website"
 [Dan Allen]: https://github.com/allenan "Visit Dan Allen's GitHub profile"
-[Jan Zimmerman]: https://www.cosmigo.com/ "Visit Cosmigo website"
+[Jan Zimmerman]: https://github.com/jan-cosmigo "Visit Jan Zimmerman's GitHub profile"
 [Peter Mescalchin]: http://magnetikonline.com "Visit Peter Mescalchin's website"
 [Seth Wright]: http://sethawright.com "Visit Seth Wright's website"
 [Thiadmer Riemersma]: http://www.compuphase.com/ "Visit Thiadmer Riemersma's website CompuPhase.com"
