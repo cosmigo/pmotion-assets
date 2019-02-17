@@ -443,7 +443,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <span id="author" class="author">Jan Zimmermann</span><br>
 <span id="email" class="email"><a href="mailto:jan@cosmigo.com">jan@cosmigo.com</a></span><br>
 <span id="revnumber">revision 1.0.0,</span>
-<span id="revdate">2019-01-26</span>
+<span id="revdate">2019-02-17</span>
 <br><span id="revremark">PMNG v7.1.8.0</span>
 </div>
 <div id="toc" class="toc2">
@@ -557,7 +557,7 @@ They come with full C++ source (MS Visual Studio) so you can check them out in w
 <div class="paragraph">
 <p>General initialization function.
 It is called once the plugin is registered by the application for further use.
-It is the first function that will be called at all.</p>
+It is the first function that will be called at all. If an error occurs then the function must return false.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Parameters</caption>
@@ -657,7 +657,7 @@ A percent value of 0 should make the progress display to hide and values between
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">May set error</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No.</p></td>
 </tr>
 </tbody>
 </table>
@@ -677,10 +677,22 @@ A percent value of 0 should make the progress display to hide and values between
 </div>
 </div>
 <div class="paragraph">
+<p>Typically only certain functions are allowed to set an error message to not exaggerate error handling.
+Right after executing those functions <code>getErrorMessage()</code> is called by the application.
+If there is an error message then the result of the failing function is dismissed and the error is displayed.</p>
+</div>
+<div class="paragraph">
 <p>If any of the functions causes an error then the application can read this error message using this function.
 As soon as a function is called the error message must be reset and it is set as soon as a function fails.
-The application must check for errors after each function that can create an error!
-Some functions may not create an error to prevent useless checking after every function call.</p>
+The application must check for errors after each function that can create an error! Some functions may not
+create an error to prevent useless checking after every function call.</p>
+</div>
+<div class="paragraph">
+<p>The plugin must reset its internal error message after <code>getErrorMessage()</code> was called.
+Since the application can only reset the error by calling <code>getErrorMessage()</code> every function
+could theoretically set an error. But if it is not explicitly allowed then the error message is not checked
+until a function is called that is allowed to set an error. This function will fail then instead of the one setting the error.
+The plugin should therefore only set errors when allowed.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">Control</caption>
@@ -1075,7 +1087,7 @@ Other functions rely on this function to be called first, such as <a href="#_get
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">May set error</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1113,7 +1125,7 @@ Other functions rely on this function to be called first, such as <a href="#_get
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">May set error</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Yes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No.</p></td>
 </tr>
 </tbody>
 </table>

@@ -1,6 +1,6 @@
 = Developer Interface
 Jan Zimmermann <jan@cosmigo.com>
-v1.0.0, 2019-01-26
+v1.0.0, 2019-02-17
 // Doc Revision Info
 :PMNG_V: 7.1.8.0
 :revremark: PMNG v{PMNG_V}
@@ -110,7 +110,7 @@ bool __stdcall initialize( char* language, unsigned short* version, bool* animat
 
 General initialization function.
 It is called once the plugin is registered by the application for further use.
-It is the first function that will be called at all.
+It is the first function that will be called at all. If an error occurs then the function must return false.
 
 .Parameters
 [caption=]
@@ -178,7 +178,7 @@ typedef void (__stdcall *ProgressCallback)( int progress )
 [cols="<1d,<6d"]
 |===============================================================================
 | Return value  | None.
-| May set error | Yes.
+| May set error | No.
 |===============================================================================
 
 
@@ -195,10 +195,20 @@ char* __stdcall getErrorMessage();
 --------------------------------------------------------------------------------
 
 
+Typically only certain functions are allowed to set an error message to not exaggerate error handling.
+Right after executing those functions `getErrorMessage()` is called by the application.
+If there is an error message then the result of the failing function is dismissed and the error is displayed.
+
 If any of the functions causes an error then the application can read this error message using this function.
 As soon as a function is called the error message must be reset and it is set as soon as a function fails.
-The application must check for errors after each function that can create an error!
-Some functions may not create an error to prevent useless checking after every function call.
+The application must check for errors after each function that can create an error! Some functions may not
+create an error to prevent useless checking after every function call.
+
+The plugin must reset its internal error message after `getErrorMessage()` was called.
+Since the application can only reset the error by calling `getErrorMessage()` every function
+could theoretically set an error. But if it is not explicitly allowed then the error message is not checked
+until a function is called that is allowed to set an error. This function will fail then instead of the one setting the error.
+The plugin should therefore only set errors when allowed.
 
 .Control
 [caption=]
@@ -468,7 +478,7 @@ Dimension request for width when loading the file.
 [cols="<1d,<6d"]
 |===============================================================================
 | Return value  | The width of the image that is to be loaded in Pixels or -1 if the function fails.
-| May set error | Yes.
+| May set error | No.
 |===============================================================================
 
 
@@ -494,7 +504,7 @@ Dimension request for height when loading the file.
 [cols="<1d,<6d"]
 |===============================================================================
 | Return value  | The height of the image that is to be loaded in Pixels or -1 if the function fails.
-| May set error | Yes.
+| May set error | No.
 |===============================================================================
 
 
