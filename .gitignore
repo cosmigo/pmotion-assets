@@ -26,6 +26,9 @@ ___*.*
 *.app
 *.out
 
+# AsciiDoc local preview docs
+*.html
+!docs/*.html
 
 # ==============================================================================
 #                              MISC IGNORE PATTERNS                             
