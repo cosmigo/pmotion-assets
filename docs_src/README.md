@@ -14,8 +14,8 @@ The script will iterate over every "`*.asciidoc`" file inside the repository and
 
 - [Directory Contents](#directory-contents)
 - [System Requirements](#system-requirements)
-- [Asciidoctor ERB Templates](#asciidoctor-erb-templates)
-    - [ERB Templates License](#erb-templates-license)
+- [Asciidoctor Haml Templates](#asciidoctor-haml-templates)
+    - [Haml Templates License](#haml-templates-license)
 
 <!-- /MarkdownTOC -->
 
@@ -24,7 +24,7 @@ The script will iterate over every "`*.asciidoc`" file inside the repository and
 # Directory Contents
 
 - [`/adoc/`][adoc] — Asciidoctor assets.
-- [`/erb/`][erb] — customized ERB templates ([see below][ERB sec]).
+- [`/haml/`][haml] — customized Haml templates ([see below][Haml sec]).
 - [`/hl/`][hl] — Highlight langDefs and assets.
 - [`/sass/`][sass] — Sass/SCSS stylesheets source files.
 - [`BUILD.bat`][BUILD.bat] — batch file to build the docs.
@@ -43,19 +43,19 @@ To build the CSS files from Sass you'll need [Sass]:
 
 More information on how to install these tools can be found in the README files inside the [`/adoc/`][adoc] and [`/sass/`][sass] folders.
 
-# Asciidoctor ERB Templates
+# Asciidoctor Haml Templates
 
-The [`/erb/`][erb] folder contains some custom ERB templates to partly override those of the Asciidoctor HTML5 backend:
+The [`/haml/`][haml] folder contains some custom Haml templates to partly override those of the Asciidoctor HTML5 backend:
 
-- [`./erb/block_listing.html.erb`][block_listing]
+- [`./haml/block_listing.html.haml`][block_listing]
 
 This is the HTML template for Asciidoctor listings, tweaked to allow customizing code coloring themes via CSS on a per-language basis, when using [Highlight] tool for syntax highlighting.
 
-> __IMPORTANT__ — Don't put any files other than ERB templates inside the [`/erb/`][erb] folder, or it will cause errors when trying to convert the documents via Asciidoctor! For this reason there is no README file there, and the information and credits for that folder have been placed here instead.
+> __IMPORTANT__ — Don't put any files other than Haml templates inside the [`/haml/`][haml] folder, or it will cause errors when trying to convert the documents via Asciidoctor! For this reason there is no README file there, and the information and credits for that folder have been placed here instead.
 
-## ERB Templates License
+## Haml Templates License
 
-The ERB files in this folder were adapted by Tristano Ajmone from the original [ERB HTML5 templates] taken from the
+The Haml files in this folder were adapted by Tristano Ajmone from the original [Haml HTML5 templates] taken from the
 [Asciidoctor Backends] project, Copyright (C) 2012-2016 Dan Allen and the Asciidoctor Project, released under MIT License:
 
     The MIT License
@@ -90,17 +90,17 @@ The ERB files in this folder were adapted by Tristano Ajmone from the original [
 
 [docs]: ../docs/   "Navigate folder"
 [adoc]: ./adoc/    "Navigate folder"
-[erb]:  ./erb/     "Navigate folder"
+[haml]:  ./haml/     "Navigate folder"
 [hl]:   ./hl/      "Navigate folder"
 [sass]: ./sass/    "Navigate folder"
 
-[block_listing]: ./erb/block_listing.html.erb "View source file"
+[block_listing]: ./haml/block_listing.html.haml "View source file"
 
 [BUILD.bat]: ./BUILD.bat "View source file"
 
 <!-- document cross-reference links -->
 
-[ERB sec]: #asciidoctor-erb-templates "Jump to section 'Asciidoctor ERB Templates'"
+[Haml sec]: #asciidoctor-haml-templates "Jump to section 'Asciidoctor Haml Templates'"
 
 
 <!-- dependencies -->
@@ -127,7 +127,7 @@ The ERB files in this folder were adapted by Tristano Ajmone from the original [
 <!-- third party -->
 
 [Asciidoctor Backends]: https://github.com/asciidoctor/asciidoctor-backends "Visit the Asciidoctor Backends project"
-[ERB HTML5 templates]: https://github.com/asciidoctor/asciidoctor-backends/tree/master/erb/html5
+[Haml HTML5 templates]: https://github.com/asciidoctor/asciidoctor-backends/tree/master/haml/html5
 
 
 <!-- EOF -->
