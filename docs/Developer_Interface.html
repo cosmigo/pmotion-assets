@@ -542,16 +542,14 @@ They come with full C++ source (MS Visual Studio) so you can check them out in w
 </div>
 <div class="sect2">
 <h3 id="_initialize"><a class="anchor" href="#_initialize"></a>initialize()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">initialize</span><span class="hl opt">(</span> language<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">var</span> version<span class="hl opt">:</span> <span class="hl kwb">word</span><span class="hl opt">;</span> <span class="hl kwa">var</span> animation<span class="hl opt">:</span> <span class="hl kwb">boolean</span> <span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">initialize</span><span class="hl opt">(</span> language<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">var</span> version<span class="hl opt">:</span> <span class="hl kwb">word</span><span class="hl opt">;</span> <span class="hl kwa">var</span> animation<span class="hl opt">:</span> <span class="hl kwb">boolean</span> <span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span> __stdcall <span class="hl kwd">initialize</span><span class="hl opt">(</span> <span class="hl kwb">char</span><span class="hl opt">*</span> language<span class="hl opt">,</span> <span class="hl kwb">unsigned short</span><span class="hl opt">*</span> version<span class="hl opt">,</span> <span class="hl kwb">bool</span><span class="hl opt">*</span> animation <span class="hl opt">);</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span> __stdcall <span class="hl kwd">initialize</span><span class="hl opt">(</span> <span class="hl kwb">char</span><span class="hl opt">*</span> language<span class="hl opt">,</span> <span class="hl kwb">unsigned short</span><span class="hl opt">*</span> version<span class="hl opt">,</span> <span class="hl kwb">bool</span><span class="hl opt">*</span> animation <span class="hl opt">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -601,16 +599,14 @@ It is the first function that will be called at all. If an error occurs then the
 </div>
 <div class="sect2">
 <h3 id="_setprogresscallback"><a class="anchor" href="#_setprogresscallback"></a>setProgressCallback()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">procedure</span> <span class="hl kwd">setProgressCallback</span><span class="hl opt">(</span> progressCallback<span class="hl opt">:</span> TProgressCallback <span class="hl opt">);</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">procedure</span> <span class="hl kwd">setProgressCallback</span><span class="hl opt">(</span> progressCallback<span class="hl opt">:</span> TProgressCallback <span class="hl opt">);</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">void</span> __stdcall <span class="hl kwd">setProgressCallback</span><span class="hl opt">(</span> ProgressCallback progressCallback <span class="hl opt">);</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">void</span> __stdcall <span class="hl kwd">setProgressCallback</span><span class="hl opt">(</span> ProgressCallback progressCallback <span class="hl opt">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -629,16 +625,14 @@ A percent value of 0 should make the progress display to hide and values between
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>A function to be called when progress changes</p>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi">type TProgressCallback= procedure (percent: integer); stdcall;</code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi">type TProgressCallback= procedure (percent: integer); stdcall;</code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp">typedef void (__stdcall *ProgressCallback)( int progress )</code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp">typedef void (__stdcall *ProgressCallback)( int progress )</code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -664,16 +658,14 @@ A percent value of 0 should make the progress display to hide and values between
 </div>
 <div class="sect2">
 <h3 id="_geterrormessage"><a class="anchor" href="#_geterrormessage"></a>getErrorMessage()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> getErrorMessage<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> getErrorMessage<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getErrorMessage</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getErrorMessage</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -714,16 +706,14 @@ The plugin should therefore only set errors when allowed.</p>
 </div>
 <div class="sect2">
 <h3 id="_getfiletypeid"><a class="anchor" href="#_getfiletypeid"></a>getFileTypeId()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> getFileTypeId<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> getFileTypeId<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getFileTypeId</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getFileTypeId</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -754,16 +744,14 @@ The id may be a series of numbers/characters like a GUID, but it may also be a p
 </div>
 <div class="sect2">
 <h3 id="_isreadsupported"><a class="anchor" href="#_isreadsupported"></a>isReadSupported()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> isReadSupported<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> isReadSupported<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">isReadSupported</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">isReadSupported</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -789,16 +777,14 @@ The id may be a series of numbers/characters like a GUID, but it may also be a p
 </div>
 <div class="sect2">
 <h3 id="_iswritesupported"><a class="anchor" href="#_iswritesupported"></a>isWriteSupported()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> isWriteSupported<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> isWriteSupported<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">isWriteSupported</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">isWriteSupported</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -824,16 +810,14 @@ The id may be a series of numbers/characters like a GUID, but it may also be a p
 </div>
 <div class="sect2">
 <h3 id="_iswritetruecolorsupported"><a class="anchor" href="#_iswritetruecolorsupported"></a>isWriteTrueColorSupported()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> isWriteTrueColorSupported<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> isWriteTrueColorSupported<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">isWriteTrueColorSupported</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">isWriteTrueColorSupported</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -862,16 +846,14 @@ If the plugin does not support true color then the image colors are reduced to 2
 </div>
 <div class="sect2">
 <h3 id="_getfileboxdescription"><a class="anchor" href="#_getfileboxdescription"></a>getFileBoxDescription()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> getFileBoxDescription<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> getFileBoxDescription<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getFileBoxDescription</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getFileBoxDescription</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -898,16 +880,14 @@ Please use the file type abbreviation (usually the file extension) at first plac
 </div>
 <div class="sect2">
 <h3 id="_getfileextension"><a class="anchor" href="#_getfileextension"></a>getFileExtension()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> getFileExtension<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> getFileExtension<span class="hl opt">:</span> <span class="hl kwb">PChar</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getFileExtension</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getFileExtension</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -933,16 +913,14 @@ Please use the file type abbreviation (usually the file extension) at first plac
 </div>
 <div class="sect2">
 <h3 id="_setfilename"><a class="anchor" href="#_setfilename"></a>setFilename()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">procedure</span> <span class="hl kwd">setFilename</span><span class="hl opt">(</span> filename<span class="hl opt">:</span> <span class="hl kwb">PChar</span> <span class="hl opt">);</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">procedure</span> <span class="hl kwd">setFilename</span><span class="hl opt">(</span> filename<span class="hl opt">:</span> <span class="hl kwb">PChar</span> <span class="hl opt">);</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">void</span>  __stdcall <span class="hl kwd">setFilename</span><span class="hl opt">(</span> <span class="hl kwb">char</span><span class="hl opt">*</span> filename <span class="hl opt">);</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">void</span>  __stdcall <span class="hl kwd">setFilename</span><span class="hl opt">(</span> <span class="hl kwb">char</span><span class="hl opt">*</span> filename <span class="hl opt">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -983,16 +961,14 @@ At this point it is undefined if the file is to be written or read!</p>
 </div>
 <div class="sect2">
 <h3 id="_canhandle"><a class="anchor" href="#_canhandle"></a>canHandle()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> canHandle<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> canHandle<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">canHandle</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">canHandle</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1020,16 +996,14 @@ The plugin should open and check the file accordingly.</p>
 </div>
 <div class="sect2">
 <h3 id="_loadbasicdata"><a class="anchor" href="#_loadbasicdata"></a>loadBasicData()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> loadBasicData<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> loadBasicData<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">loadBasicData</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">loadBasicData</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1056,16 +1030,14 @@ Other functions rely on this function to be called first, such as <a href="#_get
 </div>
 <div class="sect2">
 <h3 id="_getwidth"><a class="anchor" href="#_getwidth"></a>getWidth()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> getWidth<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> getWidth<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">int</span>   __stdcall <span class="hl kwd">getWidth</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">int</span>   __stdcall <span class="hl kwd">getWidth</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1094,16 +1066,14 @@ Other functions rely on this function to be called first, such as <a href="#_get
 </div>
 <div class="sect2">
 <h3 id="_getheight"><a class="anchor" href="#_getheight"></a>getHeight()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> getHeight<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> getHeight<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">int</span>   __stdcall <span class="hl kwd">getHeight</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">int</span>   __stdcall <span class="hl kwd">getHeight</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1132,16 +1102,14 @@ Other functions rely on this function to be called first, such as <a href="#_get
 </div>
 <div class="sect2">
 <h3 id="_getimagecount"><a class="anchor" href="#_getimagecount"></a>getImageCount()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> getImageCount<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> getImageCount<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">int</span>   __stdcall <span class="hl kwd">getImageCount</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">int</span>   __stdcall <span class="hl kwd">getImageCount</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1171,16 +1139,14 @@ If the file is just a single image then &#8220;1&#8221; is to be returned.</p>
 </div>
 <div class="sect2">
 <h3 id="_canextractpalette"><a class="anchor" href="#_canextractpalette"></a>canExtractPalette()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> canExtractPalette<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> canExtractPalette<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>   __stdcall <span class="hl kwd">canExtractPalette</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>   __stdcall <span class="hl kwd">canExtractPalette</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1207,16 +1173,14 @@ It uses this function to determine if the plugin can be used there as well.</p>
 </div>
 <div class="sect2">
 <h3 id="_getrgbpalette"><a class="anchor" href="#_getrgbpalette"></a>getRgbPalette()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> getRgbPalette<span class="hl opt">:</span> <span class="hl kwb">pointer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> getRgbPalette<span class="hl opt">:</span> <span class="hl kwb">pointer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">unsigned char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getRgbPalette</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">unsigned char</span><span class="hl opt">*</span> __stdcall <span class="hl kwd">getRgbPalette</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1246,16 +1210,14 @@ The palette bytes are RGBRGBRGB… and each RGB-tripel defines the corresponding
 </div>
 <div class="sect2">
 <h3 id="_gettransparentcolor"><a class="anchor" href="#_gettransparentcolor"></a>getTransparentColor()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> getTransparentColor<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> getTransparentColor<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">int</span>   __stdcall <span class="hl kwd">getTransparentColor</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">int</span>   __stdcall <span class="hl kwd">getTransparentColor</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1284,16 +1246,14 @@ The palette bytes are RGBRGBRGB… and each RGB-tripel defines the corresponding
 </div>
 <div class="sect2">
 <h3 id="_isalphaenabled"><a class="anchor" href="#_isalphaenabled"></a>isAlphaEnabled()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> isAlphaEnabled<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> isAlphaEnabled<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">isAlphaEnabled</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">isAlphaEnabled</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1322,26 +1282,14 @@ The palette bytes are RGBRGBRGB… and each RGB-tripel defines the corresponding
 </div>
 <div class="sect2">
 <h3 id="_loadnextimage"><a class="anchor" href="#_loadnextimage"></a>loadNextImage()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">loadNextImage</span><span class="hl opt">(</span> colorFrame<span class="hl opt">,</span>
-                        colorFramePalette<span class="hl opt">,</span>
-                        alphaFrame<span class="hl opt">,</span>
-                        alphaFramePalette<span class="hl opt">:</span> <span class="hl kwb">Pointer</span><span class="hl opt">;</span>
-                        <span class="hl kwa">var</span> delayMs<span class="hl opt">:</span> <span class="hl kwb">word</span>
-<span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">loadNextImage</span><span class="hl opt">(</span> colorFrame<span class="hl opt">,</span>&#x000A;                        colorFramePalette<span class="hl opt">,</span>&#x000A;                        alphaFrame<span class="hl opt">,</span>&#x000A;                        alphaFramePalette<span class="hl opt">:</span> <span class="hl kwb">Pointer</span><span class="hl opt">;</span>&#x000A;                        <span class="hl kwa">var</span> delayMs<span class="hl opt">:</span> <span class="hl kwb">word</span>&#x000A;<span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">loadNextImage</span><span class="hl opt">(</span> <span class="hl kwb">unsigned char</span><span class="hl opt">*</span>  colorFrame<span class="hl opt">,</span>
-                               <span class="hl kwb">unsigned char</span><span class="hl opt">*</span>  colorFramePalette<span class="hl opt">,</span>
-                               <span class="hl kwb">unsigned char</span><span class="hl opt">*</span>  alphaFrame<span class="hl opt">,</span>
-                               <span class="hl kwb">unsigned char</span><span class="hl opt">*</span>  alphaFramePalette<span class="hl opt">,</span>
-                               <span class="hl kwb">unsigned short</span><span class="hl opt">*</span> delayMs
-<span class="hl opt">);</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">loadNextImage</span><span class="hl opt">(</span> <span class="hl kwb">unsigned char</span><span class="hl opt">*</span>  colorFrame<span class="hl opt">,</span>&#x000A;                               <span class="hl kwb">unsigned char</span><span class="hl opt">*</span>  colorFramePalette<span class="hl opt">,</span>&#x000A;                               <span class="hl kwb">unsigned char</span><span class="hl opt">*</span>  alphaFrame<span class="hl opt">,</span>&#x000A;                               <span class="hl kwb">unsigned char</span><span class="hl opt">*</span>  alphaFramePalette<span class="hl opt">,</span>&#x000A;                               <span class="hl kwb">unsigned short</span><span class="hl opt">*</span> delayMs&#x000A;<span class="hl opt">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1408,26 +1356,14 @@ The function will be called according to the number of frames returned by <a hre
 </div>
 <div class="sect2">
 <h3 id="_beginwrite"><a class="anchor" href="#_beginwrite"></a>beginWrite()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">beginWrite</span><span class="hl opt">(</span>
-    width<span class="hl opt">,</span> height<span class="hl opt">,</span> transparentColor<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span>
-    alphaEnabled<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span>
-    numberOfFrames<span class="hl opt">:</span> <span class="hl kwb">integer</span>
-<span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">beginWrite</span><span class="hl opt">(</span>&#x000A;    width<span class="hl opt">,</span> height<span class="hl opt">,</span> transparentColor<span class="hl opt">:</span> <span class="hl kwb">integer</span><span class="hl opt">;</span>&#x000A;    alphaEnabled<span class="hl opt">:</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span>&#x000A;    numberOfFrames<span class="hl opt">:</span> <span class="hl kwb">integer</span>&#x000A;<span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">beginWrite</span><span class="hl opt">(</span>
-    <span class="hl kwb">int</span> width<span class="hl opt">,</span>
-    <span class="hl kwb">int</span> height<span class="hl opt">,</span>
-    <span class="hl kwb">int</span> transparentColor<span class="hl opt">,</span>
-    <span class="hl kwb">bool</span> alphaEnabled<span class="hl opt">,</span>
-    <span class="hl kwb">int</span> numberOfFrames
-<span class="hl opt">);</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">beginWrite</span><span class="hl opt">(</span>&#x000A;    <span class="hl kwb">int</span> width<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">int</span> height<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">int</span> transparentColor<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">bool</span> alphaEnabled<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">int</span> numberOfFrames&#x000A;<span class="hl opt">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1483,25 +1419,14 @@ The file may stay opened until <a href="#_finishprocessing"><code>finishProcessi
 </div>
 <div class="sect2">
 <h3 id="_writenextimage"><a class="anchor" href="#_writenextimage"></a>writeNextImage()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>
-    colorFrame<span class="hl opt">,</span> colorFramePalette<span class="hl opt">,</span> alphaFrame<span class="hl opt">,</span> alphaFramePalette<span class="hl opt">:</span> <span class="hl kwb">Pointer</span><span class="hl opt">;</span>
-    delayMs<span class="hl opt">:</span> <span class="hl kwb">word</span>
-<span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>&#x000A;    colorFrame<span class="hl opt">,</span> colorFramePalette<span class="hl opt">,</span> alphaFrame<span class="hl opt">,</span> alphaFramePalette<span class="hl opt">:</span> <span class="hl kwb">Pointer</span><span class="hl opt">;</span>&#x000A;    delayMs<span class="hl opt">:</span> <span class="hl kwb">word</span>&#x000A;<span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>
-    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> colorFrame<span class="hl opt">,</span>
-    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> colorFramePalette<span class="hl opt">,</span>
-    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> alphaFrame<span class="hl opt">,</span>
-    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> alphaFramePalette<span class="hl opt">,</span>
-    <span class="hl kwb">unsigned short</span> delayMs
-<span class="hl opt">);</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> colorFrame<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> colorFramePalette<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> alphaFrame<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> alphaFramePalette<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned short</span> delayMs&#x000A;<span class="hl opt">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1577,16 +1502,14 @@ The function will be called as often as there are more frames to be stored.</p>
 </div>
 <div class="sect2">
 <h3 id="_finishprocessing"><a class="anchor" href="#_finishprocessing"></a>finishProcessing()</h3>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code data-lang="delphi"><span class="hl kwa">procedure</span> finishProcessing<span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">procedure</span> finishProcessing<span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
-
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code data-lang="cpp"><span class="hl kwb">void</span>  __stdcall <span class="hl kwd">finishProcessing</span><span class="hl opt">();</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">void</span>  __stdcall <span class="hl kwd">finishProcessing</span><span class="hl opt">();</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
