@@ -1,7 +1,10 @@
-:: "BUILD.bat" v1.0.1 (2019/03/02) by Tristano Ajmone
+:: "BUILD.bat" v1.0.2 (2019/03/04) by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: Converts every "*.asciidoc" file in the repository to an HTML document in the
 :: "/docs/" target folder.
+:: -----------------------------------------------------------------------------
+:: NOTE: The original subfolders structure of the project is flattened out, and
+::       all documents will be in the same folder level.
 :: -----------------------------------------------------------------------------
 :: REQUIREMENTS -- To run this script you'll need to install:
 :: - Asciidoctor (Ruby):
@@ -10,6 +13,7 @@
 ::   http://www.andre-simon.de/
 :: -----------------------------------------------------------------------------
 @ECHO OFF
+CHCP 65001 &:: Unicode (UTF-8)
 ECHO.
 :: =============================================================================
 ::                           Highlight Configuration                            
@@ -39,6 +43,14 @@ EXIT /B
 :: =============================================================================
 :: func                          Convert to HTML                                
 :: =============================================================================
+:: The conversion script must "flatten out" all relative paths to other project
+:: documents, for in the "docs/" folder the original subfolders structure is
+:: flattened out. Documents use custom attributes to define relative path to
+:: other project folders; this is the full list of these attributes, which must
+:: be overriden to empty strings via CLI options:
+::
+:: * 'path_plugins'
+:: -----------------------------------------------------------------------------
 :conv2html
 
 ECHO - "%1"
@@ -51,6 +63,7 @@ CALL asciidoctor^
      -a source-highlighter=highlight^
      -a docinfodir=%~dp0adoc^
      -a docinfo=shared-head^
+     -a path_plugins^
       %1
 EXIT /B
 
