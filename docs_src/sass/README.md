@@ -19,13 +19,7 @@ The CSS defines various higlighting themes targetting specific languages, plus a
 
 - [Folder Contents](#folder-contents)
 - [System Requirements](#system-requirements)
-    - [Ruby + Sass](#ruby--sass)
-        - [Installing Ruby on Windows](#installing-ruby-on-windows)
-        - [Ruby Sass](#ruby-sass)
-    - [Dart + Sass](#dart--sass)
-    - [Node.js + Sass](#nodejs--sass)
-        - [Installing Node.js on Windows](#installing-nodejs-on-windows)
-        - [Dart Sass JavaScript](#dart-sass-javascript)
+    - [Installing Dart Sass](#installing-dart-sass)
 - [Credits](#credits)
     - [Base16 Color Schemes](#base16-color-schemes)
     - [Sass Boilerplate](#sass-boilerplate)
@@ -57,48 +51,21 @@ Builds to [`../../docs/css/styles.css`][styles.css].
 
 # System Requirements
 
-To build the CSS stylesheets you'll need to install [Sass] on your machine; there are different ways to install Sass:
+> __IMPORTANT__ — On March 12, 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26, 2019 Ruby Sass will no longer be maintained.
+> 
+> Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
 
-- [Ruby] + [Ruby Sass]
+
+## Installing Dart Sass
+
+To build the CSS stylesheets you'll need to install [Dart Sass] on your machine:
+
 - [Dart] + [Dart Sass]
-- [Node.js] + [Dart Sass] JavaScript
 
-Sass is migrating from Ruby to Dart, but for the purpose of this project either version should be fine (I'm still using the Ruby version), so just install the version that is more practical to you (since in this project you'll need Ruby also for Asciidoctor, you might use Sass Ruby if you don't have Chocolatey or Node.js on your system).
+The easiest way to install Dart Sass on Windows, and keep it always updated, is to install it via Chocolatey:
 
-## Ruby + Sass
+- https://chocolatey.org/packages/sass
 
-### Installing Ruby on Windows
-
-If you're using Windows, you should install Ruby via [RubyInstaller], which is also available as a [Chocolatey package][Choco Ruby] (see [Chocolatey] and [Chocolatey GUI]) — you're going to need Ruby to build the documents of this project anyhow, because you'll need Asciidoctor too.
-
-### Ruby Sass
-
-Once Ruby is installed on your system, open a shell and type:
-
-    gem install sass
-
-
-## Dart + Sass
-
-Alternatively, you can install the [Sass Chocolatey package][Choco Sass] via [Chocolatey] or [Chocolatey GUI], which comes as a binary (and fast) implementation of Sass in [Dart].
-
-The Dart implementation of Sass is the new incarnation of Sass, it's faster and in 2019 it's going to replace the Ruby version.
-
-## Node.js + Sass
-
-### Installing Node.js on Windows
-
-Download the installer from [Node.js] website.
-
-Alternatively, you can install the [Chocolatey Node.js package][Choco Node] (also available in [LTS version][Choco Node LTS]) via [Chocolatey] or [Chocolatey GUI].
-
-### Dart Sass JavaScript
-
-Once [Node.js] is installed on your system, open a shell and type:
-
-    npm install -g sass
-
-This is a JavaScript implementation of Sass, and it's slower than the other versions.
 
 # Credits
 
@@ -190,9 +157,10 @@ The `fontFace` Mixin was adapted from Sass Boilerplate project's "[`fontface.scs
 <!-- dependencies -->
 
 [Sass]: https://sass-lang.com "Visit Sass website"
-[Ruby Sass]: https://github.com/sass/ruby-sass
-[Dart Sass]: https://github.com/sass/dart-sass
-[Choco Sass]: https://chocolatey.org/packages/sass
+[Dart Sass]: https://github.com/sass/dart-sass "Visit Dart Sass repository on GitHub"
+[Ruby Sass]: https://sass-lang.com/ruby-sass "Visit Ruby Sass homepage"
+[Choco Sass]: https://chocolatey.org/packages/sass "View the Chocolatey package for Dart Sass"
+
 
 [Ruby]: https://www.ruby-lang.org
 [RubyInstaller]: https://rubyinstaller.org/downloads/

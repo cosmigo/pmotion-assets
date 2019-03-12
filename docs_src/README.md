@@ -38,10 +38,14 @@ To build the document from AsciiDoc to HTML you'll need the following tools:
 
 To build the CSS files from Sass you'll need [Sass]:
 
-- [Ruby] + [Ruby Sass], or
 - [Dart Sass]
 
 More information on how to install these tools can be found in the README files inside the [`/adoc/`][adoc] and [`/sass/`][sass] folders.
+
+
+> __IMPORTANT__ — On March 12, 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26, 2019 Ruby Sass will no longer be maintained.
+> 
+> Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
 
 # Asciidoctor Haml Templates
 
