@@ -104,7 +104,7 @@ Just ask the user for the directory where he installed Pro Motion or scan for it
 This directory must contain a file called `plugins.ini`.
 In this file all plugins must be registered like this:
 
-[source,ini]
+[source,ini,subs=none]
 --------------------------------------------------------------------------------
 [plugins]
 plugin1_exe=C:\Program Files\Pro Motion\plugins\gif89ae.exe

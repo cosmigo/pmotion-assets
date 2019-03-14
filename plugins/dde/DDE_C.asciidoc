@@ -58,7 +58,7 @@ The general idea is that you execute a macro in Pro Motion, and then query the r
 
 Here is an example of use:
 
-[source,c]
+[source,c,subs=none]
 --------------------------------------------------------------------------------
 /* do this only once, for example when starting your program */
 if (!DDEopen("PMOTION","ImageServer")) {
@@ -103,7 +103,7 @@ Below is the (general purpose) DDE code.
 You should be able to copy-and-paste it in your C/C++ program.
 
 
-[source,c]
+[source,c,subs=none]
 --------------------------------------------------------------------------------
 /* add the DDEML.H file to your #include files list */
 #include <ddeml.h>
