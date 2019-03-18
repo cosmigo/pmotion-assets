@@ -16,6 +16,7 @@ Repository created and maintained by [Tristano Ajmone].
 - [Introduction](#introduction)
 - [Disclaimer](#disclaimer)
 - [Project Contents](#project-contents)
+- [HTML Live Previews](#html-live-previews)
 - [The HTML Docs Folder](#the-html-docs-folder)
 - [License](#license)
 - [Credits](#credits)
@@ -52,6 +53,17 @@ This project is _not_ intended as a replacement for the official [Pro Motion doc
 - [`/specs/`][specs] — technical stuff about standards and specs.
 - [`CONTRIBUTING.md`][CONTRIBUTING] — guidelines for submitting contents and collaborating.
 - [`LICENSE`][LICENSE] — Apache 2.0 license.
+
+# HTML Live Previews
+
+Here are some quick links to live previews of the HTML documents via [GitHub & BitBucket HTML Preview]:
+
+- [Pro Motion DDE Plugin Interface]
+- [Pro Motion DDE Interface in C]
+- [Developer Interface]
+- ["EA IFF 85" Standard for Interchange Format Files]
+- [Pro Motion NG File Formats]
+
 
 # The HTML Docs Folder
 
@@ -105,6 +117,17 @@ This project uses third party resources, either readapted or in their original f
 <!-----------------------------------------------------------------------------
                                REFERENCE LINKS                                
 ------------------------------------------------------------------------------>
+
+<!-- HTML Live Previews -->
+
+[GitHub & BitBucket HTML Preview]: http://htmlpreview.github.io/
+
+[Pro Motion DDE Plugin Interface]: http://htmlpreview.github.io/?https://github.com/tajmone/pmotion-assets/blob/master/docs/DDE-Plugin.html
+[Pro Motion DDE Interface in C]: http://htmlpreview.github.io/?https://github.com/tajmone/pmotion-assets/blob/master/docs/DDE_C.html
+[Developer Interface]: http://htmlpreview.github.io/?https://github.com/tajmone/pmotion-assets/blob/master/docs/Developer_Interface.html
+["EA IFF 85" Standard for Interchange Format Files]: http://htmlpreview.github.io/?https://github.com/tajmone/pmotion-assets/blob/master/docs/EA-IFF-85.html
+[Pro Motion NG File Formats]: http://htmlpreview.github.io/?https://github.com/tajmone/pmotion-assets/blob/master/docs/PMNG_File_Formats.html
+
 
 <!-- project files & folders -->
 

@@ -26,6 +26,7 @@ The script will iterate over every "`*.asciidoc`" file inside the repository and
 - [`/adoc/`][adoc] — Asciidoctor assets.
 - [`/haml/`][haml] — customized Haml templates ([see below][Haml sec]).
 - [`/hl/`][hl] — Highlight langDefs and assets.
+- [`/img_src/`][img_src] — images sources.
 - [`/sass/`][sass] — Sass/SCSS stylesheets source files.
 - [`BUILD.bat`][BUILD.bat] — batch file to build the docs.
 
@@ -92,11 +93,12 @@ The Haml files in this folder were adapted by Tristano Ajmone from the original 
 
 <!-- project files & folders -->
 
-[docs]: ../docs/   "Navigate folder"
-[adoc]: ./adoc/    "Navigate folder"
-[haml]:  ./haml/     "Navigate folder"
-[hl]:   ./hl/      "Navigate folder"
-[sass]: ./sass/    "Navigate folder"
+[adoc]: ./adoc/ "Navigate folder"
+[docs]: ../docs/ "Navigate folder"
+[haml]: ./haml/ "Navigate folder"
+[hl]: ./hl/ "Navigate folder"
+[img_src]: ./img_src/ "Navigate folder"
+[sass]: ./sass/ "Navigate folder"
 
 [block_listing]: ./haml/block_listing.html.haml "View source file"
 
