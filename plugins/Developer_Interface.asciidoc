@@ -1,6 +1,6 @@
 = Developer Interface
 Jan Zimmermann <jan@cosmigo.com>
-v1.0.0, 2019-02-17
+v1.0.0, 2019-03-20
 // Doc Revision Info
 :PMNG_V: 7.1.8.0
 :revremark: PMNG v{PMNG_V}
@@ -754,7 +754,7 @@ The file may stay opened until <<finishProcessing(),`finishProcessing()`>> is ca
 [source,delphi,subs=none]
 --------------------------------------------------------------------------------
 function writeNextImage(
-    colorFrame, colorFramePalette, alphaFrame, alphaFramePalette: Pointer;
+    colorFrame, colorFramePalette, alphaFrame, alphaFramePalette, rgba: Pointer;
     delayMs: word
 ): boolean; stdcall;
 --------------------------------------------------------------------------------
@@ -766,6 +766,7 @@ bool  __stdcall writeNextImage(
     unsigned char* colorFramePalette,
     unsigned char* alphaFrame,
     unsigned char* alphaFramePalette,
+    unsigned char* rgba,
     unsigned short delayMs
 );
 --------------------------------------------------------------------------------

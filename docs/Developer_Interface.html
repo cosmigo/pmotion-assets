@@ -443,7 +443,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <span id="author" class="author">Jan Zimmermann</span><br>
 <span id="email" class="email"><a href="mailto:jan@cosmigo.com">jan@cosmigo.com</a></span><br>
 <span id="revnumber">revision 1.0.0,</span>
-<span id="revdate">2019-02-17</span>
+<span id="revdate">2019-03-20</span>
 <br><span id="revremark">PMNG v7.1.8.0</span>
 </div>
 <div id="toc" class="toc2">
@@ -1421,12 +1421,12 @@ The file may stay opened until <a href="#_finishprocessing"><code>finishProcessi
 <h3 id="_writenextimage"><a class="anchor" href="#_writenextimage"></a>writeNextImage()</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>&#x000A;    colorFrame<span class="hl opt">,</span> colorFramePalette<span class="hl opt">,</span> alphaFrame<span class="hl opt">,</span> alphaFramePalette<span class="hl opt">:</span> <span class="hl kwb">Pointer</span><span class="hl opt">;</span>&#x000A;    delayMs<span class="hl opt">:</span> <span class="hl kwb">word</span>&#x000A;<span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
+<pre class="highlight" lang="delphi"><code class="language-delphi" data-lang="delphi"><span class="hl kwa">function</span> <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>&#x000A;    colorFrame<span class="hl opt">,</span> colorFramePalette<span class="hl opt">,</span> alphaFrame<span class="hl opt">,</span> alphaFramePalette<span class="hl opt">,</span> rgba<span class="hl opt">:</span> <span class="hl kwb">Pointer</span><span class="hl opt">;</span>&#x000A;    delayMs<span class="hl opt">:</span> <span class="hl kwb">word</span>&#x000A;<span class="hl opt">):</span> <span class="hl kwb">boolean</span><span class="hl opt">;</span> <span class="hl kwa">stdcall</span><span class="hl opt">;</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> colorFrame<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> colorFramePalette<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> alphaFrame<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> alphaFramePalette<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned short</span> delayMs&#x000A;<span class="hl opt">);</span></code></pre>
+<pre class="highlight" lang="cpp"><code class="language-cpp" data-lang="cpp"><span class="hl kwb">bool</span>  __stdcall <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> colorFrame<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> colorFramePalette<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> alphaFrame<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> alphaFramePalette<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned char</span><span class="hl opt">*</span> rgba<span class="hl opt">,</span>&#x000A;    <span class="hl kwb">unsigned short</span> delayMs&#x000A;<span class="hl opt">);</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
