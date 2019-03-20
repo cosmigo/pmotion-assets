@@ -1,4 +1,4 @@
-//  v1.0.0 (2018/12/24) by Tristano Ajmone
+//  v1.0.1 (2019/03/05) by Tristano Ajmone
 // *****************************************************************************
 // *                                                                           *
 // *               Highlight Stylesheets for Alan StdLib Extras                *
@@ -30,6 +30,10 @@
 // ==========================
 @import 'color-schemes';
 
+// =============================================================================
+//                          Syntax Highlighting Themes                          
+// =============================================================================
+
 // =============
 // Default Theme
 // =============
@@ -40,7 +44,15 @@
 // Custom Syntax Themes
 // ====================
 // Some syntaxes have their own theme:
-@import 'lang_delphi'; 	// Delphi
-@import 'lang_cpp'; 	// C++
+@import 'lang_delphi';      // Delphi
+@import 'lang_cpp';         // C++
+@import 'lang_pseudocode';  // pseudocode
+
+// =============================================================================
+//                             Asciidoctor Elements                             
+// =============================================================================
+// Let's customize the look and feel of some native Asciidoctor elements...
+
+@import 'asciidoctor';
 
 // EOF //

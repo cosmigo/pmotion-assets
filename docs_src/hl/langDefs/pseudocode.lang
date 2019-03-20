@@ -1,0 +1,95 @@
+--[[ pseudocode.lang v0.0.1 | 2019/01/27 | Highlight v3.48
+********************************************************************************
+*                                                                              *
+*                       Pseudocode Syntax for Highlight                        *
+*                                                                              *
+********************************************************************************
+A general purpose pseudocode syntax definition.
+Created by Tristano Ajmone.
+Released into the public domain via Unlicense:
+  http://unlicense.org/
+
+--]]
+Description="pseudocode"
+
+IgnoreCase=true
+
+Digits=[[ (?:0x|0X|\$)[0-9a-fA-F]+|\d*[\.\_]?\d+(?:[eE][\-\+]\d+)?[lLuUbfdm]* ]]
+
+Strings={
+  Delimiter=[["|']],
+}
+
+Comments={
+  -- C-style comments delimiters:
+  {
+    Block=true,
+    Nested=false,
+    Delimiter = { [[\/\*]], [[\*\/]] }
+  },
+  {
+    Block=false,
+    Delimiter = { [[//]] }
+  }
+}
+
+Operators=[[\(|\)|\[|\]|\{|\}|,|;|:|&|<|>|\!|\=|\/|\*|\%|\+|\-|\@|\.|\^]]
+
+Keywords={
+  ------------------------------------------------------------------------------
+  --                             Generic Data Types                             
+  ------------------------------------------------------------------------------
+  { Id=1,
+    List={
+      "array",
+      "boolean", "bool",
+      "char",
+      "function", "func",
+      "procedure", "proc",
+      "string",
+      "void",
+    },
+  },
+  { Id=1,
+    Regex=[[(u?int(?:8|16|32|64))]],
+  },
+  ------------------------------------------------------------------------------
+  --                          General Purpose Keywords                          
+  ------------------------------------------------------------------------------
+  { Id=2,
+    List={
+      "if", "then", "else", "elseif", "endif",
+      "break",
+      "constant", "const",
+      "global",
+      "return",
+      "shared",
+      "static",
+      "var",
+    },
+  },
+  ------------------------------------------------------------------------------
+  --                               Special Values                               
+  ------------------------------------------------------------------------------
+  { Id=3,
+    List={
+      "nil", "null",
+      "true", "false",
+      "void",
+    },
+  },
+  ------------------------------------------------------------------------------
+  --                         Functions/Procedures Names                         
+  ------------------------------------------------------------------------------
+  { Id=4,
+    Regex=[[(\w+)\s*\(]],
+  },
+  ------------------------------------------------------------------------------
+  --                         Special Symbols/Operators                          
+  ------------------------------------------------------------------------------
+  { Id=5,
+    Regex=[[([*&])(?=\w)]], -- Pointers: * and & Operator
+  },
+}
+
+
