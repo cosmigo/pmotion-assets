@@ -1,0 +1,175 @@
+= Standards and Specs
+:lang: en
+// TOC Settings:
+:toclevels: 5
+// GitLab setting to show TOC after Preamble
+:toc: macro
+// TOC ... HTML Backend Hack to show TOC on the Left
+ifdef::backend-html5[]
+:toc: left
+endif::[]
+// TOC ... GitHub Hack to show TOC after Preamble (required)
+ifdef::env-github[]
+:toc: macro
+endif::[]
+// Sections Numbering:
+:!sectnums:
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible: true
+:sectanchors:
+// GitHub Settings for Admonitions Icons:
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+
+// tag::custom_attributes[]
+// =============================================================================
+//                              Custom Attributes
+// =============================================================================
+// Format dependent documents path and extension attributes (ADoc/HTML):
+
+:docext: .asciidoc
+
+// =======================
+// HTML Backend Overrides:
+// =======================
+ifndef::env-github,env-browser[]
+:docext: .html
+endif::[]
+
+
+// Paths 2 project documents (ADoc/HTML):
+:doc__EA_IFF_85: EA-IFF-85{docext}
+:doc__PMNG_File_Formats: PMNG_File_Formats{docext}
+
+// -----------------------------------------------------------------------------
+//                          Inline Links Substitutions
+// -----------------------------------------------------------------------------
+
+// Links 2 project files
+
+:EA-IFF-85_asciidoc: pass:q[link:./EA-IFF-85.asciidoc[`EA-IFF-85.asciidoc`,title="View source file"]]
+:PMNG_File_Formats_asciidoc: pass:q[link:./PMNG_File_Formats.asciidoc[`PMNG_File_Formats.asciidoc`,title="View source file"]]
+
+// =============================================================================
+// end::custom_attributes[]
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+// tag::intro[]
+
+Reference documentation and links on Pro Motion technical details, and on Pixel Art file formats specifications in general.
+
+// end::intro[]
+
+// >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
+ifndef::backend-html5[]
+'''
+toc::[]
+'''
+endif::[]
+ifdef::env-github[]
+'''
+toc::[]
+'''
+endif::[]
+// <<< GitHub/GitLab hacks <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+== Directory Contents
+
+* {EA-IFF-85_asciidoc}
+* {PMNG_File_Formats_asciidoc}
+
+
+
+== Documents
+
+// tag::assets[]
+=== Pro Motion Specs
+
+link:{doc__PMNG_File_Formats}[Pro Motion NG File Formats] ::
+Overview of the file formats natively supported by Pro Motion NG.
+
+=== File Formats
+
+link:{doc__EA_IFF_85}["`EA IFF 85`" Standard for Interchange Format Files] ::
+The original IFF (Interchange Format Files) specification by Jerry Morrison from Electronic Arts, 1985.
+// end::assets[]
+
+
+
+== External Links
+
+=== Pro Motion NG
+
+For up-to-date information, please refer to the official documentation at Cosmigo website:
+
+*  link:https://www.cosmigo.com/[Cosmigo Website^, title="Visit Cosmigo website"]:
+*  link:https://www.cosmigo.com/promotion/docs/onlinehelp/main.htm[Pro Motion NG Documentation^, title="View the online documentation of Pro Motion NG"]:
+** link:https://www.cosmigo.com/promotion/docs/onlinehelp/TechnicalInfos.htm[Technical Information^, title="View the 'Technical Information' page in the official Pro Motion NG documentation"]
+
+
+=== Interchange File Format (IFF)
+
+The original document of the IFF specification by Jerry Morrison from Electronic Arts, 1985:
+
+* link:http://www.martinreddy.net/gfx/2d/IFF.txt["EA IFF 85" Standard for Interchange Format Files^]
+
+Various links of interest on the IFF format and its derivates:
+
+* Wikipedia:
+** link:https://en.wikipedia.org/wiki/Interchange_File_Format[Interchange File Format (IFF)^]
+** link:https://en.wikipedia.org/wiki/ILBM[Interleaved Bitmap (ILBM)^]
+** link:https://en.wikipedia.org/wiki/Resource_Interchange_File_Format[Resource Interchange File Format (RIFF)^]
+** link:https://en.wikipedia.org/wiki/Audio_Interchange_File_Format[Audio Interchange File Format (AIFF)^]
+*  link:https://wiki.amigaos.net/wiki/[AmigaOS Wiki^]:
+** link:https://wiki.amigaos.net/wiki/IFF_Standard[IFF Standard^]
+** link:https://wiki.amigaos.net/wiki/A_Quick_Introduction_to_IFF[A Quick Introduction to IFF^]
+** link:https://wiki.amigaos.net/wiki/EA_IFF_85_Standard_for_Interchange_Format_Files[EA IFF 85 Standard for Interchange Format Files^]
+** link:https://wiki.amigaos.net/wiki/IFF_FORM_and_Chunk_Registry[IFF FORM and Chunk Registry^]
+** link:https://wiki.amigaos.net/wiki/IFF_Source_Code[AOS IFF Source Code^] (in C, for AmigaOS)
+*  link:http://www.fileformat.info[FileFormat.info^]:
+** link:http://www.fileformat.info/format/iff/egff.htm[IFF File Format Summary^] -- from the <<EGFF>>.
+** link:http://www.fileformat.info/format/iff/sample/index.htm[IFF Sample Files^] -- free IFF sample images for testing.
+* Miscellanea:
+** link:https://www.loc.gov/preservation/digital/formats/fdd/fdd000115.shtml[Library of Congress: EA IFF 85^]
+** link:https://www.ibm.com/developerworks/library/pa-spec16/[The Interchange File Format (IFF)^] --  article at IBM developerworks page.
+** link:http://lclevy.free.fr/amiga/formats.html[Amiga file formats^]
+
+
+// tag::EGFF[]
+
+[[EGFF,_Encyclopedia of Graphics File Formats_]]
+=== Encyclopedia of Graphics File Formats
+
+The _Encyclopedia of Graphics File Formats_ (2nd Ed.), by James D. Murray and William vanRyper, published by O'Reilly in 1996 and now released under Creative Commons/Attribution license, is a precious resource for vintage file formats.
+
+* link:http://www.fileformat.info/resource/book/1565921615/index.htm[FileFormat.info^] -- in HTML format.
+* link:https://archive.org/details/mac_Graphics_File_Formats_Second_Edition_1996[The Internet Archive^] -- available in PDF, ePub, Kindle, and other formats.
+* O'Reilly page of the _Encyclopedia_ (book description only):
+**  book page (description only):
+*** link:http://shop.oreilly.com/product/9781565920583.do[_Encyclopedia of Graphics File Formats_] (1st Ed. 1994)
+*** link:http://shop.oreilly.com/product/9781565921610.do[_Encyclopedia of Graphics File Formats_] (2nd Ed. 1996)
+**  link:https://resources.oreilly.com/examples/9781565920583/tree/master[CD-Rom^] -- the book's CD-Rom (contains the examples and tools).
+
+// end::EGFF[]
+
+
+// EOF //

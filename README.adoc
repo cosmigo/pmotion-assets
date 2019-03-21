@@ -1,0 +1,264 @@
+= Cosmigo Pro Motion Assets
+:lang: en
+// TOC Settings:
+:toclevels: 5
+// GitLab setting to show TOC after Preamble
+:toc: macro
+// TOC ... HTML Backend Hack to show TOC on the Left
+ifdef::backend-html5[]
+:toc: left
+endif::[]
+// TOC ... GitHub Hack to show TOC after Preamble (required)
+ifdef::env-github[]
+:toc: macro
+endif::[]
+// Sections Numbering:
+:!sectnums:
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible: true
+:sectanchors:
+// GitHub Settings for Admonitions Icons:
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+// tag::custom_attributes[]
+// =============================================================================
+//                              Custom Attributes
+// =============================================================================
+
+// Format dependent documents path and extension attributes (ADoc/HTML):
+:path2plugins: ./plugins/
+:path2plugins_dde: ./plugins/dde/
+:path2plugins_file-io: ./plugins/file-io/
+:docext: .asciidoc
+
+// =======================
+// HTML Backend Overrides:
+// =======================
+ifndef::env-github,env-browser[]
+:path2plugins: ./
+:path2plugins_dde: ./
+:path2plugins_file-io: ./
+:docext: .html
+endif::[]
+
+// Paths 2 project documents (ADoc/HTML):
+:doc__DDE_C: {path2plugins_dde}DDE_C{docext}
+
+// HTML Live Previews URL Snippet (points to "docs/" folder):
+:GHLive: http://htmlpreview.github.io/?https://github.com/tajmone/pmotion-assets/blob/master/docs/
+// -----------------------------------------------------------------------------
+//                          Inline Links Substitutions
+// -----------------------------------------------------------------------------
+
+// Links 2 Cosmigo & Pro Motion
+
+:Cosmigo_GmbH: https://www.cosmigo.com/pixel_animation_software/support[Cosmigo GmbH^, title="More info about Cosmigo GmbH"]
+:Cosmigo: https://www.cosmigo.com/[Cosmigo^, title="Visit Cosmigo website"]
+:Pro_Motion_NG: https://www.cosmigo.com/[Pro Motion NG^, title="Visit Pro Motion NG website"]
+:Pro_Motion: https://www.cosmigo.com/[Pro Motion^, title="Visit Pro Motion website"]
+
+// Links 2 project folders
+:docs: pass:q[link:./docs[`/docs/`^,title="Navigate to folder"]]
+:docs_src: pass:q[link:./docs_src[`/docs_src/`^,title="Navigate to folder"]]
+:plugins: pass:q[link:./plugins[`/plugins/`^,title="Navigate to folder"]]
+:specs: pass:q[link:./specs[`/specs/`^,title="Navigate to folder"]]
+
+// Links 2 project files
+:CONTRIBUTING: pass:q[link:./CONTRIBUTING.md[`CONTRIBUTING`^,title="Read the contributors' guidelines"]]
+:LICENSE: pass:q[link:./LICENSE[`LICENSE`^,title="View license"]]
+
+// Links 2 people
+:Andre_Simon: link:http://www.andre-simon.de[André Simon^,title="Visit André Simon's website"]
+:Bram_de_Haan: link:https://atelierbramdehaan.nl[Bram de Haan^,title="Visit Bram de Haan's website"]
+:Chris_Kempson: link:http://chriskempson.com[Chris Kempson^,title="Visit Chris Kempson's website"]
+:Dan_Allen: link:https://github.com/allenan[Dan Allen^,title="Visit Dan Allen's GitHub profile"]
+:Jan_Zimmerman: link:https://github.com/jan-cosmigo[Jan Zimmerman^,title="Visit Jan Zimmerman's GitHub profile"]
+:Peter_Mescalchin: link:http://magnetikonline.com[Peter Mescalchin^,title="Visit Peter Mescalchin's website"]
+:Seth_Wright: link:http://sethawright.com[Seth Wright^,title="Visit Seth Wright's website"]
+:Thiadmer_Riemersma: link:http://www.compuphase.com/[Thiadmer Riemersma^,title="Visit Thiadmer Riemersma's website CompuPhase.com"]
+:Tristano_Ajmone: link:https://github.com/tajmone[Tristano Ajmone^,title="Visit Tristano Ajmone's profile on GitHub"]
+
+// Links 2 organizations
+:The_Asciidoctor_project: https://github.com/asciidoctor/[The Asciidoctor project^, title="Visit the Asciidoctor project on GitHub"]
+
+// Links 2 third party resources
+:Asciidoctor_Backends: link:https://github.com/asciidoctor/asciidoctor-backends[Asciidoctor Backends^,title="Visit the Asciidoctor Backends project"]
+:Asciidoctor_Extensions_Lab: link:https://github.com/asciidoctor/asciidoctor-extensions-lab/[Asciidoctor Extensions Lab^,title="Visit the Asciidoctor Extensions Lab project"]
+:base16-builder: link:https://github.com/chriskempson/base16-builder[base16-builder^,title="Visit the base16-builder repository"]
+:Base16_Atelier_Sulphurpool: link:https://github.com/chriskempson/base16-builder/blob/master/schemes/atelier-sulphurpool.yml[Base16 Atelier Sulphurpool^,title="View upstream source file"]
+:Base16_Eighties: link:https://github.com/chriskempson/base16-builder/blob/master/schemes/eighties.yml[Base16 Eighties^,title="View upstream source file"]
+:Base16_Google: link:https://github.com/chriskempson/base16-builder/blob/master/schemes/google.yml[Base16 Google^,title="View upstream source file"]
+:Base16_Tomorrow: link:https://github.com/chriskempson/base16-builder/blob/master/schemes/tomorrow.yml[Base16 Tomorrow^,title="View upstream source file"]
+:Highlight: link:http://www.andre-simon.de/doku/highlight/en/highlight.php[Highlight^, title="Visit Highlight website"]
+:Sass_boilerplate: link:https://github.com/magnetikonline/sass-boilerplate[Sass boilerplate^,title="Visit the Sass boilerplate repository"]
+// =============================================================================
+// end::custom_attributes[]
+
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+
+A collection of assets for {Pro_Motion_NG}, the pixel drawing and animation software by {Cosmigo}.
+
+Repository created and maintained by {Tristano_Ajmone}.
+
+* https://github.com/tajmone/pmotion-assets
+
+
+// >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
+ifndef::backend-html5[]
+'''
+toc::[]
+'''
+endif::[]
+ifdef::env-github[]
+'''
+toc::[]
+'''
+endif::[]
+// <<< GitHub/GitLab hacks <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+== Introduction
+
+// tag::intro[]
+The goal of this project is to provide a collection of useful assets for Cosmigo Pro Motion NG, ranging from documentation, technical specifications of images, animations, palettes and pixeal art fonts format, to plugins code templates and intefaces in various programming languages, and community contributed assets like color formulas, palettes, etc.
+
+Hopefully, these resources will be useful to both Pro Motion NG users as well as to other PM NG related projects, and version control via Git should provide an efficient way of keeping the assets always up to date, both locally as well as inside other repositories.
+
+I would like to thank {Jan_Zimmerman} for all the personal support and time dedication, and for having kindly allowed me to utilize the original Pro Motion assets found in this project.
+// end::intro[]
+
+
+== Disclaimer
+
+// tag::disclaimer[]
+The creator of this repository ({Tristano_Ajmone}) is not affiliated to {Cosmigo_GmbH}.
+Although permission was asked to reproduce the material by Cosmigo herein contained, the granted permissions don't imply any official endorsment of this project by Cosmigo GmbH.
+Furthermore, {Jan_Zimmerman} and Cosmigo GmbH can't be held accountable for any inacurracies or mistakes found in this project.
+
+This project is _not_ intended as a replacement for the official
+link:https://www.cosmigo.com/promotion/docs/onlinehelp/main.htm[Pro Motion Documention^, title="View Pro Motion NG documentation online"]
+and no guarantees are made that its contents will always be up to date with the latest Pro Motion NG developements.
+End users of this project should always refer to the official Pro Motion NG channels, provided by Cosmigo, to obtain up to date information and official assets.
+// end::disclaimer[]
+
+* link:https://www.cosmigo.com/[Cosmigo website^, title="Visit Cosmigo website"]
+* link:https://community.cosmigo.com/[Pro Motion Community Forum^, title="Visit the Cosmigo community forum"]
+* link:https://www.cosmigo.com/promotion/docs/onlinehelp/main.htm[Pro Motion NG Documention^, title="View Pro Motion NG documentation online"]
+
+
+== Project Contents
+
+* {docs} -- HTML documents.
+* {docs_src} -- AsciiDoc sources and assets to build the HTML docs.
+* {plugins} -- resources for plugin developers.
+* {specs} -- technical stuff about standards and specs.
+* {CONTRIBUTING} -- guidelines for submitting contents and collaborating.
+* {LICENSE} -- Apache 2.0 license.
+
+== HTML Live Previews
+
+Here are some quick links to live previews of the HTML documents via
+link:http://htmlpreview.github.io/[GitHub & BitBucket HTML Preview^]:
+
+
+=== Plugins
+
+
+* link:{GHLive}Developer_Interface.html[Developer Interface]
+* link:{GHLive}DDE-Plugin.html[Pro Motion DDE Plugin Interface]
+* link:{GHLive}DDE_C.html[Pro Motion DDE Interface in C]
+* link:{GHLive}File-IO_Agnostic-Interface.html[Pro Motion File I/O Plugin Interface] (language agnostic)
+
+
+=== File Formats
+
+* link:{GHLive}PMNG_File_Formats.html[Pro Motion NG File Formats]
+* link:{GHLive}EA-IFF-85.html["`EA IFF 85`" Standard for Interchange Format Files]
+
+
+== The HTML Docs Folder
+
+* {docs}
+
+The {docs} folder contains an HTML converted version of every `&ast;.asciidoc` file found inside the repository.
+This folder was created for the following purposes:
+
+* Enable end users to read local copies of the documents without needing an AsciiDoc viewer/converter.
+* The contents of that folder can be served over the WWW via
+  link:https://pages.github.com/[GitHub Pages^, title="Visit GitHub Pages website"].
+* Direct links to these docs won't break if their AsciiDoc sources are moved around in the project.
+
+All HTML documents are placed directly in the {docs} folder, without replicating the directory structure of their AsciiDoc sources within the project.
+Therefore, even if the repository folder structure is reorganized, links to the HTML docs will remain unchanged (unless the AsciiDoc source files are renamed).
+
+The whole idea is that `&ast;.asciidoc` files should be placed in the folder to which they belong contents-wise, so that they can be read on GitHub while navigating the repository.
+GitHub provides live HTML rendering of AsciiDoc, so these documents will be previewable in a nicely formatted manner on GitHub.
+
+The HTML converted docs, on the other hand, are intended for providing direct links which won't (shouldn't) break over the course of time, as well as for offline reading via the browser for end users who cloned the repository locally but might not have the required tools to view/convert AsciiDoc files.
+
+Regarding the possibility of serving the HTML files over the Internet (statically) via
+link:https://pages.github.com/[GitHub Pages^, title="Visit GitHub Pages website"]
+it can be done
+link:https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch[using the `/docs/` folder in the `master` branch^, title="Read GitHub Help on how to do this"]
+of every repository (instead of serving the whole `master` branch over the Internet, or using a separate `gh-pages` branch).
+Hence, the {docs} folder was chosen since it's treated as a special folder in GitHub when it comes to serving web contents.
+Although this is entirely optional, I've chosen to leave this possibility open, so that any GitHub clone of the repository can be set to serve these docs over the WWW.
+
+
+== License
+
+* {LICENSE}
+
+Unless otherwise specified, all assets are release under
+link:http://www.apache.org/licenses/LICENSE-2.0[Apache License v2.0^, title="View the full text of the Apache License v2.0 at www.apache.org"];
+third party assets and components retain their original license.
+For the sake of simplicity, any new assets contributed to the project should fall under the same license, or an Apache-compatible license.
+
+
+== Credits
+
+This project uses third party resources, either readapted or in their original form.
+Full credits and licenses can be found in the assets subfolders; here's an abridged list of authors' aknowledgments and their resources:
+
+* {Andre_Simon} -- {Highlight} configuration and langDefs (GNU GPL v3.0).
+* {Bram_de_Haan} -- {Base16_Atelier_Sulphurpool} color scheme (MIT License).
+* {Chris_Kempson} -- {Base16_Eighties} and {Base16_Tomorrow} color schemes (MIT License).
+* {Dan_Allen} and {The_Asciidoctor_project} -- {Asciidoctor_Backends} (MIT License).
+* {Jan_Zimmerman} (PM author) -- Pro Motion documentation and assets.
+* {Peter_Mescalchin} -- {Sass_boilerplate} (MIT License).
+* {Seth_Wright} -- {Base16_Google} color scheme (MIT License).
+* {The_Asciidoctor_project} -- {Asciidoctor_Extensions_Lab} (MIT License).
+* {Thiadmer_Riemersma} -- link:{doc__DDE_C}[C implementation of PM DDE plugin interface].
+
+
+
+== External Links
+
+// tag::external_links[]
+* link:https://www.cosmigo.com/[Cosmigo website^, title="Visit Cosmigo website"]
+* link:https://community.cosmigo.com/[Pro Motion Community Forum^, title="Visit the Cosmigo community forum"]
+* link:https://www.cosmigo.com/promotion/docs/onlinehelp/main.htm[Pro Motion NG Documention^, title="View Pro Motion NG documentation online"]
+* link:https://www.cosmigo.com/blog[Pro Motion NG Blog^, title="Visit Cosmigo official blog"]
+// end::external_links[]
+
+
+// EOF //

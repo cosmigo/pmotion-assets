@@ -1,0 +1,95 @@
+= Cosmigo Pro Motion Assets
+:lang: en
+// TOC Settings:
+:toclevels: 5
+// GitLab setting to show TOC after Preamble
+:toc: macro
+// TOC ... HTML Backend Hack to show TOC on the Left
+ifdef::backend-html5[]
+:toc: left
+endif::[]
+// TOC ... GitHub Hack to show TOC after Preamble (required)
+ifdef::env-github[]
+:toc: macro
+endif::[]
+// Sections Numbering:
+:!sectnums:
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible: true
+:sectanchors:
+// GitHub Settings for Admonitions Icons:
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+include::../README.adoc[tag=custom_attributes]
+
+A collection of assets for {Pro_Motion_NG}, the pixel drawing and animation software by {Cosmigo}.
+
+Repository created and maintained by {Tristano_Ajmone}.
+
+* https://github.com/tajmone/pmotion-assets
+
+// >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
+ifndef::backend-html5[]
+'''
+toc::[]
+'''
+endif::[]
+ifdef::env-github[]
+'''
+toc::[]
+'''
+endif::[]
+// <<< GitHub/GitLab hacks <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+== About This Project
+
+include::../README.adoc[tag=intro]
+
+[IMPORTANT]
+=======================================
+include::../README.adoc[tag=disclaimer]
+=======================================
+
+
+== Pro Motion Plugins
+
+
+include::../plugins/README.adoc[tag=custom_attributes]
+include::../plugins/README.adoc[tag=about]
+include::../plugins/README.adoc[tag=assets,leveloffset=+1]
+
+
+== Tech Specs and File Formats
+
+include::../specs/README.adoc[tag=custom_attributes]
+include::../specs/README.adoc[tag=intro]
+include::../specs/README.adoc[tag=assets]
+
+
+
+
+== External Links
+
+For further information and resources on Pro Motion NG, visit the following links:
+
+include::../README.adoc[tag=external_links]
+
+// EOF //

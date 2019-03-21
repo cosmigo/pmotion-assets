@@ -1,0 +1,185 @@
+= Pro Motion Plugins Resources
+:lang: en
+// TOC Settings:
+:toclevels: 5
+// GitLab setting to show TOC after Preamble
+:toc: macro
+// TOC ... HTML Backend Hack to show TOC on the Left
+ifdef::backend-html5[]
+:toc: left
+endif::[]
+// TOC ... GitHub Hack to show TOC after Preamble (required)
+ifdef::env-github[]
+:toc: macro
+endif::[]
+// Sections Numbering:
+:!sectnums:
+// Cross References:
+:xrefstyle: short
+:section-refsig: Sect.
+// Misc Settings:
+:experimental: true
+:icons: font
+:linkattrs: true
+:reproducible: true
+:sectanchors:
+// GitHub Settings for Admonitions Icons:
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :heavy_exclamation_mark:
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+// tag::custom_attributes[]
+// =============================================================================
+//                              Custom Attributes
+// =============================================================================
+
+// Format dependent documents path and extension attributes (ADoc/HTML):
+:path2plugins: ./
+:path2plugins_dde: ./dde/
+:path2plugins_fileio: ./file-io/
+:docext: .asciidoc
+
+// =======================
+// HTML Backend Overrides:
+// =======================
+ifndef::env-github,env-browser[]
+:path2plugins: ./
+:path2plugins_dde: ./
+:path2plugins_fileio: ./
+:docext: .html
+endif::[]
+
+// Paths 2 project documents (ADoc/HTML):
+:doc__DDE: {path2plugins_dde}DDE-Plugin{docext}
+:doc__DDE_C: {path2plugins_dde}DDE_C{docext}
+:doc__FileIO_Agnostic: {path2plugins_fileio}File-IO_Agnostic-Interface{docext}
+:doc__Developer_Interface: ./Developer_Interface{docext}
+
+// -----------------------------------------------------------------------------
+//                          Inline Links Substitutions
+// -----------------------------------------------------------------------------
+
+// Links 2 project folders
+:dde: pass:q[link:./dde[`/dde/`,title="DDE plugins assets"]]
+:file-io: pass:q[link:./file-io[`/file-io/`,title="File I/O plugins assets"]]
+
+
+// Links 2 project files
+:DDE-Plugin_adoc: pass:q[link:./dde/DDE-Plugin.asciidoc[`DDE-Plugin.asciidoc`^,title="View source file"]]
+:DDE_C_adoc: pass:q[link:./dde/DDE_C[`DDE_C.asciidoc`^,title="View source file"]]
+:Developer_Interface_adoc: pass:q[link:./Developer_Interface[`Developer_Interface.asciidoc`^,title="View source file"]]
+// =============================================================================
+// end::custom_attributes[]
+
+
+// *****************************************************************************
+// *                                                                           *
+// *                            Document Preamble                              *
+// *                                                                           *
+// *****************************************************************************
+
+A collection of assets for developing Pro Motion plugins.
+
+// >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
+ifndef::backend-html5[]
+'''
+toc::[]
+'''
+endif::[]
+ifdef::env-github[]
+'''
+toc::[]
+'''
+endif::[]
+// <<< GitHub/GitLab hacks <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+== Directory Contents
+
+A quick preview of the plugins directory structure and contents:
+
+*  link:dde[`/dde/`] -- DDE plugins assets:
+** link:dde/DDE_C.asciidoc[`DDE_C.asciidoc`]
+** link:dde/DDE-Plugin.asciidoc[`DDE-Plugin.asciidoc`]
+*  link:file-io[`/file-io/`] -- File I/O plugins assets:
+** link:file-io/File-IO_Agnostic-Interface.asciidoc[`File-IO_Agnostic-Interface.asciidoc`]
+*  link:Developer_Interface.asciidoc[`Developer_Interface.asciidoc`]
+
+
+== About Pro Motion Plugins
+
+// tag::about[]
+
+A "`plugin`" is an external program that can be executed by Pro Motion to provide additional functionality to the application.
+The whole idea behind plugins is to enable end users to extend the functionality of Pro Motion to meet their personal needs and workflow.
+
+Plugins are a powerful customization feature which can be leveraged to optimize productivity.
+For example, video games developers could create _ad hoc_ plugins to optimize integration between Pro Motion and their game engine, to support custom image/animation formats, or to seamlessly update the assets pipeline from within PM user interface.
+
+Programmers can create their own plugins to enable PM to load and save file formats that are not natively supported by the application, or to carry out some specific image processing tasks.
+Whichever your needs might be, the Pro Motion plugins interface is flexible enough to accomodate them.
+
+Pro Motion has two simple plugin interfaces:
+
+[horizontal]
+File I/O ::
+These plugins are automatically added to the load/save dialogs of either image or animation files.
+
+Manipulation ::
+These plugins are programs that can access and modify the bitmap and palette data of the images/animations currently open in PM.
+
+// end::about[]
+
+
+// tag::assets[]
+== Plugins Resources
+
+The following documents are available on this topic:
+
+link:{doc__Developer_Interface}[Developer Interface] ::
+The official Pro Motion plugin interface documentation by Jan Zimmerman, covering both file I/O and manipulation plugins.
+
+
+=== File I/O Plugins
+
+
+The following documents are available on this topic:
+
+link:{doc__FileIO_Agnostic}[Pro Motion File I/O Plugin Interface] ::
+A language agnostic presentation of the file I/O interface, by Tristano Ajmone.
+
+
+=== Manipulation Plugins
+
+The current plugins manipulation interface leverages Windows
+link:https://docs.microsoft.com/en-us/windows/desktop/dataxchg/about-dynamic-data-exchange[DDE (Dynamic Data Exchange) protocol^, title="Learn more about DDE on Microsoft website"]
+to exchange data between Pro Motion (the DDE-Server) and the plugin (the DDE-client).
+
+The following documents are available on this topic:
+
+link:{doc__DDE}[Pro Motion DDE Plugin Interface] ::
+Adaptation of the official Pro Motion
+link:{doc__Developer_Interface}[Developer Interface]
+by Jan Zimmerman, reproducing only the section on manipulation plugins.
+
+link:{doc__DDE_C}[Pro Motion DDE Interface in C] ::
+C implementation and tutorial of Pro Motion DDE plugin interface, by Thiadmer Riemersma.
+
+// end::assets[]
+
+
+
+== Reference Links
+
+For up-to-date information, please refer to the official documentation at Cosmigo website:
+
+*  link:https://www.cosmigo.com/[Cosmigo Website^, title="Visit Cosmigo website"]:
+** link:https://www.cosmigo.com/pixel_animation_software/plugins/developer-interface[Developer Interface^, title="Read the official Promo Motion plugins 'Developer Interface'"]
+*  link:https://www.cosmigo.com/promotion/docs/onlinehelp/main.htm[Pro Motion NG Documentation^, title="View the online documentation of Pro Motion NG"]:
+** link:https://www.cosmigo.com/promotion/docs/onlinehelp/UsingPlugins.htm[Using Plugins^, title="Read the official Pro Motion NG documentation on using plugins"]
+
+// EOF //
