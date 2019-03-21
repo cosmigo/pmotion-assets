@@ -58,6 +58,9 @@ endif::[]
 
 // HTML Live Previews URL Snippet (points to "docs/" folder):
 :GHLive: http://htmlpreview.github.io/?https://github.com/tajmone/pmotion-assets/blob/master/docs/
+// HTML Previews via new GitHub Pages repository website:
+:GHPages: https://tajmone.github.io/pmotion-assets/
+
 // -----------------------------------------------------------------------------
 //                          Inline Links Substitutions
 // -----------------------------------------------------------------------------
@@ -116,9 +119,15 @@ endif::[]
 
 A collection of assets for {Pro_Motion_NG}, the pixel drawing and animation software by {Cosmigo}.
 
-Repository created and maintained by {Tristano_Ajmone}.
 
-* https://github.com/tajmone/pmotion-assets
+[horizontal]
+Repository: ::
+link:https://github.com/tajmone/pmotion-assets[]
+Website: ::
+link:https://tajmone.github.io/pmotion-assets[]
+
+Project created and maintained by {Tristano_Ajmone}.
+Started on Dec, 2018.
 
 
 // >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
@@ -176,23 +185,22 @@ End users of this project should always refer to the official Pro Motion NG chan
 
 == HTML Live Previews
 
-Here are some quick links to live previews of the HTML documents via
-link:http://htmlpreview.github.io/[GitHub & BitBucket HTML Preview^]:
+Here are some quick links to the HTML version of the documents via GitHub Pages:
 
 
 === Plugins
 
 
-* link:{GHLive}Developer_Interface.html[Developer Interface]
-* link:{GHLive}DDE-Plugin.html[Pro Motion DDE Plugin Interface]
-* link:{GHLive}DDE_C.html[Pro Motion DDE Interface in C]
-* link:{GHLive}File-IO_Agnostic-Interface.html[Pro Motion File I/O Plugin Interface] (language agnostic)
+* link:{GHPages}Developer_Interface.html[Developer Interface]
+* link:{GHPages}DDE-Plugin.html[Pro Motion DDE Plugin Interface]
+* link:{GHPages}DDE_C.html[Pro Motion DDE Interface in C]
+* link:{GHPages}File-IO_Agnostic-Interface.html[Pro Motion File I/O Plugin Interface] (language agnostic)
 
 
 === File Formats
 
-* link:{GHLive}PMNG_File_Formats.html[Pro Motion NG File Formats]
-* link:{GHLive}EA-IFF-85.html["`EA IFF 85`" Standard for Interchange Format Files]
+* link:{GHPages}PMNG_File_Formats.html[Pro Motion NG File Formats]
+* link:{GHPages}EA-IFF-85.html["`EA IFF 85`" Standard for Interchange Format Files]
 
 
 == The HTML Docs Folder

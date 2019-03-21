@@ -1,4 +1,4 @@
-:: "BUILD.bat" v1.0.2 (2019/03/04) by Tristano Ajmone
+:: "BUILD.bat" v1.0.3 (2019/03/21) by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: Converts every "*.asciidoc" file in the repository to an HTML document in the
 :: "/docs/" target folder.
@@ -64,6 +64,7 @@ CALL asciidoctor^
      -a docinfodir=%~dp0adoc^
      -a docinfo=shared-head^
      -a path_plugins^
+     -a imagesdir=img^
       %1
 EXIT /B
 
