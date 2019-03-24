@@ -1,6 +1,6 @@
 = Developer Interface
 Jan Zimmermann <jan@cosmigo.com>
-v1.0.0, 2019-03-20
+v1.0.0, 2019-03-24
 // Doc Revision Info
 :PMNG_V: 7.1.8.0
 :revremark: PMNG v{PMNG_V}
@@ -97,12 +97,12 @@ They come with full C++ source (MS Visual Studio) so you can check them out in w
 
 === initialize()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function initialize( language: PChar; var version: word; var animation: boolean ): boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool __stdcall initialize( char* language, unsigned short* version, bool* animation );
 --------------------------------------------------------------------------------
@@ -140,12 +140,12 @@ It is the first function that will be called at all. If an error occurs then the
 === setProgressCallback()
 
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 procedure setProgressCallback( progressCallback: TProgressCallback ); stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 void __stdcall setProgressCallback( ProgressCallback progressCallback );
 --------------------------------------------------------------------------------
@@ -161,12 +161,12 @@ A percent value of 0 should make the progress display to hide and values between
 | progressCallback
 | A function to be called when progress changes
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------
 type TProgressCallback= procedure (percent: integer); stdcall;
 --------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 ----------------------------------------------------------
 typedef void (__stdcall *ProgressCallback)( int progress )
 ----------------------------------------------------------
@@ -184,12 +184,12 @@ typedef void (__stdcall *ProgressCallback)( int progress )
 
 === getErrorMessage()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function getErrorMessage: PChar; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 char* __stdcall getErrorMessage();
 --------------------------------------------------------------------------------
@@ -221,12 +221,12 @@ The plugin should therefore only set errors when allowed.
 
 === getFileTypeId()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function getFileTypeId: PChar; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 char* __stdcall getFileTypeId();
 --------------------------------------------------------------------------------
@@ -250,12 +250,12 @@ The id may be a series of numbers/characters like a GUID, but it may also be a p
 
 === isReadSupported()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function isReadSupported: boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool  __stdcall isReadSupported();
 --------------------------------------------------------------------------------
@@ -274,12 +274,12 @@ The application needs to know if the plugin can read the file format to place it
 
 === isWriteSupported()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function isWriteSupported: boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool  __stdcall isWriteSupported();
 --------------------------------------------------------------------------------
@@ -298,12 +298,12 @@ The application needs to know if the plugin can write the file format to place i
 
 === isWriteTrueColorSupported()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function isWriteTrueColorSupported: boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool  __stdcall isWriteTrueColorSupported();
 --------------------------------------------------------------------------------
@@ -325,12 +325,12 @@ If the plugin does not support true color then the image colors are reduced to 2
 
 === getFileBoxDescription()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function getFileBoxDescription: PChar; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 char* __stdcall getFileBoxDescription();
 --------------------------------------------------------------------------------
@@ -350,12 +350,12 @@ Please use the file type abbreviation (usually the file extension) at first plac
 
 === getFileExtension()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function getFileExtension: PChar; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 char* __stdcall getFileExtension();
 --------------------------------------------------------------------------------
@@ -373,12 +373,12 @@ This function must return the file extension (without "`.`") to be used in the f
 
 === setFilename()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 procedure setFilename( filename: PChar ); stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 void  __stdcall setFilename( char* filename );
 --------------------------------------------------------------------------------
@@ -406,12 +406,12 @@ At this point it is undefined if the file is to be written or read!
 
 === canHandle()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function canHandle: boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool  __stdcall canHandle();
 --------------------------------------------------------------------------------
@@ -434,12 +434,12 @@ The plugin should open and check the file accordingly.
 
 === loadBasicData()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function loadBasicData: boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool  __stdcall loadBasicData();
 --------------------------------------------------------------------------------
@@ -458,12 +458,12 @@ Other functions rely on this function to be called first, such as <<getWidth(),`
 
 === getWidth()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function getWidth: integer; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 int   __stdcall getWidth();
 --------------------------------------------------------------------------------
@@ -484,12 +484,12 @@ Dimension request for width when loading the file.
 
 === getHeight()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function getHeight: integer; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 int   __stdcall getHeight();
 --------------------------------------------------------------------------------
@@ -510,12 +510,12 @@ Dimension request for height when loading the file.
 
 === getImageCount()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function getImageCount: integer; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 int   __stdcall getImageCount();
 --------------------------------------------------------------------------------
@@ -537,12 +537,12 @@ If the file is just a single image then "`1`" is to be returned.
 
 === canExtractPalette()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function canExtractPalette: boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool   __stdcall canExtractPalette();
 --------------------------------------------------------------------------------
@@ -562,12 +562,12 @@ It uses this function to determine if the plugin can be used there as well.
 
 === getRgbPalette()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function getRgbPalette: pointer; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 unsigned char* __stdcall getRgbPalette();
 --------------------------------------------------------------------------------
@@ -588,12 +588,12 @@ The palette bytes are RGBRGBRGB… and each RGB-tripel defines the corresponding
 
 === getTransparentColor()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function getTransparentColor: integer; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 int   __stdcall getTransparentColor();
 --------------------------------------------------------------------------------
@@ -614,12 +614,12 @@ If the image contains a transparent color then this function must return it.
 
 === isAlphaEnabled()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function isAlphaEnabled: boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool  __stdcall isAlphaEnabled();
 --------------------------------------------------------------------------------
@@ -640,7 +640,7 @@ Does the image/animation file contain alpha transparency data?
 
 === loadNextImage()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function loadNextImage( colorFrame,
                         colorFramePalette,
@@ -650,7 +650,7 @@ function loadNextImage( colorFrame,
 ): boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool  __stdcall loadNextImage( unsigned char*  colorFrame,
                                unsigned char*  colorFramePalette,
@@ -706,7 +706,7 @@ The function will be called according to the number of frames returned by <<getI
 
 === beginWrite()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function beginWrite(
     width, height, transparentColor: integer;
@@ -715,7 +715,7 @@ function beginWrite(
 ): boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool  __stdcall beginWrite(
     int width,
@@ -751,7 +751,7 @@ The file may stay opened until <<finishProcessing(),`finishProcessing()`>> is ca
 
 === writeNextImage()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 function writeNextImage(
     colorFrame, colorFramePalette, alphaFrame, alphaFramePalette, rgba: Pointer;
@@ -759,7 +759,7 @@ function writeNextImage(
 ): boolean; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 bool  __stdcall writeNextImage(
     unsigned char* colorFrame,
@@ -824,12 +824,12 @@ The function will be called as often as there are more frames to be stored.
 
 === finishProcessing()
 
-[source,delphi,subs=none]
+[source,delphi]
 --------------------------------------------------------------------------------
 procedure finishProcessing; stdcall;
 --------------------------------------------------------------------------------
 
-[source,cpp,subs=none]
+[source,cpp]
 --------------------------------------------------------------------------------
 void  __stdcall finishProcessing();
 --------------------------------------------------------------------------------

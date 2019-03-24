@@ -1,6 +1,6 @@
 = Pro Motion DDE Interface in C
 Thiadmer Riemersma, http://www.compuphase.com/
-v1.0.0, 2019-01-26
+v1.0.0, 2019-03-24
 // Doc Revision Info
 :PMNG_V: 7.1.8.0
 :revremark: PMNG v{PMNG_V}
@@ -58,7 +58,7 @@ The general idea is that you execute a macro in Pro Motion, and then query the r
 
 Here is an example of use:
 
-[source,c,subs=none]
+[source,c]
 --------------------------------------------------------------------------------
 /* do this only once, for example when starting your program */
 if (!DDEopen("PMOTION","ImageServer")) {
@@ -103,7 +103,7 @@ Below is the (general purpose) DDE code.
 You should be able to copy-and-paste it in your C/C++ program.
 
 
-[source,c,subs=none]
+[source,c]
 --------------------------------------------------------------------------------
 /* add the DDEML.H file to your #include files list */
 #include <ddeml.h>

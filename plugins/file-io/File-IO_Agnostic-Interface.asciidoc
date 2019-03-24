@@ -1,6 +1,6 @@
 = Pro Motion File I/O Plugin Interface
 Tristano Ajmone <tajmone@gmail.com>
-1, 2019-03-20
+1, 2019-03-24
 // Doc Revision Info
 :PMNG_V: 7.1.8.0
 :revremark: PMNG v{PMNG_V}
@@ -252,7 +252,7 @@ TO BE CONTINUED...
 
 === initialize [[initialize]]
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : initialize(
                     *language  : char[2],
@@ -307,7 +307,7 @@ In case of failure, it should still set an error description via `getErrorMessag
 
 === setProgressCallback
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 void : setProgressCallback( *progressCallback : function );
 --------------------------------------------------------------------------------
@@ -320,7 +320,7 @@ void : setProgressCallback( *progressCallback : function );
 | Pointer to a PM function that the plugin must call when progress changes.
 The PM function located at `&ast;progressCallback` (stdcall) is representable as:
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 void : *progressCallback( int32 progress );
 --------------------------------------------------------------------------------
@@ -362,7 +362,7 @@ At least, set it to a non-zero value when the plugin is processing, and then bac
 
 === getErrorMessage
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 *string : getErrorMessage();
 --------------------------------------------------------------------------------
@@ -384,7 +384,7 @@ This means that within your plugin DLL `getErrorMessage()` should be granted acc
 
 A pseudocode example:
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 
 Global string ErrorMessage; // define a string visibile to all DLL functions
@@ -413,7 +413,7 @@ This was done to avoid burdening PM with having to check for errors at each and 
 
 === getFileTypeId
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 *string : getFileTypeId();
 --------------------------------------------------------------------------------
@@ -448,7 +448,7 @@ NOTE: It's still unclear to me why PM wants plugins developers to define this
 
 === isReadSupported
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : isReadSupported();
 --------------------------------------------------------------------------------
@@ -467,7 +467,7 @@ PM needs to know if the plugin supports reading from the file format, to determi
 
 === isWriteSupported
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : isWriteSupported();
 --------------------------------------------------------------------------------
@@ -487,7 +487,7 @@ PM needs to know if the plugin supports saving to the file format, to determine 
 
 === isWriteTrueColorSupported
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : isWriteTrueColorSupported();
 --------------------------------------------------------------------------------
@@ -514,7 +514,7 @@ If the plugin doesn't support true color then the image colors are reduced to 25
 
 === getFileBoxDescription
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 *string : getFileBoxDescription();
 --------------------------------------------------------------------------------
@@ -538,7 +538,7 @@ If your plugin supports internationalization, you should return a pointer to a s
 
 === getFileExtension
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 *string : getFileExtension();
 --------------------------------------------------------------------------------
@@ -557,7 +557,7 @@ This function must return the file extension (without "`.`") to be used in the f
 
 === setFilename
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 void : setFilename( *filename );
 --------------------------------------------------------------------------------
@@ -593,7 +593,7 @@ The plugin at this stage only needs to acknowledge the file, memorize its refere
 
 === canHandle
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : canHandle();
 --------------------------------------------------------------------------------
@@ -622,7 +622,7 @@ When this function is called the plugin must check if the selected file is actua
 
 === loadBasicData
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : loadBasicData();
 --------------------------------------------------------------------------------
@@ -666,7 +666,7 @@ Need to check this...
 
 === getWidth
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 int32 : getWidth();
 --------------------------------------------------------------------------------
@@ -691,7 +691,7 @@ The returned value must be a 32-bit signed integer.
 
 === getHeight
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 int32 : getHeight();
 --------------------------------------------------------------------------------
@@ -718,7 +718,7 @@ The returned value must be a 32-bit signed integer.
 
 === getImageCount
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 int32 : getImageCount();
 --------------------------------------------------------------------------------
@@ -761,7 +761,7 @@ If the file consists of a single image then "`1`" is to be returned.
 
 === canExtractPalette
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : canExtractPalette();
 --------------------------------------------------------------------------------
@@ -794,7 +794,7 @@ the paletter of this *specific* file?
 
 === getRgbPalette
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 *array : getRgbPalette();
 --------------------------------------------------------------------------------
@@ -827,7 +827,7 @@ The palette must be defined as a 768 bytes (256{nbsp}x{nbsp}3) sequence of RGB t
 
 === getTransparentColor
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 int32 : getTransparentColor();
 --------------------------------------------------------------------------------
@@ -860,7 +860,7 @@ The returned value must be a 32-bit signed integer.
 
 === isAlphaEnabled
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : isAlphaEnabled();
 --------------------------------------------------------------------------------
@@ -887,7 +887,7 @@ PM wants to know wether the image/animation file which is going to be loaded con
 
 === loadNextImage
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : loadNextImage(
                       *colorFrame,
@@ -960,7 +960,7 @@ The function will be called according to the number of frames returned by <<getI
 
 === beginWrite
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : beginWrite(
               int32 width,
@@ -1007,7 +1007,7 @@ The output file shall reamin open until <<finishProcessing,`finishProcessing()`>
 
 === writeNextImage
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 bool : writeNextImage(
                         *colorFrame,
@@ -1087,7 +1087,7 @@ The function will be called as often as there are more frames to be stored.
 
 === finishProcessing
 
-[source,pseudocode,subs=none]
+[source,pseudocode]
 --------------------------------------------------------------------------------
 void : finishProcessing();
 --------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 = "`EA IFF 85`" Standard for Interchange Format Files
 Jerry Morrison, Electronic Arts
-:LastEdited: 2019-03-18
+:LastEdited: 2019-03-24
 :revdate: January 14, 1985
 :revremark: Released and in use
 :lang: en
@@ -345,7 +345,7 @@ LONG   32 bits signed
 The actual type definitions depend on the CPU and the compiler.
 In this document, we'll express data type definitions in the C programming language. [See <<c-ref-man,_C, A Reference Manual_>>.] In 68000 Lattice C:
 
-[source,c,subs=none]
+[source,c]
 --------------------------------------------------------------------------------
 typedef unsigned char   UBYTE;  /*  8 bits unsigned */
 typedef short           WORD;   /* 16 bits signed   */
@@ -386,7 +386,7 @@ A "`type ID`", "`property name`", "`FORM type`", or any other IFF identifier is 
 Spaces (hex 20) should not precede printing characters; trailing spaces are ok.
 Control characters are forbidden.
 
-[source,c,subs=none]
+[source,c]
 --------------------------------------------------------------------------------
 typedef CHAR ID[4];
 --------------------------------------------------------------------------------
@@ -414,7 +414,7 @@ Revisions of \'``CMAP``' would be \'``CMA1``' and \'``CMA2``'.
 Chunks are the building blocks in the IFF structure.
 The form expressed as a C typedef is:
 
-[source,c,subs=none]
+[source,c]
 --------------------------------------------------------------------------------
 typedef struct {
     ID      ckID;
@@ -773,7 +773,7 @@ You can have subsequences of FORMs sharing properties by making each subsequence
 Scoping: Think of property settings as variable bindings in nested blocks of a programming language.
 Where in C you could write:
 
-[source,c,subs=none]
+[source,c]
 --------------------------------------------------------------------------------
 TEXT_FONT text_font = Courier;  /* program's global default */
 
@@ -793,7 +793,7 @@ File(); {
 
 An IFF file could contain:
 
-[source,c,subs=none]
+[source,c]
 --------------------------------------------------------------------------------
 LIST {
     PROP TEXT {
@@ -988,7 +988,7 @@ Declarations to use in practice will vary with the CPU and compiler.
 For example, 68000 Lattice C produces efficient comparison code if we define ID as a \'``LONG``'.
 A macro `MakeID` builds these IDs at compile time.
 
-[source,c,subs=none]
+[source,c]
 --------------------------------------------------------------------------------
 /* Standard IFF types, expressed in 68000 Lattice C.    */
 
