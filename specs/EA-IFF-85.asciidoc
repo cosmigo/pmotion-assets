@@ -1,6 +1,6 @@
 = "`EA IFF 85`" Standard for Interchange Format Files
 Jerry Morrison, Electronic Arts
-:LastEdited: 2019-03-24
+:LastEdited: 2019-03-30
 :revdate: January 14, 1985
 :revremark: Released and in use
 :lang: en
@@ -347,10 +347,10 @@ In this document, we'll express data type definitions in the C programming langu
 
 [source,c]
 --------------------------------------------------------------------------------
-typedef unsigned char   UBYTE;  /*  8 bits unsigned */
-typedef short           WORD;   /* 16 bits signed   */
-typedef unsigned short  UWORD;  /* 16 bits unsigned */
-typedef long            LONG;   /* 32 bits signed   */
+typedef unsigned char   UBYTE;  /*   8 bits unsigned  */
+typedef short           WORD;   /*  16 bits signed    */
+typedef unsigned short  UWORD;  /*  16 bits unsigned  */
+typedef long            LONG;   /*  32 bits signed    */
 --------------------------------------------------------------------------------
 
 
@@ -418,8 +418,8 @@ The form expressed as a C typedef is:
 --------------------------------------------------------------------------------
 typedef struct {
     ID      ckID;
-    LONG    ckSize; /* sizeof(ckData) */
-    UBYTE   ckData[/* ckSize */];
+    LONG    ckSize; /*  sizeof(ckData)  */
+    UBYTE   ckData[/*   ckSize   */];
     } Chunk;
 --------------------------------------------------------------------------------
 
@@ -462,9 +462,10 @@ For the sake of following chunks, programs must respect every chunk's ckSize as 
 We can describe the syntax of a chunk as a regular expression with `&num;` representing the ckSize, i.e. the length of the following ``{``braced``}`` bytes.
 The `[0]` represents a sometimes needed pad byte. (The regular expressions in this document are collected in <<Appendix A>> along with an explanation of notation.)
 
-..............................
+[source,ebnf]
+------------------------------
 Chunk   ::= ID #{ UBYTE* } [0]
-..............................
+------------------------------
 
 One chunk output technique is to stream write a chunk header, stream write the chunk contents, then random access back to the header to fill in the size.
 Another technique is to make a preliminary pass over the data to compute the size, then write it out all at once.
@@ -496,9 +497,10 @@ The form of a data property is a special case of Chunk.
 The ckID is a property name as well as a property type.
 The ckSize should be small since data properties are intended to be accumulated in RAM when reading a file. (256 bytes is a reasonable upper bound.) Syntactically:
 
-.....................
+[source,ebnf]
+---------------------
 Property    ::= Chunk
-.....................
+---------------------
 
 When designing a data object, use properties to describe context information like the size of an image, even if they don't vary in your program.
 Other programs will need this information.
@@ -548,11 +550,12 @@ It could be a composite object like a musical score with nested musical instrume
 
 A data section is a chunk with ckID \'``FORM``' and this arrangement:
 
-................................................................................
+[source,ebnf]
+--------------------------------------------------------------------------------
 FORM        ::= "FORM" #{ FormType (LocalChunk | FORM | LIST | CAT)* }
 FormType    ::= ID
 LocalChunk  ::= Property | Chunk
-................................................................................
+--------------------------------------------------------------------------------
 
 The ID \'``FORM``' is a syntactic keyword like `struct` in C.
 Think of a "`struct ILBM`" containing a field \'``CMAP``'.
@@ -716,10 +719,11 @@ A CAT is just an untyped group of data objects.
 Structurally, a CAT is a chunk with chunk ID \'``CAT{nbsp}``' containing a "`contents type`" ID followed by the nested objects.
 The ckSize of each contained chunk is essentially a relative pointer to the next one.
 
-................................................................................
+[source,ebnf]
+--------------------------------------------------------------------------------
 CAT ::= "CAT " #{ ContentsType (FORM | LIST | CAT)* }
 ContentsType    ::= ID  -- a hint or an "abstract data type" ID
-................................................................................
+--------------------------------------------------------------------------------
 
 In reading a CAT, like any other chunk, programs must respect it's ckSize as a virtual end-of-file for reading the nested objects even if they're malformed or truncated.
 
@@ -746,10 +750,11 @@ Structurally, a LIST is a chunk with ckID \'``LIST``' containing a "`contents ty
 The ckSize of each contained chunk is a relative pointer to the next one.
 A LIST is not an arbitrary linked list -- the cells are simply concatenated.
 
-................................................................................
+[source,ebnf]
+---------------------------------------------------------------
 LIST    ::= "LIST" #{ ContentsType PROP* (FORM | LIST | CAT)* }
 ContentsType    ::= ID
-................................................................................
+---------------------------------------------------------------
 
 === Group PROP
 
@@ -761,9 +766,10 @@ Individual FORMs can override the shared settings.
 
 The contents of a PROP is like a FORM with no data chunks:
 
-................................................................................
+[source,ebnf]
+------------------------------------------
 PROP    ::= "PROP" #{ FormType Property* }
-................................................................................
+------------------------------------------
 
 It means, "Here are the shared properties for FORM type <<FormType>."
 
@@ -775,18 +781,18 @@ Where in C you could write:
 
 [source,c]
 --------------------------------------------------------------------------------
-TEXT_FONT text_font = Courier;  /* program's global default */
+TEXT_FONT text_font = Courier;  /*  program's global default  */
 
 File(); {
-    TEXT_FONT text_font = TimesRoman;   /* shared setting   */
+    TEXT_FONT text_font = TimesRoman;   /*  shared setting    */
 
         {
-        TEXT_FONT text_font = Helvetica;  /* local setting  */
-        Print("Hello ");    /* uses font Helvetica  */
+        TEXT_FONT text_font = Helvetica;  /*  local setting   */
+        Print("Hello ");    /*  uses font Helvetica   */
         }
 
         {
-        Print("there.");    /* uses font TimesRoman */
+        Print("there.");    /*  uses font TimesRoman  */
         }
     }
 --------------------------------------------------------------------------------
@@ -797,16 +803,16 @@ An IFF file could contain:
 --------------------------------------------------------------------------------
 LIST {
     PROP TEXT {
-        FONT {TimesRoman}   /* shared setting   */
+        FONT {TimesRoman}   /*  shared setting  */
         }
 
     FORM TEXT {
-        FONT {Helvetica}    /* local setting    */
-        CHRS {Hello }       /* uses font Helvetica  */
+        FONT {Helvetica}    /*  local setting        */
+        CHRS {Hello }       /*  uses font Helvetica  */
         }
 
     FORM TEXT {
-        CHRS {there.}   /* uses font TimesRoman */
+        CHRS {there.}       /*  uses font TimesRoman  */
         }
     }
 --------------------------------------------------------------------------------
@@ -990,26 +996,26 @@ A macro `MakeID` builds these IDs at compile time.
 
 [source,c]
 --------------------------------------------------------------------------------
-/* Standard IFF types, expressed in 68000 Lattice C.    */
+/*  Standard IFF types, expressed in 68000 Lattice C.  */
 
-typedef unsigned char UBYTE;    /*  8 bits unsigned */
-typedef short WORD; /* 16 bits signed   */
-typedef unsigned short UWORD;   /* 16 bits unsigned */
-typedef long LONG;  /* 32 bits signed   */
+typedef unsigned char UBYTE;   /*   8 bits unsigned  */
+typedef short WORD;            /*  16 bits signed    */
+typedef unsigned short UWORD;  /*  16 bits unsigned  */
+typedef long LONG;             /*  32 bits signed    */
 
-typedef char ID[4]; /* 4 chars in ' ' through '~'   */
+typedef char ID[4];  /*  4 chars in ' ' through '~'  */
 
 typedef struct {
     ID  ckID;
-    LONG    ckSize; /* sizeof(ckData)   */
-    UBYTE   ckData[/* ckSize */];
+    LONG    ckSize; /*  sizeof(ckData)  */
+    UBYTE   ckData[/*   ckSize   */];
     } Chunk;
 
-/* ID typedef and builder for 68000 Lattice C. */
-typedef LONG ID;    /* 4 chars in ' ' through '~'   */
+/*  ID typedef and builder for 68000 Lattice C.  */
+typedef LONG ID;     /*  4 chars in ' ' through '~'  */
 #define MakeID(a,b,c,d) ( (a)<<<<24 | (b)<<<<16 | (C)<<<<8 | (d) )
 
-/* Globally reserved IDs. */
+/*  Globally reserved IDs.  */
 #define ID_FORM   MakeID('F','O','R','M')
 #define ID_LIST   MakeID('L','I','S','T')
 #define ID_PROP   MakeID('P','R','O','P')
@@ -1021,7 +1027,8 @@ typedef LONG ID;    /* 4 chars in ' ' through '~'   */
 
 Here's a collection of the syntax definitions in this document.
 
-................................................................................
+[source,ebnf]
+----------------------------------------------------------------
 Chunk   ::= ID #{ UBYTE* } [0]
 
 Property    ::= Chunk
@@ -1036,7 +1043,7 @@ ContentsType    ::= ID  -- a hint or an "abstract data type" ID
 
 LIST    ::= "LIST" #{ ContentsType PROP* (FORM | LIST | CAT)* }
 PROP    ::= "PROP" #{ FormType Property* }
-................................................................................
+----------------------------------------------------------------
 
 In this extended regular expression notation, the token `&num;` represents a ckSize LONG count of the following {braced} data bytes.
 Literal items are shown in "`quotes`", [square bracketed items] are optional, and `&ast;` means 0 or more instances.
