@@ -6,24 +6,22 @@
   font-weight: 400;
   font-style: normal;
 }
-/* Highlight Default Theme */
+/* Highlight Default Theme -- "Base16 Google" by Seth Wright */
 .listingblock code[data-lang]::before {
-  color: #B4B7B4;
+  color: #373b41;
 }
 
 .listingblock pre[class=highlight] {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 4px;
-  border: 1px solid #E0E0E0;
-  padding: 1em;
-  overflow: auto;
+  border: 1px solid #e0e0e0;
 }
 .listingblock pre[class=highlight] > code {
-  color: #373B41;
+  color: #373b41;
   font-family: Consolas, Monaco, "Courier New", Courier, monospace;
 }
 .listingblock pre[class=highlight] .hl {
-  color: #373B41;
+  color: #373b41;
 }
 .listingblock pre[class=highlight] .hl.num {
   color: #F96A38;
@@ -44,14 +42,14 @@
   color: #3971ED;
 }
 .listingblock pre[class=highlight] .hl.slc, .listingblock pre[class=highlight] .hl.com {
-  color: #B4B7B4;
+  color: #b4b7b4;
   font-style: italic;
 }
 .listingblock pre[class=highlight] .hl.lin {
   color: #969896;
 }
 .listingblock pre[class=highlight] .hl.opt {
-  color: #373B41;
+  color: #373b41;
 }
 .listingblock pre[class=highlight] .hl.kwa {
   color: #CC342B;
@@ -72,40 +70,39 @@
   color: #3971ED;
 }
 
-/* Highlight Theme for Delphi */
+/* Highlight Theme for Delphi -- "Base16 Tomorrow Night" by Chris Kempson */
+.listingblock code[data-lang=delphi]::before {
+  color: #c5c8c6;
+}
+
 .listingblock pre[class=highlight][lang=delphi] {
-  background-color: #1D1F21;
-  border-radius: 4px;
-  border: 1px solid #B4B7B4;
-  padding: 1em;
-  overflow: auto;
+  background-color: #1d1f21;
+  border-color: #b4b7b4;
 }
 .listingblock pre[class=highlight][lang=delphi] > code {
-  color: #C5C8C6;
+  color: #c5c8c6;
   font-family: "Fira Code", Monaco, "Courier New", Courier, monospace;
-  font-size: 14px;
-  letter-spacing: 1px;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl {
-  color: #C5C8C6;
+  color: #c5c8c6;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.num {
-  color: #DE935F;
+  color: #de935f;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.esc {
-  color: #DE935F;
+  color: #de935f;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.ipl {
-  color: #A3685A;
+  color: #a3685a;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.str {
-  color: #B5BD68;
+  color: #b5bd68;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.ppc {
-  color: #B294BB;
+  color: #b294bb;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.pps {
-  color: #B5BD68;
+  color: #b5bd68;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.slc, .listingblock pre[class=highlight][lang=delphi] .hl.com {
   color: #969896;
@@ -115,111 +112,109 @@
   color: #969896;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.opt {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.kwa {
-  color: #CC6666;
+  color: #cc6666;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.kwb {
-  color: #F0C674;
+  color: #f0c674;
 }
 .listingblock pre[class=highlight][lang=delphi] .hl.kwd {
-  color: #81A2BE;
+  color: #81a2be;
 }
 
-/* Highlight Theme for C++ */
+/* Highlight Theme for C++ -- "Base16 Atelier Sulphurpool" by Bram de Haan */
+.listingblock code[data-lang=cpp]::before {
+  color: #5e6687;
+}
+
 .listingblock pre[class=highlight][lang=cpp] {
-  background-color: #F5F7FF;
-  border-radius: 4px;
-  border: 1px solid #DFE2F1;
-  padding: 1em;
-  overflow: auto;
+  background-color: #f5f7ff;
+  border-color: #dfe2f1;
 }
 .listingblock pre[class=highlight][lang=cpp] > code {
-  color: #5E6687;
+  color: #5e6687;
   font-family: "Fira Code", Monaco, "Courier New", Courier, monospace;
-  font-size: 14px;
-  letter-spacing: 1px;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl {
-  color: #5E6687;
+  color: #5e6687;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.num {
-  color: #C76B29;
+  color: #c76b29;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.esc {
-  color: #C76B29;
+  color: #c76b29;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.ipl {
-  color: #6679CC;
+  color: #6679cc;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.str {
-  color: #AC9739;
+  color: #ac9739;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.ppc {
-  color: #9C637A;
+  color: #9c637a;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.pps {
-  color: #AC9739;
+  color: #ac9739;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.slc, .listingblock pre[class=highlight][lang=cpp] .hl.com {
-  color: #898EA4;
+  color: #898ea4;
   font-style: italic;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.lin {
-  color: #6B7394;
+  color: #6b7394;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.opt {
   color: #293256;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.kwa {
-  color: #C94922;
+  color: #c94922;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.kwb {
-  color: #22A2C9;
+  color: #22a2c9;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.kwc {
-  color: #3D8FD1;
+  color: #3d8fd1;
 }
 .listingblock pre[class=highlight][lang=cpp] .hl.kwd {
-  color: #6679CC;
+  color: #6679cc;
   font-weight: bold;
 }
 
-/* Highlight Theme for C++ */
+/* Highlight Theme for Pseudocode -- "Base16 Eighties" by Chris Kempson  */
+.listingblock code[data-lang=pseudocode]::before {
+  color: #d3d0c8;
+}
+
 .listingblock pre[class=highlight][lang=pseudocode] {
-  background-color: #2D2D2D;
-  border-radius: 4px;
-  border: 1px solid #747369;
-  padding: 1em;
-  overflow: auto;
+  background-color: #2d2d2d;
+  border-color: #747369;
 }
 .listingblock pre[class=highlight][lang=pseudocode] > code {
-  color: #D3D0C8;
+  color: #d3d0c8;
   font-family: "Fira Code", Monaco, "Courier New", Courier, monospace;
-  font-size: 14px;
-  letter-spacing: 1px;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl {
-  color: #D3D0C8;
+  color: #d3d0c8;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.num {
-  color: #F2F0EC;
+  color: #f2f0ec;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.esc {
-  color: #F99157;
+  color: #f99157;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.ipl {
-  color: #D27B53;
+  color: #d27b53;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.str {
-  color: #99CC99;
+  color: #99cc99;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.ppc {
-  color: #CC99CC;
+  color: #cc99cc;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.pps {
-  color: #66CCCC;
+  color: #66cccc;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.slc, .listingblock pre[class=highlight][lang=pseudocode] .hl.com {
   color: #747369;
@@ -229,26 +224,63 @@
   color: #747369;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.opt {
-  color: #D3D0C8;
+  color: #d3d0c8;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.kwa {
-  color: #6699CC;
+  color: #6699cc;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.kwb {
-  color: #CC99CC;
+  color: #cc99cc;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.kwc {
-  color: #66CCCC;
+  color: #66cccc;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.kwd {
-  color: #FFCC66;
+  color: #ffcc66;
   font-weight: bold;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.kwe {
-  color: #F2777A;
+  color: #f2777a;
 }
 .listingblock pre[class=highlight][lang=pseudocode] .hl.kwf {
-  color: #F99157;
+  color: #f99157;
+}
+
+/* Highlight Theme for EBNF -- "Base16 Solarized Light" by Ethan Schoonover */
+.listingblock code[data-lang=ebnf]::before {
+  color: #93a1a1;
+}
+
+.listingblock pre[class=highlight][lang=ebnf] {
+  background-color: #fdf6e3;
+  border-color: #eee8d5;
+}
+.listingblock pre[class=highlight][lang=ebnf] > code {
+  color: #073642;
+  font-family: "Fira Code", Monaco, "Courier New", Courier, monospace;
+}
+.listingblock pre[class=highlight][lang=ebnf] .hl {
+  color: #073642;
+}
+.listingblock pre[class=highlight][lang=ebnf] .hl.str {
+  color: #2aa198;
+}
+.listingblock pre[class=highlight][lang=ebnf] .hl.slc, .listingblock pre[class=highlight][lang=ebnf] .hl.com {
+  color: #93a1a1;
+  font-style: italic;
+}
+.listingblock pre[class=highlight][lang=ebnf] .hl.lin {
+  color: #657b83;
+}
+.listingblock pre[class=highlight][lang=ebnf] .hl.opt {
+  color: #073642;
+}
+.listingblock pre[class=highlight][lang=ebnf] .hl.kwa {
+  color: #dc322f;
+  font-weight: bold;
+}
+.listingblock pre[class=highlight][lang=ebnf] .hl.kwb {
+  color: #268bd2;
 }
 
 .menuseq b:not(.caret), .menuref {

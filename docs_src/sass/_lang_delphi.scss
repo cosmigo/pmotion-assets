@@ -1,51 +1,41 @@
-//  v1.0.0 (2018/12/24) by Tristano Ajmone
+//  v1.1.0 (2019/03/30) by Tristano Ajmone
 // *****************************************************************************
-// *                                                                           *
-// *                           Delphi Syntax Theme                             *
-// *                                                                           *
+/* Highlight Theme for Delphi -- "Base16 Tomorrow Night" by Chris Kempson */
 // *****************************************************************************
 
-// -----------------------------------------------------------------------------
-// Color Scheme: Base16 Tomorrow (dark)
-// -----------------------------------------------------------------------------
-$HL-CanvasBG:           $Tomorrow-00; // black
-$HL-Default:            $Tomorrow-05; // gray 3
+@import 'base16-tomorrow-night';
 
-$HL-Border:             $Tomorrow-04; // gray2
+$HL-CanvasBG:           $base00; // black
+$HL-Default:            $base05; // gray 3
 
-$HL-LineNum:            $Tomorrow-03; // gray 1
+$HL-Border:             $base04; // gray2
+$HL-LangHover:          $HL-Default;
 
-$HL-Number:             $Tomorrow-09; // orange
-$HL-Escape:             $Tomorrow-09; // orange
-$HL-Interpolation:      $Tomorrow-0F; // brown
-$HL-String:             $Tomorrow-0B; // green
+$HL-LineNum:            $base03; // gray 1
+
+$HL-Number:             $base09; // orange
+$HL-Escape:             $base09; // orange
+$HL-Interpolation:      $base0F; // brown
+$HL-String:             $base0B; // green
 $HL-StringPreProc:      $HL-String;
-$HL-PreProcessor:       $Tomorrow-0E; // purple
-$HL-Comment:            $Tomorrow-03; // gray1
-$HL-Operator:           $Tomorrow-07; // white
-$HL-Keywords1:          $Tomorrow-08; // red
-$HL-Keywords2:          $Tomorrow-0A; // yellow
-$HL-Keywords4:          $Tomorrow-0D; // blue
+$HL-PreProcessor:       $base0E; // purple
+$HL-Comment:            $base03; // gray1
+$HL-Operator:           $base07; // white
+$HL-Keywords1:          $base08; // red
+$HL-Keywords2:          $base0A; // yellow
+$HL-Keywords4:          $base0D; // blue
 
-// -----------------------------------------------------------------------------
-/* Highlight Theme for Delphi */
-// -----------------------------------------------------------------------------
+.listingblock code[data-lang=delphi]::before{
+    // Color of language name (shown when hovering)
+    color: $HL-LangHover;
+}
 .listingblock pre[class=highlight][lang=delphi] {
     background-color: $HL-CanvasBG;
     &>code {
         color: $HL-Default;
         font-family: $FiraCode;
-        font-size: 14px;
-        letter-spacing: 1px;
     }
-    // Border and padding
-    border-radius: 4px;
-    border: 1px solid $HL-Border;
-    padding: 1em;
-    
-    // Some basic styling, just in case you need it...
-    overflow: auto;
-
+    border-color: $HL-Border;
     .hl {
         color: $HL-Default;
 

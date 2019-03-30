@@ -1,0 +1,73 @@
+//  v1.0.0 (2019/03/30) by Tristano Ajmone
+// *****************************************************************************
+/* Highlight Theme for EBNF -- "Base16 Solarized Light" by Ethan Schoonover */
+// *****************************************************************************
+
+@import 'base16-solarized-dark';
+
+$HL-CanvasBG:           $base07;
+$HL-Default:            $base01;
+
+$HL-Border:             $base06;
+$HL-LangHover:          $base05;
+
+$HL-LineNum:            $base03;
+
+$HL-String:             $base0C;
+$HL-Comment:            $base05;
+$HL-Operator:           $HL-Default;
+$HL-Keywords1:          $base08; // Symbol Being Defined
+$HL-Keywords2:          $base0D; // Non-Terminal Symbol
+
+.listingblock code[data-lang=ebnf]::before{
+    // Color of language name (shown when hovering)
+    color: $HL-LangHover;
+}
+.listingblock pre[class=highlight][lang=ebnf] {
+    background-color: $HL-CanvasBG;
+    &>code {
+        color: $HL-Default;
+        font-family: $FiraCode;
+    }
+    border-color: $HL-Border;
+    .hl {
+        color: $HL-Default;
+
+        &.str {
+            // Strings
+            // -------
+            color: $HL-String;
+        }
+        &.slc, &.com {
+            // Comments (single-line & block)
+            // ------------------------------
+            color: $HL-Comment;
+            font-style: italic;
+        }
+        &.lin {
+            // Line numbers
+            // ------------
+            color: $HL-LineNum;
+        }
+        &.opt {
+            // Operators
+            // ---------
+            color: $HL-Operator;
+        }
+        // ---------------------
+        //    Keywords Groups
+        // ---------------------
+        &.kwa {
+            // Symbol Being Defined
+            color: $HL-Keywords1;
+            font-weight: bold;
+        }
+        &.kwb {
+            // Non-Terminal Symbol
+            color: $HL-Keywords2;
+        }
+    }
+
+}
+
+// EOF //

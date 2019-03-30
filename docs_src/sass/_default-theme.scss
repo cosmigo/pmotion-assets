@@ -1,62 +1,48 @@
-//  v1.0.0 (2018/12/24) by Tristano Ajmone
+//  v1.1.0 (2019/03/30) by Tristano Ajmone
 // *****************************************************************************
-// *                                                                           *
-// *                         Highlight Default Theme                           *
-// *                                                                           *
+/* Highlight Default Theme -- "Base16 Google" by Seth Wright */
 // *****************************************************************************
 // This theme will be used for all languages that don't have a custom theme.
 
-// -----------------------------------------------------------------------------
-// Color Scheme: Base16 Google (light)
-// -----------------------------------------------------------------------------
-$HL-CanvasBG:           $Google-07; // White
-$HL-Default:            $Google-02; // Mine Shaft
+@import 'base16-google-dark';
 
-$HL-Border:             $Google-06; // Mercury
+$HL-CanvasBG:           $base07;
+$HL-Default:            $base02;
 
-$HL-LineNum:            $Google-03; // Star Dust
+$HL-Border:             $base06;
+$HL-LangHover:          $HL-Default;
 
-$HL-Number:             $Google-09; // Burning Orange
-$HL-Escape:             $Google-09; // Burning Orange
-$HL-Interpolation:      $Google-0F; // Royal Blue
-$HL-String:             $Google-0B; // Sea Green
-$HL-PreProcessor:       $Google-0E; // Amethyst
-$HL-StringPreProc:      $Google-0C; // Royal Blue
-$HL-Comment:            $Google-04; // Silver
-$HL-Operator:          $HL-Default; // Mine Shaft
+$HL-LineNum:            $base03;
 
-$HL-Keywords1:          $Google-08; // Persian Red
-$HL-Keywords2:          $Google-0A; // Yellow Sea
-$HL-Keywords3:          $Google-0D; // Royal Blue
-$HL-Keywords4:          $Google-0E; // Amethyst
-$HL-Keywords5:          $Google-0C; // Royal Blue
-$HL-Keywords6:          $Google-0F; // Royal Blue
+$HL-Number:             $base09;
+$HL-Escape:             $base09;
+$HL-Interpolation:      $base0F;
+$HL-String:             $base0B;
+$HL-PreProcessor:       $base0E;
+$HL-StringPreProc:      $base0C;
+$HL-Comment:            $base04;
+$HL-Operator:       $HL-Default;
 
-// -----------------------------------------------------------------------------
-/* Highlight Default Theme */
-// -----------------------------------------------------------------------------
+$HL-Keywords1:          $base08;
+$HL-Keywords2:          $base0A;
+$HL-Keywords3:          $base0D;
+$HL-Keywords4:          $base0E;
+$HL-Keywords5:          $base0C;
+$HL-Keywords6:          $base0F;
+
 .listingblock code[data-lang]::before{
     // Color of language name (shown when hovering)
-    color: $Google-04;
+    color: $HL-LangHover;
 }
 
 .listingblock pre[class="highlight"] {
     background-color: $HL-CanvasBG;
     &>code {
         color: $HL-Default;
-        // font-family: $FiraCode;
         font-family: $Consolas;
-        // font-size: 16px;
-        // letter-spacing: 0.0625em; // 16 * 0.0625 = 1px
     }
-    // Border and padding
     border-radius: 4px;
     border: 1px solid $HL-Border;
-    padding: 1em;
-    
-    // Some basic styling, just in case you need it...
-    overflow: auto;
-
     .hl {
         color: $HL-Default;
 

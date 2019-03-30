@@ -4,11 +4,13 @@ This folder contains the Sass/SCSS sources to build the custom CSS stylesheets u
 
 The CSS defines various higlighting themes targetting specific languages, plus a default fallback theme for all languages that don't have a dedicated theme:
 
-|   lang  |            theme             |  mood |
-|---------|------------------------------|-------|
-| Delphi  | [Base16 Tomorrow]            | dark  |
-| C++     | [Base16 Atelier Sulphurpool] | light |
-| default | [Base16 Google]              | light |
+|    lang    |           theme            |  mood |
+|------------|----------------------------|-------|
+| default    | Base16 Google              | light |
+| pseudocode | Base16 Eighties            | dark  |
+| C++        | Base16 Atelier Sulphurpool | light |
+| Delphi     | Base16 Tomorrow            | dark  |
+| EBNF       | Base16 Solarized           | light |
 
 
 -----
@@ -21,7 +23,7 @@ The CSS defines various higlighting themes targetting specific languages, plus a
 - [System Requirements](#system-requirements)
     - [Installing Dart Sass](#installing-dart-sass)
 - [Credits](#credits)
-    - [Base16 Color Schemes](#base16-color-schemes)
+    - [Base16-Sass Color Schemes](#base16-sass-color-schemes)
     - [Sass Boilerplate](#sass-boilerplate)
 
 <!-- /MarkdownTOC -->
@@ -32,14 +34,22 @@ The CSS defines various higlighting themes targetting specific languages, plus a
 
 Sass sources:
 
-- [`styles.scss`][styles] — main stylesheet module.
-- [`_color-schemes.scss`][color-schemes] — defines color schemes and palettes.
-- [`_default-theme.scss`][default-theme] — default fallback Highlight theme.
-- [`_fonts-ligatures.scss`][ligatures] — enables code ligatures for specific languages (in fallback theme).
-- [`_fonts.scss`][fonts] — fonts settings.
-- [`_helpers.scss`][helpers] — mixins and helpers collection.
-- [`_lang_cpp.scss`][lang_cpp] — Highlight theme for C++.
-- [`_lang_delphi.scss`][lang_delphi] — Highlight theme for Delphi.
+- [`styles.scss`][styles] — main stylesheet module:
+    + [`_asciidoctor.scss`][asciidoctor scss] — customize Asciidoctor native elements.
+    + [`_base16-atelier-sulphurpool.scss `][b16_atelier-sulphurpool] — Base16 color scheme.
+    + [`_base16-eighties.scss `][b16_eighties] — Base16 color scheme.
+    + [`_base16-google-dark.scss `][b16_google] — Base16 color scheme.
+    + [`_base16-solarized-dark.scss `][b16_solarizedk] — Base16 color scheme.
+    + [`_base16-tomorrow-night.scss `][b16_tomorrow-night] — Base16 color scheme.
+    + [`_color-schemes.scss`][color-schemes] — defines color schemes and palettes.
+    + [`_default-theme.scss`][default-theme] — default fallback Highlight theme.
+    + [`_fonts-ligatures.scss`][ligatures] — enables code ligatures for specific languages (in fallback theme).
+    + [`_fonts.scss`][fonts] — fonts settings.
+    + [`_helpers.scss`][helpers] — mixins and helpers collection.
+    + [`_lang_cpp.scss`][lang_cpp] — Highlight theme for C++.
+    + [`_lang_delphi.scss`][lang_delphi] — Highlight theme for Delphi.
+    + [`_lang_ebnf.scss`][lang_ebnf] — Highlight theme for EBNF
+    + [`_lang_pseudocode.scss`][lang_pseudocode] — Highlight theme for pseudocode
 
 Scripts:
 
@@ -69,39 +79,47 @@ The easiest way to install Dart Sass on Windows, and keep it always updated, is 
 
 # Credits
 
-## Base16 Color Schemes
+## Base16-Sass Color Schemes
 
-- [`_color-schemes.scss`][color-schemes]
+- https://github.com/tajmone/Base16-Sass
 
-The following color schemes were adapted from Chris Kempson's [base16-builder] project:
+The following color schemes were taken from the [Base16 Sass] project, by Tristano Ajmone:
 
-- [Base16 Atelier Sulphurpool] — by [Bram de Haan].
-- [Base16 Eighties] — by [Chris Kempson].
-- [Base16 Google] — by [Seth Wright].
-- [Base16 Tomorrow] — by [Chris Kempson].
+- __Base16 Atelier Sulphurpool__ — by [Bram de Haan].
+- __Base16 Eighties__ — by [Chris Kempson].
+- __Base16 Google__ — by [Seth Wright].
+- __Base16 Tomorrow__ — by [Chris Kempson].
+- __Base16 Solarized__ — by [Ethan Schoonover].
 
-[Base16-builder] is released under MIT License:
+[Base16 Sass] is a derivative work from Chris Kempson's [Base16-builder], and is released under MIT License:
 
-    Copyright (C) 2012 [Chris Kempson](http://chriskempson.com)
-    
-    Permission is hereby granted, free of charge, to any person obtaining
-    a copy of this software and associated documentation files (the
-    "Software"), to deal in the Software without restriction, including
-    without limitation the rights to use, copy, modify, merge, publish,
-    distribute, sublicense, and/or sell copies of the Software, and to
-    permit persons to whom the Software is furnished to do so, subject to
-    the following conditions:
-    
-    The above copyright notice and this permission notice shall be
-    included in all copies or substantial portions of the Software.
-    
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-    OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-    WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+MIT License
+
+Copyright (c) 2019 Tristano Ajmone <tajmone@gmail.com>
+https://github.com/tajmone/Base16-Sass
+
+Copyright (c) 2012 Chris Kempson (http://chriskempson.com)
+https://github.com/chriskempson/base16-builder
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 ## Sass Boilerplate
 
@@ -145,14 +163,22 @@ The `fontFace` Mixin was adapted from Sass Boilerplate project's "[`fontface.scs
 
 <!-- Sass/SCSS -->
 
+[asciidoctor scss]: ./_asciidoctor.scss "View source file"
+[b16_atelier-sulphurpool]: ./_base16-atelier-sulphurpool.scss "View source file"
+[b16_eighties]: ./_base16-eighties.scss "View source file"
+[b16_google]: ./_base16-google-dark.scss "View source file"
+[b16_solarizedk]: ./_base16-solarized-dark.scss "View source file"
+[b16_tomorrow-night]: ./_base16-tomorrow-night.scss "View source file"
 [color-schemes]: ./_color-schemes.scss "View source file"
 [default-theme]: ./_default-theme.scss "View source file"
 [fonts]: ./_fonts.scss "View source file"
 [helpers]: ./_helpers.scss "View source file"
+[lang_cpp]: ./_lang_cpp.scss "View source file"
+[lang_delphi]: ./_lang_delphi.scss "View source file"
+[lang_ebnf]: ./_lang_ebnf.scss "View source file"
+[lang_pseudocode]: ./_lang_pseudocode.scss "View source file"
 [ligatures]: ./_fonts-ligatures.scss "View source file"
 [styles]: ./styles.scss "View source file"
-[lang_cpp]: ./_lang_cpp.scss/ "View source file"
-[lang_delphi]: ./_lang_delphi.scss/ "View source file"
 
 <!-- dependencies -->
 
@@ -181,18 +207,15 @@ The `fontFace` Mixin was adapted from Sass Boilerplate project's "[`fontface.scs
 
 [base16-builder]: https://github.com/chriskempson/base16-builder
 
-[Base16 Atelier Sulphurpool]: https://github.com/chriskempson/base16-builder/blob/master/schemes/atelier-sulphurpool.yml "View upstream source file"
-[Base16 Eighties]: https://github.com/chriskempson/base16-builder/blob/master/schemes/eighties.yml "View upstream source file"
-[Base16 Google]: https://github.com/chriskempson/base16-builder/blob/master/schemes/google.yml "View upstream source file"
-[Base16 Tomorrow]: https://github.com/chriskempson/base16-builder/blob/master/schemes/tomorrow.yml "View upstream source file"
+[Base16 Sass]: https://github.com/tajmone/Base16-Sass "Visit the 'Base16 Sass' project"
 
 [Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
 
 <!-- people -->
 
-[Bram de Haan]:  https://atelierbramdehaan.nl "Visit Bram de Haan's website"
-[Chris Kempson]: http://chriskempson.com      "Visit Chris Kempson's website"
-[Seth Wright]:   http://sethawright.com       "Visit Seth Wright's website"
-[André Simon]:   http://www.andre-simon.de/   "Visit André Simon's website"
-
+[Bram de Haan]:     https://atelierbramdehaan.nl "Visit Bram de Haan's website"
+[Chris Kempson]:    http://chriskempson.com      "Visit Chris Kempson's website"
+[Seth Wright]:      http://sethawright.com       "Visit Seth Wright's website"
+[André Simon]:      http://www.andre-simon.de/   "Visit André Simon's website"
+[Ethan Schoonover]: http://ethanschoonover.com/  "Visit Ethan Schoonover website"
 <!-- EOF -->

@@ -6,9 +6,10 @@
 
 *.tmp
 
-## =========
+## ==========
 ## Sass cache
-## =========
+## ==========
+## Just in case someone still uses Ruby Sass:
 .sass-cache/
 
 ## Misc Work Files
@@ -29,6 +30,7 @@ ___*.*
 # AsciiDoc local preview docs
 *.html
 !docs/*.html
+docs/___*.html
 
 # ==============================================================================
 #                              MISC IGNORE PATTERNS                             
