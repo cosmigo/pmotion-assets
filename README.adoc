@@ -178,6 +178,7 @@ End users of this project should always refer to the official Pro Motion NG chan
 
 * {docs} -- HTML documents.
 * {docs_src} -- AsciiDoc sources and assets to build the HTML docs.
+* link:palettes/base16[`/palettes/base16`] -- The Base16 schemes (107) converted to PM palettes.
 * {plugins} -- resources for plugin developers.
 * {specs} -- technical stuff about standards and specs.
 * {CONTRIBUTING} -- guidelines for submitting contents and collaborating.

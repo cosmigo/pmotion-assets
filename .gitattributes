@@ -14,6 +14,11 @@
 # Git how to handle line-endings normalization.
 
 ## ============
+## PM NG ASSETS
+## ============
+*.pal      binary
+
+## ============
 ## CODE SCRIPTS
 ## ============
 *.py       text
