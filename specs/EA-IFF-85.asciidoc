@@ -1,6 +1,6 @@
 = "`EA IFF 85`" Standard for Interchange Format Files
 Jerry Morrison, Electronic Arts
-:LastEdited: 2019-03-30
+:LastEdited: 2019-04-29
 :revdate: January 14, 1985
 :revremark: Released and in use
 :lang: en
@@ -669,7 +669,7 @@ This enables a lot more compatibility.
 
 Separate the central data (like musical notes) from more specialized information (like note beams) so simpler programs can extract the central parts during read-in.
 Leave room for expansion so other programs can squeeze in new kinds of information (like lyrics).
-And remember to keep the property chunks manageably short -- let's say 2 256 bytes.
+And remember to keep the property chunks manageably short -- let's say < 256 bytes.
 
 When designing a data object, try to strike a good tradeoff between a super-general format and a highly-specialized one.
 Fit the details to at least one particular need, for example a raster image might as well store pixels in the current machine's scan order.
