@@ -16,63 +16,68 @@
 ## ============
 ## PM NG ASSETS
 ## ============
-*.pal      binary
+*.pal  binary
+
+## =================
+## PIXEL ART FORMATS
+## =================
+*.bmf  binary
 
 ## ============
 ## CODE SCRIPTS
 ## ============
-*.py       text
-*.py3      text
-*.rb       text
+*.py   text
+*.py3  text
+*.rb   text
 
 ## ===========================
 ## HIGHLIGHT LANGDEFS & THEMES
 ## ===========================
-*.lang         text
-*.theme        text
+*.lang   text
+*.theme  text
 
 ## ============
 ## SASS/SCSS
 ## ============
-*.sass     text
-*.scss     text
+*.sass  text
+*.scss  text
 
 ## =============
 ## SHELL SCRIPTS
 ## =============
-*.bat      text eol=crlf
-*.com      text eol=crlf
-*.sh       text eol=lf
-*.ps1      text eol=crlf
+*.bat  text eol=crlf
+*.com  text eol=crlf
+*.sh   text eol=lf
+*.ps1  text eol=crlf
 
 ## ==================
 ## MISC. DATA FORMATS
 ## ==================
-*.csv      text
-*.json     text
-*.xhtml    text
-*.xml      text
-*.xsl      text
-*.yaml     text
-*.yml      text
+*.csv    text
+*.json   text
+*.xhtml  text
+*.xml    text
+*.xsl    text
+*.yaml   text
+*.yml    text
 
 ## =================
 ## WEB-RELATED FILES
 ## =================
-*.htm      text
-*.html     text
-*.css      text eol=lf
-*.js       text
+*.htm   text
+*.html  text
+*.css   text eol=lf
+*.js    text
 
 ## =========================
 ## ASCIIDOCTOR-RELATED FILES
 ## =========================
-*.haml     text
+*.haml  text
 
 ## ======================
 ## ASCII DIAGRAMS SOURCES
 ## ======================
-*.svgbob   text
+*.svgbob  text
 
 ## ===================
 ## DOCUMENTATION FILES
@@ -106,12 +111,12 @@ LICENSE      text
 ## ========
 ## ARCHIVES
 ## ========
-*.7z    binary
-*.gz    binary
-*.jar   binary
-*.rar   binary
-*.tar   binary
-*.zip   binary
+*.7z   binary
+*.gz   binary
+*.jar  binary
+*.rar  binary
+*.tar  binary
+*.zip  binary
 
 ## ========
 ## GRAPHICS

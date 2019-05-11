@@ -73,10 +73,12 @@ endif::[]
 :Pro_Motion: https://www.cosmigo.com/[Pro Motion^, title="Visit Pro Motion website"]
 
 // Links 2 project folders
-:docs: pass:q[link:./docs[`/docs/`^,title="Navigate to folder"]]
-:docs_src: pass:q[link:./docs_src[`/docs_src/`^,title="Navigate to folder"]]
-:plugins: pass:q[link:./plugins[`/plugins/`^,title="Navigate to folder"]]
-:specs: pass:q[link:./specs[`/specs/`^,title="Navigate to folder"]]
+:docs: pass:q[link:./docs[`/docs/`,title="Navigate to folder"]]
+:docs_src: pass:q[link:./docs_src[`/docs_src/`,title="Navigate to folder"]]
+:fonts: pass:q[link:./fonts[`/fonts/`,title="Navigate to folder"]]
+:palettes: pass:q[link:./palettes/base16[`/palettes/`,title="Navigate to folder"]]
+:plugins: pass:q[link:./plugins[`/plugins/`,title="Navigate to folder"]]
+:specs: pass:q[link:./specs[`/specs/`,title="Navigate to folder"]]
 
 // Links 2 project files
 :CONTRIBUTING: pass:q[link:./CONTRIBUTING.md[`CONTRIBUTING`^,title="Read the contributors' guidelines"]]
@@ -178,7 +180,8 @@ End users of this project should always refer to the official Pro Motion NG chan
 
 * {docs} -- HTML documents.
 * {docs_src} -- AsciiDoc sources and assets to build the HTML docs.
-* link:palettes/base16[`/palettes/base16`] -- The Base16 schemes (107) converted to PM palettes.
+* {fonts} -- over 1000 pixel art fonts.
+* {palettes} -- The Base16 schemes (107) converted to PM palettes.
 * {plugins} -- resources for plugin developers.
 * {specs} -- technical stuff about standards and specs.
 * {CONTRIBUTING} -- guidelines for submitting contents and collaborating.
