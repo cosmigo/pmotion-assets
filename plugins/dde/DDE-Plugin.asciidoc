@@ -1,8 +1,8 @@
 = Pro Motion DDE Plugin Interface
 Jan Zimmermann <jan@cosmigo.com>
-v1.0.0, 2019-03-24
+v1.0.0, 2019-05-13
 // Doc Revision Info
-:PMNG_V: 7.1.8.0
+:PMNG_V: 7.2.1
 :revremark: PMNG v{PMNG_V}
 // Metadata:
 :description: Documentation of Cosmigo Pro Motion DDE plugin interface for \
@@ -289,7 +289,7 @@ Result:    :: Up to version 4.7: +
               {blank} +
               Since version 5.0: +
               If the command was executed and the animation was created the
-              result is the number of of the project. +
+              result is the number of the project. +
               Otherwise the result is `"-1"` and nothing else is done.
 Version:   :: 3.0
 
