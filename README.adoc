@@ -270,6 +270,7 @@ Full credits and licenses can be found in the assets subfolders; here's an abrid
 * link:https://community.cosmigo.com/[Pro Motion Community Forum^, title="Visit the Cosmigo community forum"]
 * link:https://www.cosmigo.com/promotion/docs/onlinehelp/main.htm[Pro Motion NG Documention^, title="View Pro Motion NG documentation online"]
 * link:https://www.cosmigo.com/blog[Pro Motion NG Blog^, title="Visit Cosmigo official blog"]
+* link:https://steamcommunity.com/app/671190[Pro Motion NG Steam Community Hub^, title="Visit the Steam Community Hub of Pro Motion NG"]
 // end::external_links[]
 
 
