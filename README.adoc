@@ -79,6 +79,7 @@ endif::[]
 :palettes: pass:q[link:./palettes/base16[`/palettes/`,title="Navigate to folder"]]
 :plugins: pass:q[link:./plugins[`/plugins/`,title="Navigate to folder"]]
 :specs: pass:q[link:./specs[`/specs/`,title="Navigate to folder"]]
+:templates: pass:q[link:./templates/golden-ratio[`/templates/`,title="Navigate to folder"]]
 
 // Links 2 project files
 :CONTRIBUTING: pass:q[link:./CONTRIBUTING.md[`CONTRIBUTING`^,title="Read the contributors' guidelines"]]
@@ -181,9 +182,10 @@ End users of this project should always refer to the official Pro Motion NG chan
 * {docs} -- HTML documents.
 * {docs_src} -- AsciiDoc sources and assets to build the HTML docs.
 * {fonts} -- over 1000 pixel art fonts.
-* {palettes} -- The Base16 schemes (107) converted to PM palettes.
+* {palettes} -- the Base16 schemes (107) converted to PM palettes.
 * {plugins} -- resources for plugin developers.
 * {specs} -- technical stuff about standards and specs.
+* {templates} -- golden ratio PM templates.
 * {CONTRIBUTING} -- guidelines for submitting contents and collaborating.
 * {LICENSE} -- Apache 2.0 license.
 
