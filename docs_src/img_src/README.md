@@ -20,7 +20,7 @@ Files with the `.svgbob` extension are plaintext sources used to create the SVG 
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [Svgbob online editor]: https://ivanceras.github.io/svgbob-editor/ "Go to Svgbob online Editor"

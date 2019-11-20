@@ -16,12 +16,12 @@
 CHCP 65001 &:: Unicode (UTF-8)
 ECHO.
 :: =============================================================================
-::                           Highlight Configuration                            
+::                           Highlight Configuration
 :: =============================================================================
 SET "HIGHLIGHT_DATADIR=%~dp0hl\"
 ECHO HIGHLIGHT_DATADIR: %HIGHLIGHT_DATADIR%
 :: =============================================================================
-::                             Iterate and Convert                              
+::                             Iterate and Convert
 :: =============================================================================
 :: Iterate over AsciiDoc files through the whole project, starting from the root
 :: folder (up one level) and convert them to HTML.
@@ -31,7 +31,7 @@ ECHO Building Pro Motion NG Documents
 ECHO ================================
 ECHO Converting documents from AsciiDoc to HTML:
 FOR /R %%i IN (*.asciidoc) DO (
-    CALL :conv2html %%i
+	CALL :conv2html %%i
 )
 POPD
 EXIT /B
@@ -41,7 +41,7 @@ EXIT /B
 :: *                                                                           *
 :: *****************************************************************************
 :: =============================================================================
-:: func                          Convert to HTML                                
+:: func                          Convert to HTML
 :: =============================================================================
 :: The conversion script must "flatten out" all relative paths to other project
 :: documents, for in the "docs/" folder the original subfolders structure is
@@ -55,17 +55,17 @@ EXIT /B
 
 ECHO - "%1"
 CALL asciidoctor^
-    --verbose^
-    --safe-mode unsafe^
-    --template-dir %~dp0haml^
-    --require %~dp0adoc/highlight-treeprocessor_mod.rb^
-    --destination-dir ./docs^
-     -a source-highlighter=highlight^
-     -a docinfodir=%~dp0adoc^
-     -a docinfo=shared-head^
-     -a path_plugins^
-     -a imagesdir=img^
-      %1
+	--verbose^
+	--safe-mode unsafe^
+	--template-dir %~dp0haml^
+	--require %~dp0adoc/highlight-treeprocessor_mod.rb^
+	--destination-dir ./docs^
+	-a source-highlighter=highlight^
+	-a docinfodir=%~dp0adoc^
+	-a docinfo=shared-head^
+	-a path_plugins^
+	-a imagesdir=img^
+	%1
 EXIT /B
 
 :: EOF ::

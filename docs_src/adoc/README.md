@@ -77,7 +77,7 @@ The Asciidoctor Project, released under MIT License:
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 <!-- proj files -->

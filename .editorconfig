@@ -1,0 +1,121 @@
+###############################################
+#  Cosmigo Pro Motion Assets                  #
+#  https://github.com/tajmone/pmotion-assets  #
+###############################################
+
+root = true
+
+; [*]
+; indent_style = space
+; indent_size = unset
+; end_of_line = unset
+; charset = utf-8
+; trim_trailing_whitespace = true
+; insert_final_newline = true
+
+
+## Repository Configurations
+############################
+[.{git*,editorconfig,*.yml}]
+indent_style = space
+indent_size = unset
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## Markdown GFM
+###############
+[*.md]
+indent_style = space
+indent_size = unset
+end_of_line = unset
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## AsciiDoc
+###########
+[*.{ad,adoc,asciidoc}]
+indent_size = unset
+indent_style = space
+end_of_line = unset
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## Plain-Text Files
+###################
+[*.txt]
+indent_style = space
+indent_size = unset
+end_of_line = unset
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+[{LICENSE,README}]
+indent_size = unset
+indent_style = space
+end_of_line = unset
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## Shell Scripts
+################
+[*.sh]
+end_of_line = lf
+indent_style = tab
+indent_size = unset
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## Batch Scripts
+################
+[*.bat]
+indent_style = tab
+indent_size = unset
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## Sass/SCSS
+############
+[*.{sass,scss}]
+indent_size = 2
+indent_style = space
+end_of_line = unset
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## ASCII Diagrams Sources
+#########################
+[*.svgbob]
+indent_size = unset
+indent_style = space
+end_of_line = unset
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+## Highlight (Lua) Scripts
+##########################
+[*.{lua,lang,theme}]
+indent_style = space
+indent_size = 2
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+# EOF #

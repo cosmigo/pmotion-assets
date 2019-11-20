@@ -62,7 +62,7 @@ The [`filetypes.conf`][filetypes] configuration is a tweaked version of the same
 The GPL license does not affect the converted documents.
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 <!-- project files & folders -->

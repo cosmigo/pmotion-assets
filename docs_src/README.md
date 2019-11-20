@@ -45,7 +45,7 @@ More information on how to install these tools can be found in the README files 
 
 
 > __IMPORTANT__ — On March 12, 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26, 2019 Ruby Sass will no longer be maintained.
-> 
+>
 > Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
 
 # Asciidoctor Haml Templates
@@ -64,7 +64,7 @@ The Haml files in this folder were adapted by Tristano Ajmone from the original 
 [Asciidoctor Backends] project, Copyright (C) 2012-2016 Dan Allen and the Asciidoctor Project, released under MIT License:
 
     The MIT License
-    
+
     Copyright (C) 2018 Tristano Ajmone.
     Copyright (C) 2012-2016 Dan Allen and the Asciidoctor Project
 
@@ -88,7 +88,7 @@ The Haml files in this folder were adapted by Tristano Ajmone from the original 
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 <!-- project files & folders -->

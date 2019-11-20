@@ -37,7 +37,7 @@ I'll be adding differently sized templates, trying to cover commonly used image 
 
 # The Golden Sections Plugin
 
-The golden ratio layer images where created using the [Golden Sections] Photoshop plugin, which is an extremely flexible tool that produces pixel-perfect lines, which work exceptionally well with pixel art. 
+The golden ratio layer images where created using the [Golden Sections] Photoshop plugin, which is an extremely flexible tool that produces pixel-perfect lines, which work exceptionally well with pixel art.
 
 The [Golden Sections] plugin offers additional functionality for harmonius divisions of space beside the golden ratio (rule of thirds, harmonious triangles, and midpoints diagonals) which are not covered here. If you work also with Photoshop I strongly advice purchasing this plugin for it's invaluable in any type of design, and can easily be used in conjuction with Pro Motion by exporting the created golden ratio divisions as transparent PNGs.
 
@@ -56,7 +56,7 @@ The [Golden Sections] plugin offers additional functionality for harmonius divis
 - [Golden Ratio in Web Design]
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [Phiculator]: http://www.thismanslife.co.uk/projects/phiculator/ "Visit Phiculator website"

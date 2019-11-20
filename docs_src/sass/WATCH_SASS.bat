@@ -1,4 +1,4 @@
-:: "WATCH_SASS.bat"                            v2.0.0 | 2019/03/12 | by Tristano 
+:: "WATCH_SASS.bat"                            v2.0.0 | 2019/03/12 | by Tristano
 :: -----------------------------------------------------------------------------
 :: REQUIREMENTS -- To run this script you'll need to install either:
 :: - Dart Sass (Node.js):

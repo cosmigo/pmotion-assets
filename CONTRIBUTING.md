@@ -44,7 +44,7 @@ Again, these are general guidelines thought-of at the time of the project creati
 
 All submitted assets and contents need to meet the following criteria:
 
-- __Legitimacy__ — all assets must be legally redistributable, without 
+- __Legitimacy__ — all assets must be legally redistributable, without
 copyright infringement; third party text contents must be legally and legitimatly reproduced and duely credit their authors. If in doubt reagarding third party assets, always contact the original author for clarifications and/or to seek permission.
 - __FOSS License__ — all assets must be released under permissive free and open source (FOSS) license compatible with this project and its license ([Apache License v2.0]). Assets in this project need to be usable by its end users.
 - __License File__ — every asset should come with a full license file. Eligible third party assets should already ship with their own license file, just include it. If you're adding assets created by yourself, you must provide a FOSS license file.
@@ -54,7 +54,7 @@ As a general rule, a `LICENSE` file inside a folder implies that all assets with
 
 Assets without any license indication are implicitly governed by the [Apache License v2.0] of this project (e.g. batch scripts and other assets created for project maintainance). It would be impractical to add a license for each and every small asset created for the sole purpose of scaffolding and maintaining the project (scripts, CSS, READMEs, etc.). Similar project-accessory contributions are implicitly part of the overall project, and we assume that contributors understand this when commiting to the project (after all, they're commiting to a licensed project). The stricter license guidelines outlined above are intended for those resources which are more likely going to be taken from this project and reused elsewhere, on their own — by providing their `LICENSE` files we are both protecting them and making them easier to reuse. Furthermore, assets which already have a license of their own must retain their license; and assets created _ad hoc_ for this project should have a license of their own so that their author can be duely credited when they are used elsewhere.
 
-Sometimes a user might find a useful code or text snippet published on a public forum (or a [Gist]) and ask its author permission to reuse it in other projects, thus obtaining a generic permission to do so by means of a simple "yes" answer. This is an acceptable practice and only requires adding a statement crediting the original author and mentioning that permission was obtained to do so. In similar cases, it's not possible to assign a specific license to the reproduced material (only its author would have the right to do so), and the asset will simply fall under the generic terms of the project ([Apache License v2.0]) which is a permissive license aimed at protecting authorship and copyright. But when dealing with large/complex assets that go beyond a mere snippet of text or code (e.g. a full article, a code library) a more formal approach is required, contacting the author and asking him/her to release the asset under an explicit FOSS license. 
+Sometimes a user might find a useful code or text snippet published on a public forum (or a [Gist]) and ask its author permission to reuse it in other projects, thus obtaining a generic permission to do so by means of a simple "yes" answer. This is an acceptable practice and only requires adding a statement crediting the original author and mentioning that permission was obtained to do so. In similar cases, it's not possible to assign a specific license to the reproduced material (only its author would have the right to do so), and the asset will simply fall under the generic terms of the project ([Apache License v2.0]) which is a permissive license aimed at protecting authorship and copyright. But when dealing with large/complex assets that go beyond a mere snippet of text or code (e.g. a full article, a code library) a more formal approach is required, contacting the author and asking him/her to release the asset under an explicit FOSS license.
 
 # README Files
 
@@ -77,14 +77,14 @@ Any manual editing of the TOC would be lost when the TOC is automatically regenr
 
 # AsciiDoc Files
 
-Every AsciiDoc file with the `*.asciidoc` extension will be converted to an HTML document inside the [`/docs/`][docs] folder. Therefore, when contributing an AsciiDoc file intended only for previewing on GitHub, use the `*.adoc` extension instead (unless you _do_ want it to be also converted as an HTML doc in its own right). 
+Every AsciiDoc file with the `*.asciidoc` extension will be converted to an HTML document inside the [`/docs/`][docs] folder. Therefore, when contributing an AsciiDoc file intended only for previewing on GitHub, use the `*.adoc` extension instead (unless you _do_ want it to be also converted as an HTML doc in its own right).
 
 GitHub live preview renders `*.adoc` and `*.asciidoc` files alike, but the conversion script in this project will only convert `*.asciidoc` files to HTML. Using different file extensions is our means of distinguishing between Pro Motion documentation and generic project documents (READMEs, etc.) which are not PM assets in their own right.
 
 
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 <!-- project files & folders -->

@@ -15,7 +15,7 @@ Bitmap fonts.
 Thanks to [@phracker] for having preserved the Daniel Guldkrans’ fonts collection by downloading all the fonts from the website (when it was still active) and for having shared them with us via his "[f0ntbin]" repository when Guldkrans’ website died.
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [f0ntbin]: https://github.com/phracker/f0ntbin "Visit the f0ntbin repository on GitHub"

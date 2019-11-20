@@ -1,4 +1,4 @@
-= Cosmigo Pro Motion Assets
+= Cosmigo Pro Motion Assets{nbsp}{nbsp}image:https://travis-ci.com/tajmone/pmotion-assets.svg[Travis CI,title="EditorConfig code styles validation via Travis CI"]
 :lang: en
 // TOC Settings:
 :toclevels: 5
@@ -118,7 +118,6 @@ endif::[]
 // *                            Document Preamble                              *
 // *                                                                           *
 // *****************************************************************************
-
 
 A collection of assets for {Pro_Motion_NG}, the pixel drawing and animation software by {Cosmigo}.
 

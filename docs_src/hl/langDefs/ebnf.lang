@@ -63,9 +63,9 @@ Strings={
   -- Only double quotes as string delimiter: "...STRING..."
   Delimiter=[=[ " ]=],
 --[[----------------------------------------------------------------------------
-                                 ESCAPE SEQUENCES
-   -----------------------------------------------------------------------------
-   Suppress Escape sequences via Never-Matching RegEx                       --]]
+                                ESCAPE SEQUENCES
+  ------------------------------------------------------------------------------
+  Suppress Escape sequences via Never-Matching RegEx                       --]]
   Escape=NEVER_MATCH_RE
 }
 --[[============================================================================
@@ -100,7 +100,7 @@ Keywords={
 --[[============================================================================
                                       CHANGELOG
 ================================================================================
- v1.0.0 (2019/03/30) | Highlight v3.49)
-    - First release. Created by modifying "ebnf2.lang" (v1.0.1):
-      - Replace OCaml comments delimiter with single line '--' delimiter.
+v1.0.0 (2019/03/30) | Highlight v3.49)
+  - First release. Created by modifying "ebnf2.lang" (v1.0.1):
+    - Replace OCaml comments delimiter with single line '--' delimiter.
 --]]

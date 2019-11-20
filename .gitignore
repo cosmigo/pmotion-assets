@@ -1,19 +1,19 @@
-################################################################################
-# Cosmigo Pro Motion Assets                                                    #
-# https://github.com/tajmone/pmotion-assets                                    #
-################################################################################
+###############################################
+#  Cosmigo Pro Motion Assets                  #
+#  https://github.com/tajmone/pmotion-assets  #
+###############################################
 
 
 *.tmp
 
-## ==========
 ## Sass cache
-## ==========
+#############
 ## Just in case someone still uses Ruby Sass:
 .sass-cache/
 
+
 ## Misc Work Files
-## ===============
+##################
 
 # Custom Backup Files
 ___*.*
@@ -33,7 +33,7 @@ ___*.*
 docs/___*.html
 
 # ==============================================================================
-#                              MISC IGNORE PATTERNS                             
+#                              MISC IGNORE PATTERNS
 # ==============================================================================
 # Based on ".gitignore" created by:
 # https://www.gitignore.io/api/windows,linux,macos,purebasic

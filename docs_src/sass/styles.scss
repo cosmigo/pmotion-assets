@@ -10,7 +10,7 @@
 // syntaxes that don't have a dedicated theme, and some syntax-specific themes.
 // The latter rely on a custom ERB template that modifies the HTML output for
 // listing blocks:
-// 
+//
 //   ../erb/block_listing.html.erb
 
 // ==================
@@ -31,7 +31,7 @@
 @import 'color-schemes';
 
 // =============================================================================
-//                          Syntax Highlighting Themes                          
+//                          Syntax Highlighting Themes
 // =============================================================================
 
 // =============
@@ -50,7 +50,7 @@
 @import 'lang_ebnf';        // EBNF
 
 // =============================================================================
-//                             Asciidoctor Elements                             
+//                             Asciidoctor Elements
 // =============================================================================
 // Let's customize the look and feel of some native Asciidoctor elements...
 

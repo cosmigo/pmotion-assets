@@ -1,6 +1,6 @@
 # Base16 Palettes
 
-The full collection of Base16 schemes (107) converted to Pro Motion palette files. 
+The full collection of Base16 schemes (107) converted to Pro Motion palette files.
 
 By Tristano Ajmone (MIT License).
 
@@ -26,7 +26,7 @@ The 107 palette files (`*.pal`) in this folder were programmatically generated b
 
 Although the Base16 schemes were designed with syntax highlighting in mind, they might turn out to be good starting palettes for Pixel Art too, especially for logos and cover art. The colors of the schemes have been carefully chosen by their authors to work well together. Some Base16 schemes have become very popular and widely used, so using their colors could add familiarity to any art work.
 
-Needless to say, this project is an experiment with color schemes in Pixel Art. 
+Needless to say, this project is an experiment with color schemes in Pixel Art.
 
 
 # About Base16
@@ -197,7 +197,7 @@ The following table lists the authors of every Base16 scheme, with a back link (
 - [Base16 Sass] project on GitHub.
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 

@@ -1,28 +1,39 @@
---[[ delphi.lang v0.0.1 | 2018/12/23 | Highlight v3.48
+--[[ delphi.lang v0.0.1 | 2019/01/05 | Highlight v3.48
 ********************************************************************************
 *                                                                              *
 *                         Delphi Syntax for Highlight                          *
 *                                                                              *
 ********************************************************************************
-Adapted by Tristano Ajmone. Original author unknown (most likely, André Simon).
+Adapted by Tristano Ajmone. Original author unknown (maybe André Simon?).
 License: GNU GPL v3.
 
 This is a readaptation of the Pascal syntax definition ("pas.lang") that ships
 with Highlight; it was tweaked to cover Delphi native types and keywords.
+Being a derivative work from a file taken from the Highlight project, it falls
+under the same license of Highlight (GNU GPL v3).
+--------------------------------------------------------------------------------
+** MAINTAINER NEEDED! **
 
-It doesn't cover fully the Delphi syntax -- I've just updated the list of native
-data types keywords, as a way of "patching holes", but no effort was taken to
-systematically go over the full syntax definition to make it fully compliant
-to Delphi.
+This langDef doesn't fully cover the Delphi syntax -- I've just updated the list
+of native data types keywords, as a way of "patching holes", but no effort was
+taken to systematically go over the full syntax definition to make it fully
+compliant to Delphi.
 
---]]
+It should be considered an Alpha version and won't reach v1.0 until someone with
+better knwoledge of Delphi than I have revises the whole syntax to ensure it's
+compliant to the Delphi language.
+
+Keywords lists are left as one-keyword-for-line to simplify reading and editing.
+------------------------------------------------------------------------------]]
 Description="delphi"
+
+Categories = {"source"}
 
 Digits=[[ (?:0x|0X|\$)[0-9a-fA-F]+|\d*[\.\_]?\d+(?:[eE][\-\+]\d+)?[lLuUbfdm]* ]]
 
 Keywords={
   -- ===========================================================================
-  --                              Delphi Keywords                               
+  --                              Delphi Keywords
   -- ===========================================================================
   -- Keywords list is the same as the original Pascal langDef.
   -- ---------------------------------------------------------------------------
@@ -118,7 +129,7 @@ Keywords={
     },
   },
   -- ===========================================================================
-  --                             Delphi Data Types                              
+  --                             Delphi Data Types
   -- ===========================================================================
   -- Keywords list updated based on:
   -- http://docwiki.embarcadero.com/RADStudio/Tokyo/en/Delphi_Data_Types_for_API_Integration
@@ -231,17 +242,24 @@ PreProcessor = {
 }
 
 NestedSections = {
-  { 
-    Lang="assembler", 
-    Delimiter= { [[asm]], [[end;]] } 
+  {
+    Lang="assembler",
+    Delimiter= { [[asm]], [[end;]] }
   }
 }
 
 Operators=[[\(|\)|\[|\]|,|;|:|&|<|>|\!|\=|\/|\*|\%|\+|\-|\@|\.|\^]]
 
 function OnStateChange(oldState, newState, token)
-   if token=="}" and oldState==HL_PREPROC then
-      return HL_PREPROC_END
-   end   
-   return newState
+  if token=="}" and oldState==HL_PREPROC then
+    return HL_PREPROC_END
+  end
+  return newState
 end
+--[[============================================================================
+                                  CHANGELOG
+================================================================================
+v0.0.1  - 2019/01/05 (Highlight v3.48)
+        - First release. Adapted from the Pascal syntax definition ("pas.lang").
+        - Updated keywords Id2 list to include the Delphi native Data Types.
+--]]

@@ -53,8 +53,8 @@ Sass sources:
 
 Scripts:
 
-- [`BUILD_SASS.bat`][BUILD] 
-- [`WATCH_SASS.bat`][WATCH] 
+- [`BUILD_SASS.bat`][BUILD]
+- [`WATCH_SASS.bat`][WATCH]
 
 Builds to [`../../docs/css/styles.css`][styles.css].
 
@@ -62,7 +62,7 @@ Builds to [`../../docs/css/styles.css`][styles.css].
 # System Requirements
 
 > __IMPORTANT__ — On March 12, 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26, 2019 Ruby Sass will no longer be maintained.
-> 
+>
 > Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
 
 
@@ -126,7 +126,7 @@ SOFTWARE.
 - [`_helpers.scss`][helpers]
 
 The `fontFace` Mixin was adapted from Sass Boilerplate project's "[`fontface.scss`][fontface]", Copyright (c) 2013 Peter Mescalchin, MIT License:
- 
+
 -  https://github.com/magnetikonline/sass-boilerplate
 
 <!--  -->
@@ -153,7 +153,7 @@ The `fontFace` Mixin was adapted from Sass Boilerplate project's "[`fontface.scs
     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [BUILD]: ./BUILD_SASS.bat "View source file"

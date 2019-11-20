@@ -20,7 +20,7 @@ I want to thank CRS from [bmf.php5.cz] for kindly sharing the BMF fonts found in
 -  http://bmf.php5.cz
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                               REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 

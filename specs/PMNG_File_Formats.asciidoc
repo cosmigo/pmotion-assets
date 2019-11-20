@@ -6,8 +6,8 @@ Tristano Ajmone <tajmone@gmail.com>
 :revremark: PMNG v{PMNG_V}
 // Metadata:
 :description: Pro Motion NG natively supported file formats.
-:keywords: 	cosmigo, pro motion ng, file formats, file extensions, pixel art, \
-		  	pixelart, images, animations
+:keywords:  cosmigo, pro motion ng, file formats, file extensions, pixel art, \
+            pixelart, images, animations
 // Doc Settings:
 :lang: en
 :version-label: revision

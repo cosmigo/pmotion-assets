@@ -34,7 +34,7 @@ Both the `freefont.htm` part in the original URL, and the fact that most fonts i
 Many of the fonts in this collection carry a watermark stating "DRAWN BY DANIEL GULDKRANS". I assume those who don't bare this statement as being from some unknown author.
 
 <!-----------------------------------------------------------------------------
-                               REFERENCE LINKS                                
+                                REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
 [open an issue]: https://github.com/tajmone/pmotion-assets/issues/new
