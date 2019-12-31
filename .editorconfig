@@ -5,14 +5,6 @@
 
 root = true
 
-; [*]
-; indent_style = space
-; indent_size = unset
-; end_of_line = unset
-; charset = utf-8
-; trim_trailing_whitespace = true
-; insert_final_newline = true
-
 
 ## Repository Configurations
 ############################
@@ -78,7 +70,7 @@ insert_final_newline = true
 
 ## Batch Scripts
 ################
-[*.bat]
+[*.{bat,cmd}]
 indent_style = tab
 indent_size = unset
 end_of_line = crlf
@@ -117,5 +109,15 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+
+## Ruby
+#######
+[*.{rb,gemspec}]
+indent_size = 2
+indent_style = space
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
 
 # EOF #
