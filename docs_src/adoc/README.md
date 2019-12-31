@@ -48,7 +48,7 @@ Once Ruby is installed on your system, open a shell and type:
 
 ## Highlight Extension
 
-The [`highlight-treeprocessor_mod.rb`][rb] file was adapted by Tristano Ajmone from the original file [`highlight-treeprocessor.rb`][rb upstream] taken from the [Asciidoctor Extensions Lab] (commit 18bdf62), Copyright (C) 2014-2016
+The [`highlight-treeprocessor_mod.rb`][rb] file was adapted by Tristano Ajmone from the original file [`highlight-treeprocessor.rb`][rb upstream] taken from the [Asciidoctor Extensions Lab] (commit [c9ce3ab]), Copyright (C) 2014-2016
 The Asciidoctor Project, released under MIT License:
 
     The MIT License
@@ -105,6 +105,7 @@ The Asciidoctor Project, released under MIT License:
 
 [rb upstream]: https://github.com/asciidoctor/asciidoctor-extensions-lab/blob/18bdf62/lib/highlight-treeprocessor.rb
 [Asciidoctor Extensions Lab]: https://github.com/asciidoctor/asciidoctor-extensions-lab/ "Visit the Asciidoctor Extensions Lab project"
+[c9ce3ab]: https://github.com/asciidoctor/asciidoctor-extensions-lab/commit/c9ce3ab421c5d47f1178b57a4a5894811f9eb945
 
 
 <!-- EOF -->
