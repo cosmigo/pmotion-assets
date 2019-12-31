@@ -23,6 +23,7 @@ Various assets required to build or test the project, along with sources of buil
 - [`/haml/`][haml] — customized Haml HTML5 templates ([see below][Haml sec]).
 - [`/hl/`][hl] — Highlight langDefs and assets.
 - [`/sass/`][sass] — Sass/SCSS stylesheets source files.
+- [`/sh/`][sh] — Bash scripts assets.
 
 # Asciidoctor Haml Templates
 
@@ -69,10 +70,11 @@ The Haml files used in this project were adapted by Tristano Ajmone from the ori
 
 <!-- project files & folders -->
 
-[adoc]: ./adoc/ "Navigate folder"
-[haml]: ./haml/ "Navigate folder"
-[hl]: ./hl/ "Navigate folder"
-[sass]: ./sass/ "Navigate folder"
+[adoc]: ./adoc/ "Navigate to Asciidoctor assets folder"
+[haml]: ./haml/ "Navigate to Haml templates folder"
+[hl]: ./hl/ "Navigate to Highlight assets folder"
+[sass]: ./sass/ "Navigate to Sass sources folder"
+[sh]: ./sh/ "Navigate to Bash scripts assets folder"
 
 [block_listing]: ./haml/block_listing.html.haml "View source file"
 

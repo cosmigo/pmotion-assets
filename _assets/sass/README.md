@@ -53,8 +53,8 @@ Sass sources:
 
 Scripts:
 
-- [`BUILD_SASS.bat`][BUILD]
-- [`WATCH_SASS.bat`][WATCH]
+- [`build.sh`][build.sh]
+- [`watch.sh`][watch.sh]
 
 Builds to [`../../docs/css/styles.css`][styles.css].
 
@@ -156,8 +156,8 @@ The `fontFace` Mixin was adapted from Sass Boilerplate project's "[`fontface.scs
                                 REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-[BUILD]: ./BUILD_SASS.bat "View source file"
-[WATCH]: ./WATCH_SASS.bat "View source file"
+[build.sh]: ./build.sh "View script source"
+[watch.sh]: ./watch.sh "View script source"
 
 [styles.css]: ../../docs/css/styles.css "View source file"
 

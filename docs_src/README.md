@@ -22,13 +22,13 @@ AsciiDoc source files, scripts and assets to build the HTML documents inside the
 # Directory Contents
 
 - [`/img_src/`][img_src] — images sources.
-- [`BUILD.bat`][BUILD.bat] — batch file to build the docs.
+- [`build.sh`][build.sh] — Bash script to build the docs.
 
 # Build Instructions
 
-Run the batch script:
+Run the Bash script:
 
-- [`BUILD.bat`][BUILD.bat]
+- [`build.sh`][build.sh]
 
 The script will iterate over every "`*.asciidoc`" file inside the repository and convert it to an HTML document in the target [`../docs/`][docs] folder.
 
@@ -72,7 +72,7 @@ Once Ruby is installed on your system, open a shell and type:
 [hl]:  ../_assets/hl/ "Navigate folder"
 [img_src]: ./img_src/ "Navigate folder"
 
-[BUILD.bat]: ./BUILD.bat "View source file"
+[build.sh]: ./build.sh "View source script"
 
 <!-- document cross-reference links -->
 

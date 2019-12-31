@@ -81,8 +81,6 @@ The GPL license does not affect the converted documents.
 
 [LICENSE]: ./LICENSE "View GNU GPL v3.0 license"
 
-[BUILD.bat]: ../BUILD.bat "View file"
-
 <!-- 3rd party resources -->
 
 [Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
