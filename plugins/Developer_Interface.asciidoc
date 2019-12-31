@@ -1,6 +1,6 @@
 = Developer Interface
 Jan Zimmermann <jan@cosmigo.com>
-v1.0.0, 2019-03-24
+v1.0.0, 2019-12-31
 // Doc Revision Info
 :PMNG_V: 7.1.8.0
 :revremark: PMNG v{PMNG_V}
@@ -170,6 +170,8 @@ type TProgressCallback= procedure (percent: integer); stdcall;
 ----------------------------------------------------------
 typedef void (__stdcall *ProgressCallback)( int progress )
 ----------------------------------------------------------
+
+{blank}
 |===============================================================================
 
 
