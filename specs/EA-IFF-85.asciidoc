@@ -1,6 +1,6 @@
 = "`EA IFF 85`" Standard for Interchange Format Files
 Jerry Morrison, Electronic Arts
-:LastEdited: 2019-04-29
+:LastEdited: 2019-12-31
 :revdate: January 14, 1985
 :revremark: Released and in use
 :lang: en
@@ -241,8 +241,8 @@ There are, of course, a few other details...
 
 Where our needs are similar, we borrow from existing standards.
 
-Our basic need to move data between independently developed programs is similar to that addressed by the Apple Macintosh desk scrap or "`clipboard`" [<<_Inside Macintosh_>> chapter "`Scrap Manager`"].
-The Scrap Manager works closely with the Resource Manager, a handy filer and swapper for data objects (text strings, dialog window templates, pictures, fonts) including types yet to be designed [<<_Inside Macintosh_>> chapter "`Resource Manager`"].
+Our basic need to move data between independently developed programs is similar to that addressed by the Apple Macintosh desk scrap or "`clipboard`" [<<inside_macintosh>> chapter "`Scrap Manager`"].
+The Scrap Manager works closely with the Resource Manager, a handy filer and swapper for data objects (text strings, dialog window templates, pictures, fonts) including types yet to be designed [<<inside_macintosh>> chapter "`Resource Manager`"].
 The Resource Manager is akin to Smalltalk's object swapper.
 
 We will probably write a Macintosh desk accessory that converts IFF files to and from the Macintosh clipboard for quick and easy interchange with programs like MacPaint and Resource Mover.
@@ -253,14 +253,14 @@ Character string identifiers double as readable signposts in data files and prog
 The choice of 4 characters is a good tradeoff between storage space, fetch/compare/store time, and name space size.
 We'll honor Apple's designers by adopting this scheme.
 
-"`PICT`" is a good example of a standard structured graphics format (including raster images) and its many uses [<<_Inside Macintosh_>> chapter "`QuickDraw`"].
+"`PICT`" is a good example of a standard structured graphics format (including raster images) and its many uses [<<inside_macintosh>> chapter "`QuickDraw`"].
 Macintosh provides QuickDraw routines in ROM to create, manipulate, and display PICTs.
 Any application can create a PICT by simply asking QuickDraw to record a sequence of drawing commands.
 Since it's just as easy to ask QuickDraw to render a PICT to a screen or a printer, it's very effective to pass them between programs, say from an illustrator to a word processor.
 An important feature is the ability to store "`comments`" in a PICT which QuickDraw will ignore.
 Actually, it passes them to your optional custom "`comment handler`".
 
-PostScript, Adobe's print file standard, is a more general way to represent any print image (which is a specification for putting marks on paper) [<<_PostScript Language Manual_>>].
+PostScript, Adobe's print file standard, is a more general way to represent any print image (which is a specification for putting marks on paper) [<<postscript_lang_man>>].
 In fact, PostScript is a full-fledged programming language.
 To interpret a PostScript program is to render a document on a raster output device.
 The language is defined in layers: a lexical layer of identifiers, constants, and operators; a layer of reverse polish semantics including scope rules and a way to define new subroutines; and a printing-specific layer of built-in identifiers and operators for rendering graphic images.
@@ -278,14 +278,14 @@ PostScript has another limitation: Not all kinds of data amount to marks on pape
 A musical instrument description is one example.
 PostScript is just not geared for such uses.
 
-"`DIF`" is another example of data being stored in a general format usable by future programs [<<_DIF Technical Specification_>>].
+"`DIF`" is another example of data being stored in a general format usable by future programs [<<dif-tech-spec>>].
 DIF is a format for spreadsheet data interchange.
 DIF and PostScript are both expressed in plain ASCII text files.
 This is very handy for printing, debugging, experimenting, and transmitting across modems.
 It can have substantial cost in compaction and read/write work, depending on use.
 We won't store IFF files this way but we could define an ASCII alternate representation with a converter program.
 
-InterScript is Xerox`' standard for interchange of editable documents [<<_Introduction to InterScript_>>].
+InterScript is Xerox`' standard for interchange of editable documents [<<intro-interscript>>].
 It approaches a harder problem: How to represent editable word processor documents that may contain formatted text, pictures, cross-references like figure numbers, and even highly specialized objects like mathematical equations?
 InterScript aims to define one standard representation for each kind of information.
 Each InterScript-compatible editor is supposed to preserve the objects it doesn't understand and even maintain nested cross-references.
@@ -894,7 +894,7 @@ Scrap files may have type `IFF{nbsp}` or filename extension "`.IFF`".
 
 A scrap file is typically a CAT containing alternate representations of the same basic information.
 Include as many alternatives as you can readily generate.
-This redundancy improves interconnectivity in situations where we can't make all programs read and write super-general formats. [<<_Inside Macintosh_>> chapter "`Scrap Manager`".] E.g. a graphically-annotated musical score might be supplemented by a stripped down 4-voice melody and by a text (the lyrics).
+This redundancy improves interconnectivity in situations where we can't make all programs read and write super-general formats. [<<inside_macintosh>> chapter "`Scrap Manager`".] E.g. a graphically-annotated musical score might be supplemented by a stripped down 4-voice melody and by a text (the lyrics).
 
 The originating program should write the alternate representations in order of "`preference`": most preferred (most comprehensive) type to least preferred (least comprehensive) type.
 A receiving program should either use the first appearing type that it understands or search for its own "`preferred`" type.

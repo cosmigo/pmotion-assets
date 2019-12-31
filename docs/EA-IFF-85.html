@@ -801,8 +801,8 @@ There are, of course, a few other details&#8230;&#8203;</p>
 <p>Where our needs are similar, we borrow from existing standards.</p>
 </div>
 <div class="paragraph">
-<p>Our basic need to move data between independently developed programs is similar to that addressed by the Apple Macintosh desk scrap or &#8220;clipboard&#8221; [<a href="#_Inside Macintosh_">[_Inside Macintosh_]</a> chapter &#8220;Scrap Manager&#8221;].
-The Scrap Manager works closely with the Resource Manager, a handy filer and swapper for data objects (text strings, dialog window templates, pictures, fonts) including types yet to be designed [<a href="#_Inside Macintosh_">[_Inside Macintosh_]</a> chapter &#8220;Resource Manager&#8221;].
+<p>Our basic need to move data between independently developed programs is similar to that addressed by the Apple Macintosh desk scrap or &#8220;clipboard&#8221; [<a href="#inside_macintosh"><em>Inside Macintosh</em></a> chapter &#8220;Scrap Manager&#8221;].
+The Scrap Manager works closely with the Resource Manager, a handy filer and swapper for data objects (text strings, dialog window templates, pictures, fonts) including types yet to be designed [<a href="#inside_macintosh"><em>Inside Macintosh</em></a> chapter &#8220;Resource Manager&#8221;].
 The Resource Manager is akin to Smalltalk&#8217;s object swapper.</p>
 </div>
 <div class="paragraph">
@@ -816,7 +816,7 @@ The choice of 4 characters is a good tradeoff between storage space, fetch/compa
 We&#8217;ll honor Apple&#8217;s designers by adopting this scheme.</p>
 </div>
 <div class="paragraph">
-<p>&#8220;PICT&#8221; is a good example of a standard structured graphics format (including raster images) and its many uses [<a href="#_Inside Macintosh_">[_Inside Macintosh_]</a> chapter &#8220;QuickDraw&#8221;].
+<p>&#8220;PICT&#8221; is a good example of a standard structured graphics format (including raster images) and its many uses [<a href="#inside_macintosh"><em>Inside Macintosh</em></a> chapter &#8220;QuickDraw&#8221;].
 Macintosh provides QuickDraw routines in ROM to create, manipulate, and display PICTs.
 Any application can create a PICT by simply asking QuickDraw to record a sequence of drawing commands.
 Since it&#8217;s just as easy to ask QuickDraw to render a PICT to a screen or a printer, it&#8217;s very effective to pass them between programs, say from an illustrator to a word processor.
@@ -824,7 +824,7 @@ An important feature is the ability to store &#8220;comments&#8221; in a PICT wh
 Actually, it passes them to your optional custom &#8220;comment handler&#8221;.</p>
 </div>
 <div class="paragraph">
-<p>PostScript, Adobe&#8217;s print file standard, is a more general way to represent any print image (which is a specification for putting marks on paper) [<a href="#_PostScript Language Manual_">[_PostScript Language Manual_]</a>].
+<p>PostScript, Adobe&#8217;s print file standard, is a more general way to represent any print image (which is a specification for putting marks on paper) [<a href="#postscript_lang_man"><em>PostScript Language Manual</em></a>].
 In fact, PostScript is a full-fledged programming language.
 To interpret a PostScript program is to render a document on a raster output device.
 The language is defined in layers: a lexical layer of identifiers, constants, and operators; a layer of reverse polish semantics including scope rules and a way to define new subroutines; and a printing-specific layer of built-in identifiers and operators for rendering graphic images.
@@ -845,7 +845,7 @@ A musical instrument description is one example.
 PostScript is just not geared for such uses.</p>
 </div>
 <div class="paragraph">
-<p>&#8220;DIF&#8221; is another example of data being stored in a general format usable by future programs [<a href="#_DIF Technical Specification_">[_DIF Technical Specification_]</a>].
+<p>&#8220;DIF&#8221; is another example of data being stored in a general format usable by future programs [<a href="#dif-tech-spec"><em>DIF Technical Specification</em></a>].
 DIF is a format for spreadsheet data interchange.
 DIF and PostScript are both expressed in plain ASCII text files.
 This is very handy for printing, debugging, experimenting, and transmitting across modems.
@@ -853,7 +853,7 @@ It can have substantial cost in compaction and read/write work, depending on use
 We won&#8217;t store IFF files this way but we could define an ASCII alternate representation with a converter program.</p>
 </div>
 <div class="paragraph">
-<p>InterScript is Xerox&#8217; standard for interchange of editable documents [<a href="#_Introduction to InterScript_">[_Introduction to InterScript_]</a>].
+<p>InterScript is Xerox&#8217; standard for interchange of editable documents [<a href="#intro-interscript"><em>Introduction to InterScript</em></a>].
 It approaches a harder problem: How to represent editable word processor documents that may contain formatted text, pictures, cross-references like figure numbers, and even highly specialized objects like mathematical equations?
 InterScript aims to define one standard representation for each kind of information.
 Each InterScript-compatible editor is supposed to preserve the objects it doesn&#8217;t understand and even maintain nested cross-references.
@@ -1556,7 +1556,7 @@ Scrap files may have type <code>IFF&#160;</code> or filename extension &#8220;.I
 <div class="paragraph">
 <p>A scrap file is typically a CAT containing alternate representations of the same basic information.
 Include as many alternatives as you can readily generate.
-This redundancy improves interconnectivity in situations where we can&#8217;t make all programs read and write super-general formats. [<a href="#_Inside Macintosh_">[_Inside Macintosh_]</a> chapter &#8220;Scrap Manager&#8221;.] E.g. a graphically-annotated musical score might be supplemented by a stripped down 4-voice melody and by a text (the lyrics).</p>
+This redundancy improves interconnectivity in situations where we can&#8217;t make all programs read and write super-general formats. [<a href="#inside_macintosh"><em>Inside Macintosh</em></a> chapter &#8220;Scrap Manager&#8221;.] E.g. a graphically-annotated musical score might be supplemented by a stripped down 4-voice melody and by a text (the lyrics).</p>
 </div>
 <div class="paragraph">
 <p>The originating program should write the alternate representations in order of &#8220;preference&#8221;: most preferred (most comprehensive) type to least preferred (least comprehensive) type.
@@ -1887,7 +1887,7 @@ To the best of my knowledge, this document was released into the public domain.<
 <a href="http://www.martinreddy.net/gfx/2d/IFF.txt" title="View the upstream 'EA IFF 85' document at MartinReddy.net" target="_blank" rel="noopener">hosted by Martin Reddy</a>.</p>
 </div>
 <div class="paragraph">
-<p>Last edited: 2019-04-29.</p>
+<p>Last edited: 2019-12-31.</p>
 </div>
 </div>
 </div>
