@@ -22,8 +22,10 @@ Unless otherwise specified, these assets are either derivative or verbatim copie
 
 # Folder Contents
 
-- [`/langDefs/`][langDefs] — overrides Highlight default langDefs folder:
+- [`/langDefs/`][langDefs] — overrides Highlight default `langDefs/` folder:
     + [`delphi.lang`][delphi.lang] — Delphi syntax definition.
+    + [`ebnf.lang`][ebnf.lang] — Custom EBNF syntax definition.
+    + [`pseudocode.lang`][pseudocode.lang] — Pseudocode syntax definition.
 - [`filetypes.conf`][filetypes] — custom Highlight languages configurations.
 - [`LICENSE`][LICENSE] — GNU GPL v3.
 
@@ -31,7 +33,9 @@ Unless otherwise specified, these assets are either derivative or verbatim copie
 
 This directory tree was created to enable using custom syntaxes with Highlight. Any syntaxes inside [`./langDefs/`][langDefs] will be given priority over the native syntaxes that ship with Highlight — i.e. either new syntaxes not present in the package, or customized syntaxes that will override the native ones.
 
-In order to tell Highlight to use this directory to load configurations, the environment variable `HIGHLIGHT_DATADIR` must be set to point to this folder, before invoking Highlight. For example, in the [`../BUILD.bat`][BUILD.bat] batch this done via:
+In order to tell Highlight to use this directory to load configurations, the environment variable `HIGHLIGHT_DATADIR` must be set with an _absolute path_ to point to this folder, before invoking Highlight.
+
+For example, if you were to use a batch script executed from inside this folder, this could be done via:
 
 ```batch
 SET "HIGHLIGHT_DATADIR=%~dp0hl\"
@@ -69,7 +73,9 @@ The GPL license does not affect the converted documents.
 
 
 [langDefs]:    ./langDefs/ "Navigate folder"
-[delphi.lang]: ./langDefs/delphi.lang "View file"
+[delphi.lang]: ./langDefs/delphi.lang "View Delphi syntax definition"
+[ebnf.lang]: ./langDefs/ebnf.lang "View EBNF syntax definition"
+[pseudocode.lang]: ./langDefs/pseudocode.lang "View pseudocode syntax definition"
 
 [filetypes]: ./filetypes.conf "View file"
 

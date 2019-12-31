@@ -1,10 +1,6 @@
 # Pro Motion Documents Sources
 
-AsciiDoc source files, scripts and assets to build the HTML documents inside the [`../docs/`][docs] folder. Run the batch script:
-
-- [`BUILD.bat`][BUILD.bat]
-
-The script will iterate over every "`*.asciidoc`" file inside the repository and convert it to an HTML document in the target [`../docs/`][docs] folder.
+AsciiDoc source files, scripts and assets to build the HTML documents inside the [`../docs/`][docs] folder.
 
 -----
 
@@ -13,9 +9,11 @@ The script will iterate over every "`*.asciidoc`" file inside the repository and
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Directory Contents](#directory-contents)
+- [Build Instructions](#build-instructions)
+- [Toolchain Dependencies](#toolchain-dependencies)
 - [System Requirements](#system-requirements)
-- [Asciidoctor Haml Templates](#asciidoctor-haml-templates)
-    - [Haml Templates License](#haml-templates-license)
+    - [Installing Ruby on Windows](#installing-ruby-on-windows)
+    - [Installing Asciidoctor](#installing-asciidoctor)
 
 <!-- /MarkdownTOC -->
 
@@ -23,68 +21,42 @@ The script will iterate over every "`*.asciidoc`" file inside the repository and
 
 # Directory Contents
 
-- [`/adoc/`][adoc] — Asciidoctor assets.
-- [`/haml/`][haml] — customized Haml templates ([see below][Haml sec]).
-- [`/hl/`][hl] — Highlight langDefs and assets.
 - [`/img_src/`][img_src] — images sources.
-- [`/sass/`][sass] — Sass/SCSS stylesheets source files.
 - [`BUILD.bat`][BUILD.bat] — batch file to build the docs.
+
+# Build Instructions
+
+Run the batch script:
+
+- [`BUILD.bat`][BUILD.bat]
+
+The script will iterate over every "`*.asciidoc`" file inside the repository and convert it to an HTML document in the target [`../docs/`][docs] folder.
+
+# Toolchain Dependencies
+
+Pleas note that the build toolchain depends on some assets stored elsewere in the project:
+
+- [`../_assets/`][_assets] — main assets folder:
+    - [`/adoc/`][adoc] — docinfo files and Asciidoctor extensions.
+    - [`/haml/`][haml] — [customized Haml HTML5 templates].
+    - [`/hl/`][hl] — Highlight langDefs and assets.
 
 # System Requirements
 
 To build the document from AsciiDoc to HTML you'll need the following tools:
 
 - [Highlight]
-- [Ruby] + [Asciidoctor]
+- [Ruby] + [Asciidoctor Gem]
 
-To build the CSS files from Sass you'll need [Sass]:
+## Installing Ruby on Windows
 
-- [Dart Sass]
+If you're using Windows, you should install Ruby via [RubyInstaller], which is also available as a [Chocolatey package][Choco Ruby] (see [Chocolatey] and [Chocolatey GUI]).
 
-More information on how to install these tools can be found in the README files inside the [`/adoc/`][adoc] and [`/sass/`][sass] folders.
+## Installing Asciidoctor
 
+Once Ruby is installed on your system, open a shell and type:
 
-> __IMPORTANT__ — On March 12, 2019 this project has switched from using [Ruby Sass] to the newest [Dart Sass] because starting from March 26, 2019 Ruby Sass will no longer be maintained.
->
-> Since Dart Sass behavior is slightly different from Ruby Sass, anyone working on the repository Sass sources must ensure to switch to Dart Sass to avoid creating divergent CSS stylesheets.
-
-# Asciidoctor Haml Templates
-
-The [`/haml/`][haml] folder contains some custom Haml templates to partly override those of the Asciidoctor HTML5 backend:
-
-- [`./haml/block_listing.html.haml`][block_listing]
-
-This is the HTML template for Asciidoctor listings, tweaked to allow customizing code coloring themes via CSS on a per-language basis, when using [Highlight] tool for syntax highlighting.
-
-> __IMPORTANT__ — Don't put any files other than Haml templates inside the [`/haml/`][haml] folder, or it will cause errors when trying to convert the documents via Asciidoctor! For this reason there is no README file there, and the information and credits for that folder have been placed here instead.
-
-## Haml Templates License
-
-The Haml files in this folder were adapted by Tristano Ajmone from the original [Haml HTML5 templates] taken from the
-[Asciidoctor Backends] project, Copyright (C) 2012-2016 Dan Allen and the Asciidoctor Project, released under MIT License:
-
-    The MIT License
-
-    Copyright (C) 2018 Tristano Ajmone.
-    Copyright (C) 2012-2016 Dan Allen and the Asciidoctor Project
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in
-    all copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-    THE SOFTWARE.
+    gem install asciidoctor
 
 
 <!-----------------------------------------------------------------------------
@@ -93,39 +65,28 @@ The Haml files in this folder were adapted by Tristano Ajmone from the original 
 
 <!-- project files & folders -->
 
-[adoc]: ./adoc/ "Navigate folder"
+[_assets]: ../_assets/ "Navigate to the assets folder"
+[adoc]:  ../_assets/adoc/ "Navigate folder"
 [docs]: ../docs/ "Navigate folder"
-[haml]: ./haml/ "Navigate folder"
-[hl]: ./hl/ "Navigate folder"
+[haml]:  ../_assets/haml/ "Navigate folder"
+[hl]:  ../_assets/hl/ "Navigate folder"
 [img_src]: ./img_src/ "Navigate folder"
-[sass]: ./sass/ "Navigate folder"
-
-[block_listing]: ./haml/block_listing.html.haml "View source file"
 
 [BUILD.bat]: ./BUILD.bat "View source file"
 
 <!-- document cross-reference links -->
 
-[Haml sec]: #asciidoctor-haml-templates "Jump to section 'Asciidoctor Haml Templates'"
+[customized Haml HTML5 templates]: ../_assets/README.md#asciidoctor-haml-templates "Click here for more info on the 'Asciidoctor Haml Templates' used in this project"
 
 
 <!-- dependencies -->
 
-[Asciidoctor]: https://github.com/asciidoctor/asciidoctor#installation
+[Asciidoctor Gem]: https://github.com/asciidoctor/asciidoctor#installation
 [Highlight]: http://www.andre-simon.de/zip/download.php
-
-[Sass]: https://sass-lang.com "Visit Sass website"
-[Ruby Sass]: https://github.com/sass/ruby-sass
-[Dart Sass]: https://github.com/sass/dart-sass
-[Choco Sass]: https://chocolatey.org/packages/sass
 
 [Ruby]: https://www.ruby-lang.org
 [RubyInstaller]: https://rubyinstaller.org/downloads/
 [Choco Ruby]: https://chocolatey.org/packages/ruby
-
-[Node.js]: https://nodejs.org/en/ "Visit Node.js downloads page"
-[Choco Node]: https://chocolatey.org/packages/nodejs
-[Choco Node LTS]: https://chocolatey.org/packages/nodejs-lts
 
 [Chocolatey GUI]: https://chocolatey.org/packages/ChocolateyGUI
 [Chocolatey]: https://chocolatey.org

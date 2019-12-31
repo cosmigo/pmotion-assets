@@ -1,6 +1,6 @@
 # Asciidoctor Assets
 
-This folder contains some Asciidoctor assets required to build the HTML documents in [`../../docs/`][docs] folder.
+This folder contains some assets required by the [Asciidoctor]  (Ruby) toolchain in [`../../docs_src/`][docs_src] to build the HTML documents in [`../../docs/`][docs] folder.
 
 
 -----
@@ -10,9 +10,6 @@ This folder contains some Asciidoctor assets required to build the HTML document
 <!-- MarkdownTOC autolink="true" bracket="round" autoanchor="false" lowercase="only_ascii" uri_encoding="true" levels="1,2,3" -->
 
 - [Folder Contents](#folder-contents)
-- [System Requirements](#system-requirements)
-    - [Installing Ruby on Windows](#installing-ruby-on-windows)
-    - [Installing Asciidoctor](#installing-asciidoctor)
 - [Credits](#credits)
     - [Highlight Extension](#highlight-extension)
 
@@ -24,31 +21,15 @@ This folder contains some Asciidoctor assets required to build the HTML document
 # Folder Contents
 
 - [`docinfo.html`][docinfo] — shared docinfo file to integrate custom CSS.
-- [`highlight-treeprocessor_mod.rb`][rb] — extension for Highlight integration.
+- [`highlight-treeprocessor_mod.rb`][mod.rb] — extension for Highlight integration.
 
-# System Requirements
-
-To build the document from AsciiDoc to HTML you'll need to install the following tools:
-
-- [Highlight]
-- [Ruby] + [Asciidoctor]
-
-## Installing Ruby on Windows
-
-If you're using Windows, you should install Ruby via [RubyInstaller], which is also available as a [Chocolatey package][Choco Ruby] (see [Chocolatey] and [Chocolatey GUI]).
-
-## Installing Asciidoctor
-
-Once Ruby is installed on your system, open a shell and type:
-
-    gem install asciidoctor
-
+The [`docinfo.html`][docinfo] is required in the toolchain to add extra CSS styles that provide custom color themes to syntax highlighted code in the final HTML documents.
 
 # Credits
 
 ## Highlight Extension
 
-The [`highlight-treeprocessor_mod.rb`][rb] file was adapted by Tristano Ajmone from the original file [`highlight-treeprocessor.rb`][rb upstream] taken from the [Asciidoctor Extensions Lab] (commit [c9ce3ab]), Copyright (C) 2014-2016
+The [`highlight-treeprocessor_mod.rb`][mod.rb] file was adapted by Tristano Ajmone from the original file [`highlight-treeprocessor.rb`][rb upstream] taken from the [Asciidoctor Extensions Lab] (commit [c9ce3ab]), Copyright (C) 2014-2016
 The Asciidoctor Project, released under MIT License:
 
     The MIT License
@@ -83,29 +64,16 @@ The Asciidoctor Project, released under MIT License:
 <!-- proj files -->
 
 [docinfo]: ./docinfo.html
-[rb]: ./highlight-treeprocessor_mod.rb
+[mod.rb]: ./highlight-treeprocessor_mod.rb
 
-[docs]: ../../docs/   "Navigate folder"
-
-
-<!-- dependencies -->
-
-[Chocolatey GUI]: https://chocolatey.org/packages/ChocolateyGUI
-[Chocolatey]: https://chocolatey.org
-
-[Ruby]: https://www.ruby-lang.org
-[RubyInstaller]: https://rubyinstaller.org/downloads/
-[Choco Ruby]: https://chocolatey.org/packages/ruby
-
-[Asciidoctor]: https://github.com/asciidoctor/asciidoctor#installation
-[Highlight]: http://www.andre-simon.de/zip/download.php
-
+[docs]: ../../docs/   "Navigate to HTML documents output folder"
+[docs_src]: ../../docs_src/   "Navigate to AsciiDoc toolchain folder"
 
 <!-- third party -->
 
+[Asciidoctor]: https://asciidoctor.org/ "Visit the Asciidoctor website"
 [rb upstream]: https://github.com/asciidoctor/asciidoctor-extensions-lab/blob/18bdf62/lib/highlight-treeprocessor.rb
 [Asciidoctor Extensions Lab]: https://github.com/asciidoctor/asciidoctor-extensions-lab/ "Visit the Asciidoctor Extensions Lab project"
 [c9ce3ab]: https://github.com/asciidoctor/asciidoctor-extensions-lab/commit/c9ce3ab421c5d47f1178b57a4a5894811f9eb945
-
 
 <!-- EOF -->

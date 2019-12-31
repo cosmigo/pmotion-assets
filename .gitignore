@@ -30,6 +30,7 @@ ___*.*
 # AsciiDoc local preview docs
 *.html
 !docs/*.html
+!_assets/adoc/docinfo.html
 docs/___*.html
 
 # ==============================================================================

@@ -73,8 +73,9 @@ endif::[]
 :Pro_Motion: https://www.cosmigo.com/[Pro Motion^, title="Visit Pro Motion website"]
 
 // Links 2 project folders
-:docs: pass:q[link:./docs[`/docs/`,title="Navigate to folder"]]
-:docs_src: pass:q[link:./docs_src[`/docs_src/`,title="Navigate to folder"]]
+:assets: pass:q[link:./_assets[`/_assets/`,title="Navigate to the project assets folder"]]
+:docs: pass:q[link:./docs[`/docs/`,title="Navigate to HTML documents folder"]]
+:docs_src: pass:q[link:./docs_src[`/docs_src/`,title="Navigate to AsciiDoc source folder"]]
 :fonts: pass:q[link:./fonts[`/fonts/`,title="Navigate to folder"]]
 :palettes: pass:q[link:./palettes/base16[`/palettes/`,title="Navigate to folder"]]
 :plugins: pass:q[link:./plugins[`/plugins/`,title="Navigate to folder"]]
@@ -178,6 +179,7 @@ End users of this project should always refer to the official Pro Motion NG chan
 
 == Project Contents
 
+* {assets} -- project assets required by the build and test toolchains.
 * {docs} -- HTML documents.
 * {docs_src} -- AsciiDoc sources and assets to build the HTML docs.
 * {fonts} -- over 1000 pixel art fonts.

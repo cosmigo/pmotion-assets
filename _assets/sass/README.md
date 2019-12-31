@@ -1,6 +1,6 @@
 # Sass Source Files
 
-This folder contains the Sass/SCSS sources to build the custom CSS stylesheets used in AsciiDoc files to add syntax highlighting themes for code blocks highligthed via [André Simon]’s [Highlight] tool.
+This folder contains the Sass/SCSS sources to build the custom CSS stylesheets used in [Asciidoctor]  (Ruby) toolchain to add syntax highlighting themes for code blocks highligthed via [André Simon]’s [Highlight] tool.
 
 The CSS defines various higlighting themes targetting specific languages, plus a default fallback theme for all languages that don't have a dedicated theme:
 
@@ -187,7 +187,6 @@ The `fontFace` Mixin was adapted from Sass Boilerplate project's "[`fontface.scs
 [Ruby Sass]: https://sass-lang.com/ruby-sass "Visit Ruby Sass homepage"
 [Choco Sass]: https://chocolatey.org/packages/sass "View the Chocolatey package for Dart Sass"
 
-
 [Ruby]: https://www.ruby-lang.org
 [RubyInstaller]: https://rubyinstaller.org/downloads/
 [Choco Ruby]: https://chocolatey.org/packages/ruby
@@ -210,6 +209,8 @@ The `fontFace` Mixin was adapted from Sass Boilerplate project's "[`fontface.scs
 [Base16 Sass]: https://github.com/tajmone/Base16-Sass "Visit the 'Base16 Sass' project"
 
 [Highlight]: http://www.andre-simon.de/doku/highlight/en/highlight.php "Visit Highlight website"
+
+[Asciidoctor]: https://asciidoctor.org/ "Visit the Asciidoctor website"
 
 <!-- people -->
 

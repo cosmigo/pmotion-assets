@@ -1,4 +1,4 @@
-:: "BUILD.bat" v1.0.3 (2019/03/21) by Tristano Ajmone
+:: "BUILD.bat" v2.0.0 (2019/12/31)                            by Tristano Ajmone
 :: -----------------------------------------------------------------------------
 :: Converts every "*.asciidoc" file in the repository to an HTML document in the
 :: "/docs/" target folder.
@@ -18,7 +18,8 @@ ECHO.
 :: =============================================================================
 ::                           Highlight Configuration
 :: =============================================================================
-SET "HIGHLIGHT_DATADIR=%~dp0hl\"
+SET "_ASSETS_=%~dp0..\_assets"
+SET "HIGHLIGHT_DATADIR=%_ASSETS_%\hl\"
 ECHO HIGHLIGHT_DATADIR: %HIGHLIGHT_DATADIR%
 :: =============================================================================
 ::                             Iterate and Convert
@@ -57,11 +58,11 @@ ECHO - "%1"
 CALL asciidoctor^
 	--verbose^
 	--safe-mode unsafe^
-	--template-dir %~dp0haml^
-	--require %~dp0adoc/highlight-treeprocessor_mod.rb^
-	--destination-dir ./docs^
+	--template-dir %_ASSETS_%\haml^
+	--require %_ASSETS_%\adoc\highlight-treeprocessor_mod.rb^
+	--destination-dir .\docs^
 	-a source-highlighter=highlight^
-	-a docinfodir=%~dp0adoc^
+	-a docinfodir=%_ASSETS_%\adoc^
 	-a docinfo=shared-head^
 	-a path_plugins^
 	-a imagesdir=img^
