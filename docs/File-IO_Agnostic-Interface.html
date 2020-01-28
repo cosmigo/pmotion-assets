@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.10">
-<meta name="description" content="Cosmigo Pro Motion file I/O interface for plugin developers, presented in a language-agnostic approach.">
-<meta name="keywords" content="cosmigo, pro motion ng, pmng, plugins, interface, api, developer, pixel art, pixelart">
+<meta name="description" content="Cosmigo Pro Motion file I/O interface for plug-in developers, presented in a language-agnostic approach.">
+<meta name="keywords" content="cosmigo, pro motion ng, pmng, plug-ins, interface, api, developer, pixel art, pixelart">
 <meta name="author" content="Tristano Ajmone">
 <meta name="copyright" content="Copyright (c) Tristano Ajmone, Apache License v2.0.">
-<title>Pro Motion File I/O Plugin Interface</title>
+<title>Pro Motion File I/O Plug-in Interface</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -444,25 +444,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Pro Motion File I/O Plugin Interface</h1>
+<h1>Pro Motion File I/O Plug-in Interface</h1>
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">draft 1,</span>
-<span id="revdate">2019-03-24</span>
-<br><span id="revremark">PMNG v7.1.8.0</span>
+<span id="revnumber">draft 2,</span>
+<span id="revdate">2020-01-28</span>
+<br><span id="revremark">PMNG v7.2.3.1</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_about_file_io_plugins">About File I/O Plugins</a></li>
+<li><a href="#_about_file_io_plug_ins">About File I/O Plug-ins</a></li>
 <li><a href="#_choosing_a_language">Choosing a Language</a></li>
 <li><a href="#_pseudocode_notation">Pseudocode Notation</a></li>
 </ul>
 </li>
-<li><a href="#_interface_overiew">Interface Overiew</a></li>
+<li><a href="#_interface_overview">Interface Overview</a></li>
 <li><a href="#_interface_data_types">Interface Data Types</a>
 <ul class="sectlevel2">
 <li><a href="#_strings">Strings</a></li>
@@ -503,7 +503,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>A language-agnostic presentation of Pro Motion file I/O plugin interface, aimed at helping developers design plugins in any programming language.</p>
+<p>A language-agnostic presentation of Pro Motion file I/O plug-in interface, aimed at helping developers design plug-ins in any programming language.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -518,11 +518,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <em>It&#8217;s not</em> part of the official Pro Motion documentation and I&#8217;m acting solely as a Pro Motion NG user and enthusiast.</p>
 </div>
 <div class="paragraph">
-<p>The document is still a draft and I haven&#8217;t yet had a chance to actually test all the plugin procedures in real case scenarios.
+<p>The document is still a draft and I haven&#8217;t yet had a chance to actually test all the plug-in procedures in real case scenarios.
 Therefore, I&#8217;m the only person responsible for any errors and inaccuracies herein contained.</p>
 </div>
 <div class="paragraph">
-<p>Furthermore, the quality (or lack thereof) of this document is not representative of the quality of Cosmigo GmbH, its products and services; it&#8217;s just my personal effort to explore the subject of plugin development as a hobbist programmer and PMNG end user.</p>
+<p>Furthermore, the quality (or lack thereof) of this document is not representative of the quality of Cosmigo GmbH, its products and services; it&#8217;s just my personal effort to explore the subject of plug-in development as a hobbyist programmer and PMNG end user.</p>
 </div>
 </td>
 </tr>
@@ -534,14 +534,14 @@ Therefore, I&#8217;m the only person responsible for any errors and inaccuracies
 <h2 id="_introduction"><a class="anchor" href="#_introduction"></a>Introduction</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_about_file_io_plugins"><a class="anchor" href="#_about_file_io_plugins"></a>About File I/O Plugins</h3>
+<h3 id="_about_file_io_plug_ins"><a class="anchor" href="#_about_file_io_plug_ins"></a>About File I/O Plug-ins</h3>
 <div class="paragraph">
-<p>Pro Motion (&gt;=v6.5) allows users to extend the supported images and animations file formats by means of third party file I/O plugins.
-Each file plugin can target either images or animations, and it may handle saving and/or loading (either one or both) from/to a specific file format, and will be associated with a specific file extension in the file I/O dialogs of Pro Motion.</p>
+<p>Pro Motion (&gt;=v6.5) allows users to extend the supported images and animations file formats by means of third party file I/O plug-ins.
+Each file plug-in can target either images or animations, and it may handle saving and/or loading (either one or both) from/to a specific file format, and will be associated with a specific file extension in the file I/O dialogs of Pro Motion.</p>
 </div>
 <div class="paragraph">
-<p>A file I/O plugin is a DLL (Dynamic-link library) shared library, located inside the <code>plugins</code> subfolder in the installation directory of Pro Motion.
-Depending on the bitness of your MS Windows operating system, the path of the <code>plugins</code> folder will be either:</p>
+<p>A file I/O plug-in is a DLL (Dynamic-link library) shared library, located inside the <code>plug-ins</code> subfolder in the installation directory of Pro Motion.
+Depending on the bitness of your MS Windows operating system, the path of the <code>plug-ins</code> folder will be either:</p>
 </div>
 <div class="hdlist">
 <table>
@@ -550,7 +550,7 @@ Depending on the bitness of your MS Windows operating system, the path of the <c
 32 bit OS: 
 </td>
 <td class="hdlist2">
-<p><code>%ProgramFiles%\cosmigo\Pro Motion NG\plugins\</code></p>
+<p><code>%ProgramFiles%\cosmigo\Pro Motion NG\plug-ins\</code></p>
 </td>
 </tr>
 <tr>
@@ -558,17 +558,17 @@ Depending on the bitness of your MS Windows operating system, the path of the <c
 64 bit OS: 
 </td>
 <td class="hdlist2">
-<p><code>%ProgramFiles(x86)%\cosmigo\Pro Motion NG\plugins\</code></p>
+<p><code>%ProgramFiles(x86)%\cosmigo\Pro Motion NG\plug-ins\</code></p>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Any plugins inside that folder will be automatically detected when Pro Motion is launched, and made available in the file load/save and import/export dialogs according to where the plugin functionality fits in PMNG context.
+<p>Any plug-ins inside that folder will be automatically detected when Pro Motion is launched, and made available in the file load/save and import/export dialogs according to where the plug-in functionality fits in PMNG context.
 This means that during development, whenever you updated/recompile your DLL you&#8217;ll have to close and restart PM.</p>
 </div>
 <div class="paragraph">
-<p>Since PM is a 32 bit application, the plugin DLL must also be compiled as 32 bit.</p>
+<p>Since PM is a 32 bit application, the plug-in DLL must also be compiled as 32 bit.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -582,7 +582,7 @@ This means that during development, whenever you updated/recompile your DLL you&
 In the future this might change, therefore always check the <a href="https://www.cosmigo.com/" title="Visit Cosmigo website" target="_blank" rel="noopener">Cosmigo website</a> for up-to-date information.</p>
 </div>
 <div class="paragraph">
-<p>If a 64 bit version of PM NG should be released, all file I/O plugins would have to compiled to 64 bit in order to be usable (linkable) by the 64 bit version.</p>
+<p>If a 64 bit version of PM NG should be released, all file I/O plug-ins would have to compiled to 64 bit in order to be usable (linkable) by the 64 bit version.</p>
 </div>
 </td>
 </tr>
@@ -592,18 +592,18 @@ In the future this might change, therefore always check the <a href="https://www
 <div class="sect2">
 <h3 id="_choosing_a_language"><a class="anchor" href="#_choosing_a_language"></a>Choosing a Language</h3>
 <div class="paragraph">
-<p>The good news about PM plugins is that developers are free to use a variety of different programming languages to create plugins with.
-This means that the creation of PM plugins is not restricted to C/C++ gurus, but can be also acomplished with some easier programming languages, including Basic.</p>
+<p>The good news about PM plug-ins is that developers are free to use a variety of different programming languages to create plug-ins with.
+This means that the creation of PM plug-ins is not restricted to C/C++ gurus, but can be also accomplished with some easier programming languages, including Basic.</p>
 </div>
 <div class="paragraph">
-<p>The &#8220;bad news&#8221; (so to speak) is that the official Cosmigo plugin interface documentation and code samples are intended for an audience with knowledge of either C++ or Delphi, which means that users willing to implement plugins in other languages will have to conduct extensive research on these languages in order to work out data types equivalences and how to overcome some memory management issues implicitly handled behind the scenes by
+<p>The &#8220;bad news&#8221; (so to speak) is that the official Cosmigo plug-in interface documentation and code samples are intended for an audience with knowledge of either C++ or Delphi, which means that users willing to implement plug-ins in other languages will have to conduct extensive research on these languages in order to work out data types equivalences and how to overcome some memory management issues implicitly handled behind the scenes by
 <a href="https://en.wikipedia.org/wiki/Microsoft_Visual_Studio" target="_blank" rel="noopener">Microsoft Visual Studio</a>
 and
 <a href="https://edn.embarcadero.com/article/41593" target="_blank" rel="noopener">Embarcadero Delphi XE2</a>.</p>
 </div>
 <div class="paragraph">
-<p>This guide was conceived to simplify the task of implementing PM plugins in any language, by presenting the plugin interface, its data types and the data exchange mechanisms in a language agnostic way&#8201;&#8212;&#8201;i.e. without assuming that the reader has any knowledge of C/C++ or Delphi.
-Hopefully, this document will fill the C++/Delphi &#8220;experts gap&#8221; and open the doors of plugins development to programmers coming from all walks of programming life, including beginners who are willing to give it a go, and regardless of the languages they&#8217;re accustomed to work with.</p>
+<p>This guide was conceived to simplify the task of implementing PM plug-ins in any language, by presenting the plug-in interface, its data types and the data exchange mechanisms in a language agnostic way&#8201;&#8212;&#8201;i.e. without assuming that the reader has any knowledge of C/C++ or Delphi.
+Hopefully, this document will fill the C++/Delphi &#8220;experts gap&#8221; and open the doors of plug-ins development to programmers coming from all walks of programming life, including beginners who are willing to give it a go, and regardless of the languages they&#8217;re accustomed to work with.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -613,17 +613,17 @@ Hopefully, this document will fill the C++/Delphi &#8220;experts gap&#8221; and 
 </td>
 <td class="content">
 An obvious limitation to this approach is that the guide is bound to provide fairly generic implementation guidelines, for different programming languages have different paradigms.
-It would be impossible to provide implmentation-specific advice and preserve language-neutrality at the same time.
+It would be impossible to provide implementation-specific advice and preserve language-neutrality at the same time.
 Developers will need to adapt the information provided by this guide to the paradigm of their programming language.
-Knowers of C++ or Delphi are better off reading the official
-<a href="Developer_Interface.html" title="Read the plugins 'Developer Interface' document"><em>Developer Interface</em></a>
+Programmers fluent in C++ or Delphi are better off reading the official
+<a href="../Developer_Interface.html" title="Read the plug-ins 'Developer Interface' document"><em>Developer Interface</em></a>
 document, for it provides implementation-specific details.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>You can create a custom file I/O plugin with any programming language that meets the following requirements:</p>
+<p>You can create a custom file I/O plug-in with any programming language that meets the following requirements:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -643,42 +643,43 @@ document, for it provides implementation-specific details.
 </div>
 <div class="paragraph">
 <p>Most compiled programming languages for Windows should meet these requirements.
-Therefore, developers have an ample choice of languages to pick from for developing PM file I/O plugins, and are by no means bound to use MSVS or Embarcadero Delphi for the task.</p>
+Therefore, developers have an ample choice of languages to pick from for developing PM file I/O plug-ins, and are by no means bound to use MSVS or Embarcadero Delphi for the task.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_pseudocode_notation"><a class="anchor" href="#_pseudocode_notation"></a>Pseudocode Notation</h3>
 <div class="paragraph">
-<p>To simplify representation of functions, their parameters and datatypes, this document employes an arbitrary and simple pseudocode notation and then describes the parameters in more detail, one by one.
+<p>To simplify representation of functions, their parameters and data types, this document employs an arbitrary and simple pseudocode notation and then describes the parameters in more detail, one by one.
 Hopefully, the adopted notation should be self explanatory.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_interface_overiew"><a class="anchor" href="#_interface_overiew"></a>Interface Overiew</h2>
+<h2 id="_interface_overview"><a class="anchor" href="#_interface_overview"></a>Interface Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Pro Motion expects the plugin DLL to export some functions with specific names, parameters and return values.
-When creating a custom plugin, you must therefore ensure that all those functions are correctly implemented.</p>
+<p>Pro Motion expects the plug-in DLL to export some functions with specific names, parameters and return values.
+When creating a custom plug-in, you must therefore ensure that all those functions are correctly implemented.</p>
 </div>
 <div class="paragraph">
 <p>PM will invoke the DLL functions in a meaningful order, depending on the type of file operation requested by the user.</p>
 </div>
 <div class="paragraph">
-<p>Data exchance is handled by passing pointers to and from the DLL.
-Sometimes pointers are used to pass data from PM to the plugin, in which case a function parameter will be a pointer to the memory location storing the data which the plugin should read.
-Other times, pointers are used to pass data from the plugin to PM, either via a pointer paramter in the function call, which the plugin should then use to store the requested data in, or by the function being expected to return a pointer to a string.</p>
+<p>Data exchange is handled by passing pointers to and from the DLL.
+Sometimes pointers are used to pass data from PM to the plug-in, in which case a function parameter will be a pointer to the memory location storing the data which the plug-in should read.
+Other times, pointers are used to pass data from the plug-in to PM, either via a pointer parameter in the function call, which the plug-in should then use to store the requested data in, or by the function being expected to return a pointer to a string.</p>
 </div>
 <div class="paragraph">
-<p>Some functions are expected to return bool values (true/false) to inform PM wether a given feature is available. Error handling is done via the <a href="#_geterrormessage">getErrorMessage</a> plugin function, which will should either return a <code>NULL</code> pointer (no error) or a pointer to string describing the error; PM will invoke this error function right after calling any plugin function that may set error (not every plugin function can set error).</p>
+<p>Some functions are expected to return boolean values (true/false) to inform PM whether a given feature is available. Error handling is done via the <a href="#_geterrormessage">getErrorMessage</a> plug-in function, which will should either return a <code>NULL</code> pointer (no error) or a pointer to string describing the error; PM will invoke this error function right after calling any plug-in function that may set error (not every plug-in function can set error).</p>
 </div>
 <div class="paragraph">
-<p>The following table lists all the required DLL functions, and specifies which functions are invoked in file load and save operations, and wether the function might set an error or not.</p>
+<p>The following table lists all the required DLL functions, and specifies which functions are invoked in file load and save operations, and whether the function might set an error or not.</p>
 </div>
 <table id="procedures-table" class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 1. Plugin DLL Procedures Overview</caption>
+<caption class="title">Table 1. Plug-in DLL Procedures Overview</caption>
 <colgroup>
+<col>
 <col>
 <col>
 <col>
@@ -690,6 +691,7 @@ Other times, pointers are used to pass data from the plugin to PM, either via a 
 <th class="tableblock halign-center valign-top">load</th>
 <th class="tableblock halign-center valign-top">save</th>
 <th class="tableblock halign-center valign-top">error</th>
+<th class="tableblock halign-center valign-top">summary description</th>
 </tr>
 </thead>
 <tbody>
@@ -698,138 +700,161 @@ Other times, pointers are used to pass data from the plugin to PM, either via a 
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Called once when PM launches and registers all plug-ins.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_setprogresscallback">setProgressCallback</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides a pointer to PM&#8217;s progress status function.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_geterrormessage">getErrorMessage</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM calls it to get a pointer to the error message string.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_getfiletypeid">getFileTypeId</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plug-in info: The unique plug-in ID, for internal PM use.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_isreadsupported">isReadSupported</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plug-in info: Does it support read operations?</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_iswritesupported">isWriteSupported</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plug-in info: Does it support write operations?</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_iswritetruecolorsupported">isWriteTrueColorSupported</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plug-in info: Does it support writing <a href="https://en.wikipedia.org/wiki/Color_depth#True_color_(24-bit)" title="Read more about true color on Wikipedia" target="_blank" rel="noopener"><em>true color</em></a> data?</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_getfileboxdescription">getFileBoxDescription</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plug-in info: Description for PM&#8217;s file types dialog drop down.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_getfileextension">getFileExtension</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plug-in info: Associated file extension.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_setfilename">setFilename</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Informs the plug-in on the filename about to the processed.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_canhandle">canHandle</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM needs the plug-in to confirm it can handle the file.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_loadbasicdata">loadBasicData</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM needs the plug-in to confirm it extracted info from the file.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_getwidth">getWidth</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM wants to know the image with in pixels.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_getheight">getHeight</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM wants to know the image height in pixels.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_getimagecount">getImageCount</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM wants to know the number of image frames.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_canextractpalette">canExtractPalette</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plug-in info: Does it support extracting just the palette?</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_getrgbpalette">getRgbPalette</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM wants a pointer to the extracted 256-colours palette.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_gettransparentcolor">getTransparentColor</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM wants to know if and which indexed colour is transparent.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_isalphaenabled">isAlphaEnabled</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM wants to know if the image contains transparency layers.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_loadnextimage">loadNextImage</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Called to obtain from the plug-in the current image data.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_beginwrite">beginWrite</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PM passes preliminary information about the upcoming image.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_writenextimage">writeNextImage</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Called to transfer to the plug-in the current image data.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#_finishprocessing">finishProcessing</a></code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green">&#x2714;</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red">&#x2718;</span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">End of plug-in transactions, all resources must be freed.</p></td>
 </tr>
 </tbody>
 </table>
@@ -840,13 +865,13 @@ Other times, pointers are used to pass data from the plugin to PM, either via a 
 <div class="sectionbody">
 <div class="paragraph">
 <p>Each programming language has its own native data types, and adopts a custom naming convention for the various types.
-To avoid confusion about the data types mentioned in this document, I&#8217;ll try to provide language-agnostic description of the data types used by plugins to exchange data with PM.</p>
+To avoid confusion about the data types mentioned in this document, I&#8217;ll try to provide language-agnostic description of the data types used by plug-ins to exchange data with PM.</p>
 </div>
 <div class="sect2">
 <h3 id="_strings"><a class="anchor" href="#_strings"></a>Strings</h3>
 <div class="paragraph">
-<p>Strings are exchanged between PM and the plugin via pointers.
-All strings are expected to be null-terminated and in Unicode (i.e., wide char, 16-bits characters, <code>wchar_t</code>), and not Ascii strings.
+<p>Strings are exchanged between PM and the plug-in via pointers.
+All strings are expected to be null-terminated and in Unicode (i.e., wide char, 16-bits characters, <code>wchar_t</code>), and not ASCII strings.
 If your language allows creating different types of strings, check that you are using the correct type.</p>
 </div>
 <div class="paragraph">
@@ -854,8 +879,8 @@ If your language allows creating different types of strings, check that you are 
 In many languages the memory location of string variable contains just a pointer to the actual string, not the string itself.</p>
 </div>
 <div class="paragraph">
-<p>Furthermore, in order for PM to able to gain read/write memory access to these plugin strings, you&#8217;ll need to use some globally scoped strings which are visible outside the DLL.
-How this can be achived will depend largely on the language you&#8217;re using, but chances are that if its syntax provides a &#8216;global&#8217; keyword that should do the trick.
+<p>Furthermore, in order for PM to able to gain read/write memory access to these plug-in strings, you&#8217;ll need to use some globally scoped strings which are visible outside the DLL.
+How this can be achieved will depend largely on the language you&#8217;re using, but chances are that if its syntax provides a &#8216;global&#8217; keyword that should do the trick.
 Refer to the language documentation regarding strings, pointers, variables scope and visibility, and creating dynamically linked libraries (DLLs).</p>
 </div>
 <div class="admonitionblock warning">
@@ -896,20 +921,20 @@ Refer to the language documentation regarding strings, pointers, variables scope
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&ast;language</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">(<em>in</em>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Points to two-characters (Ascii) representing the ISO language code currently used in PM user interface (e.g. '<code>en</code>', '<code>de</code>' or '<code>fr</code>').
-Can be used for localization if the plugin supports multi-language messages, otherwise just ignore it.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Points to two-characters (ASCII) representing the ISO language code currently used in PM user interface (e.g. '<code>en</code>', '<code>de</code>' or '<code>fr</code>').
+Can be used for localization if the plug-in supports multi-language messages, otherwise just ignore it.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&ast;version</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">(<em>out</em>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to <strong>uint16</strong> representing the version number of the file I/O plugin interface.
-Must be set to &#8220;1&#8221; to be a valid plugin, as this is the only interface version currently supported.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to <strong>uint16</strong> representing the version number of the file I/O plug-in interface.
+Must be set to &#8220;1&#8221; to be a valid plug-in, as this is the only interface version currently supported.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&ast;animation</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">(<em>out</em>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to boolean (1 byte/<strong>uint8</strong>).
-Plugins targetting animations must set it to <strong>true</strong>.</p></td>
+Plug-ins targeting animations must set it to <strong>true</strong>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -931,17 +956,17 @@ Plugins targetting animations must set it to <strong>true</strong>.</p></td>
 </tbody>
 </table>
 <div class="paragraph">
-<p>General initialization function, called once when PM launches and needs to register the available plugins.</p>
+<p>General initialization function, called once when PM launches and needs to register the available plug-ins.</p>
 </div>
 <div class="paragraph">
-<p>The function informs the plugin of the locale being used in PM, and provides pointers for retriving the interface version for which the plugin was designed (for future use, when new interface versions will be introduced) and to determine whether this is a plugin for handling images or animations files.</p>
+<p>The function informs the plug-in of the locale being used in PM, and provides pointers for retrieving the interface version for which the plug-in was designed (for future use, when new interface versions will be introduced) and to determine whether this is a plug-in for handling images or animations files.</p>
 </div>
 <div class="paragraph">
-<p>If the plugin targets animation files, then it must set to <strong>true</strong> the byte located at <code>&ast;animation</code>.
-Plugins for image files, on the other hand, don&#8217;t need to do anything with <code>&ast;animation</code>.</p>
+<p>If the plug-in targets animation files, then it must set to <strong>true</strong> the byte located at <code>&ast;animation</code>.
+Plug-ins for image files, on the other hand, don&#8217;t need to do anything with <code>&ast;animation</code>.</p>
 </div>
 <div class="paragraph">
-<p>This will always be the first plugin function invoked by PM.</p>
+<p>This will always be the first plug-in function invoked by PM.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -951,8 +976,8 @@ Plugins for image files, on the other hand, don&#8217;t need to do anything with
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Unlike other error-setting plugin functions, which only need to ensure that <code>getErrorMessage</code> will return a pointer to an error string, <code>initialize</code> must <em>also</em> return <code>false</code> in case of error.
-This is because <code>initialize</code> is a special case, for it&#8217;s used to activate the plugin, and it&#8217;s therefore expected to return a boolean indicating success/failure.
+<p>Unlike other error-setting plug-in functions, which only need to ensure that <code>getErrorMessage</code> will return a pointer to an error string, <code>initialize</code> must <em>also</em> return <code>false</code> in case of error.
+This is because <code>initialize</code> is a special case, for it&#8217;s used to activate the plug-in, and it&#8217;s therefore expected to return a boolean indicating success/failure.
 In case of failure, it should still set an error description via <code>getErrorMessage</code>.</p>
 </div>
 </td>
@@ -977,7 +1002,7 @@ In case of failure, it should still set an error description via <code>getErrorM
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&ast;progressCallback</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Pointer to a PM function that the plugin must call when progress changes.
+<p>Pointer to a PM function that the plug-in must call when progress changes.
 The PM function located at <code>&ast;progressCallback</code> (stdcall) is representable as:</p>
 </div>
 <div class="listingblock">
@@ -986,7 +1011,7 @@ The PM function located at <code>&ast;progressCallback</code> (stdcall) is repre
 </div>
 </div>
 <div class="paragraph">
-<p>The plugin must invoke it accordingly, using only its memory pointer as a means to interface with it.</p>
+<p>The plug-in must invoke it accordingly, using only its memory pointer as a means to interface with it.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1009,10 +1034,10 @@ The PM function located at <code>&ast;progressCallback</code> (stdcall) is repre
 </tbody>
 </table>
 <div class="paragraph">
-<p>This function passes to the plugin the memory addres of a PM progress callback function that the plugin should use to provide user feedback regarding the progress of image loading/saving operations.</p>
+<p>This function passes to the plug-in the memory address of a PM progress callback function that the plug-in should use to provide user feedback regarding the progress of image loading/saving operations.</p>
 </div>
 <div class="paragraph">
-<p>The plugin must interface to the above function (stdcall) using the pointer provided via the <code>&ast;progressCallback</code> parameter.
+<p>The plug-in must interface to the above function (stdcall) using the pointer provided via the <code>&ast;progressCallback</code> parameter.
 How this can be achieved will vary from language to language, but you should be looking for a way to call &#8220;foreign functions&#8221; via some
 <a href="https://en.wikipedia.org/wiki/Foreign_function_interface" title="See Wikipedia page on FFI" target="_blank" rel="noopener">Foreign function interface (FFI)</a>
 mechanism.</p>
@@ -1029,14 +1054,14 @@ A progress value of &#8220;0&#8221; will hide progress display in PM, while valu
 </td>
 <td class="content">
 <div class="paragraph">
-<p>PM NG no longer displays a true progress bar, because nowadays it&#8217;s mostly useless due to the speed at which most images are processed, but previous version of PM do; therefore, for the sake of backward compatibility, plugins should honour the progress callback.</p>
+<p>PM NG no longer displays a true progress bar, because nowadays it&#8217;s mostly useless due to the speed at which most images are processed, but previous version of PM do; therefore, for the sake of backward compatibility, plug-ins should honour the progress callback.</p>
 </div>
 <div class="paragraph">
-<p>The important thing here is to provide the end user with some kind of feedback on the ongoing plugin operations, which in PM NG is now shown via a small emphasized panel at the bottom of the main window, along with the cursor shape turning &#8220;busy&#8221;.</p>
+<p>The important thing here is to provide the end user with some kind of feedback on the ongoing plug-in operations, which in PM NG is now shown via a small emphasized panel at the bottom of the main window, along with the cursor shape turning &#8220;busy&#8221;.</p>
 </div>
 <div class="paragraph">
-<p>Plugin developers should call the <code>&ast;progressCallback</code> function to update the user when progress status changes, passing to it progress indications from 1 to 100, if possible.
-At least, set it to a non-zero value when the plugin is processing, and then back to zero when processing is over.</p>
+<p>Plug-in developers should call the <code>&ast;progressCallback</code> function to update the user when progress status changes, passing to it progress indications from 1 to 100, if possible.
+At least, set it to a non-zero value when the plug-in is processing, and then back to zero when processing is over.</p>
 </div>
 </td>
 </tr>
@@ -1068,30 +1093,30 @@ At least, set it to a non-zero value when the plugin is processing, and then bac
 </tbody>
 </table>
 <div class="paragraph">
-<p>If one of the plugin functions that may set error does encounter an error, it can notify PM via indirect usage of this function, i.e. by setting the conditions that will make <code>getErrorMessage()</code> return a pointer to an error string instead of <code>nil</code>.</p>
+<p>If one of the plug-in functions that may set error does encounter an error, it can notify PM via indirect usage of this function, i.e. by setting the conditions that will make <code>getErrorMessage()</code> return a pointer to an error string instead of <code>nil</code>.</p>
 </div>
 <div class="paragraph">
-<p>PM will call this function immediately after calling any plugin function that may set error, and <code>getErrorMessage()</code> should either return <code>nil</code> if no error was encountered, or a pointer to a string containing the error description.
-PM expects the string to be a Unicode string (wide char, 16-bits characters), not an Ascii string; if your language allows creating different types of strings, check that you are using the correct type.</p>
+<p>PM will call this function immediately after calling any plug-in function that may set error, and <code>getErrorMessage()</code> should either return <code>nil</code> if no error was encountered, or a pointer to a string containing the error description.
+PM expects the string to be a Unicode string (wide char, 16-bits characters), not an ASCII string; if your language allows creating different types of strings, check that you are using the correct type.</p>
 </div>
 <div class="paragraph">
-<p>This means that within your plugin DLL <code>getErrorMessage()</code> should be granted access to a string which is also visibile to all functions that may set error (i.e. a global string), and check wether the string is currently empty or contains some text, in the fomer case it should return <code>nil</code>, in the latter it should return the memory address at which the string is stored, for it means that the last plugin function called has set an error which must now be notified and passed on to PM.</p>
+<p>This means that within your plug-in DLL <code>getErrorMessage()</code> should be granted access to a string which is also visible to all functions that may set error (i.e. a global string), and check whether the string is currently empty or contains some text, in the former case it should return <code>nil</code>, in the latter it should return the memory address at which the string is stored, for it means that the last plug-in function called has set an error which must now be notified and passed on to PM.</p>
 </div>
 <div class="paragraph">
 <p>A pseudocode example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="pseudocode"><code class="language-pseudocode" data-lang="pseudocode"><span class="hl kwb">Global</span> <span class="hl kwa">string</span> ErrorMessage<span class="hl opt">;</span> <span class="hl slc">// define a string visibile to all DLL functions</span>&#x000A;&#x000A;<span class="hl kwe">*</span><span class="hl kwa">string</span> <span class="hl opt">:</span> <span class="hl kwd">getErrorMessage</span><span class="hl opt">()</span>&#x000A;<span class="hl opt">{</span>&#x000A;  <span class="hl kwb">If</span> ErrorMessage <span class="hl opt">==</span> <span class="hl str">&quot;&quot;</span>&#x000A;    <span class="hl kwb">Then</span>&#x000A;      <span class="hl slc">// no error currently awaiting to be notified</span>&#x000A;      <span class="hl kwb">Return</span> <span class="hl kwc">nil</span><span class="hl opt">;</span>&#x000A;    <span class="hl kwb">Else</span>&#x000A;      <span class="hl slc">// there is a pending error, return memory address of error string</span>&#x000A;      <span class="hl kwb">Return</span> <span class="hl kwe">&amp;</span>ErrorMessage<span class="hl opt">;</span>&#x000A;  <span class="hl kwb">EndIf</span>&#x000A;<span class="hl opt">}</span></code></pre>
+<pre class="highlight" lang="pseudocode"><code class="language-pseudocode" data-lang="pseudocode"><span class="hl kwb">Global</span> <span class="hl kwa">string</span> ErrorMessage<span class="hl opt">;</span> <span class="hl slc">// define a string visible to all DLL functions</span>&#x000A;&#x000A;<span class="hl kwe">*</span><span class="hl kwa">string</span> <span class="hl opt">:</span> <span class="hl kwd">getErrorMessage</span><span class="hl opt">()</span>&#x000A;<span class="hl opt">{</span>&#x000A;  <span class="hl kwb">If</span> ErrorMessage <span class="hl opt">==</span> <span class="hl str">&quot;&quot;</span>&#x000A;    <span class="hl kwb">Then</span>&#x000A;      <span class="hl slc">// no error currently awaiting to be notified</span>&#x000A;      <span class="hl kwb">Return</span> <span class="hl kwc">nil</span><span class="hl opt">;</span>&#x000A;    <span class="hl kwb">Else</span>&#x000A;      <span class="hl slc">// there is a pending error, return memory address of error string</span>&#x000A;      <span class="hl kwb">Return</span> <span class="hl kwe">&amp;</span>ErrorMessage<span class="hl opt">;</span>&#x000A;  <span class="hl kwb">EndIf</span>&#x000A;<span class="hl opt">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The nature of this indirect error messaging mechanism also requires that all functions that may set error should &#8220;reset&#8221; the aforementioned string to be empty at the beginning of each call, to avoid carrying over errors generated by previous functions calls.
-As soon as an error is encountered, the error string should be set to contain a meaningful message about the nature of the problem, and just let <code>getErrorMessage()</code> handle notification of the error to PM, and that the next plugin function (which may set error) that gets called will handle resetting the error string.</p>
+As soon as an error is encountered, the error string should be set to contain a meaningful message about the nature of the problem, and just let <code>getErrorMessage()</code> handle notification of the error to PM, and that the next plug-in function (which may set error) that gets called will handle resetting the error string.</p>
 </div>
 <div class="paragraph">
-<p>Not every plugin procedure can set error, only those explicitly indicated in this document (under &#8220;Control&#8221; in the description of each function, as well as in the &#8220;error&#8221; column of <a href="#procedures-table">Table 1</a>).
-This was done to avoid burdening PM with having to check for errors at each and every plugin call, and limiting instead these checks to meaningful contexts.</p>
+<p>Not every plug-in procedure can set error, only those explicitly indicated in this document (under &#8220;Control&#8221; in the description of each function, as well as in the &#8220;error&#8221; column of <a href="#procedures-table">Table 1</a>).
+This was done to avoid burdening PM with having to check for errors at each and every plug-in call, and limiting instead these checks to meaningful contexts.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1110,7 +1135,7 @@ This was done to avoid burdening PM with having to check for errors at each and 
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to a string with the unique identifier of the plugin.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to a string with the unique identifier of the plug-in.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">May set error</p></td>
@@ -1119,16 +1144,16 @@ This was done to avoid burdening PM with having to check for errors at each and 
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM calls this plugin function in order to acquire a unique identifier for the plugin.
-The Id is used by PM as an interanl reference to the plugin, and it&#8217;s not intended to be shown to end users.
-For example, if the user saved a file via this plugin and later uses the &#8216;save again&#8217; function, PM will rely on the file type Id to know which plugin to use.</p>
+<p>PM calls this plug-in function in order to acquire a unique identifier for the plug-in.
+The Id is used by PM as an internal reference to the plug-in, and it&#8217;s not intended to be shown to end users.
+For example, if the user saved a file via this plug-in and later uses the &#8216;save again&#8217; function, PM will rely on the file type Id to know which plug-in to use.</p>
 </div>
 <div class="paragraph">
-<p>The plugin must return a pointer to a string containing the plugin file type Id.</p>
+<p>The plug-in must return a pointer to a string containing the plug-in file type Id.</p>
 </div>
 <div class="paragraph">
-<p>The file extension is not unique enough to used as a Id, for there could be several load/save plugins for <code>"bmp-files"</code>.
-The Id may be a series of numbers/characters like a GUID, or it may be like a Java package descriptor, e.g. <code>"de.mycompany.promotion.ioplugin.png"</code>.</p>
+<p>The file extension is not unique enough to used as a Id, for there could be several load/save plug-ins for <code>"bmp-files"</code>.
+The Id may be a series of numbers/characters like a GUID, or it may be like a Java package descriptor, e.g. <code>"de.mycompany.promotion.ioplug-in.png"</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1156,7 +1181,7 @@ The Id may be a series of numbers/characters like a GUID, or it may be like a Ja
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM needs to know if the plugin supports reading from the file format, to determine wether to include the plugin in the file open/import dialogs.</p>
+<p>PM needs to know if the plug-in supports reading from the file format, to determine whether to include the plug-in in the file open/import dialogs.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1184,7 +1209,7 @@ The Id may be a series of numbers/characters like a GUID, or it may be like a Ja
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM needs to know if the plugin supports saving to the file format, to determine wether to include the plugin in the file save/export dialogs.</p>
+<p>PM needs to know if the plug-in supports saving to the file format, to determine whether to include the plug-in in the file save/export dialogs.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1212,10 +1237,10 @@ The Id may be a series of numbers/characters like a GUID, or it may be like a Ja
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM needs to know if the plugin can write true color data to the file format.
-Some operations (e.g. automatically flattening layers) may result in colors that don&#8217;t fit into the 256 colors palette.
-In these cases the image data can be optionally stored as <a href="https://en.wikipedia.org/wiki/Color_depth#True_color_(24-bit)" title="Read more about true color on Wikipedia" target="_blank" rel="noopener">true color</a> (24-bit color depth).
-If the plugin doesn&#8217;t support true color then the image colors are reduced to 256 indexed colors.</p>
+<p>PM needs to know if the plug-in can write <em>true color</em> data to the file format.
+Some operations (e.g. automatically flattening layers) may result in colours that don&#8217;t fit into the 256 colours palette.
+In these cases the image data can be optionally stored as <a href="https://en.wikipedia.org/wiki/Color_depth#True_color_(24-bit)" title="Read more about true color on Wikipedia" target="_blank" rel="noopener"><em>true color</em></a> (24-bit colour depth).
+If the plug-in doesn&#8217;t support <em>true color</em> then the image colours are reduced to 256 indexed colours.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1243,11 +1268,11 @@ If the plugin doesn&#8217;t support true color then the image colors are reduced
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM needs a file type description string to represent the plugin in the file I/O dialogs, e.g. &#8220;BMP Windows Bitmap RLE&#8221;.
+<p>PM needs a file type description string to represent the plug-in in the file I/O dialogs, e.g. &#8220;BMP Windows Bitmap RLE&#8221;.
 You should place the file type abbreviation (usually the file extension) at the beginning of the string so that it can be sorted correctly in the drop down menu, making it easier for end users to sift through the list of available file types.</p>
 </div>
 <div class="paragraph">
-<p>If your plugin supports internationalization, you should return a pointer to a string in the language matching the user&#8217;s locale (which the plugin has already detected during the <a href="#initialize"><code>initialize()</code></a> call).</p>
+<p>If your plug-in supports internationalization, you should return a pointer to a string in the language matching the user&#8217;s locale (which the plug-in has already detected during the <a href="#initialize"><code>initialize()</code></a> call).</p>
 </div>
 </div>
 <div class="sect2">
@@ -1266,7 +1291,7 @@ You should place the file type abbreviation (usually the file extension) at the 
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to a string with the file extension supported by this plugin.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to a string with the file extension supported by this plug-in.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">May set error</p></td>
@@ -1316,19 +1341,19 @@ You should place the file type abbreviation (usually the file extension) at the 
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM calls this function to inform the plugin that a new file is about to be processed and provides a full path to the corresponding file.
-The plugin should reset its internal structures and references if the file name is different from the previously set file.</p>
+<p>PM calls this function to inform the plug-in that a new file is about to be processed and provides a full path to the corresponding file.
+The plug-in should reset its internal structures and references if the file name is different from the previously set file.</p>
 </div>
 <div class="paragraph">
 <p>At this stage, it is still undefined if the file is intended for read or write operations!</p>
 </div>
 <div class="paragraph">
 <p>Calls to this function might be triggered by different contexts.
-For example, by the user when her/she selects in a file I/O dialog a file registered to the plugin.
+For example, by the user when her/she selects in a file I/O dialog a file registered to the plug-in.
 But it might also be triggered multiple times by PM as a result of a multi file operation (e.g. <span class="menuseq"><b class="menu">File</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Create from single Images&#8230;&#8203;</b></span>, <span class="menuseq"><b class="menu">Animation</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Save as single Images&#8230;&#8203;</b></span>, etc.).</p>
 </div>
 <div class="paragraph">
-<p>The plugin at this stage only needs to acknowledge the file, memorize its references, and be prepared.</p>
+<p>The plug-in at this stage only needs to acknowledge the file, memorize its references, and be prepared.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1357,13 +1382,13 @@ But it might also be triggered multiple times by PM as a result of a multi file 
 </tbody>
 </table>
 <div class="paragraph">
-<p>This function is called by PM to get confirmation that the plugin is capable of handling reading the selected file (i.e. the file indicated via the <a href="#_setfilename"><code>setFilename()</code></a> call).
-The plugin should open the file and carry out the necessary checks and then return either <code>true</code> or <code>false</code> accordingly.
-In case the plugin is unable to handle the file, it should also set an error with a sting describing the reason why the file can&#8217;t be handled.</p>
+<p>This function is called by PM to get confirmation that the plug-in is capable of handling reading the selected file (i.e. the file indicated via the <a href="#_setfilename"><code>setFilename()</code></a> call).
+The plug-in should open the file and carry out the necessary checks and then return either <code>true</code> or <code>false</code> accordingly.
+In case the plug-in is unable to handle the file, it should also set an error with a sting describing the reason why the file can&#8217;t be handled.</p>
 </div>
 <div class="paragraph">
-<p>Some image/animation formats may have many variants, yet share the same file extension, and a plugin might support only some features of the format and not others.
-When this function is called the plugin must check if the selected file is actually supported, by doing some basic checks on the file header, etc.</p>
+<p>Some image/animation formats may have many variants, yet share the same file extension, and a plug-in might support only some features of the format and not others.
+When this function is called the plug-in must check if the selected file is actually supported, by doing some basic checks on the file header, etc.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1392,7 +1417,7 @@ When this function is called the plugin must check if the selected file is actua
 </table>
 <div class="paragraph">
 <p>Before actually reading any graphics data, PM calls this function
-so that the plugin can extract some basic graphics data information from the target file, such as its dimensions, color palette, and other relevant data.
+so that the plug-in can extract some basic graphics data information from the target file, such as its dimensions, colour palette, and other relevant data.
 Other functions will rely on this function having been called before them&#8201;&#8212;&#8201;for example <a href="#_getwidth"><code>getWidth()</code></a>.</p>
 </div>
 </div>
@@ -1421,7 +1446,7 @@ Other functions will rely on this function having been called before them&#8201;
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM calls this function to learn from the plugin the width of the image which is going to be loaded, so it can prepare to receive it accordingly.</p>
+<p>PM calls this function to learn from the plug-in the width of the image which is going to be loaded, so it can prepare to receive it accordingly.</p>
 </div>
 <div class="paragraph">
 <p>The returned value must be a 32-bit signed integer.</p>
@@ -1434,7 +1459,7 @@ Other functions will rely on this function having been called before them&#8201;
 </td>
 <td class="content">
 <div class="paragraph">
-<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.</p>
+<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.</p>
 </div>
 </td>
 </tr>
@@ -1466,7 +1491,7 @@ Other functions will rely on this function having been called before them&#8201;
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM calls this function to learn from the plugin the height of the image which is going to be loaded, so it can prepare to receive it accordingly.</p>
+<p>PM calls this function to learn from the plug-in the height of the image which is going to be loaded, so it can prepare to receive it accordingly.</p>
 </div>
 <div class="paragraph">
 <p>The returned value must be a 32-bit signed integer.</p>
@@ -1479,7 +1504,7 @@ Other functions will rely on this function having been called before them&#8201;
 </td>
 <td class="content">
 <div class="paragraph">
-<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.</p>
+<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.</p>
 </div>
 </td>
 </tr>
@@ -1511,7 +1536,7 @@ Other functions will rely on this function having been called before them&#8201;
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM calls this function to learn from the plugin how many image frames are present in the file which is going to be loaded, so it can prepare to receive them accordingly.</p>
+<p>PM calls this function to learn from the plug-in how many image frames are present in the file which is going to be loaded, so it can prepare to receive them accordingly.</p>
 </div>
 <div class="paragraph">
 <p>This function must return a 32-bit signed integer with the number of frames available to load from the file.
@@ -1525,7 +1550,7 @@ If the file consists of a single image then &#8220;1&#8221; is to be returned.</
 </td>
 <td class="content">
 <div class="paragraph">
-<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.</p>
+<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.</p>
 </div>
 </td>
 </tr>
@@ -1548,7 +1573,7 @@ If the file consists of a single image then &#8220;1&#8221; is to be returned.</
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the plugin supports palette reading then this function must return <code>true</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the plug-in supports palette reading then this function must return <code>true</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">May set error</p></td>
@@ -1557,8 +1582,8 @@ If the file consists of a single image then &#8220;1&#8221; is to be returned.</
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM allows users to load just the color palette from a graphic file, without loading the graphic/bitmap data.
-PM calls this function to ask the plugin if it&#8217;s capable of handling extracting just the palette from a target file.</p>
+<p>PM allows users to load just the colour palette from a graphic file, without loading the graphic/bitmap data.
+PM calls this function to ask the plug-in if it&#8217;s capable of handling extracting just the palette from a target file.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1586,8 +1611,8 @@ PM calls this function to ask the plugin if it&#8217;s capable of handling extra
 </tbody>
 </table>
 <div class="paragraph">
-<p>For plugins that support extracting the palette data, this function must return a pointer to the memory location storing the 256-colors indexed palette.
-The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB triplets (one byte per channel) representing the indexed colors, starting with color &#8220;0&#8221;.</p>
+<p>For plug-ins that support extracting the palette data, this function must return a pointer to the memory location storing the 256-colours indexed palette.
+The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB triplets (one byte per channel) representing the indexed colours, starting with colour &#8220;0&#8221;.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1597,7 +1622,7 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 </td>
 <td class="content">
 <div class="paragraph">
-<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.</p>
+<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.</p>
 </div>
 </td>
 </tr>
@@ -1620,7 +1645,7 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The palette index of the transparent color, or -1 if none.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The palette index of the transparent colour, or -1 if none.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">May set error</p></td>
@@ -1629,7 +1654,7 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 </tbody>
 </table>
 <div class="paragraph">
-<p>If the image contains a transparent color then this function must return its palette color entry/index (first entry is 0).</p>
+<p>If the image contains a transparent colour then this function must return its palette colour entry/index (first entry is 0).</p>
 </div>
 <div class="paragraph">
 <p>The returned value must be a 32-bit signed integer.</p>
@@ -1642,7 +1667,7 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 </td>
 <td class="content">
 <div class="paragraph">
-<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.</p>
+<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.</p>
 </div>
 </td>
 </tr>
@@ -1674,7 +1699,7 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 </tbody>
 </table>
 <div class="paragraph">
-<p>PM wants to know wether the image/animation file which is going to be loaded contains alpha transparency data or not.</p>
+<p>PM wants to know whether the image/animation file which is going to be loaded contains alpha transparency data or not.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1684,7 +1709,7 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 </td>
 <td class="content">
 <div class="paragraph">
-<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.</p>
+<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.</p>
 </div>
 </td>
 </tr>
@@ -1707,13 +1732,13 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;colorFrame</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the color pixels (color palette indexes).
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the colour pixels (colour palette indexes).
   The memory portion has a size of <code>getWidth</code> * <code>getHeight</code> bytes!</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;colorFramePalette</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the RGB color table.
-  There are 768 bytes being 256 colors with one byte for red, green and blue.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the RGB colour table.
+  There are 768 bytes being 256 colours with one byte for red, green and blue.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;alphaFrame</code></code></p></td>
@@ -1743,7 +1768,7 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the data was transfered successfuly then <code>true</code> is to be returned.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the data was transferred successfully it must return <code>true</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">May set error</p></td>
@@ -1752,8 +1777,8 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 </tbody>
 </table>
 <div class="paragraph">
-<p>For plugins that support reading, this function is used to load the image data.
-After executing this function the plugin must advance to the next frame, if any.
+<p>For plug-ins that support reading, this function is used to load the image data.
+After executing this function the plug-in must advance to the next frame, if any.
 The function will be called according to the number of frames returned by <a href="#_getimagecount"><code>getImageCount()</code></a>.</p>
 </div>
 <div class="admonitionblock note">
@@ -1764,7 +1789,7 @@ The function will be called according to the number of frames returned by <a hre
 </td>
 <td class="content">
 <div class="paragraph">
-<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.</p>
+<p><a href="#_loadbasicdata"><code>loadBasicData()</code></a> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.</p>
 </div>
 </td>
 </tr>
@@ -1795,7 +1820,7 @@ The function will be called according to the number of frames returned by <a hre
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>transparentColor</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The palette index of the transparent color,  or -1 if none.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The palette index of the transparent colour,  or -1 if none.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>alphaEnabled</code></code></p></td>
@@ -1825,10 +1850,10 @@ The function will be called according to the number of frames returned by <a hre
 </tbody>
 </table>
 <div class="paragraph">
-<p>Before writing graphic data, PM wil call this function once to inform the plugin about the dimensions of the data that will be stored.</p>
+<p>Before writing graphic data, PM will call this function once to inform the plug-in about the dimensions of the data that will be stored.</p>
 </div>
 <div class="paragraph">
-<p>The output file shall reamin open until <a href="#_finishprocessing"><code>finishProcessing()</code></a> is called.</p>
+<p>The output file shall remain open until <a href="#_finishprocessing"><code>finishProcessing()</code></a> is called.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1847,13 +1872,13 @@ The function will be called according to the number of frames returned by <a hre
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;colorFrame</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the color pixels (color palette indexes).
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the colour pixels (colour palette indexes).
   The memory portion has a size of <code>getWidth</code> * <code>getHeight</code> bytes!</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;colorFramePalette</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the RGB color table.
-  There are 768 bytes being 256 colors with one byte for red, green and blue.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the RGB colour table.
+  There are 768 bytes being 256 colours with one byte for red, green and blue.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;alphaFrame</code></code></p></td>
@@ -1870,7 +1895,7 @@ The function will be called according to the number of frames returned by <a hre
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;rgba</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the color pixels represented as RGBA (each pixel being a <strong>uint32</strong>/<strong>dword</strong>) where the lowest byte is the red channel.
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the colour pixels represented as RGBA (each pixel being a <strong>uint32</strong>/<strong>dword</strong>) where the lowest byte is the red channel.
   The memory portion has a size of <code>getWidth</code> * <code>getHeight</code> * 4 bytes!</p></td>
 </tr>
 <tr>
@@ -1888,7 +1913,7 @@ The function will be called according to the number of frames returned by <a hre
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the data was transfered successfuly then <code>true</code> must be returned.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the data was transferred successfully it must return <code>true</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">May set error</p></td>
@@ -1897,7 +1922,7 @@ The function will be called according to the number of frames returned by <a hre
 </tbody>
 </table>
 <div class="paragraph">
-<p>For plugins that support reading, this function is used to save the image data.
+<p>For plug-ins that support reading, this function is used to save the image data.
 The function will be called as often as there are more frames to be stored.</p>
 </div>
 </div>
@@ -1927,10 +1952,10 @@ The function will be called as often as there are more frames to be stored.</p>
 </table>
 <div class="paragraph">
 <p>PM will call this function when the file read or write operation is completed.
-The plugin must now close the file and carry out all the required wrap-up chores&#8201;&#8212;&#8201;destroy any memory data and references to the processed file, free memory, release handles, etc., but still be ready for further file I/O operations, for this call only confirms the termination of the current file I/O operation, but the plugin still remains actively availabe at the service of PM for further (new) file operations.</p>
+The plug-in must now close the file and carry out all the required wrap-up chores&#8201;&#8212;&#8201;destroy any memory data and references to the processed file, free memory, release handles, etc., but still be ready for further file I/O operations, for this call only confirms the termination of the current file I/O operation, but the plug-in still remains actively available at the service of PM for further (new) file operations.</p>
 </div>
 <div class="paragraph">
-<p>When this function is called, the plugin should basically just ensure that:</p>
+<p>When this function is called, the plug-in should basically just ensure that:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1943,8 +1968,8 @@ The plugin must now close the file and carry out all the required wrap-up chores
 </ul>
 </div>
 <div class="paragraph">
-<p>If memory is not managed properly, the risk is that multiple plugin invocations will end piling up garbage in memory, eat up system resource and/or lead to memory corruption.
-You must also ensure that the plugin won&#8217;t end up keeping a handle on the processed file, which could prevent the user from deleting, renaming or moving the file until PM is running (this being a commonly occuring problem under MS Windows, which can be entirely avoided by good housekeeping during the wrap-up stage).</p>
+<p>If memory is not managed properly, the risk is that multiple plug-in invocations will end piling up garbage in memory, eat up system resource and/or lead to memory corruption.
+You must also ensure that the plug-in won&#8217;t end up keeping a handle on the processed file, which could prevent the user from deleting, renaming or moving the file until PM is running (this being a commonly occurring problem under MS Windows, which can be entirely avoided by good housekeeping during the wrap-up stage).</p>
 </div>
 </div>
 </div>
@@ -1986,7 +2011,7 @@ and published under the
 </div>
 <div id="footer">
 <div id="footer-text">
-draft 1<br>
+draft 2<br>
 </div>
 </div>
 </body>

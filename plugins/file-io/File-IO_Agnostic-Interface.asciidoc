@@ -1,15 +1,15 @@
-= Pro Motion File I/O Plugin Interface
+= Pro Motion File I/O Plug-in Interface
 Tristano Ajmone <tajmone@gmail.com>
-1, 2019-03-24
+2, 2020-01-28
 // Doc Revision Info
-:PMNG_V: 7.1.8.0
+:PMNG_V: 7.2.3.1
 :revremark: PMNG v{PMNG_V}
 // Metadata:
-:title: Pro Motion File I/O Plugin Interface
-:description: Cosmigo Pro Motion file I/O interface for plugin developers, \
+:title: Pro Motion File I/O Plug-in Interface
+:description: Cosmigo Pro Motion file I/O interface for plug-in developers, \
               presented in a language-agnostic approach.
 :copyright: Copyright (c) Tristano Ajmone, Apache License v2.0.
-:keywords: cosmigo, pro motion ng, pmng, plugins, interface, api, developer, \
+:keywords: cosmigo, pro motion ng, pmng, plug-ins, interface, api, developer, \
            pixel art, pixelart
 // Doc Settings:
 :lang: en
@@ -56,8 +56,9 @@ endif::[]
 // External Links:
 :Cosmigo_Webiste: link:https://www.cosmigo.com/[Cosmigo website^,title="Visit Cosmigo website"]
 :stdcall: link:https://en.wikipedia.org/wiki/X86_calling_conventions#stdcall[stdcall^,title="Learn more about the stdcall calling convention on Wikipedia"]
-// Relative Paths (overriden in final HTML docs, but used on GitHub preview links):
-:path_plugins: ../
+:true-color: pass:q[link:https://en.wikipedia.org/wiki/Color_depth#True_color_(24-bit)[_true color_^,title="Read more about true color on Wikipedia"]]
+// Relative Paths (overridden in final HTML docs, but used on GitHub preview links):
+:path_plug-ins: ../
 
 // *****************************************************************************
 // *                                                                           *
@@ -65,7 +66,7 @@ endif::[]
 // *                                                                           *
 // *****************************************************************************
 
-A language-agnostic presentation of Pro Motion file I/O plugin interface, aimed at helping developers design plugins in any programming language.
+A language-agnostic presentation of Pro Motion file I/O plug-in interface, aimed at helping developers design plug-ins in any programming language.
 
 .DISCLAIMER
 [IMPORTANT]
@@ -73,10 +74,10 @@ A language-agnostic presentation of Pro Motion file I/O plugin interface, aimed 
 This document is my personal attempt to contribute a language agnostic description of the File I/O interface.
 _It's not_ part of the official Pro Motion documentation and I'm acting solely as a Pro Motion NG user and enthusiast.
 
-The document is still a draft and I haven't yet had a chance to actually test all the plugin procedures in real case scenarios.
+The document is still a draft and I haven't yet had a chance to actually test all the plug-in procedures in real case scenarios.
 Therefore, I'm the only person responsible for any errors and inaccuracies herein contained.
 
-Furthermore, the quality (or lack thereof) of this document is not representative of the quality of Cosmigo GmbH, its products and services; it's just my personal effort to explore the subject of plugin development as a hobbist programmer and PMNG end user.
+Furthermore, the quality (or lack thereof) of this document is not representative of the quality of Cosmigo GmbH, its products and services; it's just my personal effort to explore the subject of plug-in development as a hobbyist programmer and PMNG end user.
 =======================
 
 // >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
@@ -94,54 +95,54 @@ endif::[]
 
 == Introduction
 
-=== About File I/O Plugins
+=== About File I/O Plug-ins
 
-Pro Motion (>=v6.5) allows users to extend the supported images and animations file formats by means of third party file I/O plugins.
-Each file plugin can target either images or animations, and it may handle saving and/or loading (either one or both) from/to a specific file format, and will be associated with a specific file extension in the file I/O dialogs of Pro Motion.
+Pro Motion (>=v6.5) allows users to extend the supported images and animations file formats by means of third party file I/O plug-ins.
+Each file plug-in can target either images or animations, and it may handle saving and/or loading (either one or both) from/to a specific file format, and will be associated with a specific file extension in the file I/O dialogs of Pro Motion.
 
-A file I/O plugin is a DLL (Dynamic-link library) shared library, located inside the `plugins` subfolder in the installation directory of Pro Motion.
-Depending on the bitness of your MS Windows operating system, the path of the `plugins` folder will be either:
+A file I/O plug-in is a DLL (Dynamic-link library) shared library, located inside the `plug-ins` subfolder in the installation directory of Pro Motion.
+Depending on the bitness of your MS Windows operating system, the path of the `plug-ins` folder will be either:
 
 [horizontal]
-32 bit OS: :: `%ProgramFiles%\cosmigo\Pro Motion NG\plugins\`
-64 bit OS: :: `%ProgramFiles(x86)%\cosmigo\Pro Motion NG\plugins\`
+32 bit OS: :: `%ProgramFiles%\cosmigo\Pro Motion NG\plug-ins\`
+64 bit OS: :: `%ProgramFiles(x86)%\cosmigo\Pro Motion NG\plug-ins\`
 
-Any plugins inside that folder will be automatically detected when Pro Motion is launched, and made available in the file load/save and import/export dialogs according to where the plugin functionality fits in PMNG context.
+Any plug-ins inside that folder will be automatically detected when Pro Motion is launched, and made available in the file load/save and import/export dialogs according to where the plug-in functionality fits in PMNG context.
 This means that during development, whenever you updated/recompile your DLL you'll have to close and restart PM.
 
-Since PM is a 32 bit application, the plugin DLL must also be compiled as 32 bit.
+Since PM is a 32 bit application, the plug-in DLL must also be compiled as 32 bit.
 
 [NOTE]
 ================================================================================
 At the time of this writing, Pro Motion NG is only available as a 32-bit application.
 In the future this might change, therefore always check the {Cosmigo_Webiste} for up-to-date information.
 
-If a 64 bit version of PM NG should be released, all file I/O plugins would have to compiled to 64 bit in order to be usable (linkable) by the 64 bit version.
+If a 64 bit version of PM NG should be released, all file I/O plug-ins would have to compiled to 64 bit in order to be usable (linkable) by the 64 bit version.
 ================================================================================
 
 
 === Choosing a Language
 
-The good news about PM plugins is that developers are free to use a variety of different programming languages to create plugins with.
-This means that the creation of PM plugins is not restricted to C/{Cpp} gurus, but can be also acomplished with some easier programming languages, including Basic.
+The good news about PM plug-ins is that developers are free to use a variety of different programming languages to create plug-ins with.
+This means that the creation of PM plug-ins is not restricted to C/{Cpp} gurus, but can be also accomplished with some easier programming languages, including Basic.
 
-The "`bad news`" (so to speak) is that the official Cosmigo plugin interface documentation and code samples are intended for an audience with knowledge of either {Cpp} or Delphi, which means that users willing to implement plugins in other languages will have to conduct extensive research on these languages in order to work out data types equivalences and how to overcome some memory management issues implicitly handled behind the scenes by
+The "`bad news`" (so to speak) is that the official Cosmigo plug-in interface documentation and code samples are intended for an audience with knowledge of either {Cpp} or Delphi, which means that users willing to implement plug-ins in other languages will have to conduct extensive research on these languages in order to work out data types equivalences and how to overcome some memory management issues implicitly handled behind the scenes by
 link:https://en.wikipedia.org/wiki/Microsoft_Visual_Studio[Microsoft Visual Studio^]
 and
 link:https://edn.embarcadero.com/article/41593[Embarcadero Delphi XE2^].
 
-This guide was conceived to simplify the task of implementing PM plugins in any language, by presenting the plugin interface, its data types and the data exchange mechanisms in a language agnostic way -- i.e. without assuming that the reader has any knowledge of C/{Cpp} or Delphi.
-Hopefully, this document will fill the {Cpp}/Delphi "`experts gap`" and open the doors of plugins development to programmers coming from all walks of programming life, including beginners who are willing to give it a go, and regardless of the languages they're accustomed to work with.
+This guide was conceived to simplify the task of implementing PM plug-ins in any language, by presenting the plug-in interface, its data types and the data exchange mechanisms in a language agnostic way -- i.e. without assuming that the reader has any knowledge of C/{Cpp} or Delphi.
+Hopefully, this document will fill the {Cpp}/Delphi "`experts gap`" and open the doors of plug-ins development to programmers coming from all walks of programming life, including beginners who are willing to give it a go, and regardless of the languages they're accustomed to work with.
 
 [NOTE]
 An obvious limitation to this approach is that the guide is bound to provide fairly generic implementation guidelines, for different programming languages have different paradigms.
-It would be impossible to provide implmentation-specific advice and preserve language-neutrality at the same time.
+It would be impossible to provide implementation-specific advice and preserve language-neutrality at the same time.
 Developers will need to adapt the information provided by this guide to the paradigm of their programming language.
-Knowers of {Cpp} or Delphi are better off reading the official
-link:{path_plugins}Developer_Interface{outfilesuffix}[_Developer Interface_, title="Read the plugins 'Developer Interface' document"]
+Programmers fluent in {Cpp} or Delphi are better off reading the official
+link:{path_plug-ins}Developer_Interface{outfilesuffix}[_Developer Interface_, title="Read the plug-ins 'Developer Interface' document"]
 document, for it provides implementation-specific details.
 
-You can create a custom file I/O plugin with any programming language that meets the following requirements:
+You can create a custom file I/O plug-in with any programming language that meets the following requirements:
 
 
 * Compile a 32-bit DLL (no thread-safety required).
@@ -150,94 +151,139 @@ You can create a custom file I/O plugin with any programming language that meets
 * Support pointers and user define structures.
 
 Most compiled programming languages for Windows should meet these requirements.
-Therefore, developers have an ample choice of languages to pick from for developing PM file I/O plugins, and are by no means bound to use MSVS or Embarcadero Delphi for the task.
+Therefore, developers have an ample choice of languages to pick from for developing PM file I/O plug-ins, and are by no means bound to use MSVS or Embarcadero Delphi for the task.
 
 ////
-TODO: Add links to various languages (foss and commercial alike) that can be
-      used to create file i/o plugins!
-      [ ] PureBasic
-      [ ] FreeBasic
-      [ ] Nim -- but must explain the Nim RunTime DLL issue!
-      ... others?
+@TODO: Add links to various languages (FOSS and commercial alike) that can be
+       used to create file i/o plug-ins!
+       [ ] PureBasic
+       [ ] FreeBasic
+       [ ] Rust
+       ... others?
 ////
 
 
 === Pseudocode Notation
 
-To simplify representation of functions, their parameters and datatypes, this document employes an arbitrary and simple pseudocode notation and then describes the parameters in more detail, one by one.
+To simplify representation of functions, their parameters and data types, this document employs an arbitrary and simple pseudocode notation and then describes the parameters in more detail, one by one.
 Hopefully, the adopted notation should be self explanatory.
 
 
-== Interface Overiew
+== Interface Overview
 
-Pro Motion expects the plugin DLL to export some functions with specific names, parameters and return values.
-When creating a custom plugin, you must therefore ensure that all those functions are correctly implemented.
+Pro Motion expects the plug-in DLL to export some functions with specific names, parameters and return values.
+When creating a custom plug-in, you must therefore ensure that all those functions are correctly implemented.
 
 PM will invoke the DLL functions in a meaningful order, depending on the type of file operation requested by the user.
 
-Data exchance is handled by passing pointers to and from the DLL.
-Sometimes pointers are used to pass data from PM to the plugin, in which case a function parameter will be a pointer to the memory location storing the data which the plugin should read.
-Other times, pointers are used to pass data from the plugin to PM, either via a pointer paramter in the function call, which the plugin should then use to store the requested data in, or by the function being expected to return a pointer to a string.
+Data exchange is handled by passing pointers to and from the DLL.
+Sometimes pointers are used to pass data from PM to the plug-in, in which case a function parameter will be a pointer to the memory location storing the data which the plug-in should read.
+Other times, pointers are used to pass data from the plug-in to PM, either via a pointer parameter in the function call, which the plug-in should then use to store the requested data in, or by the function being expected to return a pointer to a string.
 
-Some functions are expected to return bool values (true/false) to inform PM wether a given feature is available. Error handling is done via the <<getErrorMessage>> plugin function, which will should either return a `NULL` pointer (no error) or a pointer to string describing the error; PM will invoke this error function right after calling any plugin function that may set error (not every plugin function can set error).
+Some functions are expected to return boolean values (true/false) to inform PM whether a given feature is available. Error handling is done via the <<getErrorMessage>> plug-in function, which will should either return a `NULL` pointer (no error) or a pointer to string describing the error; PM will invoke this error function right after calling any plug-in function that may set error (not every plug-in function can set error).
 
-// Those are the basic data types involved in communications and data exchange between PM and the DLL, but the plugin will also need to handle some structured data for handling color palettes and bitmap data transfers.
+// Those are the basic data types involved in communications and data exchange between PM and the DLL, but the plug-in will also need to handle some structured data for handling colour palettes and bitmap data transfers.
 
-The following table lists all the required DLL functions, and specifies which functions are invoked in file load and save operations, and wether the function might set an error or not.
+The following table lists all the required DLL functions, and specifies which functions are invoked in file load and save operations, and whether the function might set an error or not.
 
 
 :Y: pass:q[[green]##&#x2714;##]
 :N: pass:q[[red]##&#x2718;##]
 
 [[procedures-table]]
-.Plugin DLL Procedures Overview
-[cols="<m,3*^d",options="autowidth,header"]
+.Plug-in DLL Procedures Overview
+[cols="<m,3*^d,<d",options="autowidth,header"]
 |===============================================================================
-| function name                 | load | save | error
+| function name                 | load | save | error ^| summary description
 
 | <<initialize>>                | {Y}  | {Y}  | {Y}
+| Called once when PM launches and registers all plug-ins.
+
 | <<setProgressCallback>>       | {Y}  | {Y}  | {N}
+| Provides a pointer to PM's progress status function.
+
 | <<getErrorMessage>>           | {Y}  | {Y}  | {N}
+| PM calls it to get a pointer to the error message string.
+
 | <<getFileTypeId>>             | {Y}  | {Y}  | {N}
+| Plug-in info: The unique plug-in ID, for internal PM use.
+
 | <<isReadSupported>>           | {Y}  | {Y}  | {N}
+| Plug-in info: Does it support read operations?
+
 | <<isWriteSupported>>          | {Y}  | {Y}  | {N}
+| Plug-in info: Does it support write operations?
+
 | <<isWriteTrueColorSupported>> | {Y}  | {Y}  | {N}
+| Plug-in info: Does it support writing {true-color} data?
+
 | <<getFileBoxDescription>>     | {Y}  | {Y}  | {N}
+| Plug-in info: Description for PM's file types dialog drop down.
+
 | <<getFileExtension>>          | {Y}  | {Y}  | {N}
+| Plug-in info: Associated file extension.
+
 | <<setFilename>>               | {Y}  | {Y}  | {N}
+| Informs the plug-in on the filename about to the processed.
+
 | <<canHandle>>                 | {Y}  | {N}  | {Y}
+| PM needs the plug-in to confirm it can handle the file.
+
 | <<loadBasicData>>             | {Y}  | {N}  | {Y}
+| PM needs the plug-in to confirm it extracted info from the file.
+
 | <<getWidth>>                  | {Y}  | {N}  | {N}
+| PM wants to know the image with in pixels.
+
 | <<getHeight>>                 | {Y}  | {N}  | {N}
+| PM wants to know the image height in pixels.
+
 | <<getImageCount>>             | {Y}  | {N}  | {Y}
+| PM wants to know the number of image frames.
+
 | <<canExtractPalette>>         | {Y}  | {N}  | {N}
+| Plug-in info: Does it support extracting just the palette?
+
 | <<getRgbPalette>>             | {Y}  | {N}  | {N}
+| PM wants a pointer to the extracted 256-colours palette.
+
 | <<getTransparentColor>>       | {Y}  | {N}  | {N}
+| PM wants to know if and which indexed colour is transparent.
+
 | <<isAlphaEnabled>>            | {Y}  | {N}  | {N}
+| PM wants to know if the image contains transparency layers.
+
 | <<loadNextImage>>             | {Y}  | {N}  | {Y}
+| Called to obtain from the plug-in the current image data.
+
 | <<beginWrite>>                | {N}  | {Y}  | {Y}
+| PM passes preliminary information about the upcoming image.
+
 | <<writeNextImage>>            | {N}  | {Y}  | {Y}
+| Called to transfer to the plug-in the current image data.
+
 | <<finishProcessing>>          | {Y}  | {Y}  | {N}
+| End of plug-in transactions, all resources must be freed.
 |===============================================================================
 
 
 == Interface Data Types
 
 Each programming language has its own native data types, and adopts a custom naming convention for the various types.
-To avoid confusion about the data types mentioned in this document, I'll try to provide language-agnostic description of the data types used by plugins to exchange data with PM.
+To avoid confusion about the data types mentioned in this document, I'll try to provide language-agnostic description of the data types used by plug-ins to exchange data with PM.
 
 
 === Strings
 
-Strings are exchanged between PM and the plugin via pointers.
-All strings are expected to be null-terminated and in Unicode (i.e., wide char, 16-bits characters, `wchar_t`), and not Ascii strings.
+Strings are exchanged between PM and the plug-in via pointers.
+All strings are expected to be null-terminated and in Unicode (i.e., wide char, 16-bits characters, `wchar_t`), and not ASCII strings.
 If your language allows creating different types of strings, check that you are using the correct type.
 
 Because many languages provide a simple syntax to define and work with sting variables (in order to hide the complexity of string pointers), you must ensure that when you pass to PM string pointers you're passing a pointer to the memory location of the actual string contents, and not just a pointer to the string variable.
 In many languages the memory location of string variable contains just a pointer to the actual string, not the string itself.
 
-Furthermore, in order for PM to able to gain read/write memory access to these plugin strings, you'll need to use some globally scoped strings which are visible outside the DLL.
-How this can be achived will depend largely on the language you're using, but chances are that if its syntax provides a '`global`' keyword that should do the trick.
+Furthermore, in order for PM to able to gain read/write memory access to these plug-in strings, you'll need to use some globally scoped strings which are visible outside the DLL.
+How this can be achieved will depend largely on the language you're using, but chances are that if its syntax provides a '`global`' keyword that should do the trick.
 Refer to the language documentation regarding strings, pointers, variables scope and visibility, and creating dynamically linked libraries (DLLs).
 
 [WARNING]
@@ -266,17 +312,17 @@ bool : initialize(
 [cols="<2m,^1d,<20d"]
 |===============================================================================
 | &ast;language | (_in_)
-| Points to two-characters (Ascii) representing the ISO language code currently used in PM user interface (e.g. \'``en``', \'``de``' or \'``fr``').
-Can be used for localization if the plugin supports multi-language messages, otherwise just ignore it.
+| Points to two-characters (ASCII) representing the ISO language code currently used in PM user interface (e.g. \'``en``', \'``de``' or \'``fr``').
+Can be used for localization if the plug-in supports multi-language messages, otherwise just ignore it.
 
 
 | &ast;version | (_out_)
-| Pointer to *uint16* representing the version number of the file I/O plugin interface.
-Must be set to "`1`" to be a valid plugin, as this is the only interface version currently supported.
+| Pointer to *uint16* representing the version number of the file I/O plug-in interface.
+Must be set to "`1`" to be a valid plug-in, as this is the only interface version currently supported.
 
 | &ast;animation | (_out_)
 | Pointer to boolean (1 byte/*uint8*).
-Plugins targetting animations must set it to *true*.
+Plug-ins targeting animations must set it to *true*.
 |===============================================================================
 
 .Control
@@ -288,19 +334,19 @@ Plugins targetting animations must set it to *true*.
 |===============================================================================
 
 
-General initialization function, called once when PM launches and needs to register the available plugins.
+General initialization function, called once when PM launches and needs to register the available plug-ins.
 
-The function informs the plugin of the locale being used in PM, and provides pointers for retriving the interface version for which the plugin was designed (for future use, when new interface versions will be introduced) and to determine whether this is a plugin for handling images or animations files.
+The function informs the plug-in of the locale being used in PM, and provides pointers for retrieving the interface version for which the plug-in was designed (for future use, when new interface versions will be introduced) and to determine whether this is a plug-in for handling images or animations files.
 
-If the plugin targets animation files, then it must set to *true* the byte located at `&ast;animation`.
-Plugins for image files, on the other hand, don't need to do anything with `&ast;animation`.
+If the plug-in targets animation files, then it must set to *true* the byte located at `&ast;animation`.
+Plug-ins for image files, on the other hand, don't need to do anything with `&ast;animation`.
 
-This will always be the first plugin function invoked by PM.
+This will always be the first plug-in function invoked by PM.
 
 [NOTE]
 =========
-Unlike other error-setting plugin functions, which only need to ensure that `getErrorMessage` will return a pointer to an error string, `initialize` must _also_ return `false` in case of error.
-This is because `initialize` is a special case, for it's used to activate the plugin, and it's therefore expected to return a boolean indicating success/failure.
+Unlike other error-setting plug-in functions, which only need to ensure that `getErrorMessage` will return a pointer to an error string, `initialize` must _also_ return `false` in case of error.
+This is because `initialize` is a special case, for it's used to activate the plug-in, and it's therefore expected to return a boolean indicating success/failure.
 In case of failure, it should still set an error description via `getErrorMessage`.
 =========
 
@@ -317,7 +363,7 @@ void : setProgressCallback( *progressCallback : function );
 [cols="<1m,<6a"]
 |===============================================================================
 | &ast;progressCallback
-| Pointer to a PM function that the plugin must call when progress changes.
+| Pointer to a PM function that the plug-in must call when progress changes.
 The PM function located at `&ast;progressCallback` (stdcall) is representable as:
 
 [source,pseudocode]
@@ -325,7 +371,7 @@ The PM function located at `&ast;progressCallback` (stdcall) is representable as
 void : *progressCallback( int32 progress );
 --------------------------------------------------------------------------------
 
-The plugin must invoke it accordingly, using only its memory pointer as a means to interface with it.
+The plug-in must invoke it accordingly, using only its memory pointer as a means to interface with it.
 |===============================================================================
 
 
@@ -338,9 +384,9 @@ The plugin must invoke it accordingly, using only its memory pointer as a means 
 |===============================================================================
 
 
-This function passes to the plugin the memory addres of a PM progress callback function that the plugin should use to provide user feedback regarding the progress of image loading/saving operations.
+This function passes to the plug-in the memory address of a PM progress callback function that the plug-in should use to provide user feedback regarding the progress of image loading/saving operations.
 
-The plugin must interface to the above function (stdcall) using the pointer provided via the `&ast;progressCallback` parameter.
+The plug-in must interface to the above function (stdcall) using the pointer provided via the `&ast;progressCallback` parameter.
 How this can be achieved will vary from language to language, but you should be looking for a way to call "`foreign functions`" via some
 link:https://en.wikipedia.org/wiki/Foreign_function_interface[Foreign function interface (FFI)^,title="See Wikipedia page on FFI"]
 mechanism.
@@ -350,12 +396,12 @@ A progress value of "`0`" will hide progress display in PM, while values in the 
 
 [NOTE]
 ================================================================================
-PM NG no longer displays a true progress bar, because nowadays it's mostly useless due to the speed at which most images are processed, but previous version of PM do; therefore, for the sake of backward compatibility, plugins should honour the progress callback.
+PM NG no longer displays a true progress bar, because nowadays it's mostly useless due to the speed at which most images are processed, but previous version of PM do; therefore, for the sake of backward compatibility, plug-ins should honour the progress callback.
 
-The important thing here is to provide the end user with some kind of feedback on the ongoing plugin operations, which in PM NG is now shown via a small emphasized panel at the bottom of the main window, along with the cursor shape turning "`busy`".
+The important thing here is to provide the end user with some kind of feedback on the ongoing plug-in operations, which in PM NG is now shown via a small emphasized panel at the bottom of the main window, along with the cursor shape turning "`busy`".
 
-Plugin developers should call the `&ast;progressCallback` function to update the user when progress status changes, passing to it progress indications from 1 to 100, if possible.
-At least, set it to a non-zero value when the plugin is processing, and then back to zero when processing is over.
+Plug-in developers should call the `&ast;progressCallback` function to update the user when progress status changes, passing to it progress indications from 1 to 100, if possible.
+At least, set it to a non-zero value when the plug-in is processing, and then back to zero when processing is over.
 ================================================================================
 
 
@@ -375,19 +421,19 @@ At least, set it to a non-zero value when the plugin is processing, and then bac
 | May set error | No.
 |===============================================================================
 
-If one of the plugin functions that may set error does encounter an error, it can notify PM via indirect usage of this function, i.e. by setting the conditions that will make `getErrorMessage()` return a pointer to an error string instead of `nil`.
+If one of the plug-in functions that may set error does encounter an error, it can notify PM via indirect usage of this function, i.e. by setting the conditions that will make `getErrorMessage()` return a pointer to an error string instead of `nil`.
 
-PM will call this function immediately after calling any plugin function that may set error, and `getErrorMessage()` should either return `nil` if no error was encountered, or a pointer to a string containing the error description.
-PM expects the string to be a Unicode string (wide char, 16-bits characters), not an Ascii string; if your language allows creating different types of strings, check that you are using the correct type.
+PM will call this function immediately after calling any plug-in function that may set error, and `getErrorMessage()` should either return `nil` if no error was encountered, or a pointer to a string containing the error description.
+PM expects the string to be a Unicode string (wide char, 16-bits characters), not an ASCII string; if your language allows creating different types of strings, check that you are using the correct type.
 
-This means that within your plugin DLL `getErrorMessage()` should be granted access to a string which is also visibile to all functions that may set error (i.e. a global string), and check wether the string is currently empty or contains some text, in the fomer case it should return `nil`, in the latter it should return the memory address at which the string is stored, for it means that the last plugin function called has set an error which must now be notified and passed on to PM.
+This means that within your plug-in DLL `getErrorMessage()` should be granted access to a string which is also visible to all functions that may set error (i.e. a global string), and check whether the string is currently empty or contains some text, in the former case it should return `nil`, in the latter it should return the memory address at which the string is stored, for it means that the last plug-in function called has set an error which must now be notified and passed on to PM.
 
 A pseudocode example:
 
 [source,pseudocode]
 --------------------------------------------------------------------------------
 
-Global string ErrorMessage; // define a string visibile to all DLL functions
+Global string ErrorMessage; // define a string visible to all DLL functions
 
 *string : getErrorMessage()
 {
@@ -404,10 +450,10 @@ Global string ErrorMessage; // define a string visibile to all DLL functions
 
 
 The nature of this indirect error messaging mechanism also requires that all functions that may set error should "`reset`" the aforementioned string to be empty at the beginning of each call, to avoid carrying over errors generated by previous functions calls.
-As soon as an error is encountered, the error string should be set to contain a meaningful message about the nature of the problem, and just let `getErrorMessage()` handle notification of the error to PM, and that the next plugin function (which may set error) that gets called will handle resetting the error string.
+As soon as an error is encountered, the error string should be set to contain a meaningful message about the nature of the problem, and just let `getErrorMessage()` handle notification of the error to PM, and that the next plug-in function (which may set error) that gets called will handle resetting the error string.
 
-Not every plugin procedure can set error, only those explicitly indicated in this document (under "`Control`" in the description of each function, as well as in the "`error`" column of <<procedures-table>>).
-This was done to avoid burdening PM with having to check for errors at each and every plugin call, and limiting instead these checks to meaningful contexts.
+Not every plug-in procedure can set error, only those explicitly indicated in this document (under "`Control`" in the description of each function, as well as in the "`error`" column of <<procedures-table>>).
+This was done to avoid burdening PM with having to check for errors at each and every plug-in call, and limiting instead these checks to meaningful contexts.
 
 
 
@@ -422,27 +468,27 @@ This was done to avoid burdening PM with having to check for errors at each and 
 [caption=]
 [cols="<1d,<6d"]
 |===============================================================================
-| Return value  | Pointer to a string with the unique identifier of the plugin.
+| Return value  | Pointer to a string with the unique identifier of the plug-in.
 | May set error | No.
 |===============================================================================
 
-PM calls this plugin function in order to acquire a unique identifier for the plugin.
-The Id is used by PM as an interanl reference to the plugin, and it's not intended to be shown to end users.
-For example, if the user saved a file via this plugin and later uses the '`save again`' function, PM will rely on the file type Id to know which plugin to use.
+PM calls this plug-in function in order to acquire a unique identifier for the plug-in.
+The Id is used by PM as an internal reference to the plug-in, and it's not intended to be shown to end users.
+For example, if the user saved a file via this plug-in and later uses the '`save again`' function, PM will rely on the file type Id to know which plug-in to use.
 
-The plugin must return a pointer to a string containing the plugin file type Id.
+The plug-in must return a pointer to a string containing the plug-in file type Id.
 
-The file extension is not unique enough to used as a Id, for there could be several load/save plugins for `"bmp-files"`.
-The Id may be a series of numbers/characters like a GUID, or it may be like a Java package descriptor, e.g. `"de.mycompany.promotion.ioplugin.png"`.
+The file extension is not unique enough to used as a Id, for there could be several load/save plug-ins for `"bmp-files"`.
+The Id may be a series of numbers/characters like a GUID, or it may be like a Java package descriptor, e.g. `"de.mycompany.promotion.ioplug-in.png"`.
 
 ////
-NOTE: It's still unclear to me why PM wants plugins developers to define this
+NOTE: It's still unclear to me why PM wants plug-ins developers to define this
       unique File Type ID, where it could have generated them at initialization
-      time via a UUID/GUID algorithm, or even use the plugin filename as unique
+      time via a UUID/GUID algorithm, or even use the plug-in filename as unique
       identifier.
 
       See my question at:
-      https://community.cosmigo.com/t/file-i-o-plugins-a-language-agnostic-guide/486/5
+      https://community.cosmigo.com/t/file-i-o-plug-ins-a-language-agnostic-guide/486/5
 ////
 
 
@@ -461,7 +507,7 @@ bool : isReadSupported();
 | May set error | No.
 |===============================================================================
 
-PM needs to know if the plugin supports reading from the file format, to determine wether to include the plugin in the file open/import dialogs.
+PM needs to know if the plug-in supports reading from the file format, to determine whether to include the plug-in in the file open/import dialogs.
 
 
 
@@ -482,7 +528,7 @@ bool : isWriteSupported();
 |===============================================================================
 
 
-PM needs to know if the plugin supports saving to the file format, to determine wether to include the plugin in the file save/export dialogs.
+PM needs to know if the plug-in supports saving to the file format, to determine whether to include the plug-in in the file save/export dialogs.
 
 
 === isWriteTrueColorSupported
@@ -502,14 +548,12 @@ bool : isWriteTrueColorSupported();
 |===============================================================================
 
 // @TODO: ** TRUE COLOR ** Should create a dedicated repository document on
-//        color depths, and link to that page instead of Wikipedia.
+//        colour depths, and link to that page instead of Wikipedia.
 
-:true-color: link:https://en.wikipedia.org/wiki/Color_depth#True_color_(24-bit)[true color^,title="Read more about true color on Wikipedia"]
-
-PM needs to know if the plugin can write true color data to the file format.
-Some operations (e.g. automatically flattening layers) may result in colors that don't fit into the 256 colors palette.
-In these cases the image data can be optionally stored as {true-color} (24-bit color depth).
-If the plugin doesn't support true color then the image colors are reduced to 256 indexed colors.
+PM needs to know if the plug-in can write _true color_ data to the file format.
+Some operations (e.g. automatically flattening layers) may result in colours that don't fit into the 256 colours palette.
+In these cases the image data can be optionally stored as {true-color} (24-bit colour depth).
+If the plug-in doesn't support _true color_ then the image colours are reduced to 256 indexed colours.
 
 
 === getFileBoxDescription
@@ -529,10 +573,10 @@ If the plugin doesn't support true color then the image colors are reduced to 25
 |===============================================================================
 
 
-PM needs a file type description string to represent the plugin in the file I/O dialogs, e.g. "`BMP Windows Bitmap RLE`".
+PM needs a file type description string to represent the plug-in in the file I/O dialogs, e.g. "`BMP Windows Bitmap RLE`".
 You should place the file type abbreviation (usually the file extension) at the beginning of the string so that it can be sorted correctly in the drop down menu, making it easier for end users to sift through the list of available file types.
 
-If your plugin supports internationalization, you should return a pointer to a string in the language matching the user's locale (which the plugin has already detected during the <<initialize, `initialize()`>> call).
+If your plug-in supports internationalization, you should return a pointer to a string in the language matching the user's locale (which the plug-in has already detected during the <<initialize, `initialize()`>> call).
 
 
 
@@ -547,7 +591,7 @@ If your plugin supports internationalization, you should return a pointer to a s
 [caption=]
 [cols="<1d,<6d"]
 |===============================================================================
-| Return value  | Pointer to a string with the file extension supported by this plugin.
+| Return value  | Pointer to a string with the file extension supported by this plug-in.
 | May set error | No.
 |===============================================================================
 
@@ -578,16 +622,16 @@ void : setFilename( *filename );
 |===============================================================================
 
 
-PM calls this function to inform the plugin that a new file is about to be processed and provides a full path to the corresponding file.
-The plugin should reset its internal structures and references if the file name is different from the previously set file.
+PM calls this function to inform the plug-in that a new file is about to be processed and provides a full path to the corresponding file.
+The plug-in should reset its internal structures and references if the file name is different from the previously set file.
 
 At this stage, it is still undefined if the file is intended for read or write operations!
 
 Calls to this function might be triggered by different contexts.
-For example, by the user when her/she selects in a file I/O dialog a file registered to the plugin.
+For example, by the user when her/she selects in a file I/O dialog a file registered to the plug-in.
 But it might also be triggered multiple times by PM as a result of a multi file operation (e.g. menu:File[Create from single Images...], menu:Animation[Save as single Images...], etc.).
 
-The plugin at this stage only needs to acknowledge the file, memorize its references, and be prepared.
+The plug-in at this stage only needs to acknowledge the file, memorize its references, and be prepared.
 
 
 
@@ -611,12 +655,12 @@ bool : canHandle();
 |===============================================================================
 
 
-This function is called by PM to get confirmation that the plugin is capable of handling reading the selected file (i.e. the file indicated via the <<setFilename,`setFilename()`>> call).
-The plugin should open the file and carry out the necessary checks and then return either `true` or `false` accordingly.
-In case the plugin is unable to handle the file, it should also set an error with a sting describing the reason why the file can't be handled.
+This function is called by PM to get confirmation that the plug-in is capable of handling reading the selected file (i.e. the file indicated via the <<setFilename,`setFilename()`>> call).
+The plug-in should open the file and carry out the necessary checks and then return either `true` or `false` accordingly.
+In case the plug-in is unable to handle the file, it should also set an error with a sting describing the reason why the file can't be handled.
 
-Some image/animation formats may have many variants, yet share the same file extension, and a plugin might support only some features of the format and not others.
-When this function is called the plugin must check if the selected file is actually supported, by doing some basic checks on the file header, etc.
+Some image/animation formats may have many variants, yet share the same file extension, and a plug-in might support only some features of the format and not others.
+When this function is called the plug-in must check if the selected file is actually supported, by doing some basic checks on the file header, etc.
 
 
 
@@ -637,7 +681,7 @@ bool : loadBasicData();
 
 
 Before actually reading any graphics data, PM calls this function
-so that the plugin can extract some basic graphics data information from the target file, such as its dimensions, color palette, and other relevant data.
+so that the plug-in can extract some basic graphics data information from the target file, such as its dimensions, colour palette, and other relevant data.
 Other functions will rely on this function having been called before them -- for example <<getWidth,`getWidth()`>>.
 
 ////
@@ -649,7 +693,7 @@ Couldn't this data be extracted during the `canHandle()` call? After all, we do
 know for a fact that `canHandle()` will be called before this, and since
 `canHandle()` needs to examine the image/graphics file header to check that it's
 of a supported format it might as well extract that info on the spot and store
-it. Indeed, this is what happens in the sample plugins provided by Cosmigo.
+it. Indeed, this is what happens in the sample plug-ins provided by Cosmigo.
 
 So, definitely there is a design choice here in why the two calls are separate,
 possibly because in some scenarios they differ.
@@ -679,13 +723,13 @@ int32 : getWidth();
 | May set error | No.
 |===============================================================================
 
-PM calls this function to learn from the plugin the width of the image which is going to be loaded, so it can prepare to receive it accordingly.
+PM calls this function to learn from the plug-in the width of the image which is going to be loaded, so it can prepare to receive it accordingly.
 
 The returned value must be a 32-bit signed integer.
 
 [NOTE]
 =========
-<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.
+<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.
 =========
 
 
@@ -706,13 +750,13 @@ int32 : getHeight();
 |===============================================================================
 
 
-PM calls this function to learn from the plugin the height of the image which is going to be loaded, so it can prepare to receive it accordingly.
+PM calls this function to learn from the plug-in the height of the image which is going to be loaded, so it can prepare to receive it accordingly.
 
 The returned value must be a 32-bit signed integer.
 
 [NOTE]
 =========
-<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.
+<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.
 =========
 
 
@@ -733,14 +777,14 @@ int32 : getImageCount();
 |===============================================================================
 
 
-PM calls this function to learn from the plugin how many image frames are present in the file which is going to be loaded, so it can prepare to receive them accordingly.
+PM calls this function to learn from the plug-in how many image frames are present in the file which is going to be loaded, so it can prepare to receive them accordingly.
 
 This function must return a 32-bit signed integer with the number of frames available to load from the file.
 If the file consists of a single image then "`1`" is to be returned.
 
 [NOTE]
 =========
-<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.
+<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.
 =========
 
 
@@ -771,24 +815,24 @@ bool : canExtractPalette();
 [caption=]
 [cols="<1d,<6d"]
 |===============================================================================
-| Return value  | If the plugin supports palette reading then this function must return `true`.
+| Return value  | If the plug-in supports palette reading then this function must return `true`.
 | May set error | No.
 |===============================================================================
 
 
-PM allows users to load just the color palette from a graphic file, without loading the graphic/bitmap data.
-PM calls this function to ask the plugin if it's capable of handling extracting just the palette from a target file.
+PM allows users to load just the colour palette from a graphic file, without loading the graphic/bitmap data.
+PM calls this function to ask the plug-in if it's capable of handling extracting just the palette from a target file.
 
 ////
 @TODO: Must pin-down better the context!
 
-Is this function called only at plugins initialization time?
+Is this function called only at plug-ins initialization time?
 Or is it called on a per-image basis?
 
-In other words, is this function related to how PM registers a plugin in the
+In other words, is this function related to how PM registers a plug-in in the
 various file i/o dialogs, at start up time, or is this called after a file was
-selected, to get further confirmation that the the plugin can handle extracting
-the paletter of this *specific* file?
+selected, to get further confirmation that the the plug-in can handle extracting
+the palette of this *specific* file?
 ////
 
 
@@ -809,17 +853,17 @@ the paletter of this *specific* file?
 |===============================================================================
 
 
-For plugins that support extracting the palette data, this function must return a pointer to the memory location storing the 256-colors indexed palette.
-The palette must be defined as a 768 bytes (256{nbsp}x{nbsp}3) sequence of RGB triplets (one byte per channel) representing the indexed colors, starting with color "`0`".
+For plug-ins that support extracting the palette data, this function must return a pointer to the memory location storing the 256-colours indexed palette.
+The palette must be defined as a 768 bytes (256{nbsp}x{nbsp}3) sequence of RGB triplets (one byte per channel) representing the indexed colours, starting with colour "`0`".
 
 ////
 @TODO:  Should provide some examples of how different languages could handle the
-        palette by using an aray of chars or structured data.
+        palette by using an array of chars or structured data.
 ////
 
 [NOTE]
 =========
-<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.
+<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.
 =========
 
 // @ARRIVED HERE ...
@@ -837,23 +881,23 @@ int32 : getTransparentColor();
 [caption=]
 [cols="<1d,<6d"]
 |===============================================================================
-| Return value  | The palette index of the transparent color, or -1 if none.
+| Return value  | The palette index of the transparent colour, or -1 if none.
 | May set error | No.
 |===============================================================================
 
 ////
 @NOTE:  It's not clear what "pixel byte" stands for.
-        My guess is that it stands for "palette color entry".
+        My guess is that it stands for "palette colour entry".
 ////
 
-If the image contains a transparent color then this function must return its palette color entry/index (first entry is 0).
+If the image contains a transparent colour then this function must return its palette colour entry/index (first entry is 0).
 
 The returned value must be a 32-bit signed integer.
 
 
 [NOTE]
 =========
-<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.
+<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.
 =========
 
 
@@ -875,11 +919,11 @@ bool : isAlphaEnabled();
 |===============================================================================
 
 
-PM wants to know wether the image/animation file which is going to be loaded contains alpha transparency data or not.
+PM wants to know whether the image/animation file which is going to be loaded contains alpha transparency data or not.
 
 [NOTE]
 =========
-<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.
+<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.
 =========
 
 
@@ -900,9 +944,9 @@ bool : loadNextImage(
 
 
 ////
-@TODO:  The table below was copied over from the original _Plugin Interface_
-        document, with small adaptments only.
-        Adpat better to current context.
+@TODO:  The table below was copied over from the original "Plug-in Interface"
+        document, with just some small adaptations.
+        Adapt better to current context.
 ////
 
 .Parameters
@@ -910,12 +954,12 @@ bool : loadNextImage(
 [cols="<1m,<6d"]
 |===============================================================================
 | `&ast;colorFrame`
-| A pointer to the bitmap holding the color pixels (color palette indexes).
+| A pointer to the bitmap holding the colour pixels (colour palette indexes).
   The memory portion has a size of `getWidth` * `getHeight` bytes!
 
 | `&ast;colorFramePalette`
-| A pointer to the RGB color table.
-  There are 768 bytes being 256 colors with one byte for red, green and blue.
+| A pointer to the RGB colour table.
+  There are 768 bytes being 256 colours with one byte for red, green and blue.
 
 | `&ast;alphaFrame`
 | A pointer to the bitmap holding the alpha palette indexes.
@@ -933,26 +977,26 @@ bool : loadNextImage(
 |===============================================================================
 
 ////
-@TODO:  Should create a separate section dedicated to how color and alpha palettes
-        are structured, and replace the brief descriptions herein with a link to
-        that section instead.
+@TODO:  Should create a separate section dedicated to how colour and alpha
+        palettes are structured, and replace the brief descriptions herein with
+        a link to that section instead.
 ////
 
 .Control
 [caption=]
 [cols="<1d,<6d"]
 |===============================================================================
-| Return value  | If the data was transfered successfuly then `true` is to be returned.
+| Return value  | If the data was transferred successfully it must return `true`.
 | May set error | Yes.
 |===============================================================================
 
-For plugins that support reading, this function is used to load the image data.
-After executing this function the plugin must advance to the next frame, if any.
+For plug-ins that support reading, this function is used to load the image data.
+After executing this function the plug-in must advance to the next frame, if any.
 The function will be called according to the number of frames returned by <<getImageCount,`getImageCount()`>>.
 
 [NOTE]
 =========
-<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plugin has acquired this information.
+<<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.
 =========
 
 
@@ -985,7 +1029,7 @@ bool : beginWrite(
 |===============================================================================
 | `width`            | Width of the graphic (images).
 | `height`           | Height of the graphic (images).
-| `transparentColor` | The palette index of the transparent color,  or -1 if none.
+| `transparentColor` | The palette index of the transparent colour,  or -1 if none.
 | `alphaEnabled`     | If the graphic will store alpha data then this flag is set to `true`.
 | `numberOfFrames`   | Number of frames that will be written.
 |===============================================================================
@@ -999,9 +1043,9 @@ bool : beginWrite(
 |===============================================================================
 
 
-Before writing graphic data, PM wil call this function once to inform the plugin about the dimensions of the data that will be stored.
+Before writing graphic data, PM will call this function once to inform the plug-in about the dimensions of the data that will be stored.
 
-The output file shall reamin open until <<finishProcessing,`finishProcessing()`>> is called.
+The output file shall remain open until <<finishProcessing,`finishProcessing()`>> is called.
 
 
 
@@ -1024,12 +1068,12 @@ bool : writeNextImage(
 [cols="<1m,<6d"]
 |===============================================================================
 | `&ast;colorFrame`
-| A pointer to the bitmap holding the color pixels (color palette indexes).
+| A pointer to the bitmap holding the colour pixels (colour palette indexes).
   The memory portion has a size of `getWidth` * `getHeight` bytes!
 
 | `&ast;colorFramePalette`
-| A pointer to the RGB color table.
-  There are 768 bytes being 256 colors with one byte for red, green and blue.
+| A pointer to the RGB colour table.
+  There are 768 bytes being 256 colours with one byte for red, green and blue.
 
 | `&ast;alphaFrame`
 | A pointer to the bitmap holding the alpha palette indexes.
@@ -1043,7 +1087,7 @@ bool : writeNextImage(
   If alpha is not supported then this value is `nil`/`NULL` and must not be used.
 
 | `&ast;rgba`
-| A pointer to the bitmap holding the color pixels represented as RGBA (each pixel being a *uint32*/*dword*) where the lowest byte is the red channel.
+| A pointer to the bitmap holding the colour pixels represented as RGBA (each pixel being a *uint32*/*dword*) where the lowest byte is the red channel.
   The memory portion has a size of `getWidth` * `getHeight` * 4 bytes!
 
 | `delayMs`
@@ -1055,12 +1099,12 @@ bool : writeNextImage(
 [caption=]
 [cols="<1d,<6d"]
 |===============================================================================
-| Return value  | If the data was transfered successfuly then `true` must be returned.
+| Return value  | If the data was transferred successfully it must return `true`.
 | May set error | Yes.
 |===============================================================================
 
 
-For plugins that support reading, this function is used to save the image data.
+For plug-ins that support reading, this function is used to save the image data.
 The function will be called as often as there are more frames to be stored.
 
 
@@ -1103,15 +1147,15 @@ void : finishProcessing();
 
 
 PM will call this function when the file read or write operation is completed.
-The plugin must now close the file and carry out all the required wrap-up chores -- destroy any memory data and references to the processed file, free memory, release handles, etc., but still be ready for further file I/O operations, for this call only confirms the termination of the current file I/O operation, but the plugin still remains actively availabe at the service of PM for further (new) file operations.
+The plug-in must now close the file and carry out all the required wrap-up chores -- destroy any memory data and references to the processed file, free memory, release handles, etc., but still be ready for further file I/O operations, for this call only confirms the termination of the current file I/O operation, but the plug-in still remains actively available at the service of PM for further (new) file operations.
 
-When this function is called, the plugin should basically just ensure that:
+When this function is called, the plug-in should basically just ensure that:
 
 * System memory and resources used during the file processing are now set free.
 * When the next file is processed, no information is carried over from the previous file operation.
 
-If memory is not managed properly, the risk is that multiple plugin invocations will end piling up garbage in memory, eat up system resource and/or lead to memory corruption.
-You must also ensure that the plugin won't end up keeping a handle on the processed file, which could prevent the user from deleting, renaming or moving the file until PM is running (this being a commonly occuring problem under MS Windows, which can be entirely avoided by good housekeeping during the wrap-up stage).
+If memory is not managed properly, the risk is that multiple plug-in invocations will end piling up garbage in memory, eat up system resource and/or lead to memory corruption.
+You must also ensure that the plug-in won't end up keeping a handle on the processed file, which could prevent the user from deleting, renaming or moving the file until PM is running (this being a commonly occurring problem under MS Windows, which can be entirely avoided by good housekeeping during the wrap-up stage).
 
 
 
