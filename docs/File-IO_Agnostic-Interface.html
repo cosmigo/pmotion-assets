@@ -448,8 +448,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">draft 2,</span>
-<span id="revdate">2020-01-28</span>
+<span id="revnumber">draft 3,</span>
+<span id="revdate">2020-02-04</span>
 <br><span id="revremark">PMNG v7.2.3.1</span>
 </div>
 <div id="toc" class="toc2">
@@ -468,7 +468,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_strings">Strings</a></li>
 </ul>
 </li>
-<li><a href="#_procedures_description">Procedures Description</a>
+<li><a href="#_functions_description">Functions Description</a>
 <ul class="sectlevel2">
 <li><a href="#initialize">initialize</a></li>
 <li><a href="#_setprogresscallback">setProgressCallback</a></li>
@@ -518,7 +518,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <em>It&#8217;s not</em> part of the official Pro Motion documentation and I&#8217;m acting solely as a Pro Motion NG user and enthusiast.</p>
 </div>
 <div class="paragraph">
-<p>The document is still a draft and I haven&#8217;t yet had a chance to actually test all the plug-in procedures in real case scenarios.
+<p>The document is still a draft and I haven&#8217;t yet had a chance to actually test all the plug-in functions in real case scenarios.
 Therefore, I&#8217;m the only person responsible for any errors and inaccuracies herein contained.</p>
 </div>
 <div class="paragraph">
@@ -676,8 +676,8 @@ Other times, pointers are used to pass data from the plug-in to PM, either via a
 <div class="paragraph">
 <p>The following table lists all the required DLL functions, and specifies which functions are invoked in file load and save operations, and whether the function might set an error or not.</p>
 </div>
-<table id="procedures-table" class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 1. Plug-in DLL Procedures Overview</caption>
+<table id="functions-table" class="tableblock frame-all grid-all fit-content">
+<caption class="title">Table 1. Plug-in DLL Functions Overview</caption>
 <colgroup>
 <col>
 <col>
@@ -901,7 +901,7 @@ Refer to the language documentation regarding strings, pointers, variables scope
 </div>
 </div>
 <div class="sect1">
-<h2 id="_procedures_description"><a class="anchor" href="#_procedures_description"></a>Procedures Description</h2>
+<h2 id="_functions_description"><a class="anchor" href="#_functions_description"></a>Functions Description</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="initialize"><a class="anchor" href="#initialize"></a>initialize</h3>
@@ -927,7 +927,7 @@ Can be used for localization if the plug-in supports multi-language messages, ot
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&ast;version</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">(<em>out</em>)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to <strong>uint16</strong> representing the version number of the file I/O plug-in interface.
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pointer to <strong>uint16</strong> representing the version number of the file I/O plug-in interface.<br>
 Must be set to &#8220;1&#8221; to be a valid plug-in, as this is the only interface version currently supported.</p></td>
 </tr>
 <tr>
@@ -1002,7 +1002,7 @@ In case of failure, it should still set an error description via <code>getErrorM
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>&ast;progressCallback</code></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Pointer to a PM function that the plug-in must call when progress changes.
+<p>Pointer to a PM function that the plug-in must call when progress changes.<br>
 The PM function located at <code>&ast;progressCallback</code> (stdcall) is representable as:</p>
 </div>
 <div class="listingblock">
@@ -1115,7 +1115,7 @@ PM expects the string to be a Unicode string (wide char, 16-bits characters), no
 As soon as an error is encountered, the error string should be set to contain a meaningful message about the nature of the problem, and just let <code>getErrorMessage()</code> handle notification of the error to PM, and that the next plug-in function (which may set error) that gets called will handle resetting the error string.</p>
 </div>
 <div class="paragraph">
-<p>Not every plug-in procedure can set error, only those explicitly indicated in this document (under &#8220;Control&#8221; in the description of each function, as well as in the &#8220;error&#8221; column of <a href="#procedures-table">Table 1</a>).
+<p>Not every plug-in procedure can set error, only those explicitly indicated in this document (under &#8220;Control&#8221; in the description of each function, as well as in the &#8220;error&#8221; column of <a href="#functions-table">Table 1</a>).
 This was done to avoid burdening PM with having to check for errors at each and every plug-in call, and limiting instead these checks to meaningful contexts.</p>
 </div>
 </div>
@@ -1372,7 +1372,7 @@ But it might also be triggered multiple times by PM as a result of a multi file 
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Return value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code>, if the file can be processed.
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code>, if the file can be processed.<br>
   If <code>false</code> is returned then an error message must be set saying why it can not be handled.</p></td>
 </tr>
 <tr>
@@ -1720,7 +1720,7 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 <h3 id="_loadnextimage"><a class="anchor" href="#_loadnextimage"></a>loadNextImage</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="pseudocode"><code class="language-pseudocode" data-lang="pseudocode"><span class="hl kwa">bool</span> <span class="hl opt">:</span> <span class="hl kwd">loadNextImage</span><span class="hl opt">(</span>&#x000A;                      <span class="hl kwe">*</span>colorFrame<span class="hl opt">,</span>&#x000A;                      <span class="hl kwe">*</span>colorFramePalette<span class="hl opt">,</span>&#x000A;                      <span class="hl kwe">*</span>alphaFrame<span class="hl opt">,</span>&#x000A;                      <span class="hl kwe">*</span>alphaFramePalette<span class="hl opt">,</span>&#x000A;                      <span class="hl kwe">*</span>delayMs&#x000A;                    <span class="hl opt">);</span></code></pre>
+<pre class="highlight" lang="pseudocode"><code class="language-pseudocode" data-lang="pseudocode"><span class="hl kwa">bool</span> <span class="hl opt">:</span> <span class="hl kwd">loadNextImage</span><span class="hl opt">(</span>&#x000A;                      <span class="hl kwe">*</span>colorFrame<span class="hl opt">,</span>         <span class="hl slc">// getWidth() * getHeight() bytes</span>&#x000A;                      <span class="hl kwe">*</span>colorFramePalette<span class="hl opt">,</span>  <span class="hl slc">// 768 bytes (256 * R,G,B)</span>&#x000A;                      <span class="hl kwe">*</span>alphaFrame<span class="hl opt">,</span>         <span class="hl slc">// getWidth() * getHeight() bytes</span>&#x000A;                      <span class="hl kwe">*</span>alphaFramePalette<span class="hl opt">,</span>  <span class="hl slc">// 256 bytes</span>&#x000A;                      <span class="hl kwe">*</span>delayMs <span class="hl opt">:</span> <span class="hl kwa">uint16</span>&#x000A;                    <span class="hl opt">);</span></code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1732,18 +1732,18 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;colorFrame</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the colour pixels (colour palette indexes).
-  The memory portion has a size of <code>getWidth</code> * <code>getHeight</code> bytes!</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the colour pixels (colour palette indexes).<br>
+  The memory portion has a size of <code>getWidth()</code> * <code>getHeight()</code> bytes!</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;colorFramePalette</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the RGB colour table.
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the RGB colour table.<br>
   There are 768 bytes being 256 colours with one byte for red, green and blue.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;alphaFrame</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the alpha palette indexes.
-  The memory portion has a size of <code>getWidth</code> * <code>getHeight</code> bytes!
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the alpha palette indexes.<br>
+  The memory portion has a size of <code>getWidth()</code> * <code>getHeight()</code> bytes!<br>
   If alpha is not supported then this value is <code>nil</code>/<code>NULL</code> and must not be used.</p></td>
 </tr>
 <tr>
@@ -1755,7 +1755,7 @@ The palette must be defined as a 768 bytes (256&#160;x&#160;3) sequence of RGB t
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;delayMs</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If the frame has a delay value (animations only) then it must be given here as milliseconds.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If the frame has a delay value (animations only) then it must be given here as milliseconds (<code>uint16</code>).</p></td>
 </tr>
 </tbody>
 </table>
@@ -1860,7 +1860,7 @@ The function will be called according to the number of frames returned by <a hre
 <h3 id="_writenextimage"><a class="anchor" href="#_writenextimage"></a>writeNextImage</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight" lang="pseudocode"><code class="language-pseudocode" data-lang="pseudocode"><span class="hl kwa">bool</span> <span class="hl opt">:</span> <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>&#x000A;                        <span class="hl kwe">*</span>colorFrame<span class="hl opt">,</span>&#x000A;                        <span class="hl kwe">*</span>colorFramePalette<span class="hl opt">,</span>&#x000A;                        <span class="hl kwe">*</span>alphaFrame<span class="hl opt">,</span>&#x000A;                        <span class="hl kwe">*</span>alphaFramePalette<span class="hl opt">,</span>&#x000A;                        <span class="hl kwe">*</span>rgba<span class="hl opt">,</span>&#x000A;                  <span class="hl kwa">uint16</span> delayMs&#x000A;                     <span class="hl opt">);</span></code></pre>
+<pre class="highlight" lang="pseudocode"><code class="language-pseudocode" data-lang="pseudocode"><span class="hl kwa">bool</span> <span class="hl opt">:</span> <span class="hl kwd">writeNextImage</span><span class="hl opt">(</span>&#x000A;                        <span class="hl kwe">*</span>colorFrame<span class="hl opt">,</span>         <span class="hl slc">// getWidth() * getHeight() bytes</span>&#x000A;                        <span class="hl kwe">*</span>colorFramePalette<span class="hl opt">,</span>  <span class="hl slc">// 768 bytes (256 * R,G,B)</span>&#x000A;                        <span class="hl kwe">*</span>alphaFrame<span class="hl opt">,</span>         <span class="hl slc">// getWidth() * getHeight() bytes</span>&#x000A;                        <span class="hl kwe">*</span>alphaFramePalette<span class="hl opt">,</span>  <span class="hl slc">// 256 bytes</span>&#x000A;                        <span class="hl kwe">*</span>rgba<span class="hl opt">,</span>               <span class="hl slc">// getWidth() * getHeight() * 4 bytes</span>&#x000A;                  <span class="hl kwa">uint16</span> delayMs&#x000A;                     <span class="hl opt">);</span></code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1872,31 +1872,31 @@ The function will be called according to the number of frames returned by <a hre
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;colorFrame</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the colour pixels (colour palette indexes).
-  The memory portion has a size of <code>getWidth</code> * <code>getHeight</code> bytes!</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the colour pixels (colour palette indexes).<br>
+  The memory portion has a size of <code>getWidth()</code> * <code>getHeight()</code> bytes!</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;colorFramePalette</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the RGB colour table.
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the RGB colour table.<br>
   There are 768 bytes being 256 colours with one byte for red, green and blue.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;alphaFrame</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the alpha palette indexes.
-  The memory portion has a size of <code>getWidth</code> * <code>getHeight</code> bytes!
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the alpha palette indexes.<br>
+  The memory portion has a size of <code>getWidth()</code> * <code>getHeight()</code> bytes!<br>
   If alpha is not supported then this value is <code>nil</code>/<code>NULL</code> and must not be used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;alphaFramePalette</code></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the alpha value table.
-  There are 256 bytes.
-  Each byte is an alpha value ranging from 0 to 255.
+  There are 256 bytes.<br>
+  Each byte is an alpha value ranging from 0 to 255.<br>
   If alpha is not supported then this value is <code>nil</code>/<code>NULL</code> and must not be used.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>&ast;rgba</code></code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the colour pixels represented as RGBA (each pixel being a <strong>uint32</strong>/<strong>dword</strong>) where the lowest byte is the red channel.
-  The memory portion has a size of <code>getWidth</code> * <code>getHeight</code> * 4 bytes!</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A pointer to the bitmap holding the colour pixels represented as RGBA (each pixel being a <strong>uint32</strong>/<strong>dword</strong>) where the lowest byte is the red channel.<br>
+The memory portion has a size of <code>getWidth()</code> * <code>getHeight()</code> * 4 bytes!</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>delayMs</code></code></p></td>
@@ -2011,7 +2011,7 @@ and published under the
 </div>
 <div id="footer">
 <div id="footer-text">
-draft 2<br>
+draft 3<br>
 </div>
 </div>
 </body>
