@@ -1,6 +1,6 @@
 = Pro Motion File I/O Plug-in Interface
 Tristano Ajmone <tajmone@gmail.com>
-3, 2020-02-04
+4, 2020-02-07
 // Doc Revision Info
 :PMNG_V: 7.2.3.1
 :revremark: PMNG v{PMNG_V}
@@ -74,10 +74,18 @@ A language-agnostic presentation of Pro Motion file I/O plug-in interface, aimed
 This document is my personal attempt to contribute a language agnostic description of the File I/O interface.
 _It's not_ part of the official Pro Motion documentation and I'm acting solely as a Pro Motion NG user and enthusiast.
 
-The document is still a draft and I haven't yet had a chance to actually test all the plug-in functions in real case scenarios.
 Therefore, I'm the only person responsible for any errors and inaccuracies herein contained.
 
 Furthermore, the quality (or lack thereof) of this document is not representative of the quality of Cosmigo GmbH, its products and services; it's just my personal effort to explore the subject of plug-in development as a hobbyist programmer and PMNG end user.
+=======================
+
+.WARNING: DOCUMENTATION INCOMPLETE!
+[WARNING]
+=======================
+The document is still a draft, many aspects of the plug-in interface are still not fully covered and remain somehow obscure.
+The information herein presented is most likely insufficient to develop a full fledged plug-in.
+
+At moment development of this document has reached a dead end due to lack of a full documentation of the interface details (see the <<Document Status Info>> section for more info).
 =======================
 
 // >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
@@ -98,7 +106,7 @@ endif::[]
 === About File I/O Plug-ins
 
 Pro Motion (>=v6.5) allows users to extend the supported images and animations file formats by means of third party file I/O plug-ins.
-Each file plug-in can target either images or animations, and it may handle saving and/or loading (either one or both) from/to a specific file format, and will be associated with a specific file extension in the file I/O dialogs of Pro Motion.
+Each file plug-in can target either images or animations, it may handle saving and/or loading (either one or both) from/to a specific file format, and will be associated with a specific file extension in the file I/O dialogs of Pro Motion.
 
 A file I/O plug-in is a DLL (Dynamic-link library) shared library, located inside the `plug-ins` subfolder in the installation directory of Pro Motion.
 Depending on the bitness of your MS Windows operating system, the path of the `plug-ins` folder will be either:
@@ -1157,9 +1165,38 @@ When this function is called, the plug-in should basically just ensure that:
 If memory is not managed properly, the risk is that multiple plug-in invocations will end piling up garbage in memory, eat up system resource and/or lead to memory corruption.
 You must also ensure that the plug-in won't end up keeping a handle on the processed file, which could prevent the user from deleting, renaming or moving the file until PM is running (this being a commonly occurring problem under MS Windows, which can be entirely avoided by good housekeeping during the wrap-up stage).
 
-
-
 // <<<< END -- PLUGIN FUCNTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+== Document Status Info
+
+Although I've started working on this document in March 2019, it's still far for complete -- and, possibly, far from being usable in real case scenarios, except for very simple plug-in types.
+
+Currently, the only available sources of information on File I/O plug-ins are:
+
+. The original https://www.cosmigo.com/pixel_animation_software/plugins/developer-interface[_Developer Interface_^,title="View document at Cosmigo website"]
+document from Cosmigo.
+. The https://www.cosmigo.com/wp-content/uploads/file_io_plugin_samples.zip[two C++ sample plug-ins^,title="Download the sample File I/O plug-ins"]
+made available by Cosmigo.
+
+The _Developer Interface_ document unfortunately doesn't cover in depth the various contexts in which the DLL functions are invoked, or how different images or animations might affect their parameters, leaving many aspects of the interface rather obscure.
+
+The two sample plug-ins (simImage and sanAnimation) are rather simple proofs of concept and don't cover edge cases or more advanced aspects of exporting and importing images (e.g. handling _true color_), so their usefulness is somehow limited.
+
+In the last year I've started to develop a variety of plug-ins, but soon stumbled into dead ends with each one of them, due to undocumented aspects of the DLL interface behaviour.
+
+I've invested a considerable amount of hours trying to decode these undocumented aspects of the File I/O interface, which somehow allowed me to get a clearer picture, but still too far from a complete one.
+Pro Motion NG's import/export functionality can get rather complex, for it encompasses various menus and different usage contexts, which may vary from the type of project being exported or the user options available in the load/save dialogs.
+
+Unfortunately, I've reached a point in which no further investigation of the interface is possible, unless it's official documentation is updated.
+Further attempts to deduce the contextual behaviour of the interface via trail and error are too time-consuming and unlikely to improve the current situation.
+Therefore, right now the chances that this document will ever be completed are rather slim.
+
+Although the DLL plug-in interface was introduced over ten years ago, with Pro Motion 6.5 (around 2009), there still aren't any plug-ins available except for the simImage and sanAnimation sample plug-ins.
+It's difficult to say if no further energy was invested in the plug-in documentation due to lack of end users interests, or whether the lack of user-created File I/O plug-ins is due to incomplete documentation.
+Having invested so many hours on the DLL interface in the past year, I tend to believe that the latter is the cause (after all, various DDE plug-ins were contributed by end users, but no DLL plug-ins).
+
+It's a pity, because the File I/O interface had a great potential for Pro Motion, allowing users to extend the application to support new graphic formats (a much desirable feature, especially for game developers targeting modern game engines).
+Hopefully, in the future the official documentation for the File I/O interface will be updated and expanded on; in the meantime I'm leaving behind these notes, in the hope that they might be of help to those wishing to dive into plug-ins development.
 
 // GITHUB HACK: HORIZONTAL RULE -- Insert horizontal rule for visual separation
 // because GitHub doesn't style example blocks in ADoc previews.

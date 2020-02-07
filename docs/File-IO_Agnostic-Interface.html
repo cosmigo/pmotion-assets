@@ -448,8 +448,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Tristano Ajmone</span><br>
 <span id="email" class="email"><a href="mailto:tajmone@gmail.com">tajmone@gmail.com</a></span><br>
-<span id="revnumber">draft 3,</span>
-<span id="revdate">2020-02-04</span>
+<span id="revnumber">draft 4,</span>
+<span id="revdate">2020-02-07</span>
 <br><span id="revremark">PMNG v7.2.3.1</span>
 </div>
 <div id="toc" class="toc2">
@@ -495,6 +495,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_finishprocessing">finishProcessing</a></li>
 </ul>
 </li>
+<li><a href="#_document_status_info">Document Status Info</a></li>
 <li><a href="#_reference_links">Reference Links</a></li>
 </ul>
 </div>
@@ -518,11 +519,29 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <em>It&#8217;s not</em> part of the official Pro Motion documentation and I&#8217;m acting solely as a Pro Motion NG user and enthusiast.</p>
 </div>
 <div class="paragraph">
-<p>The document is still a draft and I haven&#8217;t yet had a chance to actually test all the plug-in functions in real case scenarios.
-Therefore, I&#8217;m the only person responsible for any errors and inaccuracies herein contained.</p>
+<p>Therefore, I&#8217;m the only person responsible for any errors and inaccuracies herein contained.</p>
 </div>
 <div class="paragraph">
 <p>Furthermore, the quality (or lack thereof) of this document is not representative of the quality of Cosmigo GmbH, its products and services; it&#8217;s just my personal effort to explore the subject of plug-in development as a hobbyist programmer and PMNG end user.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">WARNING: DOCUMENTATION INCOMPLETE!</div>
+<div class="paragraph">
+<p>The document is still a draft, many aspects of the plug-in interface are still not fully covered and remain somehow obscure.
+The information herein presented is most likely insufficient to develop a full fledged plug-in.</p>
+</div>
+<div class="paragraph">
+<p>At moment development of this document has reached a dead end due to lack of a full documentation of the interface details (see the <a href="#_document_status_info">Document Status Info</a> section for more info).</p>
 </div>
 </td>
 </tr>
@@ -537,7 +556,7 @@ Therefore, I&#8217;m the only person responsible for any errors and inaccuracies
 <h3 id="_about_file_io_plug_ins"><a class="anchor" href="#_about_file_io_plug_ins"></a>About File I/O Plug-ins</h3>
 <div class="paragraph">
 <p>Pro Motion (&gt;=v6.5) allows users to extend the supported images and animations file formats by means of third party file I/O plug-ins.
-Each file plug-in can target either images or animations, and it may handle saving and/or loading (either one or both) from/to a specific file format, and will be associated with a specific file extension in the file I/O dialogs of Pro Motion.</p>
+Each file plug-in can target either images or animations, it may handle saving and/or loading (either one or both) from/to a specific file format, and will be associated with a specific file extension in the file I/O dialogs of Pro Motion.</p>
 </div>
 <div class="paragraph">
 <p>A file I/O plug-in is a DLL (Dynamic-link library) shared library, located inside the <code>plug-ins</code> subfolder in the installation directory of Pro Motion.
@@ -1975,6 +1994,56 @@ You must also ensure that the plug-in won&#8217;t end up keeping a handle on the
 </div>
 </div>
 <div class="sect1">
+<h2 id="_document_status_info"><a class="anchor" href="#_document_status_info"></a>Document Status Info</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Although I&#8217;ve started working on this document in March 2019, it&#8217;s still far for complete&#8201;&#8212;&#8201;and, possibly, far from being usable in real case scenarios, except for very simple plug-in types.</p>
+</div>
+<div class="paragraph">
+<p>Currently, the only available sources of information on File I/O plug-ins are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The original <a href="https://www.cosmigo.com/pixel_animation_software/plugins/developer-interface" title="View document at Cosmigo website" target="_blank" rel="noopener"><em>Developer Interface</em></a>
+document from Cosmigo.</p>
+</li>
+<li>
+<p>The <a href="https://www.cosmigo.com/wp-content/uploads/file_io_plugin_samples.zip" title="Download the sample File I/O plug-ins" target="_blank" rel="noopener">two C++ sample plug-ins</a>
+made available by Cosmigo.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <em>Developer Interface</em> document unfortunately doesn&#8217;t cover in depth the various contexts in which the DLL functions are invoked, or how different images or animations might affect their parameters, leaving many aspects of the interface rather obscure.</p>
+</div>
+<div class="paragraph">
+<p>The two sample plug-ins (simImage and sanAnimation) are rather simple proofs of concept and don&#8217;t cover edge cases or more advanced aspects of exporting and importing images (e.g. handling <em>true color</em>), so their usefulness is somehow limited.</p>
+</div>
+<div class="paragraph">
+<p>In the last year I&#8217;ve started to develop a variety of plug-ins, but soon stumbled into dead ends with each one of them, due to undocumented aspects of the DLL interface behaviour.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ve invested a considerable amount of hours trying to decode these undocumented aspects of the File I/O interface, which somehow allowed me to get a clearer picture, but still too far from a complete one.
+Pro Motion NG&#8217;s import/export functionality can get rather complex, for it encompasses various menus and different usage contexts, which may vary from the type of project being exported or the user options available in the load/save dialogs.</p>
+</div>
+<div class="paragraph">
+<p>Unfortunately, I&#8217;ve reached a point in which no further investigation of the interface is possible, unless it&#8217;s official documentation is updated.
+Further attempts to deduce the contextual behaviour of the interface via trail and error are too time-consuming and unlikely to improve the current situation.
+Therefore, right now the chances that this document will ever be completed are rather slim.</p>
+</div>
+<div class="paragraph">
+<p>Although the DLL plug-in interface was introduced over ten years ago, with Pro Motion 6.5 (around 2009), there still aren&#8217;t any plug-ins available except for the simImage and sanAnimation sample plug-ins.
+It&#8217;s difficult to say if no further energy was invested in the plug-in documentation due to lack of end users interests, or whether the lack of user-created File I/O plug-ins is due to incomplete documentation.
+Having invested so many hours on the DLL interface in the past year, I tend to believe that the latter is the cause (after all, various DDE plug-ins were contributed by end users, but no DLL plug-ins).</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s a pity, because the File I/O interface had a great potential for Pro Motion, allowing users to extend the application to support new graphic formats (a much desirable feature, especially for game developers targeting modern game engines).
+Hopefully, in the future the official documentation for the File I/O interface will be updated and expanded on; in the meantime I&#8217;m leaving behind these notes, in the hope that they might be of help to those wishing to dive into plug-ins development.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_reference_links"><a class="anchor" href="#_reference_links"></a>Reference Links</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -2011,7 +2080,7 @@ and published under the
 </div>
 <div id="footer">
 <div id="footer-text">
-draft 3<br>
+draft 4<br>
 </div>
 </div>
 </body>
