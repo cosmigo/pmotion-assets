@@ -1,8 +1,8 @@
 = Pro Motion File I/O Plug-in Interface
 Tristano Ajmone <tajmone@gmail.com>
-4, 2020-02-07
+5, 2021-02-15
 // Doc Revision Info
-:PMNG_V: 7.2.3.1
+:PMNG_V: 7.2.7
 :revremark: PMNG v{PMNG_V}
 // Metadata:
 :title: Pro Motion File I/O Plug-in Interface
@@ -12,6 +12,7 @@ Tristano Ajmone <tajmone@gmail.com>
 :keywords: cosmigo, pro motion ng, pmng, plug-ins, interface, api, developer, \
            pixel art, pixelart
 // Doc Settings:
+// (Spell Checking: EN-US)
 :lang: en
 :version-label: draft
 // :version-label: revision
@@ -167,7 +168,7 @@ Therefore, developers have an ample choice of languages to pick from for develop
        [ ] PureBasic
        [ ] FreeBasic
        [ ] Rust
-       ... others?
+       ... others
 ////
 
 
@@ -190,7 +191,7 @@ Other times, pointers are used to pass data from the plug-in to PM, either via a
 
 Some functions are expected to return boolean values (true/false) to inform PM whether a given feature is available. Error handling is done via the <<getErrorMessage>> plug-in function, which will should either return a `NULL` pointer (no error) or a pointer to string describing the error; PM will invoke this error function right after calling any plug-in function that may set error (not every plug-in function can set error).
 
-// Those are the basic data types involved in communications and data exchange between PM and the DLL, but the plug-in will also need to handle some structured data for handling colour palettes and bitmap data transfers.
+// Those are the basic data types involved in communications and data exchange between PM and the DLL, but the plug-in will also need to handle some structured data for handling color palettes and bitmap data transfers.
 
 The following table lists all the required DLL functions, and specifies which functions are invoked in file load and save operations, and whether the function might set an error or not.
 
@@ -246,17 +247,17 @@ The following table lists all the required DLL functions, and specifies which fu
 | <<getHeight>>                 | {Y}  | {N}  | {N}
 | PM wants to know the image height in pixels.
 
-| <<getImageCount>>             | {Y}  | {N}  | {Y}
+| <<getImageCount>>             | {Y}  | {N}  | {N}
 | PM wants to know the number of image frames.
 
 | <<canExtractPalette>>         | {Y}  | {N}  | {N}
 | Plug-in info: Does it support extracting just the palette?
 
 | <<getRgbPalette>>             | {Y}  | {N}  | {N}
-| PM wants a pointer to the extracted 256-colours palette.
+| PM wants a pointer to the extracted 256-colors palette.
 
 | <<getTransparentColor>>       | {Y}  | {N}  | {N}
-| PM wants to know if and which indexed colour is transparent.
+| PM wants to know if and which indexed color is transparent.
 
 | <<isAlphaEnabled>>            | {Y}  | {N}  | {N}
 | PM wants to know if the image contains transparency layers.
@@ -274,6 +275,14 @@ The following table lists all the required DLL functions, and specifies which fu
 | End of plug-in transactions, all resources must be freed.
 |===============================================================================
 
+[IMPORTANT]
+===================================
+Even though some of these DLL functions only apply to plug-ins that support either importing or exporting, you _must_ still define all of them, because even though they will never be called (e.g. `loadNextImage()` would never be called with an export-only plug-in), at start-up PMNG will still check that they are properly defined, and will reject as "`invalid`" any file I/O plug-in that omits one or more of the above functions.
+(See
+https://community.cosmigo.com/t/1018[1018^] and
+https://github.com/tajmone/pmotion-assets/issues/6[#6^]
+)
+===================================
 
 == Interface Data Types
 
@@ -404,7 +413,7 @@ A progress value of "`0`" will hide progress display in PM, while values in the 
 
 [NOTE]
 ================================================================================
-PM NG no longer displays a true progress bar, because nowadays it's mostly useless due to the speed at which most images are processed, but previous version of PM do; therefore, for the sake of backward compatibility, plug-ins should honour the progress callback.
+PM NG no longer displays a true progress bar, because nowadays it's mostly useless due to the speed at which most images are processed, but previous version of PM do; therefore, for the sake of backward compatibility, plug-ins should honor the progress callback.
 
 The important thing here is to provide the end user with some kind of feedback on the ongoing plug-in operations, which in PM NG is now shown via a small emphasized panel at the bottom of the main window, along with the cursor shape turning "`busy`".
 
@@ -556,12 +565,12 @@ bool : isWriteTrueColorSupported();
 |===============================================================================
 
 // @TODO: ** TRUE COLOR ** Should create a dedicated repository document on
-//        colour depths, and link to that page instead of Wikipedia.
+//        color depths, and link to that page instead of Wikipedia.
 
 PM needs to know if the plug-in can write _true color_ data to the file format.
-Some operations (e.g. automatically flattening layers) may result in colours that don't fit into the 256 colours palette.
-In these cases the image data can be optionally stored as {true-color} (24-bit colour depth).
-If the plug-in doesn't support _true color_ then the image colours are reduced to 256 indexed colours.
+Some operations (e.g. automatically flattening layers) may result in colors that don't fit into the 256 colors palette.
+In these cases the image data can be optionally stored as {true-color} (24-bit color depth).
+If the plug-in doesn't support _true color_ then the image colors are reduced to 256 indexed colors.
 
 
 === getFileBoxDescription
@@ -689,7 +698,7 @@ bool : loadBasicData();
 
 
 Before actually reading any graphics data, PM calls this function
-so that the plug-in can extract some basic graphics data information from the target file, such as its dimensions, colour palette, and other relevant data.
+so that the plug-in can extract some basic graphics data information from the target file, such as its dimensions, color palette, and other relevant data.
 Other functions will rely on this function having been called before them -- for example <<getWidth,`getWidth()`>>.
 
 ////
@@ -781,7 +790,7 @@ int32 : getImageCount();
 [cols="<1d,<6d"]
 |===============================================================================
 | Return value  | The number of frames of the image/animation that is to be loaded or -1 on failure.
-| May set error | Yes.
+| May set error | No.
 |===============================================================================
 
 
@@ -794,21 +803,6 @@ If the file consists of a single image then "`1`" is to be returned.
 =========
 <<loadBasicData,`loadBasicData()`>> has been already been called by PM before using this function, to ensure that the plug-in has acquired this information.
 =========
-
-
-////
-@NOTE:  Unlike getWidth() and getHeight(), this function can set error.
-        Previously also getWidth() and getHeight() could set error, but this was
-        changed in the latest fix to the File I/O interface on the assumption
-        that:
-
-            getWidth/getHeight must work without error because loadBasicData()
-            prepares them and this is enough for throwing an error at that time.
-
-        It might be worth mentioning here why getImageCount() is different in
-        this respect, and why it might set error. Shouldn't the number of images
-        be also know after loadBasicData() was called?
-////
 
 
 === canExtractPalette
@@ -828,8 +822,8 @@ bool : canExtractPalette();
 |===============================================================================
 
 
-PM allows users to load just the colour palette from a graphic file, without loading the graphic/bitmap data.
-PM calls this function to ask the plug-in if it's capable of handling extracting just the palette from a target file.
+PM allows users to load just the color palette from a graphic file, without loading the graphic/bitmap data.
+PM calls this function once, during plug-in initialization, to ask the plug-in if it's capable of handling extracting just the palette from a target file.
 
 ////
 @TODO: Must pin-down better the context!
@@ -861,8 +855,8 @@ the palette of this *specific* file?
 |===============================================================================
 
 
-For plug-ins that support extracting the palette data, this function must return a pointer to the memory location storing the 256-colours indexed palette.
-The palette must be defined as a 768 bytes (256{nbsp}x{nbsp}3) sequence of RGB triplets (one byte per channel) representing the indexed colours, starting with colour "`0`".
+For plug-ins that support extracting the palette data, this function must return a pointer to the memory location storing the 256-colors indexed palette.
+The palette must be defined as a 768 bytes (256{nbsp}x{nbsp}3) sequence of RGB triplets (one byte per channel) representing the indexed colors, starting with color "`0`".
 
 ////
 @TODO:  Should provide some examples of how different languages could handle the
@@ -889,16 +883,16 @@ int32 : getTransparentColor();
 [caption=]
 [cols="<1d,<6d"]
 |===============================================================================
-| Return value  | The palette index of the transparent colour, or -1 if none.
+| Return value  | The palette index of the transparent color, or -1 if none.
 | May set error | No.
 |===============================================================================
 
 ////
 @NOTE:  It's not clear what "pixel byte" stands for.
-        My guess is that it stands for "palette colour entry".
+        My guess is that it stands for "palette color entry".
 ////
 
-If the image contains a transparent colour then this function must return its palette colour entry/index (first entry is 0).
+If the image contains a transparent color then this function must return its palette color entry/index (first entry is 0).
 
 The returned value must be a 32-bit signed integer.
 
@@ -962,12 +956,12 @@ bool : loadNextImage(
 [cols="<1m,<6d"]
 |===============================================================================
 | `&ast;colorFrame`
-| A pointer to the bitmap holding the colour pixels (colour palette indexes). +
+| A pointer to the bitmap holding the color pixels (color palette indexes). +
   The memory portion has a size of `getWidth()` * `getHeight()` bytes!
 
 | `&ast;colorFramePalette`
-| A pointer to the RGB colour table. +
-  There are 768 bytes being 256 colours with one byte for red, green and blue.
+| A pointer to the RGB color table. +
+  There are 768 bytes being 256 colors with one byte for red, green and blue.
 
 | `&ast;alphaFrame`
 | A pointer to the bitmap holding the alpha palette indexes. +
@@ -985,7 +979,7 @@ bool : loadNextImage(
 |===============================================================================
 
 ////
-@TODO:  Should create a separate section dedicated to how colour and alpha
+@TODO:  Should create a separate section dedicated to how color and alpha
         palettes are structured, and replace the brief descriptions herein with
         a link to that section instead.
 ////
@@ -1037,7 +1031,7 @@ bool : beginWrite(
 |===============================================================================
 | `width`            | Width of the graphic (images).
 | `height`           | Height of the graphic (images).
-| `transparentColor` | The palette index of the transparent colour,  or -1 if none.
+| `transparentColor` | The palette index of the transparent color,  or -1 if none.
 | `alphaEnabled`     | If the graphic will store alpha data then this flag is set to `true`.
 | `numberOfFrames`   | Number of frames that will be written.
 |===============================================================================
@@ -1076,12 +1070,12 @@ bool : writeNextImage(
 [cols="<1m,<6d"]
 |===============================================================================
 | `&ast;colorFrame`
-| A pointer to the bitmap holding the colour pixels (colour palette indexes). +
+| A pointer to the bitmap holding the color pixels (color palette indexes). +
   The memory portion has a size of `getWidth()` * `getHeight()` bytes!
 
 | `&ast;colorFramePalette`
-| A pointer to the RGB colour table. +
-  There are 768 bytes being 256 colours with one byte for red, green and blue.
+| A pointer to the RGB color table. +
+  There are 768 bytes being 256 colors with one byte for red, green and blue.
 
 | `&ast;alphaFrame`
 | A pointer to the bitmap holding the alpha palette indexes. +
@@ -1095,7 +1089,7 @@ bool : writeNextImage(
   If alpha is not supported then this value is `nil`/`NULL` and must not be used.
 
 | `&ast;rgba`
-| A pointer to the bitmap holding the colour pixels represented as RGBA (each pixel being a *uint32*/*dword*) where the lowest byte is the red channel. +
+| A pointer to the bitmap holding the color pixels represented as RGBA (each pixel being a *uint32*/*dword*) where the lowest byte is the red channel. +
 The memory portion has a size of `getWidth()` * `getHeight()` * 4 bytes!
 
 | `delayMs`
@@ -1169,7 +1163,10 @@ You must also ensure that the plug-in won't end up keeping a handle on the proce
 
 == Document Status Info
 
-Although I've started working on this document in March 2019, it's still far for complete -- and, possibly, far from being usable in real case scenarios, except for very simple plug-in types.
+_Updated February 15, 2021._
+
+Although I've started working on this document in March 2019, it's still not complete -- and, possibly, some plug-in advanced features (like _true color_ data) are not usable in real case scenarios, and this document won't be of much help except for very simple plug-in types.
+Nevertheless, I've managed to build a fully function export plug-in since working on this document, which also gave me a chance to get some "`hands on`" insight into how the File I/O interface actually works.
 
 Currently, the only available sources of information on File I/O plug-ins are:
 
@@ -1178,25 +1175,19 @@ document from Cosmigo.
 . The https://www.cosmigo.com/wp-content/uploads/file_io_plugin_samples.zip[two C++ sample plug-ins^,title="Download the sample File I/O plug-ins"]
 made available by Cosmigo.
 
-The _Developer Interface_ document unfortunately doesn't cover in depth the various contexts in which the DLL functions are invoked, or how different images or animations might affect their parameters, leaving many aspects of the interface rather obscure.
+The _Developer Interface_ document unfortunately doesn't cover in depth the various contexts in which the DLL functions are invoked, or how different images or animations might affect their parameters, leaving many aspects of the interface rather obscure, and for developers to work out by trial and error.
+But thanks to Jan's support, I've managed to shed light on some of these aspects.
 
 The two sample plug-ins (simImage and sanAnimation) are rather simple proofs of concept and don't cover edge cases or more advanced aspects of exporting and importing images (e.g. handling _true color_), so their usefulness is somehow limited.
-
-In the last year I've started to develop a variety of plug-ins, but soon stumbled into dead ends with each one of them, due to undocumented aspects of the DLL interface behaviour.
 
 I've invested a considerable amount of hours trying to decode these undocumented aspects of the File I/O interface, which somehow allowed me to get a clearer picture, but still too far from a complete one.
 Pro Motion NG's import/export functionality can get rather complex, for it encompasses various menus and different usage contexts, which may vary from the type of project being exported or the user options available in the load/save dialogs.
 
-Unfortunately, I've reached a point in which no further investigation of the interface is possible, unless it's official documentation is updated.
-Further attempts to deduce the contextual behaviour of the interface via trail and error are too time-consuming and unlikely to improve the current situation.
-Therefore, right now the chances that this document will ever be completed are rather slim.
+Although the DLL plug-in interface was introduced over ten years ago, with Pro Motion 6.5 (around 2009), there still aren't any open source plug-ins available to study, except for the simImage and sanAnimation sample plug-ins.
+It's hard to say whether no further energy was invested in the plug-in documentation due to lack of end users interests, or whether the lack of user-contributed File I/O plug-ins is due to the documentation being incomplete (probably both); but I'm confident that the more third party plug-in will be created, the more interest the plug-in interfaces will receive.
 
-Although the DLL plug-in interface was introduced over ten years ago, with Pro Motion 6.5 (around 2009), there still aren't any plug-ins available except for the simImage and sanAnimation sample plug-ins.
-It's difficult to say if no further energy was invested in the plug-in documentation due to lack of end users interests, or whether the lack of user-created File I/O plug-ins is due to incomplete documentation.
-Having invested so many hours on the DLL interface in the past year, I tend to believe that the latter is the cause (after all, various DDE plug-ins were contributed by end users, but no DLL plug-ins).
-
-It's a pity, because the File I/O interface had a great potential for Pro Motion, allowing users to extend the application to support new graphic formats (a much desirable feature, especially for game developers targeting modern game engines).
-Hopefully, in the future the official documentation for the File I/O interface will be updated and expanded on; in the meantime I'm leaving behind these notes, in the hope that they might be of help to those wishing to dive into plug-ins development.
+It's a pity that the File I/O interface hasn't been exploited more by Pro Motion's end users, because it opened up a great potential, allowing users to extend the application to support new graphic formats (a much desirable feature, especially for game developers targeting modern game engines).
+Hopefully, in the future the official documentation for the File I/O interface will be updated and expanded on; in the meantime I'll keep updating this document from time to time, and leave behind these status notes, in the hope that they might be of help to those wishing to dive into plug-ins development.
 
 // GITHUB HACK: HORIZONTAL RULE -- Insert horizontal rule for visual separation
 // because GitHub doesn't style example blocks in ADoc previews.
