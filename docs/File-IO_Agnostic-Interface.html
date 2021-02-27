@@ -890,7 +890,7 @@ Other times, pointers are used to pass data from the plug-in to PM, either via a
 <p>Even though some of these DLL functions only apply to plug-ins that support either importing or exporting, you <em>must</em> still define all of them, because even though they will never be called (e.g. <code>loadNextImage()</code> would never be called with an export-only plug-in), at start-up PMNG will still check that they are properly defined, and will reject as &#8220;invalid&#8221; any file I/O plug-in that omits one or more of the above functions.
 (See
 <a href="https://community.cosmigo.com/t/1018" target="_blank" rel="noopener">1018</a> and
-<a href="https://github.com/tajmone/pmotion-assets/issues/6" target="_blank" rel="noopener">#6</a>
+<a href="https://github.com/cosmigo/pmotion-assets/issues/6" target="_blank" rel="noopener">#6</a>
 )</p>
 </div>
 </td>

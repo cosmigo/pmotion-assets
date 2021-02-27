@@ -50,7 +50,7 @@ This project is therefore released under the same license of the original scheme
 MIT License
 
 Copyright (c) 2019 Tristano Ajmone <tajmone@gmail.com>
-https://github.com/tajmone/pmotion-assets
+https://github.com/cosmigo/pmotion-assets
 https://github.com/tajmone/Base16-Sass
 
 Copyright (c) 2012 Chris Kempson (http://chriskempson.com)

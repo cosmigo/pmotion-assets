@@ -37,7 +37,7 @@ Many of the fonts in this collection carry a watermark stating "DRAWN BY DANIEL 
                                 REFERENCE LINKS
 ------------------------------------------------------------------------------>
 
-[open an issue]: https://github.com/tajmone/pmotion-assets/issues/new
+[open an issue]: https://github.com/cosmigo/pmotion-assets/issues/new
 
 [bmf.php5.cz]: http://bmf.php5.cz/
 

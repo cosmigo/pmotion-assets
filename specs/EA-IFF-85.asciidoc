@@ -1262,7 +1262,7 @@ endif::[]
 This document and its diagrams were ported from plaintext to AsciiDoc by
 link:https://github.com/tajmone[Tristano Ajmone^, title="View Tristano Ajmone's GitHub profile"]
 in March, 2019 for the
-link:https://github.com/tajmone/pmotion-assets[Cosmigo Pro Motion Assets^, title="Visit the Cosmigo Pro Motion Assets project on GitHub"]
+link:https://github.com/cosmigo/pmotion-assets[Cosmigo Pro Motion Assets^, title="Visit the Cosmigo Pro Motion Assets project on GitHub"]
 project.
 To the best of my knowledge, this document was released into the public domain.
 

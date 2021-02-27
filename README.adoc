@@ -1,4 +1,4 @@
-= Cosmigo Pro Motion Assets{nbsp}{nbsp}image:https://travis-ci.com/tajmone/pmotion-assets.svg[Travis CI,title="EditorConfig code styles validation via Travis CI"]
+= Cosmigo Pro Motion Assets{nbsp}{nbsp}image:https://travis-ci.com/cosmigo/pmotion-assets.svg[Travis CI,title="EditorConfig code styles validation via Travis CI"]
 :lang: en
 // TOC Settings:
 :toclevels: 5
@@ -57,7 +57,7 @@ endif::[]
 :doc__DDE_C: {path2plugins_dde}DDE_C{docext}
 
 // HTML Live Previews URL Snippet (points to "docs/" folder):
-:GHLive: http://htmlpreview.github.io/?https://github.com/tajmone/pmotion-assets/blob/master/docs/
+:GHLive: http://htmlpreview.github.io/?https://github.com/cosmigo/pmotion-assets/blob/master/docs/
 // HTML Previews via new GitHub Pages repository website:
 :GHPages: https://tajmone.github.io/pmotion-assets/
 
@@ -125,7 +125,7 @@ A collection of assets for {Pro_Motion_NG}, the pixel drawing and animation soft
 
 [horizontal]
 Repository: ::
-link:https://github.com/tajmone/pmotion-assets[]
+link:https://github.com/cosmigo/pmotion-assets[]
 Website: ::
 link:https://tajmone.github.io/pmotion-assets[]
 

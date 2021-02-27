@@ -2,7 +2,7 @@
 
 Guidelines to collaborative editing and contens submissions to the __Cosmigo Pro Motion Assets__ project:
 
-- https://github.com/tajmone/pmotion-assets
+- https://github.com/cosmigo/pmotion-assets
 
 -----
 
@@ -94,12 +94,12 @@ GitHub live preview renders `*.adoc` and `*.asciidoc` files alike, but the conve
 <!-- References -->
 
 [Apache License v2.0]: http://www.apache.org/licenses/LICENSE-2.0 "View the full text of the Apache License v2.0 at www.apache.org"
-[Cosmigo Pro Motion Assets]: https://github.com/tajmone/pmotion-assets
+[Cosmigo Pro Motion Assets]: https://github.com/cosmigo/pmotion-assets
 [Gist]: https://gist.github.com/ "Learn more about GitHub Gists"
 [GitHub Flavored Markdown]: https://guides.github.com/features/mastering-markdown/ "Discover GitHub Flavored Markdown"
 [GitHub Terms of Service]: https://help.github.com/articles/github-terms-of-service/ "Read GitHub Terms of Service"
 [markup formats supported by GitHub]: https://github.com/github/markup#markups "View the full list of markup syntaxes supported by GitHub"
-[opening an Issue]: https://github.com/tajmone/pmotion-assets/issues/new "Click me to open an issue on this project!"
+[opening an Issue]: https://github.com/cosmigo/pmotion-assets/issues/new "Click me to open an issue on this project!"
 
 <!-- 3rd party resources -->
 

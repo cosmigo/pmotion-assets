@@ -44,7 +44,7 @@ A collection of assets for {Pro_Motion_NG}, the pixel drawing and animation soft
 
 Repository created and maintained by {Tristano_Ajmone}.
 
-* https://github.com/tajmone/pmotion-assets
+* https://github.com/cosmigo/pmotion-assets
 
 // >>> GitLab/GitHub hacks to ensure TOC is shown after Preamble: >>>>>>>>>>>>>>
 ifndef::backend-html5[]
@@ -73,17 +73,19 @@ include::../README.adoc[tag=disclaimer]
 
 
 include::../plugins/README.adoc[tag=custom_attributes]
+
 include::../plugins/README.adoc[tag=about]
-include::../plugins/README.adoc[tag=assets,leveloffset=+1]
+
+include::../plugins/README.adoc[tag=assets]
 
 
 == Tech Specs and File Formats
 
 include::../specs/README.adoc[tag=custom_attributes]
+
 include::../specs/README.adoc[tag=intro]
+
 include::../specs/README.adoc[tag=assets]
-
-
 
 
 == External Links

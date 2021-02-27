@@ -280,7 +280,7 @@ The following table lists all the required DLL functions, and specifies which fu
 Even though some of these DLL functions only apply to plug-ins that support either importing or exporting, you _must_ still define all of them, because even though they will never be called (e.g. `loadNextImage()` would never be called with an export-only plug-in), at start-up PMNG will still check that they are properly defined, and will reject as "`invalid`" any file I/O plug-in that omits one or more of the above functions.
 (See
 https://community.cosmigo.com/t/1018[1018^] and
-https://github.com/tajmone/pmotion-assets/issues/6[#6^]
+https://github.com/cosmigo/pmotion-assets/issues/6[#6^]
 )
 ===================================
 
