@@ -59,7 +59,7 @@ endif::[]
 // HTML Live Previews URL Snippet (points to "docs/" folder):
 :GHLive: http://htmlpreview.github.io/?https://github.com/cosmigo/pmotion-assets/blob/master/docs/
 // HTML Previews via new GitHub Pages repository website:
-:GHPages: https://tajmone.github.io/pmotion-assets/
+:GHPages: https://cosmigo.github.io/pmotion-assets/
 
 // -----------------------------------------------------------------------------
 //                          Inline Links Substitutions
@@ -127,7 +127,7 @@ A collection of assets for {Pro_Motion_NG}, the pixel drawing and animation soft
 Repository: ::
 link:https://github.com/cosmigo/pmotion-assets[]
 Website: ::
-link:https://tajmone.github.io/pmotion-assets[]
+link:https://cosmigo.github.io/pmotion-assets[]
 
 Project created and maintained by {Tristano_Ajmone}.
 Started on Dec, 2018.
